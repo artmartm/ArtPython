@@ -1,6 +1,7 @@
 from icecream import ic
 
 
+# first task
 class Counter:
 
     def __init__(self, start, stop):
@@ -18,14 +19,8 @@ class Counter:
             raise StopIteration
         return 'stop and start have to be numbers'
 
-    # def __getitem__(self, item):
 
-
-for i in Counter(3, 10):
-    ic(i)
-
-
-# another way
+# second task
 def my_counter(start, stop):
     start -= 1
     while stop - 1 > start:
@@ -33,14 +28,11 @@ def my_counter(start, stop):
         yield start
 
 
-for i in my_counter(1, 5):
-    ic(i)
-# WHILE task ????
-lst = [1, 2, 3, 4, 5, 6, 7]
-for i in range(len(lst)):
-    ic(lst[i])
+if __name__ == "__main__":
+    ic('first')
+    for element in Counter(1, 5):
+        ic(element)
+    ic('second')
+    for element in my_counter(1, 5):
+        ic(element)
 
-i = 0
-while i < len(lst):
-    ic(lst[i])
-    i += 1
