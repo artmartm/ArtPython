@@ -1,6 +1,3 @@
-from icecream import ic
-
-
 # first way
 class Counter:
 
@@ -31,12 +28,3 @@ def my_counter(start, stop):
             yield start
     else:
         raise ValueError('start and stop have to be integers!')
-
-
-if __name__ == "__main__":
-    ic('first way')
-    for element in Counter(1, 5):
-        ic(element)
-    ic('second way')
-    for element in my_counter(1, 5):
-        ic(element)
