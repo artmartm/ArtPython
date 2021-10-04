@@ -8,7 +8,6 @@ def while_as_for(lst):
         while True:
             try:
                 book = next(iter_for_books)
-                ic(book)
             except StopIteration:
                 break
     except TypeError:
