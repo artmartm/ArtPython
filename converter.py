@@ -34,8 +34,3 @@ class CsvToJsonConverter:
     def convert_data_to_json(self):
         with open(self.json_path, 'w', encoding='utf-8') as json_file:
             json_file.writelines(str(self.get_csv_data()).replace("'", '"'))
-
-
-new_file = CsvToJsonConverter('csv.csv', 'json.json')
-new_file.convert_data_to_json()
-
