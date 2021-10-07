@@ -1,7 +1,7 @@
 import os
 
-from abc import ABC, abstractmethod
 from task_converter.exceptions import CsvWrongFormat, WrongFilePath, JsonWrongFormat
+from abc import ABC, abstractmethod
 
 
 class Converter(ABC):
