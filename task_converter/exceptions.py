@@ -1,21 +1,13 @@
-class CsvWrongFormat(Exception):
+class FileHasWrongFormat(Exception):
     """A custom exception in case csv file has wrong format"""
 
-    def __init__(self, file, message='has to be in ".csv" format'):
+    def __init__(self, file, message):
         self.file = file
         self.message = message
         super().__init__(message)
 
     def __str__(self):
         return '%s %s' % (self.file, self.message)
-
-
-class JsonWrongFormat(CsvWrongFormat):
-    """A custom exception in case csv file has wrong format"""
-
-    def __init__(self, file):
-        self.file = file
-        super().__init__(file, message='has to be in ".json" format')
 
 
 class WrongFilePath(Exception):
