@@ -26,7 +26,7 @@ class ConverterCsvToJson(Converter):
     """Converts data from .csv format to .json format"""
 
     def __init__(self, csv_path, json_path):
-
+        super().__init__(csv_path, json_path)
         if os.path.splitext(csv_path)[1] == '.csv':
             if os.path.splitext(json_path)[1] == '.json':
                 self.csv_path = csv_path
@@ -35,7 +35,6 @@ class ConverterCsvToJson(Converter):
                 raise FileHasWrongFormat(json_path, 'not in .json extension')
         else:
             raise FileHasWrongFormat(csv_path, 'not in .csv extension')
-        super().__init__(csv_path, json_path)
 
     def get_data(self):
         """Get the data from .csv format"""
@@ -60,3 +59,4 @@ class ConverterCsvToJson(Converter):
         """Converts the data from .csv format to .json format"""
         with open(self.json_path, 'w', encoding='utf-8') as json_file:
             json_file.writelines(str(self.get_data()).replace("'", '"'))
+
