@@ -1,5 +1,5 @@
 from random import randint
-from flower_shop.exceptions import InputDataWrongFormat, NoFlowers, NeedMoreMoney
+from flower_shop.exceptions import InputDataFormatError, FlowersSoldOutError, NotEnoughMoneyError
 
 
 class Flower:
@@ -21,9 +21,9 @@ class Flower:
                 self.price = price
                 self.__add_to_warehouse()
             else:
-                raise InputDataWrongFormat('amount and price have to be int')
+                raise InputDataFormatError('amount and price have to be int')
         else:
-            raise InputDataWrongFormat('flower and color have to be str')
+            raise InputDataFormatError('flower and color have to be str')
 
     def __add_to_warehouse(self):
         """Add new flowers to the warehouse"""
@@ -66,7 +66,7 @@ class Flower:
                 Flower.__flower_warehouse[self.flower] += other.amount
             else:
                 Flower.__flower_warehouse[other.flower] = other.amount
-        raise InputDataWrongFormat('Can not add flowers')
+        raise InputDataFormatError('Can not add flowers')
 
     @classmethod
     def take(cls, bouquet):
@@ -144,7 +144,7 @@ class Shop:
         if Flower.check(order={}):
             'Welcome to our shop! Make an order'  # I want to show this message. What need I do?
         else:
-            raise NoFlowers
+            raise FlowersSoldOutError
 
     def your_taste(self):
         """If client doesn't know what to buy"""
@@ -184,5 +184,6 @@ class Shop:
         if Flower.check(order) is True:
             if Shop.price(order) <= money:
                 return Bouquet.create_bouquet(order)
-            raise NeedMoreMoney
+            raise NotEnoughMoneyError
         return Flower.check(order)
+
