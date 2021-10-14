@@ -9,9 +9,15 @@ class FlowersSoldOutError(Exception):
         return 'All flowers were sold. Come back tomorrow!'
 
 
+class NotExistFlowerError(Exception):
+    """A custom exception in case a flower doesn't exist"""
+
+    def __str__(self):
+        return "This flower doesn't exist in real world!"
+
+
 class NotEnoughMoneyError(Exception):
     """A custom exception in case client doesn't have enough money"""
 
     def __str__(self):
         return 'Not enough money to buy this bouquet'
-
