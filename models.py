@@ -40,6 +40,8 @@ class Book(GeneralModel):
     text = models.TextField(default='There is no text yet')
 
 
-from .queries import CustomQuerySet  # I know that it isn't a good thing
+from .queries import CustomBookQuerySet, CustomAuthorQuerySet, CustomGenreQuerySet  # I know that it isn't a good thing
 
-GeneralModel.my_manager = CustomQuerySet.as_manager()
+Book.my_manager = CustomBookQuerySet.as_manager()
+Author.my_manager = CustomAuthorQuerySet.as_manager()
+Genre.my_manager = CustomGenreQuerySet.as_manager()
