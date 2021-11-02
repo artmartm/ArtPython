@@ -2,95 +2,103 @@ from django.db import models
 from .models import Book, Genre, Author
 
 
-class RawCustomBookQuerySet(models.QuerySet):
+class RCustomBookQuerySet(models.QuerySet):
     """Custom query set for book model"""
 
-    def amount_of_book_by_author(self):  # 1
-        """Amount of books which were written by particular author"""
-        return len(Book.objects.raw('SELECT * FROM main_book '
-                                    'INNER JOIN main_author ON '
-                                    'main_book.author_id = main_author.id  '
-                                    'WHERE main_author.name = "Mele"'))
+    def amount_of_book_by_author(self, author):  # 1
+        """amount of books which were written by particular author"""
+        return len(Book.objects.raw(f'''SELECT * FROM main_book 
+                                    INNER JOIN main_author ON 
+                                    main_book.author_id = main_author.id  
+                                    WHERE main_author.name = "{author}"'''))
 
-    def amount_of_en_books(self):  # 3
-        """amount of english books where amount
-         of pages is less 124 in particular genre"""
-        return len(Book.objects.raw('SELECT * FROM main_book '
-                                    'INNER JOIN main_genre ON '
-                                    'main_book.name_of_genre_id = main_genre.id '
-                                    'WHERE main_genre.name = "science" AND '
-                                    'main_book.page_count < 124'))
+    def amount_of_en_books(self, language, amount_of_pages, genre):  # 3
+        """amount of books which were written in certain language,
+         where pages are less than a certain amount in particular genre"""
+        return len(Book.objects.raw(f'''SELECT * FROM main_book 
+                                    INNER JOIN main_genre ON 
+                                    main_book.genre_id = main_genre.id 
+                                    WHERE main_genre.name = "{genre}" AND 
+                                    main_book.page_count < {amount_of_pages} 
+                                    AND main_book.prime_language = "{language}"'''))
 
-    def books_by_particular_author(self):  # 4
-        """all book of particular author and year is 2010"""
-        return Book.objects.raw('SELECT * FROM main_book '
-                                'INNER JOIN main_author ON '
-                                'main_book.author_id = main_author.id '
-                                'WHERE main_author.name="Mele" AND '
-                                'strftime("%Y", main_book.year) > "2010"')
+    def books_by_particular_author(self, author, year):  # 4
+        """amount of books which were written in certain language
+         and after a certain ages"""
+        return Book.objects.raw(f'''SELECT * FROM main_book 
+                                INNER JOIN main_author ON 
+                                main_book.author_id = main_author.id 
+                                WHERE main_author.name="{author}" AND 
+                                strftime("%Y", main_book.year) > "{year}"''')
 
-    def en_books_where(self):  # 6
-        """books where language is english,
-        amount of pages more than 1 by author who elder than 34"""
-        return Book.objects.raw('SELECT * FROM main_book '
-                                'INNER JOIN main_author ON main_book.author_id = main_author.id'
-                                'WHERE main_book.page_count > 1 AND '
-                                'main_author.year_of_birth__year > 1987')
+    def en_books_where(self, language, pages, ages):  # 6 !!! T
+        """books which were written in a certain language, where
+        amount of pages more than particular number and
+        author is elder than a certain ages"""
+        return Book.objects.raw(f'''SELECT * FROM main_book 
+                                INNER JOIN main_author ON main_book.author_id = main_author.id 
+                                WHERE main_book.page_count > {pages} AND 
+                                main_book.prime_language = "{language}" AND 
+                                strftime("%Y", DATE("now"))- 
+                                strftime("%Y", year_of_birth) <= "{ages}"''')
 
     def query_number_7(self):  # 7
         """??? all books by genres ???"""
         return 'Slava, I cannot get what you meant'
 
-    def books_by_author_whose_name(self):  # 8
-        """all book by authors whose name starts with 'm' not elder 34"""
-        return Book.objects.raw('SELECT * FROM main_book '
-                                'INNER JOIN main_author ON '
-                                'main_book.author_id = main_author.id '
-                                'WHERE main_author.name LIKE "m%" AND '
-                                'main_author.year_of_birth > 1987')
+    def books_by_author_whose_name(self, first_letter, ages):  # 8
+        """all book by authors whose name starts with particular letter
+         and not elder than particular ages"""
+        return Book.objects.raw(f'''SELECT * FROM main_book 
+                                INNER JOIN main_author ON 
+                                main_book.author_id = main_author.id 
+                                WHERE main_author.name LIKE "{first_letter}%" 
+                                AND strftime("%Y", DATE("now"))-
+                                strftime("%Y", year_of_birth) < "{ages}"''')
 
     def amount_of_all_books(self):  # 9
         """amount of all books"""
         return len(Book.objects.raw('SELECT * FROM main_book'))
 
-    def books_name_start_with(self):  # 10
-        """amount of books that names start with 'p'"""
-        return len(Book.objects.raw('SELECT * FROM main_book '
-                                    'WHERE name LIKE "p%"'))
+    def books_name_start_with(self, first_letter):  # 10
+        """amount of books that names start with particular letter"""
+        return len(Book.objects.raw(f'''SELECT * FROM main_book 
+                                    WHERE name LIKE "{first_letter}%"'''))
 
-    def books_with_word_in_text(self):  # 13
-        """amount of books that consists word 'python' in the text"""
-        return len(Book.objects.raw('SELECT * FROM main_book '
-                                    'WHERE text LIKE "% python %"'))
+    def books_with_word_in_text(self, word):  # 13
+        """all books that consists particular word in the text"""
+        return len(Book.objects.raw(f'''SELECT * FROM main_book 
+                                    WHERE text LIKE "% {word} %"'''))
 
-    def books_by_author_whose_genre_is(self):  # 14
-        """all books of one year of author whose favorite genre is science"""
-        return Book.objects.raw('SELECT * FROM main_book '
-                                'LEFT JOIN main_author ON '
-                                'main_book.author_id = main_author.id '
-                                'WHERE main_author.favorite_genre_id IN '
-                                '(SELECT id FROM main_genre WHERE main_genre.name = '
-                                '"science") AND '
-                                'strftime("%Y", main_book.year) = "2021"')
+    def books_by_author_whose_genre_is(self, year, genre):  # 14
+        """all books of one year of author who has particular genre"""
+        return Book.objects.raw(f'''SELECT * FROM main_book 
+                                LEFT JOIN main_author ON 
+                                main_book.author_id = main_author.id 
+                                WHERE main_author.genre_id IN 
+                                (SELECT id FROM main_genre WHERE main_genre.name = 
+                                "{genre}") AND 
+                                strftime("%Y", main_book.year) = "{year}"''')
 
 
-class RawCustomAuthorQuerySet(models.QuerySet):
+class RCustomAuthorQuerySet(models.QuerySet):
     """Custom query set for author model"""
 
-    def authors_of_particular_genre(self):  # 5
+    def authors_of_particular_genre(self, genre):  # 5
         """all authors of particular genre"""
-        return Author.objects.raw('SELECT * FROM main_author '
-                                  'INNER JOIN main_genre ON '
-                                  'main_author.favorite_genre_id = main_genre.id '
-                                  'WHERE main_genre.name="science"')
 
-    def amount_authors_whose_names_start_with(self):  # 11
-        """amount of authors whose name starts with 'p'
-         and not elder than 34"""
-        return len(Author.objects.raw('SELECT * FROM main_author '
-                                      'WHERE strftime("%Y", DATE("now"))- '
-                                      'strftime("%Y", year_of_birth) > 34 '
-                                      'AND name LIKE "p%"'))
+        return Author.objects.raw(f'''SELECT * FROM main_author 
+                                  INNER JOIN main_genre ON 
+                                  main_author.genre_id = main_genre.id 
+                                  WHERE main_genre.name="{genre}"''')
+
+    def amount_authors_whose_names_start_with(self, first_letter, ages):  # 11
+        """amount of authors whose name starts with particular letter
+         and not elder than particular ages"""
+        return len(Author.objects.raw(f'''SELECT * FROM main_author 
+                                      WHERE strftime("%Y", DATE("now"))- 
+                                      strftime("%Y", year_of_birth) < "{ages}"
+                                      AND name LIKE "{first_letter}%"'''))
 
     def latest_authors(self):  # 12
         """5 latest authors"""
@@ -99,7 +107,7 @@ class RawCustomAuthorQuerySet(models.QuerySet):
                                   'LIMIT 5')
 
 
-class RawCustomGenreQuerySet(models.QuerySet):
+class RCustomGenreQuerySet(models.QuerySet):
     """Custom query set for genre model"""
 
     def amount_of_genres(self):  # 2
