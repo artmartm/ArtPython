@@ -6,76 +6,78 @@ from django.utils.timezone import now
 class CustomBookQuerySet(models.QuerySet):
     """Custom query set for book model"""
 
-    def amount_of_book_by_author(self):  # 1
-        """Amount of books which were written by particular author"""
+    def amount_of_book_by_author(self, author_name):  # 1
+        """amount of books which were written by particular author"""
         return Book.objects.filter(author__in=Author.objects.filter(
-            name__iexact='mele')).count()
+            name__iexact=author_name)).count()
 
-    def amount_of_en_books(self):  # 3
-        """amount of english books where amount
-         of pages is less 124 in particular genre"""
-        return Book.objects.filter(prime_language__iexact='En').filter(
-            page_count__lt=124).filter(
+    def amount_of_en_books(self, language, amount_of_pages, genre):  # 3
+        """amount of books which were written in certain language,
+         where pages are less than a certain amount in particular genre"""
+        return Book.objects.filter(prime_language__iexact=language).filter(
+            page_count__lt=amount_of_pages).filter(
             name_of_genre__in=Genre.objects.filter(
-                name='science')).count()
+                name=genre)).count()
         # or name of genre ='41fd6b92-01d3-42b3-981e-a6e688133e24'
 
-    def books_by_particular_author(self):  # 4
-        """all book of particular author"""
+    def books_by_particular_author(self, author, year):  # 4
+        """amount of books which were written in certain language
+        and after a certain ages"""
         return Book.objects.filter(author__in=Author.objects.filter(
-            name='mele')).filter(year__year__gte=2010)
+            name=author)).filter(year__year__gte=year)
 
-    def en_books_where(self):  # 6
-        """books where language is english,
-        amount of pages more than 1 by author who elder than 34"""
-        return Book.objects.filter(prime_language__iexact='en').filter(
-            page_count__gte=1).filter(
+    def en_books_where(self, language, pages, ages):  # 6
+        """books which were written in a certain language, where
+        amount of pages more than particular number and
+        author is elder than a certain ages"""
+        return Book.objects.filter(prime_language__iexact=language).filter(
+            page_count__gte=pages).filter(
             author__in=Author.objects.filter(
-                year_of_birth__year__lte=now().year - 34))
+                year_of_birth__year__lte=now().year - ages))
 
     def query_number_7(self):  # 7
         """??? all books by genres ???"""
         return 'Slava, I cannot get what you meant'
 
-    def books_by_author_whose_name(self):  # 8
-        """all book by authors whose name starts with 'm' not elder 34"""
+    def books_by_author_whose_name(self, first_letter, ages):  # 8
+        """all book by authors whose name starts with particular letter
+         and not elder than particular ages"""
         return Book.objects.filter(
-            author__in=Author.objects.filter(name__startswith='m').filter(
-                year_of_birth__year__gte=now().year - 34))
+            author__in=Author.objects.filter(name__startswith=first_letter).filter(
+                year_of_birth__year__gte=now().year - ages))
 
     def amount_of_all_books(self):  # 9
         """amount of all books"""
         return Book.objects.count()
 
-    def books_name_start_with(self):  # 10
-        """amount of books that names start with 'p'"""
-        return Book.objects.filter(name__startswith='p').count()
+    def books_name_start_with(self, first_letter):  # 10
+        """amount of books that names start with particular letter"""
+        return Book.objects.filter(name__startswith=first_letter).count()
 
-    def books_with_word_in_text(self):  # 13
-        """all books that consists word 'python' in the text"""
-        return Book.objects.filter(text__contains='python').count()
+    def books_with_word_in_text(self, word):  # 13
+        """all books that consists particular word in the text"""
+        return Book.objects.filter(text__contains=word).count()
 
-    def books_by_author_whose_genre_is(self):  # 14
-        """all books of one year of author whose favorite genre is science"""
-        return Book.objects.filter(year__year=2021).filter(
+    def books_by_author_whose_genre_is(self, year, genre):  # 14
+        """all books of one year of author who has particular genre"""
+        return Book.objects.filter(year__year=year).filter(
             author__in=Author.objects.filter(
-                favorite_genre__in=Genre.objects.filter(name='science')))
+                genre__in=Genre.objects.filter(name=genre)))
 
 
 class CustomAuthorQuerySet(models.QuerySet):
     """Custom query set for author model"""
 
-    def authors_of_particular_genre(self):  # 5
+    def authors_of_particular_genre(self, genre):  # 5
         """all authors of particular genre"""
-        return Author.objects.filter(favorite_genre__in=Genre.objects.filter(
-            name='science'))
-        # or favorite_genre='41fd6b92-01d3-42b3-981e-a6e688133e24'
+        return Author.objects.filter(genre__in=Genre.objects.filter(
+            name=genre))
 
-    def amount_authors_whose_names_start_with(self):  # 11
-        """amount of authors whose name starts with 'p'
-         and not elder than 34"""
-        return Author.objects.filter(name__startswith='P'). \
-            filter(year_of_birth__year__gte=now().year - 34).count()
+    def amount_authors_whose_names_start_with(self, first_letter, ages):  # 11
+        """amount of authors whose name starts with particular letter
+         and not elder than particular ages"""
+        return Author.objects.filter(name__startswith=first_letter). \
+            filter(year_of_birth__year__gte=now().year - ages).count()
 
     def latest_authors(self):  # 12
         """5 latest authors"""
