@@ -16,7 +16,7 @@ class CustomBookQuerySet(models.QuerySet):
          where pages are less than a certain amount in particular genre"""
         return Book.objects.filter(prime_language__iexact=language).filter(
             page_count__lt=amount_of_pages).filter(
-            name_of_genre__in=Genre.objects.filter(
+            genre__in=Genre.objects.filter(
                 name=genre)).count()
         # or name of genre ='41fd6b92-01d3-42b3-981e-a6e688133e24'
 
