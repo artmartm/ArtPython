@@ -1,16 +1,31 @@
 from django.db import models
 import uuid
 from django.utils.timezone import now
+from django.core.validators import MaxValueValidator
+from datetime import date
 
 
-class GeneralModel(models.Model):
-    """Abstract model"""
+class SoftDeletedModel(models.Model):
+    """Abstract soft deleted model"""
+    deleted = models.BooleanField(default=False)
+
+    class Meta:
+        abstract = True
+
+
+class CreatedAtModel(models.Model):
+    """Abstract created at model"""
+    created_at = models.DateTimeField(default=now, validators=[MaxValueValidator(limit_value=now)])
+
+    class Meta:
+        abstract = True
+
+
+class GeneralFieldsModel(models.Model):
+    """Abstract model with general fields"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=30)
-    created_at = models.DateTimeField(default=now)
-    deleted = models.BooleanField(default=False)
     objects = models.Manager()
-    my_manager = None
 
     def __str__(self):
         return self.name
@@ -19,22 +34,22 @@ class GeneralModel(models.Model):
         abstract = True
 
 
-class Genre(GeneralModel):
+class Genre(CreatedAtModel, SoftDeletedModel, GeneralFieldsModel):
     """Child model for genres"""
     pass
 
 
-class Author(GeneralModel):
+class Author(CreatedAtModel, SoftDeletedModel, GeneralFieldsModel):
     """Child model for authors"""
-    year_of_birth = models.DateField()
-    favorite_genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    year_of_birth = models.DateField(validators=[MaxValueValidator(limit_value=date.today)])
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
 
-class Book(GeneralModel):
+class Book(CreatedAtModel, SoftDeletedModel, GeneralFieldsModel):
     """Child model for books"""
-    name_of_genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     page_count = models.IntegerField(default=0)
-    year = models.DateField(default=now)
+    year = models.DateField(default=now, validators=[MaxValueValidator(limit_value=date.today)])
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     prime_language = models.CharField(max_length=30)
     text = models.TextField(default='There is no text yet')
