@@ -13,7 +13,7 @@ class StillActive(models.Model):
         abstract = True
 
 
-class GeneralFields(models.Model):
+class BaseModel(models.Model):
     """Abstract model with general fields"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     year = models.DateField(validators=[MaxValueValidator(limit_value=date.today)])
@@ -23,7 +23,7 @@ class GeneralFields(models.Model):
         abstract = True
 
 
-class League(GeneralFields, StillActive):
+class League(BaseModel, StillActive):
     """Model with main information about the league"""
 
     name = models.CharField(max_length=30)
@@ -32,7 +32,7 @@ class League(GeneralFields, StillActive):
         return self.name
 
 
-class Team(GeneralFields, StillActive):
+class Team(BaseModel, StillActive):
     """Model with main information about the team"""
 
     name = models.CharField(max_length=30)
@@ -46,12 +46,12 @@ class Team(GeneralFields, StillActive):
 
 
 SHOOTS = [
-    ('left', 'left'),
-    ('right', 'right')
+    ('L', 'Left'),
+    ('R', 'Right')
 ]
 
 
-class Player(StillActive):
+class Player(BaseModel, StillActive):
     """Model with main information about the player"""
 
     name = models.CharField(max_length=30)
@@ -60,11 +60,9 @@ class Player(StillActive):
     current_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='players')
     shoots = models.CharField(max_length=7, choices=SHOOTS, default='left')
     city = models.CharField(max_length=30)
-    country = models.CharField(max_length=30)
     legionary = models.BooleanField(default=False)
     height = models.IntegerField(null=True)
     weight = models.IntegerField(null=True)
-    year_of_birth = models.DateField(validators=[MaxValueValidator(limit_value=date.today)])
 
     def __str__(self):
         return self.name
