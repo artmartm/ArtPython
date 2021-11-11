@@ -36,7 +36,7 @@ class Team(BaseModel, StillActive):
     """Model with main information about the team"""
 
     name = models.CharField(max_length=30)
-    team_logo = models.ImageField(blank=True, null=True)
+    team_logo = models.ImageField(blank=True, null=True, upload_to='teams/')
     home_city = models.CharField(max_length=30)
     stadium = models.CharField(max_length=30)
     league = models.ForeignKey(League, on_delete=models.CASCADE)
@@ -55,7 +55,7 @@ class Player(BaseModel, StillActive):
     """Model with main information about the player"""
 
     name = models.CharField(max_length=30)
-    portrait = models.ImageField(blank=True, null=True)
+    portrait = models.ImageField(blank=True, null=True, upload_to='players/')
     score = models.IntegerField(default=75)
     current_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='players')
     shoots = models.CharField(max_length=7, choices=SHOOTS, default='left')
