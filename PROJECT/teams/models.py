@@ -14,7 +14,12 @@ class Teams(StillActive, GeneralFields, GeneralFieldsPLTS):
     sponsors = models.CharField(max_length=30)
     second_name = models.CharField(max_length=30)
     sport_brand = models.CharField(max_length=15, choices=SPORT_BRANDS)
-
+    
+    #######
+    @property
+    def games(self):
+        return len(Game.objects.filter(t1=self) | Game.objects.filter(t2=self))
+       #####
 
     def __str__(self):
         return self.name
@@ -46,3 +51,8 @@ class TeamNews(AbstractCommentAndNews, StillActive, GeneralFields):
 
     def __str__(self):
         return self.name
+
+    ############
+class Game(models.Model):
+    t1=models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='t1')
+    t2=models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='t2')
