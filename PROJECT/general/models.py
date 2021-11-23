@@ -15,7 +15,7 @@ class GeneralFields(models.Model):
 
 class GeneralCityCountryFields(models.Model):
     flag = models.ImageField(blank=True, null=True)
-    coat_of_arms = models.CharField(max_length=30)
+    coat_of_arms = models.ImageField(blank=True, null=True)
     area = models.IntegerField()
     populations = models.IntegerField()
 
