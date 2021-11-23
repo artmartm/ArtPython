@@ -5,4 +5,4 @@ from django.shortcuts import render
 def teams(request):
     team = Teams.objects.all()
     data ={'team':team}
-    return render(request,'teams/update.html',data)
+    return render(request,'teams/res.html',data)
