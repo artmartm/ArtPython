@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="afeb0b0f-a0bd-45a2-b36c-e29da99bf4b9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/PROJECT/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/PROJECT/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/PROJECT/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/PROJECT/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/PROJECT/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/general/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/leagues/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/players/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/templates/teams/res.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/teams/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/users/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/users/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/users/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/users/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/users/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/users/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PROJECT/users/views.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="21Mz76OwTSLIEZHZHAaGPyNBnLq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="afeb0b0f-a0bd-45a2-b36c-e29da99bf4b9" name="Changes" comment="" />
+      <created>1637765574052</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637765574052</updated>
+    </task>
+    <servers />
+  </component>
+</project>
