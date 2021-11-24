@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
-#import uuid
+# import uuid
 from datetime import date
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
@@ -9,7 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 
 class GeneralFields(models.Model):
     """General fields for all models"""
-    #id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateField(validators=[MaxValueValidator(limit_value=date.today)])
 
     class Meta:
@@ -34,6 +34,7 @@ class StillActive(models.Model):
     class Meta:
         abstract = True
 
+
 class GeneralFieldsForNewsComments(models.Model):
     """General fields for news and comments"""
     name = models.CharField(max_length=255)
@@ -45,11 +46,56 @@ class GeneralFieldsForNewsComments(models.Model):
     class Meta:
         abstract = True
 
+
+from django.db import models
+from .generals import GeneralFields, GeneralFieldsForNewsComments, StillActive, GeneralCityCountryFields
+
+
+class News(GeneralFields, GeneralFieldsForNewsComments):
+    """Model with all news"""
+    body = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class Comments(GeneralFields, GeneralFieldsForNewsComments):
+    """Model with all comments"""
+
+    def __str__(self):
+        return self.name
+
+
+class Country(GeneralFields, StillActive, GeneralCityCountryFields):
+    name = models.CharField(max_length=50)
+    language = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Country'
+        verbose_name_plural = 'Countries'
+
+
+class City(GeneralFields, GeneralCityCountryFields):
+    name = models.CharField(max_length=100)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'City'
+        verbose_name_plural = 'Cities'
+
+
 class GeneralFieldsPLTS(models.Model):
     """General fields for players/teams/leagues/stadiums"""
-    city = models.ForeignKey('City', on_delete=models.CASCADE)
-    country = models.ForeignKey('Country', on_delete=models.CASCADE)
-    comments = GenericRelation('comment')
-    news = GenericRelation('news')
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    comments = GenericRelation(Comments)
+    news = GenericRelation(News)
+
     class Meta:
         abstract = True
