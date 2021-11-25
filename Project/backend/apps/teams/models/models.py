@@ -15,7 +15,7 @@ class Teams(StillActive, GeneralFields, GeneralFieldsPLTS):
     fanbase = models.PositiveIntegerField()
     sponsors = models.CharField(max_length=30)
     second_name = models.CharField(max_length=30)
-    sport_brand = models.CharField(max_length=15, choices=SPORT_BRANDS)
+    sport_brand = models.CharField(max_length=30, choices=SPORT_BRANDS)
 
     #######
     @property

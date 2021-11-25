@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models.models import Comments, News, City, Country
+from .models.generals import Comments, News, City, Country
 
 # Register your models here.
 admin.site.register(Country)

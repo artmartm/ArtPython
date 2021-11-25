@@ -1,22 +1,20 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
-# import uuid
 from datetime import date
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 
 
-class GeneralFields(models.Model):
+class BaseModel(models.Model):
     """General fields for all models"""
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateField(validators=[MaxValueValidator(limit_value=date.today)])
 
     class Meta:
         abstract = True
 
 
-class GeneralCityCountryFields(models.Model):
+class LocationBaseModel(models.Model):
     """General fields for cities and countries"""
     flag = models.ImageField(blank=True, null=True)
     coat_of_arms = models.ImageField(blank=True, null=True)
@@ -35,7 +33,7 @@ class StillActive(models.Model):
         abstract = True
 
 
-class GeneralFieldsForNewsComments(models.Model):
+class NewsCommentsBaseModel(models.Model):
     """General fields for news and comments"""
     name = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -47,11 +45,8 @@ class GeneralFieldsForNewsComments(models.Model):
         abstract = True
 
 
-from django.db import models
-from .generals import GeneralFields, GeneralFieldsForNewsComments, StillActive, GeneralCityCountryFields
 
-
-class News(GeneralFields, GeneralFieldsForNewsComments):
+class News(BaseModel, NewsCommentsBaseModel):
     """Model with all news"""
     body = models.CharField(max_length=255)
 
@@ -59,14 +54,14 @@ class News(GeneralFields, GeneralFieldsForNewsComments):
         return self.name
 
 
-class Comments(GeneralFields, GeneralFieldsForNewsComments):
+class Comments(BaseModel, NewsCommentsBaseModel):
     """Model with all comments"""
 
     def __str__(self):
         return self.name
 
 
-class Country(GeneralFields, StillActive, GeneralCityCountryFields):
+class Country(BaseModel, StillActive, LocationBaseModel):
     name = models.CharField(max_length=50)
     language = models.CharField(max_length=30)
 
@@ -78,7 +73,7 @@ class Country(GeneralFields, StillActive, GeneralCityCountryFields):
         verbose_name_plural = 'Countries'
 
 
-class City(GeneralFields, GeneralCityCountryFields):
+class City(BaseModel, LocationBaseModel):
     name = models.CharField(max_length=100)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
@@ -90,7 +85,7 @@ class City(GeneralFields, GeneralCityCountryFields):
         verbose_name_plural = 'Cities'
 
 
-class GeneralFieldsPLTS(models.Model):
+class PLTSBaseModel(models.Model):
     """General fields for players/teams/leagues/stadiums"""
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
