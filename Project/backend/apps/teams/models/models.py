@@ -1,10 +1,10 @@
 from django.db import models
 from apps.leagues.models.models import Leagues
-from apps.general.models.generals import StillActive, GeneralFields, GeneralFieldsPLTS
+from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
 from apps.general.models.choices import SPORT_BRANDS
 
 
-class Teams(StillActive, GeneralFields, GeneralFieldsPLTS):
+class Team(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=30)
     team_logo = models.ImageField(blank=True, null=True)
     history = models.TextField()
@@ -28,9 +28,9 @@ class Teams(StillActive, GeneralFields, GeneralFieldsPLTS):
         return self.name
 
 
-class Stadium(StillActive, GeneralFields, GeneralFieldsPLTS):
+class Stadium(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=50)
-    team = models.ForeignKey(Teams, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
     max_capacity = models.PositiveIntegerField()
     avg_attendence = models.PositiveIntegerField()
     description = models.TextField()
@@ -41,8 +41,9 @@ class Stadium(StillActive, GeneralFields, GeneralFieldsPLTS):
     def __str__(self):
         return self.name
 
-
     ############
+
+
 class Game(models.Model):
-    t1 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='t1')
-    t2 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='t2')
+    t1 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='t1')
+    t2 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='t2')

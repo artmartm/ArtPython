@@ -45,7 +45,6 @@ class NewsCommentsBaseModel(models.Model):
         abstract = True
 
 
-
 class News(BaseModel, NewsCommentsBaseModel):
     """Model with all news"""
     body = models.CharField(max_length=255)

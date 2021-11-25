@@ -1,7 +1,8 @@
 from django.db import models
-from apps.general.models.generals import StillActive, GeneralFields, GeneralFieldsPLTS
+from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
 
-class Leagues(StillActive, GeneralFields, GeneralFieldsPLTS):
+
+class League(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=30)
     league_logo = models.ImageField(blank=True, null=True)
     history = models.TextField()

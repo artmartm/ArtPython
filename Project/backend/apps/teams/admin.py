@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models.models import Teams,Stadium
+from .models.models import Team, Stadium
+
 # Register your models here.
-admin.site.register(Teams)
+admin.site.register(Team)
 admin.site.register(Stadium)

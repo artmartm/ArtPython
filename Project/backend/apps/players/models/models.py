@@ -1,14 +1,11 @@
 from django.db import models
 from apps.teams.models.models import Teams
 from apps.general.models.choices import SHOOTS, SPORT_BRANDS, POSITIONS
-from apps.general.models.generals import StillActive, GeneralFields, GeneralFieldsPLTS
+from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
 
 
-# Create your models here.
-
-
-class Players(StillActive, GeneralFields, GeneralFieldsPLTS):
-    name = models.CharField(max_length=30)
+class Player(StillActive, BaseModel, PLTSBaseModel):
+    name = models.CharField(max_length=50)
     image = models.ImageField(blank=True, null=True)  # upload_to='images/'
     score = models.PositiveIntegerField()
     shoots = models.CharField(max_length=7, choices=SHOOTS, default='L')
@@ -21,9 +18,8 @@ class Players(StillActive, GeneralFields, GeneralFieldsPLTS):
         return self.name
 
 
-class MainInfo(models.Model):
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.ForeignKey(Players, on_delete=models.CASCADE)
+class PlayerMainInfo(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
     legionary = models.BooleanField(default=False)
     height = models.PositiveIntegerField()
     weight = models.PositiveIntegerField()
@@ -37,13 +33,12 @@ class MainInfo(models.Model):
         return self.name
 
 
-class PersonalInfo(models.Model):
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.ForeignKey(Players, on_delete=models.CASCADE)
+class PlayerPersonalInfo(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
     favorite_color = models.CharField(max_length=30)
     favorite_music = models.CharField(max_length=30)
     favorite_movie = models.CharField(max_length=30)
     family = models.CharField(max_length=30)
-    education = models.CharField(max_length=30)
+    education = models.CharField(max_length=50)
     favorite_game = models.CharField(max_length=30)
     favorite_car = models.CharField(max_length=30)

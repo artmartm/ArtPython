@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models.models import Players, PersonalInfo, MainInfo
-# Register your models here.
+from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo
 
-admin.site.register(Players)
-admin.site.register(PersonalInfo)
-admin.site.register(MainInfo)
+admin.site.register(Player)
+admin.site.register(PlayerPersonalInfo)
+admin.site.register(PlayerMainInfo)
