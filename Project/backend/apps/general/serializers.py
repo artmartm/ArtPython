@@ -1,21 +1,26 @@
-from .models.models import League
+from .models.generals import Comments, News, City, Country
 from rest_framework import serializers
-# from settings.apps.teams.serializers import TeamSerializers
-from apps.teams.models.models import Team
-from apps.teams.serializers import TeamSerializers
 
 
-class LeagueSerializers(serializers.ModelSerializer):
+class CommentsSerializers(serializers.ModelSerializer):
     class Meta:
-        model = League
+        model = Comments
         fields = '__all__'
 
 
-class LeagueDetailSerializer(LeagueSerializers):
-    teams = serializers.SerializerMethodField()
+class NewsSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = News
+        fields = '__all__'
 
-    @staticmethod
-    def get_teams(league):
-        """return nested list of teams for the league"""
-        teams = TeamSerializers(Team.objects.filter(league=league), many=True).data
-        return [team['name'] for team in teams]
+
+class CitySerializers(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = '__all__'
+
+
+class CountrySerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Country
+        fields = '__all__'
