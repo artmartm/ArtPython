@@ -1,17 +1,24 @@
+from django.shortcuts import render, redirect
 from rest_framework import viewsets
-from .models.models import League
-from .serializers import LeagueSerializers, LeagueDetailSerializer
+from .models.generals import Comments, News, City, Country
+from .serializers import CommentsSerializers, NewsSerializers, CitySerializers, CountrySerializers
 
 
-class LeagueViewSet(viewsets.ModelViewSet):
-    queryset = League.objects.all()
-    serializer_class = LeagueSerializers
-    action_to_serializer = {
-        "retrieve": LeagueDetailSerializer
-    }
+class CommentsViewSet(viewsets.ModelViewSet):
+    queryset = Comments.objects.all()
+    serializer_class = CommentsSerializers
 
-    def get_serializer_class(self):
-        return self.action_to_serializer.get(
-            self.action,
-            self.serializer_class
-        )
+
+class NewsViewSet(viewsets.ModelViewSet):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializers
+
+
+class CityViewSet(viewsets.ModelViewSet):
+    queryset = City.objects.all()
+    serializer_class = CitySerializers
+
+
+class CountryViewSet(viewsets.ModelViewSet):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializers
