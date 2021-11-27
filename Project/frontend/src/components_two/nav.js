@@ -17,6 +17,9 @@ function Nav() {
                 <Link to='/about' style={change ? NavSt2 : NavSt} onMouseOver={()=>{setState(true)}} onMouseOut={()=>{setState(false)}}>
                     <li>about</li>
                 </Link>
+                <Link to='/registration' style={change ? NavSt2 : NavSt} onMouseOver={()=>{setState(true)}} onMouseOut={()=>{setState(false)}}>
+                    <li>registration</li>
+                </Link>
                 <Link to='/team' style={change ? NavSt2 : NavSt} onMouseOver={()=>{setState(true)}} onMouseOut={()=>{setState(false)}}>
                     <li>teams</li>
                 </Link>

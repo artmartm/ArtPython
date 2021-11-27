@@ -32,6 +32,10 @@ class PlayerMainInfo(models.Model):
     def __str__(self):
         return self.name
 
+    # @property
+    # def leg(self):
+    #     return True if self.
+
 
 class PlayerPersonalInfo(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)

@@ -25,9 +25,11 @@ function TeamDetail({ match }) {
             <h1>team!</h1>
             <h2>{team.name}</h2>
             <hr/>
-            {pl.map(e=>(
+            {pl.length ? pl.map(e=>(
                 <Link key={e.id} to={`/team/${e.id}`} ><h2>{e.name}!!!</h2></Link>
-            ))}
+            )) : <p>no players</p>
+        }
+
         </div>
     )
 }

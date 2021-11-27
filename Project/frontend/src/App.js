@@ -8,6 +8,7 @@ import Teams from "./components_two/teams";
 import TeamDetail from "./components_two/teamDetail";
 import Players from "./components_two/players";
 import PlayerDetail from "./components_two/playerDetail";
+import Registration from "./components_two/register";
 
 function App() {
     return(
@@ -16,6 +17,7 @@ function App() {
             <Nav />
                 <Switch>
                     <Route path ='/' exact component={Home} />
+                    <Route path ='/registration' exact component={Registration} />
                     <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} />
                     <Route path='/team' exact component={Teams} />

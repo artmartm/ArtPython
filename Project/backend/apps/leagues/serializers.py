@@ -18,5 +18,4 @@ class LeagueDetailSerializer(LeagueSerializers):
     def get_teams(league):
         """return nested list of teams for the league"""
         teams = TeamSerializers(Team.objects.filter(league=league), many=True).data
-        #return [team['name'] for team in teams]
         return teams
