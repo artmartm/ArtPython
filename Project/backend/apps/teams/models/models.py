@@ -1,5 +1,5 @@
 from django.db import models
-from apps.leagues.models.models import Leagues
+from apps.leagues.models.models import League
 from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
 from apps.general.models.choices import SPORT_BRANDS
 
@@ -8,7 +8,7 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=30)
     team_logo = models.ImageField(blank=True, null=True)
     history = models.TextField()
-    league = models.ForeignKey(Leagues, on_delete=models.CASCADE)
+    league = models.ForeignKey(League, on_delete=models.CASCADE)
     description = models.TextField()
     position = models.PositiveIntegerField()
     budget = models.PositiveIntegerField()
