@@ -9,6 +9,7 @@ import TeamDetail from "./components_two/teamDetail";
 import Players from "./components_two/players";
 import PlayerDetail from "./components_two/playerDetail";
 import Registration from "./components_two/register";
+import News from "./components_two/news";
 
 function App() {
     return(
@@ -18,6 +19,7 @@ function App() {
                 <Switch>
                     <Route path ='/' exact component={Home} />
                     <Route path ='/registration' exact component={Registration} />
+                    <Route path ='/news' exact component={News} />
                     <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} />
                     <Route path='/team' exact component={Teams} />
