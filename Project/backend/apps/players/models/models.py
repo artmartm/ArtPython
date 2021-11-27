@@ -1,5 +1,5 @@
 from django.db import models
-from apps.teams.models.models import Teams
+from apps.teams.models.models import Team
 from apps.general.models.choices import SHOOTS, SPORT_BRANDS, POSITIONS
 from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
 
@@ -9,7 +9,7 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
     image = models.ImageField(blank=True, null=True)  # upload_to='images/'
     score = models.PositiveIntegerField()
     shoots = models.CharField(max_length=7, choices=SHOOTS, default='L')
-    team = models.ForeignKey(Teams, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
     position = models.CharField(max_length=7, choices=POSITIONS, default='F')
     free_agent = models.BooleanField(default=False)
     playing_for_national_team = models.BooleanField(default=True)
@@ -31,6 +31,10 @@ class PlayerMainInfo(models.Model):
 
     def __str__(self):
         return self.name
+
+    # @property
+    # def leg(self):
+    #     return True if self.
 
 
 class PlayerPersonalInfo(models.Model):
