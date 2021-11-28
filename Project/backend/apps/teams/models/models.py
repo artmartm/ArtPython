@@ -6,7 +6,7 @@ from apps.general.models.choices import SPORT_BRANDS
 
 class Team(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=30)
-    team_logo = models.ImageField(blank=True, null=True)
+    team_logo = models.ImageField(blank=True, null=True, upload_to='teams/')
     history = models.TextField()
     league = models.ForeignKey(League, on_delete=models.CASCADE)
     description = models.TextField()
@@ -35,7 +35,7 @@ class Stadium(StillActive, BaseModel, PLTSBaseModel):
     avg_attendence = models.PositiveIntegerField()
     description = models.TextField()
     history = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to='teams/')
     rebuild = models.BooleanField(default=True)
 
     def __str__(self):

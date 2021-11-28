@@ -88,8 +88,8 @@ class PLTSBaseModel(models.Model):
     """General fields for players/teams/leagues/stadiums"""
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    comments = GenericRelation(Comments)
-    news = GenericRelation(News)
+    #comments = GenericRelation(Comments)
+    #news = GenericRelation(News)
 
     class Meta:
         abstract = True
