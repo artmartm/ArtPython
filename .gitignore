@@ -1,4 +1,4 @@
 *idea
 *env
 /.op
-*Project/backend/apps/leagues/.views
+views.py
