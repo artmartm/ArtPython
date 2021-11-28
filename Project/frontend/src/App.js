@@ -10,8 +10,16 @@ import Players from "./components_two/players";
 import PlayerDetail from "./components_two/playerDetail";
 import Registration from "./components_two/register";
 import News from "./components_two/news";
+import Add from "./components_two/add";
 
 function App() {
+    function addToDo(title) {
+        setTodos(todos.concat([{
+          title:title,
+          id: Date.now(),
+          completed: false
+        }]))
+      }
     return(
        <Router>
             <div className="App">
@@ -26,6 +34,8 @@ function App() {
                     <Route path='/team/:id' exact component={TeamDetail} />
                     <Route path='/player' exact component={Players} />
                     <Route path='/player/:id' exact component={PlayerDetail} />
+                    {/*<Route path='' exact component={Add} /> */}
+                    <Add onCreate={addToDo} />
                 </Switch>
             </div>
         </Router>

@@ -6,6 +6,7 @@ function LeagueDetail({ match }) {
     
     const[league, setLeague] = useState({});
     const[team, setTeam] = useState([]);
+    const[cm, setCm] = useState([]);
     const id = match.params.id;
 
     useEffect(()=>{
@@ -16,18 +17,23 @@ function LeagueDetail({ match }) {
         }).then(response=>{
             setLeague(response.data)
             setTeam(response.data.teams)
+            setCm(response.data.cm)
         })
     },[id])
 
 
     return(
         <div>
-            <h1>hello</h1>
-            <h2>this is league</h2>
-            {league.name}
+            <h1>hello this is {league.name}</h1>            
             <hr/>
+            <h3>teams:</h3>
             {team.map(e=>(
                 <Link key={e.id} to={`/team/${e.id}`} ><h2>{e.name}!</h2></Link>
+            ))}
+            <hr/>
+            <h3>news:</h3>
+            {cm.map(e=>(
+                <Link key={e.id}><p>{e.name}</p></Link>
             ))}
         </div>
     )
