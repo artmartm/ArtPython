@@ -21,6 +21,7 @@ function PlayerDetail({ match }) {
         <div>
             <h1>Player page</h1>
             <h2>{player.name}</h2>
+            <Link style={{textDecoration: 'none'}} key={player.team} to={`/team/${player.team}`} ><h2>team</h2></Link>
             <h2>{player.team}</h2>
             <hr/>
             {/*{player.map(e=>(

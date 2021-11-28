@@ -31,6 +31,7 @@ class TeamDetailSerializer(TeamSerializers):
     players = serializers.SerializerMethodField()
     news = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
+    stadium = serializers.SerializerMethodField()
 
     @staticmethod
     def get_news(id):
@@ -44,7 +45,10 @@ class TeamDetailSerializer(TeamSerializers):
 
     @staticmethod
     def get_players(team):
-        """return nested list of teams for the league"""
-
         players = PlayerSerializers(Player.objects.filter(team=team), many=True).data
         return players
+
+    @staticmethod
+    def get_stadium(team):
+        stadium = StadiumSerializers(Stadium.objects.filter(team=team), many=True).data
+        return stadium

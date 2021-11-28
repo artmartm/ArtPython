@@ -17,7 +17,7 @@ function LeagueDetail({ match }) {
         }).then(response=>{
             setLeague(response.data)
             setTeam(response.data.teams)
-            setCm(response.data.cm)
+            setCm(response.data.news)
         })
     },[id])
 
