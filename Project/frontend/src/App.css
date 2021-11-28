@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.for_nav {
+  background-color: #282c34;
+  margin: auto;
+  float: center;
+}
