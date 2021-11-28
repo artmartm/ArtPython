@@ -6,14 +6,17 @@
 </head>
 <body>
     <div align="center">
+        {% comment %}
         <h1>hello</h1>
         {% for i in n %}
         <p>{{ i.name }}</p>
         <p>{{ i.news }}</p>
         <hr>
         {% endfor %}
+
+        {% endcomment %}
         {% for i in c %}
-        <p>{{ i.name }}</p>
+        <p>{{ i.name }} and cT{{ i.content_type.id }} and id{{ i.object_id }}</p>
         {% endfor %}
     </div>
 </body>

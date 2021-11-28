@@ -8,25 +8,29 @@ import Teams from "./components_two/teams";
 import TeamDetail from "./components_two/teamDetail";
 import Players from "./components_two/players";
 import PlayerDetail from "./components_two/playerDetail";
-import Registration from "./components_two/register";
+//import Registration from "./components_two/register";
 import News from "./components_two/news";
-import Add from "./components_two/add";
+//import Add from "./components_two/add";
+import NameForm from "./components_two/register_2";
 
 function App() {
-    function addToDo(title) {
+
+   {/* function addToDo(title) {
         setTodos(todos.concat([{
           title:title,
           id: Date.now(),
           completed: false
         }]))
       }
+    */}
     return(
        <Router>
             <div className="App">
+            <NameForm />
             <Nav />
                 <Switch>
                     <Route path ='/' exact component={Home} />
-                    <Route path ='/registration' exact component={Registration} />
+                    {/*<Route path ='/registration' exact component={Registration} />*/}
                     <Route path ='/news' exact component={News} />
                     <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} />
@@ -34,8 +38,9 @@ function App() {
                     <Route path='/team/:id' exact component={TeamDetail} />
                     <Route path='/player' exact component={Players} />
                     <Route path='/player/:id' exact component={PlayerDetail} />
+                    {/*<Route path='/add' exact component={Add} /> */}
                     {/*<Route path='' exact component={Add} /> */}
-                    <Add onCreate={addToDo} />
+                    {/* <Add onCreate={addToDo} /> */}
                 </Switch>
             </div>
         </Router>
@@ -70,3 +75,12 @@ export default App;
 //import PostDetail from "./components/players";
 //import Teams from "./components/teams";
 //import LeagueDetail from "./components/leagueDetail";
+
+
+{/*    function addToDo(title) {
+        setTodos(todos.concat([{
+          title:title,
+          id: Date.now(),
+          completed: false
+        }]))
+      } */}
