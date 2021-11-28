@@ -2,3 +2,5 @@
 *env
 /.op
 views.py
+.*views.py
+./views.py
