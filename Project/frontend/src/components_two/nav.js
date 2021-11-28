@@ -21,7 +21,7 @@ function Nav() {
 }
 
 {/* 
-    
+    /,/.,/.,/.,
     const NavSt = {
         color: 'black',
         textDecoration: 'none'
