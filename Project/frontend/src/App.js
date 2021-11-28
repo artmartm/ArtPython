@@ -12,6 +12,8 @@ import PlayerDetail from "./components_two/playerDetail";
 import News from "./components_two/news";
 //import Add from "./components_two/add";
 import NameForm from "./components_two/register_2";
+import Home from "./components_two/home";
+import ListOfStadiums from "./components_two/stadium";
 
 function App() {
 
@@ -38,6 +40,7 @@ function App() {
                     <Route path='/team/:id' exact component={TeamDetail} />
                     <Route path='/player' exact component={Players} />
                     <Route path='/player/:id' exact component={PlayerDetail} />
+                    <Route path='/stadium' exact component={ListOfStadiums} />
                     {/*<Route path='/add' exact component={Add} /> */}
                     {/*<Route path='' exact component={Add} /> */}
                     {/* <Add onCreate={addToDo} /> */}
@@ -46,12 +49,6 @@ function App() {
         </Router>
     );
 }
-
-const Home = () => (
-    <div>
-        <h1>Home page</h1>
-    </div>
-)
 
 
 export default App;

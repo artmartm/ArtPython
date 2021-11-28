@@ -13,6 +13,7 @@ function Nav() {
                 <Link to='/player'><li>players</li></Link>
                 <Link to='/leagues'><li>leagues</li></Link>
                 <Link to='/add'><li>add</li></Link>
+                <Link to='/stadium'><li>stadiums</li></Link>
                 <Link to='/'><li>home</li></Link>
             </ul>
         </nav>
