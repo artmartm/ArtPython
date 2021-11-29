@@ -1,6 +1,5 @@
 from .models.models import League
 from rest_framework import serializers
-# from settings.apps.teams.serializers import TeamSerializers
 from apps.teams.models.models import Team
 from apps.general.models.generals import News, Comments
 from apps.teams.serializers import TeamSerializers
