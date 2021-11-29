@@ -17,16 +17,30 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
     second_name = models.CharField(max_length=30)
     sport_brand = models.CharField(max_length=30, choices=SPORT_BRANDS)
     score = models.PositiveIntegerField(default=10)
+    win = models.PositiveIntegerField(default=0)
 
     #######
     @property
     def games(self):
         return len(Game.objects.filter(t1=self) | Game.objects.filter(t2=self))
 
+    # @property
+    # def wiins(self):
+    #     return len(Game.objects.filter(t1=self).filter(win=self) | Game.objects.filter(t2=self).filter(win=self))
+
+
     @property
     def won(self):
-        #return len(queryset.annotate(members=Count('players')).filter(members=value))
-        return Game.objects.values_list('wins', flat=True).get(t1=self.id)|Game.objects.values_list('wins', flat=True).get(t2=self.id)
+        if Game.objects.filter(t1=self) | Game.objects.filter(t2=self):
+            return 'who win'
+        return 'do not play'
+        # if Game.objects.filter(t1=self) | Game.objects.filter(t2=self)):
+        # if
+        # return len(queryset.annotate(members=Count('players')).filter(members=value))
+        #return Game.objects.values_list('win', flat=True).get(t1=self.id) | Game.objects.values_list('win',
+             #                                                                                        flat=True).get(
+         #   t2=self.id)
+
     ####
 
     def __str__(self):
@@ -67,12 +81,13 @@ class Game(models.Model):
 
     @property
     def name(self):
-        return f'play {self.t1} and {self.t2}'
+        return f'{self.t1} vs {self.t2}'
 
     @property
     def win(self):
-        if self.t1.score>self.t2.score:
-            self.wins = self.t1
-        else:
-            self.wins = self.t2
-        return True
+        if self.t1.score > self.t2.score:
+            return self.t1
+        return self.t2
+
+    def __str__(self):
+        return self.name
