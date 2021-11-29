@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework import routers
 from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, CountryViewSet
 from apps.leagues.views import LeagueViewSet
-from apps.teams.views import TeamViewSet, StadiumViewSet, GameViewSet
+from apps.teams.views import TeamViewSet, StadiumViewSet, GameViewSet, ind2
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet
 
 router = routers.DefaultRouter()
@@ -25,4 +25,5 @@ router.register(r'game', GameViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', ind2)
 ]

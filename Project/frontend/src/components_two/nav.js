@@ -6,6 +6,7 @@ function Nav() {
         <nav className='for_nav'>
             <ul className='nav-links'>
                 <Link to='/about'><li>about</li></Link>
+                <Link to='/reg'><li>reg</li></Link>
                 <Link to='/about'><li>comments</li></Link>
                 <Link to='/registration'><li>registration</li></Link>
                 <Link to='/news'><li>news</li></Link>
