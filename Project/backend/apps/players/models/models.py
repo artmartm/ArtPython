@@ -20,7 +20,6 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
 
 class PlayerMainInfo(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
-    legionary = models.BooleanField(default=False)
     height = models.PositiveIntegerField()
     weight = models.PositiveIntegerField()
     captain = models.BooleanField(default=False)
@@ -30,11 +29,15 @@ class PlayerMainInfo(models.Model):
     academy = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.name
+        return f'{self.player.name} main info'
 
-    # @property
-    # def leg(self):
-    #     return True if self.
+    @property
+    def legionary(self):
+        player_country = Player.objects.values_list('country', flat=True).get(id=self.player.id)
+        team_country = Team.objects.values_list('country', flat=True).get(
+            id=Player.objects.values_list('team', flat=True).get(id=self.player.id))
+        result = player_country != team_country
+        return result
 
 
 class PlayerPersonalInfo(models.Model):
@@ -46,3 +49,6 @@ class PlayerPersonalInfo(models.Model):
     education = models.CharField(max_length=50)
     favorite_game = models.CharField(max_length=30)
     favorite_car = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f'{self.player.name} personal info'
