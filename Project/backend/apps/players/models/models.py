@@ -2,6 +2,7 @@ from django.db import models
 from apps.teams.models.models import Team
 from apps.general.models.choices import SHOOTS, SPORT_BRANDS, POSITIONS
 from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
+from datetime import date
 
 
 class Player(StillActive, BaseModel, PLTSBaseModel):
@@ -11,11 +12,17 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
     shoots = models.CharField(max_length=7, choices=SHOOTS, default='L')
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     position = models.CharField(max_length=7, choices=POSITIONS, default='F')
-    free_agent = models.BooleanField(default=False)
     playing_for_national_team = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
+
+    @property
+    def free_agent(self):
+        date_now = date.today()
+        contract_till = PlayerMainInfo.objects.values_list('contract_till', flat=True).get(player=self.id)
+        result = date_now >= contract_till
+        return result
 
 
 class PlayerMainInfo(models.Model):
