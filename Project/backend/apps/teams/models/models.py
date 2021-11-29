@@ -24,7 +24,7 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
     def games(self):
         return len(Game.objects.filter(t1=self) | Game.objects.filter(t2=self))
 
-    # @property
+    # @propertyasasdasdasd
     # def wiins(self):
     #     return len(Game.objects.filter(t1=self).filter(win=self) | Game.objects.filter(t2=self).filter(win=self))
 
