@@ -25,8 +25,10 @@ environ.Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 123
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = env('DEBUG')
+DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
