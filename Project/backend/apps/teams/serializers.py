@@ -1,4 +1,4 @@
-from .models.models import Team, Stadium, Game
+from .models.models import Team, Stadium, Game, TeamStats
 from rest_framework import serializers
 from apps.players.models.models import Player
 from apps.players.serializers import PlayerSerializers
@@ -7,6 +7,8 @@ from apps.general.serializers import NewsSerializers, CommentsSerializers
 
 
 class TeamSerializers(serializers.ModelSerializer):
+    points = serializers.ReadOnlyField()
+
     class Meta:
         model = Team
         fields = '__all__'
@@ -24,6 +26,12 @@ class GameSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class TeamStatsSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = TeamStats
+        fields = '__all__'
+
+
 ### DETAIALS
 
 
@@ -32,6 +40,10 @@ class TeamDetailSerializer(TeamSerializers):
     news = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
     stadium = serializers.SerializerMethodField()
+    team_stats = serializers.SerializerMethodField()
+    points = serializers.ReadOnlyField()
+    wins = serializers.ReadOnlyField()
+    defeats = serializers.ReadOnlyField()
 
     @staticmethod
     def get_news(id):
@@ -52,3 +64,8 @@ class TeamDetailSerializer(TeamSerializers):
     def get_stadium(team):
         stadium = StadiumSerializers(Stadium.objects.filter(team=team), many=True).data
         return stadium
+
+    @staticmethod
+    def get_team_stats(team):
+        team_stats = TeamStatsSerializers(TeamStats.objects.filter(team=team), many=True).data
+        return team_stats
