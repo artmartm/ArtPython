@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from apps.general.models.generals import City, Country
-from apps.teams.models.generals import Team
+from apps.teams.models.models import Team
 
 
 class userProfile(models.Model):
