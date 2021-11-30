@@ -17,31 +17,40 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
     second_name = models.CharField(max_length=30)
     sport_brand = models.CharField(max_length=30, choices=SPORT_BRANDS)
     score = models.PositiveIntegerField(default=10)
-    win = models.PositiveIntegerField(default=0)
 
-    #######
     @property
     def games(self):
         return len(Game.objects.filter(t1=self) | Game.objects.filter(t2=self))
 
-    # @propertyasasdasdasd
-    # def wiins(self):
-    #     return len(Game.objects.filter(t1=self).filter(win=self) | Game.objects.filter(t2=self).filter(win=self))
-
+    @property
+    def wins(self):
+        return len(Game.objects.filter(wins=self))
 
     @property
-    def won(self):
-        if Game.objects.filter(t1=self) | Game.objects.filter(t2=self):
-            return 'who win'
-        return 'do not play'
-        # if Game.objects.filter(t1=self) | Game.objects.filter(t2=self)):
-        # if
-        # return len(queryset.annotate(members=Count('players')).filter(members=value))
-        #return Game.objects.values_list('win', flat=True).get(t1=self.id) | Game.objects.values_list('win',
-             #                                                                                        flat=True).get(
-         #   t2=self.id)
+    def points(self):
+        return int(self.wins) * 2
 
-    ####
+
+class Game(models.Model):
+    home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team')
+    away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team')
+    wins = models.CharField(max_length=50)
+    home_team_goals = models.PositiveIntegerField()
+    away_team_goals = models.PositiveIntegerField()
+
+    @property
+    def name(self):
+        return f'{self.t1} vs {self.t2}'
+
+    def win(self):
+        if self.t1.score > self.t2.score:
+            self.wins = self.t1.name
+            self.t1_goals = self.t1.score - self.t2.score
+            self.save()
+        else:
+            self.wins = self.t2.name
+            self.t2_goals = 0
+            self.save()
 
     def __str__(self):
         return self.name
@@ -67,27 +76,6 @@ class Stadium(StillActive, BaseModel, PLTSBaseModel):
     history = models.TextField()
     image = models.ImageField(blank=True, null=True)
     rebuild = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.name
-
-    ############
-
-
-class Game(models.Model):
-    t1 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='t1')
-    t2 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='t2')
-    wins = models.CharField(max_length=50, default=t1)
-
-    @property
-    def name(self):
-        return f'{self.t1} vs {self.t2}'
-
-    @property
-    def win(self):
-        if self.t1.score > self.t2.score:
-            return self.t1
-        return self.t2
 
     def __str__(self):
         return self.name
