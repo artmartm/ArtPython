@@ -2,6 +2,7 @@ from django.db import models
 from apps.leagues.models.models import League
 from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
 from apps.general.models.choices import SPORT_BRANDS
+import math
 
 
 class Team(StillActive, BaseModel, PLTSBaseModel):
@@ -34,6 +35,10 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
     @property
     def points(self):
         return int(self.wins) * 2
+
+    @property
+    def percentage_of_wins(self):
+        return round(((int(self.wins) / int(self.games)) * 100), 2)
 
     def __str__(self):
         return self.name
