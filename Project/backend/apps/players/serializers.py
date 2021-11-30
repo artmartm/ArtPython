@@ -30,6 +30,7 @@ class PlayerDetailSerializers(PlayerSerializers):
     personal_info = serializers.SerializerMethodField()
     news = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
+    free_agent = serializers.ReadOnlyField()
 
     @staticmethod
     def get_news(id):
