@@ -44,6 +44,7 @@ class TeamDetailSerializer(TeamSerializers):
     points = serializers.ReadOnlyField()
     wins = serializers.ReadOnlyField()
     defeats = serializers.ReadOnlyField()
+    percentage_of_wins = serializers.ReadOnlyField()
 
     @staticmethod
     def get_news(id):
