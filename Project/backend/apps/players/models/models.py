@@ -7,7 +7,7 @@ from datetime import date
 
 class Player(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=50)
-    image = models.ImageField(blank=True, null=True)  # upload_to='images/'
+    image = models.ImageField(blank=True, null=True)
     score = models.PositiveIntegerField()
     shoots = models.CharField(max_length=7, choices=SHOOTS, default='L')
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
@@ -19,9 +19,7 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
 
     @property
     def free_agent(self):
-        date_now = date.today()
-        contract_till = PlayerMainInfo.objects.values_list('contract_till', flat=True).get(player=self.id)
-        result = date_now >= contract_till
+        result = date.today() >= PlayerMainInfo.objects.values_list('contract_till', flat=True).get(player=self.id)
         return result
 
 
