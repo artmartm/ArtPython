@@ -46,14 +46,14 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'djoser'
-
 ]
 
 INSTALLED_APPS += [
     'apps.general',
     'apps.leagues',
     'apps.teams',
-    'apps.players'
+    'apps.players',
+    'apps.users',
 ]
 
 MIDDLEWARE = [

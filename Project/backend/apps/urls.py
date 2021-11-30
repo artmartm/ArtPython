@@ -4,7 +4,7 @@ from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, Countr
 from apps.leagues.views import LeagueViewSet
 from apps.teams.views import TeamViewSet, StadiumViewSet, GameViewSet, ind2
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet
-
+from apps.users.views import UserProfileListCreateView, userProfileDetailView
 router = routers.DefaultRouter()
 # general
 router.register(r'comments', CommentsViewSet)
@@ -21,9 +21,11 @@ router.register(r'player-personal-info', PlayerPersonalInfoViewSet)
 router.register(r'team', TeamViewSet)
 router.register(r'stadium', StadiumViewSet)
 router.register(r'game', GameViewSet)
+# users
+
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('', ind2)
+    path("all-profiles", UserProfileListCreateView.as_view(), name="list_of_progiles"),
+    path("profile/<int:pk>", userProfileDetailView.as_view(), name="profile"),
 ]
