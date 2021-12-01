@@ -2,3 +2,4 @@
 *env
 /.op
 *views.py
+*__pycache__
