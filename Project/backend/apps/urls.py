@@ -9,18 +9,18 @@ router = routers.DefaultRouter()
 # general
 router.register(r'comments', CommentsViewSet)
 router.register(r'news', NewsViewSet)
-router.register(r'city', CityViewSet)
-router.register(r'country', CountryViewSet)
+router.register(r'cities', CityViewSet)
+router.register(r'countries', CountryViewSet)
 # league
 router.register(r'leagues', LeagueViewSet)
 # player
-router.register(r'player', PlayerViewSet)
+router.register(r'players', PlayerViewSet)
 router.register(r'player-main-info', PlayerMainInfoViewSet)
 router.register(r'player-personal-info', PlayerPersonalInfoViewSet)
 # team
-router.register(r'team', TeamViewSet)
-router.register(r'stadium', StadiumViewSet)
-router.register(r'game', GameViewSet)
+router.register(r'teams', TeamViewSet)
+router.register(r'stadiums', StadiumViewSet)
+router.register(r'games', GameViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
