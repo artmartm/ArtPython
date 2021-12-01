@@ -38,7 +38,9 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
 
     @property
     def percentage_of_wins(self):
-        return round(((int(self.wins) / int(self.games)) * 100), 2)
+        if self.games > 0:
+            return round(((int(self.wins) / int(self.games)) * 100), 2)
+        return 'There is no games yet'
 
     def __str__(self):
         return self.name
