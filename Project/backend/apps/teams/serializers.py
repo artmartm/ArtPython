@@ -4,6 +4,7 @@ from apps.players.models.models import Player
 from apps.players.serializers import PlayerSerializers
 from apps.general.models.generals import News, Comments
 from apps.general.serializers import NewsSerializers, CommentsSerializers
+from django.contrib.contenttypes.models import ContentType
 
 
 class TeamSerializers(serializers.ModelSerializer):
@@ -45,15 +46,18 @@ class TeamDetailSerializer(TeamSerializers):
     wins = serializers.ReadOnlyField()
     defeats = serializers.ReadOnlyField()
     percentage_of_wins = serializers.ReadOnlyField()
+    id_team = ContentType.objects.values_list('id', flat=True).get(model='team')
 
     @staticmethod
-    def get_news(id):
-        news = NewsSerializers(News.objects.filter(content_type=16).filter(object_id=id.id), many=True).data
+    def get_news(team, id_team):
+        news = NewsSerializers(News.objects.filter(content_type=id_team).
+                               filter(object_id=team.id), many=True).data
         return news
 
     @staticmethod
-    def get_comments(id):
-        comments = CommentsSerializers(Comments.objects.filter(content_type=16).filter(object_id=id.id), many=True).data
+    def get_comments(team, id_team):
+        comments = CommentsSerializers(Comments.objects.filter(content_type=id_team).
+                                       filter(object_id=team.id), many=True).data
         return comments
 
     @staticmethod
