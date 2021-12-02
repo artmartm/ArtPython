@@ -2,9 +2,9 @@ from django.urls import path, include
 from rest_framework import routers
 from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, CountryViewSet
 from apps.leagues.views import LeagueViewSet
-from apps.teams.views import TeamViewSet, StadiumViewSet, GameViewSet, ind2
+from apps.teams.views import TeamViewSet, StadiumViewSet, GameViewSet
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet
-from apps.users.views import UserProfileListCreateView, userProfileDetailView
+from apps.users.views import UserProfileListCreateView, UserProfileDetailView
 router = routers.DefaultRouter()
 # general
 router.register(r'comments', CommentsViewSet)
@@ -27,5 +27,5 @@ router.register(r'games', GameViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path("all-profiles", UserProfileListCreateView.as_view(), name="list_of_progiles"),
-    path("profile/<int:pk>", userProfileDetailView.as_view(), name="profile"),
+    path("profile/<int:pk>", UserProfileDetailView.as_view(), name="profile"),
 ]

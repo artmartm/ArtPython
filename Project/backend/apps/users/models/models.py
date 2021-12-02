@@ -4,7 +4,7 @@ from apps.general.models.generals import City, Country
 from apps.teams.models.models import Team
 
 
-class userProfile(models.Model):
+class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     description = models.TextField(blank=True, null=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)

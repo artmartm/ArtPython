@@ -20,6 +20,7 @@ function Teams() {
             <h1>Teams page</h1>
             <h2>country</h2>
             <hr/>      
+                <hr/>      
                 {teams.map(item => (
                     <div>
                     <h1 key={item.id}>

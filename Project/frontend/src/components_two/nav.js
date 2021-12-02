@@ -3,10 +3,9 @@ import '../App.css';
 import {Link} from 'react-router-dom';
 function Nav() {
     return(
-        <nav className='for_nav'>
+        <nav style={{ background:'gray' }}>
             <ul className='nav-links'>
                 <Link to='/about'><li>about</li></Link>
-                <Link to='/reg'><li>reg</li></Link>
                 <Link to='/about'><li>comments</li></Link>
                 <Link to='/registration'><li>registration</li></Link>
                 <Link to='/news'><li>news</li></Link>

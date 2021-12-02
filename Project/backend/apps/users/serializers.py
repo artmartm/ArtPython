@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models.models import userProfile
+from .models.models import UserProfile
 
 
-class userProfileSerializer(serializers.ModelSerializer):
+class UserProfileSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
 
     class Meta:
-        model = userProfile
+        model = UserProfile
         fields = '__all__'

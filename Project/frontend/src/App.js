@@ -9,8 +9,6 @@ import TeamDetail from "./components_two/teamDetail";
 import Players from "./components_two/players";
 import PlayerDetail from "./components_two/playerDetail";
 import News from "./components_two/news";
-import NameForm from "./components_two/register_2";
-import Home from "./components_two/home";
 import ListOfStadiums from "./components_two/stadium";
 
 function App() {
@@ -18,7 +16,6 @@ function App() {
     return(
        <Router>
             <div className="App">
-            <NameForm />
             <Nav />
                 <Switch>
                     <Route path ='/' exact component={Home} />
@@ -36,5 +33,12 @@ function App() {
     );
 }
 
+function Home() {
+  return(
+    <div>
+      <h1>home page</h1>
+    </div>
+  )
+}
 
 export default App;
