@@ -19,6 +19,8 @@ function News() {
     return(
         <div>
             <h1>news page</h1>
+            <h2>news list</h2>
+            <hr />
             {news.map(e=>(
                 <div>
                     <h2>{e.name}</h2>
