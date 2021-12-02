@@ -2,7 +2,6 @@ from django.db import models
 from apps.leagues.models.models import League
 from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
 from apps.general.models.choices import SPORT_BRANDS
-import math
 
 
 class Team(StillActive, BaseModel, PLTSBaseModel):
@@ -70,6 +69,10 @@ class Game(models.Model):
             self.loser = self.home_team.name
             self.save()
             return self.away_team.name
+
+    @property
+    def stadium(self):
+        return Stadium.objects.values_list('name', flat=True).get(team=self.home_team)
 
     def __str__(self):
         return self.name
