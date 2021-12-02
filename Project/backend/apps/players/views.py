@@ -2,11 +2,13 @@ from rest_framework import viewsets
 from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo
 from .serializers import PlayerSerializers, PlayerPersonalInfoSerializers, PlayerMainInfoSerializers, \
     PlayerDetailSerializers
+from apps.general.custom_permissions import OnlyLookOrAdminModerator
 
 
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = Player.objects.all()
     serializer_class = PlayerSerializers
+    permission_classes = [OnlyLookOrAdminModerator]
     action_to_serializer = {
         "retrieve": PlayerDetailSerializers
     }
