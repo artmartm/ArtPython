@@ -36,10 +36,10 @@ function App() {
                     <Route path ='/news' exact component={News} />
                     <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} />
-                    <Route path='/team' exact component={Teams} />
-                    <Route path='/team/:id' exact component={TeamDetail} />
-                    <Route path='/player' exact component={Players} />
-                    <Route path='/player/:id' exact component={PlayerDetail} />
+                    <Route path='/teams' exact component={Teams} />
+                    <Route path='/teams/:id' exact component={TeamDetail} />
+                    <Route path='/players' exact component={Players} />
+                    <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadium' exact component={ListOfStadiums} />
                     {/*<Route path='/add' exact component={Add} /> */}
                     {/*<Route path='' exact component={Add} /> */}
