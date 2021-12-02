@@ -1,20 +1,14 @@
 from rest_framework import viewsets
 from .models.models import Team, Stadium, Game, TeamStats
-from .serializers import TeamSerializers, StadiumSerializers, GameSerializers, TeamDetailSerializer
-from django.shortcuts import render
-
-
-def ind2(request):
-    ts = Team.objects.all()
-    game = Game.objects.all()
-    data = {'ts': ts,
-            'game': game}
-    return render(request, 'ind2.html', data)
+from .serializers import TeamSerializers, StadiumSerializers, GameSerializers, TeamStatsSerializers, \
+    TeamDetailSerializer, StadiumDetailSerializers, GameDetailSerializers
+from apps.general.custom_permissions import OnlyLookOrAdminModerator
 
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
     serializer_class = TeamSerializers
+    permission_classes = [OnlyLookOrAdminModerator]
 
     action_to_serializer = {
         "retrieve": TeamDetailSerializer
@@ -30,8 +24,26 @@ class TeamViewSet(viewsets.ModelViewSet):
 class StadiumViewSet(viewsets.ModelViewSet):
     queryset = Stadium.objects.all()
     serializer_class = StadiumSerializers
+    action_to_serializer = {
+        "retrieve": StadiumDetailSerializers
+    }
+
+    def get_serializer_class(self):
+        return self.action_to_serializer.get(
+            self.action,
+            self.serializer_class
+        )
 
 
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializers
+    action_to_serializer = {
+        "retrieve": GameDetailSerializers
+    }
+
+    def get_serializer_class(self):
+        return self.action_to_serializer.get(
+            self.action,
+            self.serializer_class
+        )
