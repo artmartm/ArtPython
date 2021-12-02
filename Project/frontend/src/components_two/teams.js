@@ -9,7 +9,7 @@ function Teams() {
     useEffect( () => {
         axios({
             method:"GET",
-            url:"http://127.0.0.1:8000/api/team/",
+            url:"http://127.0.0.1:8000/api/teams/",
             mode: "no-cors"
         }).then(response => {
             setTeams(response.data)
@@ -23,7 +23,7 @@ function Teams() {
                 {teams.map(item => (
                     <div>
                     <h1 key={item.id}>
-                        <Link to={{ pathname: `/team/${item.id}/`, fromDashboard: false}}>
+                        <Link to={{ pathname: `/teams/${item.id}/`, fromDashboard: false}}>
                             {item.name}<br/>
                         </Link>
                     </h1>
