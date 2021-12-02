@@ -8,8 +8,6 @@ from django.contrib.contenttypes.models import ContentType
 
 
 class TeamSerializers(serializers.ModelSerializer):
-    points = serializers.ReadOnlyField()
-
     class Meta:
         model = Team
         fields = '__all__'
@@ -49,13 +47,13 @@ class TeamDetailSerializer(TeamSerializers):
     id_team = ContentType.objects.values_list('id', flat=True).get(model='team')
 
     @staticmethod
-    def get_news(team, id_team):
+    def get_news(team, id_team=id_team):
         news = NewsSerializers(News.objects.filter(content_type=id_team).
                                filter(object_id=team.id), many=True).data
         return news
 
     @staticmethod
-    def get_comments(team, id_team):
+    def get_comments(team, id_team=id_team):
         comments = CommentsSerializers(Comments.objects.filter(content_type=id_team).
                                        filter(object_id=team.id), many=True).data
         return comments
@@ -74,3 +72,25 @@ class TeamDetailSerializer(TeamSerializers):
     def get_team_stats(team):
         team_stats = TeamStatsSerializers(TeamStats.objects.filter(team=team), many=True).data
         return team_stats
+
+
+class StadiumDetailSerializers(StadiumSerializers):
+    news = serializers.SerializerMethodField()
+    comments = serializers.SerializerMethodField()
+    id_stadium = ContentType.objects.values_list('id', flat=True).get(model='stadium')
+
+    @staticmethod
+    def get_news(stadium, id_stadium=id_stadium):
+        news = NewsSerializers(News.objects.filter(content_type=id_stadium).
+                               filter(object_id=stadium.id), many=True).data
+        return news
+
+    @staticmethod
+    def get_comments(stadium, id_stadium=id_stadium):
+        comments = CommentsSerializers(Comments.objects.filter(content_type=id_stadium).
+                                       filter(object_id=stadium.id), many=True).data
+        return comments
+
+
+class GameDetailSerializers(GameSerializers):
+    stadium = serializers.ReadOnlyField()
