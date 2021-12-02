@@ -9,7 +9,7 @@ function Players() {
     useEffect( () => {
         axios({
             method:"GET",
-            url:"http://127.0.0.1:8000/api/player/",
+            url:"http://127.0.0.1:8000/api/players/",
             mode: "no-cors"
         }).then(response => {
             setPlayers(response.data)
@@ -18,7 +18,7 @@ function Players() {
     return(
         <div>
             <h1>Players page</h1>
-            <h2>country</h2>
+            <h2>list of players</h2>
                 <hr/>      
                 {players.map(item => (
                     <div>
