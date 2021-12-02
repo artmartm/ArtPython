@@ -11,7 +11,7 @@ function TeamDetail({ match }) {
     useEffect(()=>{
         axios({
             method:'GET',
-            url:`http://127.0.0.1:8000/api/team/${id}`,
+            url:`http://127.0.0.1:8000/api/teams/${id}`,
         }).then(response=>{
             setTeam(response.data)
             setPl(response.data.players)
@@ -29,7 +29,7 @@ function TeamDetail({ match }) {
             {team.team_logo ? <img src={team.team_logo} /> : <p>no photo yet</p>}
             <hr/>
             {pl.length ? pl.map(e=>(
-                <Link key={e.id} to={`/player/${e.id}`} ><h2>{e.name}!!!</h2></Link>
+                <Link key={e.id} to={`/players/${e.id}`} ><h2>{e.name}!!!</h2></Link>
             )) : <p>no players</p>
         }
 
