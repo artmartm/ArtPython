@@ -22,17 +22,16 @@ function TeamDetail({ match }) {
 
     return(
         <div>
-            <h1>team!</h1>
-            <h2>{team.name}</h2>
+            <h1>{team.name}</h1>
             <h2>{team.team_logo}</h2>
-            <div style={{backgroundImage:team.team_logo}}><h1>asdk;aksd;as</h1></div>
+            <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
             {team.team_logo ? <img src={team.team_logo} /> : <p>no photo yet</p>}
             <hr/>
+            <h3>list of players</h3>
             {pl.length ? pl.map(e=>(
                 <Link key={e.id} to={`/players/${e.id}`} ><h2>{e.name}!!!</h2></Link>
             )) : <p>no players</p>
         }
-
         </div>
     )
 }
