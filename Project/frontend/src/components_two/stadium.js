@@ -7,7 +7,7 @@ function ListOfStadiums() {
     useEffect(()=>{
         axios({
             method:'GET',
-            url:`http://127.0.0.1:8000/api/stadium`,
+            url:`http://127.0.0.1:8000/api/stadiums`,
         }).then(response=>{
             setStadiums(response.data)
 
@@ -15,6 +15,7 @@ function ListOfStadiums() {
     },[])
     return(
         <div style={{ alignItems:'center' }}>
+            <h2>list of stadiums</h2>
             {stadiums.length ?
                 stadiums.map(e=>(
                     <h3>{e.name}</h3>
