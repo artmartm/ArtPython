@@ -4,6 +4,7 @@ from datetime import date
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
+from smart_selects.db_fields import ChainedForeignKey
 
 
 class BaseModel(models.Model):
@@ -86,8 +87,14 @@ class City(BaseModel, LocationBaseModel):
 
 class PLTSBaseModel(models.Model):
     """General fields for players/teams/leagues/stadiums"""
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    city = ChainedForeignKey(
+        City,
+        chained_field="country",
+        chained_model_field="country",
+        show_all=False,
+        auto_choose=True
+    )
 
     class Meta:
         abstract = True
