@@ -9,7 +9,7 @@ from smart_selects.db_fields import ChainedForeignKey
 
 class BaseModel(models.Model):
     """General fields for all models"""
-    created_at = models.DateField(auto_now_add=True,validators=[MaxValueValidator(limit_value=date.today)])
+    created_at = models.DateField(auto_now_add=True, validators=[MaxValueValidator(limit_value=date.today)])
 
     class Meta:
         abstract = True
