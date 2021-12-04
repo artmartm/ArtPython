@@ -41,12 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     ###
-    'rest_framework',
+    # 'rest_framework',
     'corsheaders',
-    'rest_framework.authtoken',
-    'rest_framework_simplejwt',
-    'djoser',
-    'smart_selects'
+    # 'rest_framework.authtoken',
+    # 'rest_framework_simplejwt',
+    # 'djoser',
+    'smart_selects',
 
 ]
 
@@ -56,6 +56,8 @@ INSTALLED_APPS += [
     'apps.teams',
     'apps.players',
     'apps.users',
+    'rest_framework'
+
 ]
 
 MIDDLEWARE = [

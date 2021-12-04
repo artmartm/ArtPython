@@ -11,7 +11,9 @@ import PlayerDetail from "./components_two/playerDetail";
 import News from "./components_two/news";
 import ListOfStadiums from "./components_two/stadium";
 import AddCountry from "./components_two/general/countries";
-import Just from "./components_two/general/just";
+import AddCity from "./components_two/general/cities";
+import Registration from "./components_two/users/registration";
+import LogIn from "./components_two/users/login";
 
 function App() {
 
@@ -22,6 +24,9 @@ function App() {
                 <Switch>
                     <Route path ='/' exact component={Home} />
                     <Route path='/add-country' exact component={AddCountry}/>
+                    <Route path='/login' exact component={LogIn} />
+                    <Route path='/reg' exact component={Registration}/>
+                    <Route path='/add-city' exact component={AddCity}/>
                     <Route path ='/news' exact component={News} />
                     <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} />
