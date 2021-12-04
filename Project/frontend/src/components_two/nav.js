@@ -10,13 +10,11 @@ function Nav() {
                 <Link to='/login'><li>login</li></Link>
                 <Link to='/add-country'><li>add country</li></Link>
                 <Link to='/add-city'><li>add city</li></Link>
-                <Link to='/about'><li>comments</li></Link>
-                <Link to='/registration'><li>registration</li></Link>
+                <Link to='/comments'><li>comments</li></Link>
                 <Link to='/news'><li>news</li></Link>
                 <Link to='/teams'><li>teams</li></Link>
                 <Link to='/players'><li>players</li></Link>
                 <Link to='/leagues'><li>leagues</li></Link>
-                <Link to='/add'><li>add</li></Link>
                 <Link to='/stadiums'><li>stadiums</li></Link>
                 <Link to='/'><li>home</li></Link>
             </ul>

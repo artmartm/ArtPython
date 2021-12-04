@@ -9,11 +9,13 @@ import TeamDetail from "./components_two/teams/teamDetail";
 import Players from "./components_two/players/players";
 import PlayerDetail from "./components_two/players/playerDetail";
 import News from "./components_two/general/news";
-import ListOfStadiums from "./components_two/stadium";
+import ListOfStadiums from "./components_two/general/stadium";
 import AddCountry from "./components_two/general/countries";
 import AddCity from "./components_two/general/cities";
 import Registration from "./components_two/users/registration";
 import LogIn from "./components_two/users/login";
+import Comments from "./components_two/general/comments";
+import About from "./components_two/general/about";
 
 function App() {
 
@@ -24,17 +26,19 @@ function App() {
                 <Switch>
                     <Route path ='/' exact component={Home} />
                     <Route path='/add-country' exact component={AddCountry}/>
+                    <Route path='/about' exact component={About}/>
                     <Route path='/login' exact component={LogIn} />
                     <Route path='/reg' exact component={Registration}/>
                     <Route path='/add-city' exact component={AddCity}/>
                     <Route path ='/news' exact component={News} />
+                    <Route path='/comments' exact component={Comments} />
                     <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} />
                     <Route path='/teams' exact component={Teams} />
                     <Route path='/teams/:id' exact component={TeamDetail} />
                     <Route path='/players' exact component={Players} />
                     <Route path='/players/:id' exact component={PlayerDetail} />
-                    <Route path='/stadium' exact component={ListOfStadiums} />
+                    <Route path='/stadiums' exact component={ListOfStadiums} />
                 </Switch>
             </div>
         </Router>

@@ -27,7 +27,6 @@ router.register(r'games', GameViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
-
     path("all-profiles", UserProfileListCreateView.as_view(), name="list_of_progiles"),
     path("profile/<int:pk>", UserProfileDetailView.as_view(), name="profile"),
 ]
