@@ -27,12 +27,11 @@ function PlayerDetail({ match }) {
             <Link style={{textDecoration: 'none'}} key={player.team} to={`/teams/${player.team}`} ><h2>team</h2></Link>
             <h2>{player.team}</h2>
                 <hr/>
+            <h2>list of comments</h2>
             <h2>leave a comment</h2>
-            <AddComment />
-            
-            {/*{player.map(e=>(
-                <Link key={e.id} to={`/players/${e.id}`} ><h2>{e.name}!!!</h2></Link>
-            ))} */}
+            <AddComment obj={id}/>
+            <br/>
+
         </div>
     )
 }
