@@ -28,7 +28,7 @@ function LeagueDetail({ match }) {
             <hr/>
             <h3>teams:</h3>
             {team.map(e=>(
-                <Link key={e.id} to={`/team/${e.id}`} ><h2>{e.name}!</h2></Link>
+                <Link key={e.id} to={`/teams/${e.id}`} ><h2>{e.name}!</h2></Link>
             ))}
             <hr/>
             <h3>news:</h3>
