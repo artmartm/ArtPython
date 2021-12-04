@@ -6,6 +6,10 @@
 </head>
 <body>
     <div align="center">
+        <h1>home</h1>
+        {% for i in h %}
+        <p>{{ i.name }} and {{ i.created_at }}</p>
+        {% endfor %}
         {% comment %}
         <h1>hello</h1>
         {% for i in n %}

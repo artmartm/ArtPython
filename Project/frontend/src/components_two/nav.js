@@ -6,6 +6,7 @@ function Nav() {
         <nav style={{ background:'gray' }}>
             <ul className='nav-links'>
                 <Link to='/about'><li>about</li></Link>
+                <Link to='/add-comment'><li>add a comment</li></Link>
                 <Link to='/reg'><li>registration</li></Link>
                 <Link to='/login'><li>login</li></Link>
                 <Link to='/add-country'><li>add country</li></Link>
@@ -22,19 +23,5 @@ function Nav() {
     )
 }
 
-{/* 
-    /,/.,/.,/.,
-    const NavSt = {
-        color: 'black',
-        textDecoration: 'none'
-    }
-    const [change,setState] = useState(false);
-    const NavSt2 = {
-        color: 'red',
-        textDecoration: 'none'
-    }
-    <Link to='/about' style={change ? NavSt2 : NavSt} onMouseOver={()=>{setState(true)}} onMouseOut={()=>{setState(false)}}>
-                    <li>about</li>
-                </Link>*/}
 
 export default Nav;

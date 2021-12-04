@@ -98,3 +98,14 @@ class PLTSBaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class Just2(models.Model):
+    """General fields for news and comments"""
+    name = models.CharField(max_length=255)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    def __str__(self):
+        return self.name

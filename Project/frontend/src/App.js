@@ -16,6 +16,7 @@ import Registration from "./components_two/users/registration";
 import LogIn from "./components_two/users/login";
 import Comments from "./components_two/general/comments";
 import About from "./components_two/general/about";
+import AddComment from "./components_two/add";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
                 <Switch>
                     <Route path ='/' exact component={Home} />
                     <Route path='/add-country' exact component={AddCountry}/>
+                    <Route path='/add-comment' exact component={AddComment}/>
                     <Route path='/about' exact component={About}/>
                     <Route path='/login' exact component={LogIn} />
                     <Route path='/reg' exact component={Registration}/>

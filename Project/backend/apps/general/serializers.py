@@ -1,14 +1,18 @@
-from .models.generals import Comments, News, City, Country
+from .models.generals import Comments, News, City, Country, Just2
 from rest_framework import serializers
 
+class JustSer(serializers.ModelSerializer):
+    class Meta:
+        model = Just2
+        fields = '__all__'
 
 class CommentsSerializers(serializers.ModelSerializer):
     class Meta:
         model = Comments
-        read_only_fields = (
-            "created_at",
-            "author",
-        )
+        # read_only_fields = (
+        #     "created_at",
+        #     "author",
+        # )
         fields = '__all__'
 
 

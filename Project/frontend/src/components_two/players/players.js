@@ -23,7 +23,7 @@ function Players() {
                 {players.map(item => (
                     <div>
                     <h1 key={item.id}>
-                        <Link to={{ pathname: `/player/${item.id}/`, fromDashboard: false}}>
+                        <Link to={{ pathname: `/players/${item.id}/`, fromDashboard: false}}>
                             {item.name}<br/>
                         </Link>
                     </h1>

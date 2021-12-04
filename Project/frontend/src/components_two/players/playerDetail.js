@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
+import AddComment from "../add";
 
 function PlayerDetail({ match }) {
     
@@ -25,10 +26,10 @@ function PlayerDetail({ match }) {
             <h2>{player.name}</h2>
             <Link style={{textDecoration: 'none'}} key={player.team} to={`/teams/${player.team}`} ><h2>team</h2></Link>
             <h2>{player.team}</h2>
-            <h1>Player page!</h1>
-            <h2>{player.name}!</h2>
-            <Link style={{textDecoration: 'none'}} key={player.team} to={`/team/${player.team}`} ><h2>team</h2></Link>
                 <hr/>
+            <h2>leave a comment</h2>
+            <AddComment />
+            
             {/*{player.map(e=>(
                 <Link key={e.id} to={`/players/${e.id}`} ><h2>{e.name}!!!</h2></Link>
             ))} */}
