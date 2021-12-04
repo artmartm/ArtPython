@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, CountryViewSet
+from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, CountryViewSet, JustView, home
 from apps.leagues.views import LeagueViewSet
 from apps.teams.views import TeamViewSet, StadiumViewSet, GameViewSet
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet
@@ -11,6 +11,7 @@ router.register(r'comments', CommentsViewSet)
 router.register(r'news', NewsViewSet)
 router.register(r'cities', CityViewSet)
 router.register(r'countries', CountryViewSet)
+router.register(r'just', JustView)
 # league
 router.register(r'leagues', LeagueViewSet)
 # player
@@ -26,6 +27,8 @@ router.register(r'games', GameViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
+    path('', home),
+    path('api-auth/', include('rest_framework.urls')),
     path("all-profiles", UserProfileListCreateView.as_view(), name="list_of_progiles"),
     path("profile/<int:pk>", UserProfileDetailView.as_view(), name="profile"),
 ]

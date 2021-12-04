@@ -2,7 +2,7 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 
-function PlayerDetail({ match }) {
+function PlayerPersonalInfo({ match }) {
     
     const[player, setPlayer] = useState({});
     const[team,setTeam] = useState([]);
@@ -21,7 +21,7 @@ function PlayerDetail({ match }) {
 
     return(
         <div>
-  <h1>Player page</h1>
+  <h1>Player personal info</h1>
             <h2>{player.name}</h2>
             <Link style={{textDecoration: 'none'}} key={player.team} to={`/teams/${player.team}`} ><h2>team</h2></Link>
             <h2>{player.team}</h2>
@@ -36,4 +36,4 @@ function PlayerDetail({ match }) {
     )
 }
 
-export default PlayerDetail;
+export default PlayerPersonalInfo;

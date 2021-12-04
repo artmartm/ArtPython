@@ -1,8 +1,8 @@
 from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo
 from rest_framework import serializers
-from apps.general.models.generals import News, Comments
+from apps.general.models.generals import News, Comments, Just2
 from apps.teams.models.models import Team
-from apps.general.serializers import NewsSerializers, CommentsSerializers
+from apps.general.serializers import NewsSerializers, CommentsSerializers, JustSer
 from django.contrib.contenttypes.models import ContentType
 
 
@@ -33,8 +33,8 @@ class PlayerDetailSerializers(PlayerSerializers):
     news = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
     free_agent = serializers.ReadOnlyField()
-    id_player = ContentType.objects.values_list('id', flat=True).get(model='league')
-
+    id_player = ContentType.objects.values_list('id', flat=True).get(model='player')
+    just = serializers.SerializerMethodField()
     @staticmethod
     def get_news(player, id_player=id_player):
         news = NewsSerializers(News.objects.filter(content_type=id_player).
@@ -46,6 +46,12 @@ class PlayerDetailSerializers(PlayerSerializers):
         comments = CommentsSerializers(Comments.objects.filter(content_type=id_player).
                                        filter(object_id=player.id), many=True).data
         return comments
+    @staticmethod
+    def get_just(player, id_player=id_player):
+        comments = JustSer(Just2.objects.filter(content_type=id_player).
+                                       filter(object_id=player.id), many=True).data
+        return comments
+
 
     @staticmethod
     def get_main_info(player):

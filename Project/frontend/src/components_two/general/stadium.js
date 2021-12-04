@@ -18,7 +18,7 @@ function ListOfStadiums() {
             <h2>list of stadiums</h2>
             {stadiums.length ?
                 stadiums.map(e=>(
-                    <h3>{e.name}</h3>
+                    <h3 key={e.id}>{e.name}</h3>
                 )) : <p>no stadiums yet</p>
             }
         </div>

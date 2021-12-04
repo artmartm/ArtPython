@@ -3,30 +3,30 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-const AddComment= () => {
+const AddCity= () => {
 
     let history = useHistory();
 
     const [name, setName] = useState('')
-    const [content_type, setContent_type] = useState('18')
-    const [object_id, setObject_id] = useState('1')
-    const [author, setAuthor] = useState('1')
-
+    const [country, setCountry] = useState('')
+    const [populations, setPopulations] = useState('')
+    const [area, setArea] = useState('')
+    
 
     const Add = async () => {
         let formField = new FormData()
         formField.append('name',name)
-        formField.append('content_type',content_type)
-        formField.append('object_id',object_id)
-        formField.append('author',author)
-
+        formField.append('country',country)
+        formField.append('area',area)
+        formField.append('populations',populations)
 
         await axios({
           method: 'post',
-          url:'http://127.0.0.1:8000/api/just/',
+          url:'http://127.0.0.1:8000/api/cities/',
           data: formField
         }).then(response=>{
           console.log(response.data);
+          history.push('/')
         })
     }
    
@@ -34,7 +34,7 @@ const AddComment= () => {
         <div className="container">
             <div className="container">
       <div className="w-75 mx-auto shadow p-5">
-        <h2 className="text-center mb-4">add a comments</h2>
+        <h2 className="text-center mb-4">add a city</h2>
         
         <div className="form-group">
           </div>
@@ -48,30 +48,37 @@ const AddComment= () => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-       
-          {/*<div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="content_type"
-              name="content_type"
-              value={content_type}
-              onChange={(e) => setContent_type(e.target.value)}
-            />
-          </div> */}
-          {
-          /*
-          05.12.2021
           <div className="form-group">
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="id"
-              name="object_id"
-              value={object_id}
-              onChange={(e) => setObject_id(e.target.value)}
+              placeholder="put the populations"
+              name="country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
             />
-        </div>*/}
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="put the area"
+              name="area"
+              value={area}
+              onChange={(e) => setArea(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="put the language"
+              name="populations"
+              value={populations}
+              onChange={(e) => setPopulations(e.target.value)}
+            />
+          </div>
+ 
           <button className="btn btn-primary btn-block" onClick={Add}>add city</button>
        
       </div>
@@ -80,4 +87,4 @@ const AddComment= () => {
     );
 };
 
-export default AddComment;
+export default AddCity;

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import './Model.css';
+//import './Model.css';
 import {Link} from 'react-router-dom';
 
 function Comments() {
@@ -18,13 +18,15 @@ function Comments() {
     },[])
     return(
         <div>
-            <h1>comments page</h1>
-            <hr/>
-            {comments.map(e=>(
-                <div>
-                    <h2>{e.name}</h2>
-                </div>
-            ))}
+            <h1>list of comments</h1>
+            <hr />
+            {comments.length ?
+                comments.map(e=>(
+                    <ul>
+                    <li key={e.id}>{e.name}</li>
+                    </ul>
+                )) : <p>no comments yet</p>
+            }
         </div>
     )
 }
