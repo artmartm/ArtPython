@@ -18,7 +18,7 @@ const LogIn = () => {
 
         await axios({
           method: 'post',
-          url:'http://127.0.0.1:8000/api-auth/login/',
+          url:'http://127.0.0.1:8000/auth/token/login/',
           data: formField
         }).then(response=>{
           console.log(response.data);

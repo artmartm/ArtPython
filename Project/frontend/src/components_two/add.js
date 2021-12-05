@@ -13,12 +13,14 @@ function AddComment({obj}) {
     const [author, setAuthor] = useState('1')
 
 
+
     const Add = async () => {
         let formField = new FormData()
         formField.append('name',name)
         formField.append('content_type',content_type)
         formField.append('object_id',object_id)
         formField.append('author',author)
+
 
 
         await axios({
