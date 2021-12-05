@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from smart_selects.db_fields import ChainedForeignKey
-
+from django.utils.timezone import now
 
 class BaseModel(models.Model):
     """General fields for all models"""
@@ -44,6 +44,7 @@ class NewsCommentsBaseModel(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-created_at']
 
 
 class News(BaseModel, NewsCommentsBaseModel):
@@ -76,7 +77,6 @@ class Country(BaseModel, StillActive, LocationBaseModel):
 class City(BaseModel, LocationBaseModel):
     name = models.CharField(max_length=100)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-
     def __str__(self):
         return self.name
 

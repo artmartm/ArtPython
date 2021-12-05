@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 //import './Model.css';
 import {Link} from 'react-router-dom';
+import AddRealComment from '../addf';
 
 function Comments() {
     
@@ -27,6 +28,9 @@ function Comments() {
                     </ul>
                 )) : <p>no comments yet</p>
             }
+            <hr/>
+            <h1>add a real comments</h1>
+            <AddRealComment />
         </div>
     )
 }

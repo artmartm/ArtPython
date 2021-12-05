@@ -9,10 +9,10 @@ class JustSer(serializers.ModelSerializer):
 class CommentsSerializers(serializers.ModelSerializer):
     class Meta:
         model = Comments
-        # read_only_fields = (
-        #     "created_at",
-        #     "author",
-        # )
+        read_only_fields = (
+            "created_at",
+            "author",
+        )
         fields = '__all__'
 
 

@@ -1,23 +1,69 @@
-import React, {useState, useEffect} from "react"
-import Add from "./add"
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-function AddForm() {
 
-    const[team, setTeam] = useState([]);
-    
-    function addToDo(title) {
-        setTodos(todos.concat([{
-          title:title,
-          id: Date.now(),
-          completed: false
-        }]))
-      }
+function AddRealComment() {
+    //const id = props.object_id;
+    let history = useHistory();
+    let newDate = new Date()
+let date = newDate.getDate();
+let month = newDate.getMonth() + 1;
+let year = newDate.getFullYear();
 
-      return(
-          <div>
-              <Add onCreate={addToDo}/>
+let fin = `${year}${month<10?`0${month}`:`${month}`}${date}`
+    const [name, setName] = useState('')
+    const [content_type, setContent_type] = useState('18')
+    const [object_id, setObject_id] = useState('1')
+    const [author, setAuthor] = useState('1')
+    const [created_at, setCreated_at] = useState(fin)
+
+    const Add = async () => {
+        let formField = new FormData()
+        formField.append('name',name)
+        formField.append('content_type',content_type)
+        formField.append('object_id',object_id)
+        formField.append('author',author)
+        formField.append('created_at',created_at)
+
+
+
+        await axios({
+          method: 'post',
+          url:'http://127.0.0.1:8000/api/comments/',
+          data: formField
+        }).then(response=>{
+          console.log(response.data);
+        })
+        
+        
+    }
+   
+    return (
+        <div className="container">
+            <div className="container">
+      <div className="w-75 mx-auto shadow p-5">
+        <h2 className="text-center mb-4">add a comments</h2>
+        
+        <div className="form-group">
           </div>
-      )
-}
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="Enter Your Name"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+         
+          <button className="btn btn-primary btn-block" onClick={Add}>add city</button>
+       
+      </div>
+    </div>
+        </div>
+    );
+};
 
-export default AddForm;
+export default AddRealComment;

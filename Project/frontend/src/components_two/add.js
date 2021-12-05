@@ -3,14 +3,15 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-const AddComment= () => {
-
+function AddComment({obj}) {
+    //const id = props.object_id;
     let history = useHistory();
 
     const [name, setName] = useState('')
     const [content_type, setContent_type] = useState('18')
-    const [object_id, setObject_id] = useState('1')
+    const [object_id, setObject_id] = useState(obj)
     const [author, setAuthor] = useState('1')
+
 
 
     const Add = async () => {
@@ -21,6 +22,7 @@ const AddComment= () => {
         formField.append('author',author)
 
 
+
         await axios({
           method: 'post',
           url:'http://127.0.0.1:8000/api/just/',
@@ -28,6 +30,8 @@ const AddComment= () => {
         }).then(response=>{
           console.log(response.data);
         })
+        
+        
     }
    
     return (
