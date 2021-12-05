@@ -22,6 +22,12 @@ class StadiumSerializers(serializers.ModelSerializer):
 class GameSerializers(serializers.ModelSerializer):
     class Meta:
         model = Game
+        read_only_fields = (
+            "winner",
+            "loser",
+            "home_team_goals",
+            "away_team_goals",
+        )
         fields = '__all__'
 
 
@@ -42,6 +48,7 @@ class TeamDetailSerializer(TeamSerializers):
     team_stats = serializers.SerializerMethodField()
     points = serializers.ReadOnlyField()
     wins = serializers.ReadOnlyField()
+    games = serializers.ReadOnlyField()
     defeats = serializers.ReadOnlyField()
     percentage_of_wins = serializers.ReadOnlyField()
     id_team = ContentType.objects.values_list('id', flat=True).get(model='team')
@@ -94,3 +101,4 @@ class StadiumDetailSerializers(StadiumSerializers):
 
 class GameDetailSerializers(GameSerializers):
     stadium = serializers.ReadOnlyField()
+    name = serializers.ReadOnlyField()

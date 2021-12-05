@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 const Registration = () => {
@@ -66,7 +67,8 @@ const Registration = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="btn btn-primary btn-block" onClick={Add}>add country</button>
+          <button className="btn btn-primary btn-block" onClick={Add}>signup</button>
+          <p>already have an account? <Link to={`/login`}>login</Link> </p>
        
       </div>
     </div>

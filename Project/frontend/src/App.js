@@ -18,6 +18,8 @@ import Comments from "./components_two/general/comments";
 import About from "./components_two/general/about";
 import AddComment from "./components_two/add";
 import Login from "./components/login/Login";
+import AddGame from "./components_two/teams/addGame";
+import Games from "./components_two/teams/gamesList";
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
                     <Route path ='/' exact component={Home} />
                     <Route path='/add-country' exact component={AddCountry}/>
                     <Route path='/l' exact component={Login}/>
+                    <Route path='/add-game' exact component={AddGame}/>
+                    <Route path='/games-list' exact component={Games}/>
                     <Route path='/add-comment' exact component={AddComment}/>
                     <Route path='/about' exact component={About}/>
                     <Route path='/login' exact component={LogIn} />

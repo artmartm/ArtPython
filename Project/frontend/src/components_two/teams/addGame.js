@@ -5,22 +5,22 @@ import { Link } from "react-router-dom";
 
 
 
-const LogIn = () => {
+const AddGame = () => {
 
     let history = useHistory();
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [home_team, setHome_team] = useState('')
+    const [away_team, setAway_team] = useState('')
     
 
     const Add = async () => {
         let formField = new FormData()
-        formField.append('username',username)
-        formField.append('password',password)
+        formField.append('home_team',home_team)
+        formField.append('away_team',away_team)
 
         await axios({
           method: 'post',
-          url:'http://127.0.0.1:8000/auth/token/login/',
+          url:'http://127.0.0.1:8000/api/games/',
           data: formField
         }).then(response=>{
           console.log(response.data);
@@ -40,29 +40,27 @@ const LogIn = () => {
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="Enter Your Name"
-              name="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="home team"
+              name="home_team"
+              value={home_team}
+              onChange={(e) => setHome_team(e.target.value)}
             />
           </div>
           <div className="form-group">
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder="away team"
+              name="away_team"
+              value={away_team}
+              onChange={(e) => setAway_team(e.target.value)}
             />
           </div>
-          <button className="btn btn-primary btn-block" onClick={Add}>login</button>
-          <p>don't have an account? <Link to={`/reg`}>sign up</Link> </p>
-       
+          <button className="btn btn-primary btn-block" onClick={Add}>add a game</button>       
       </div>
     </div>
         </div>
     );
 };
 
-export default LogIn;
+export default AddGame;

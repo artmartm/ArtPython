@@ -23,6 +23,8 @@ function TeamDetail({ match }) {
     return(
         <div>
             <h1>{team.name}</h1>
+            <h1>{team.games}</h1>
+
             <h2>{team.team_logo}</h2>
             <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
             {team.team_logo ? <img src={team.team_logo} /> : <p>no photo yet</p>}
