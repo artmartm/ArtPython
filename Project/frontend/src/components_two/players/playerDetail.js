@@ -2,9 +2,12 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import AddComment from "../add";
+import JustList from "../general/justList";
 
 function PlayerDetail({ match }) {
-    
+    const[state, setState] = useState([{
+        isOpen:false
+    }])
     const[player, setPlayer] = useState({});
     const[team,setTeam] = useState([]);
     const id = match.params.id;
@@ -28,6 +31,16 @@ function PlayerDetail({ match }) {
             <h2>{player.team}</h2>
                 <hr/>
             <h2>list of comments</h2>
+            <React.Fragment>
+<button onClick={()=>{setState({isOpen:true})}}>show just</button>        
+{state.isOpen && 
+    <div>       
+                        <JustList obj={id} />
+
+                <button onClick={()=>{setState({isOpen:false})}}>close </button>
+</div>
+}
+</React.Fragment>
             <h2>leave a comment</h2>
             <AddComment obj={id}/>
             <br/>
@@ -37,3 +50,13 @@ function PlayerDetail({ match }) {
 }
 
 export default PlayerDetail;
+{/*<React.Fragment>
+<button onClick={()=>{setState({isOpen:true})}}>show just</button>        
+{state.isOpen && 
+    <div>       
+                        <JustList obj={id} />
+
+                <button onClick={()=>{setState({isOpen:false})}}>close </button>
+</div>
+}
+</React.Fragment>*/}
