@@ -13,6 +13,7 @@ class UserProfile(models.Model):
     date_joined = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     is_moderator = models.BooleanField(default=False)
+    ban = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.user.username} profile'
