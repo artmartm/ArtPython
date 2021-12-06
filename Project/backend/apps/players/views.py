@@ -1,7 +1,7 @@
 from rest_framework import viewsets
-from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo
+from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo, HeadToHead
 from .serializers import PlayerSerializers, PlayerPersonalInfoSerializers, PlayerMainInfoSerializers, \
-    PlayerDetailSerializers
+    PlayerDetailSerializers, HeadToHeadSerializers, HeadToHeadDetailSerializers
 #from apps.general.custom_permissions import OnlyLookOrAdminModerator
 
 
@@ -28,3 +28,17 @@ class PlayerPersonalInfoViewSet(viewsets.ModelViewSet):
 class PlayerMainInfoViewSet(viewsets.ModelViewSet):
     queryset = PlayerMainInfo.objects.all()
     serializer_class = PlayerMainInfoSerializers
+
+    
+class HeadToHeadViewSet(viewsets.ModelViewSet):
+    queryset = HeadToHead.objects.all()
+    serializer_class = HeadToHeadSerializers
+    action_to_serializer = {
+        "retrieve": HeadToHeadDetailSerializers
+    }
+
+    def get_serializer_class(self):
+        return self.action_to_serializer.get(
+            self.action,
+            self.serializer_class
+        )
