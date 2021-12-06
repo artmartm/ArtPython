@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-function AddComment({obj}) {
+function AddComment1({obj}) {
     //const id = props.object_id;
     let history = useHistory();
 
@@ -84,4 +84,4 @@ function AddComment({obj}) {
     );
 };
 
-export default AddComment;
+export default AddComment1;

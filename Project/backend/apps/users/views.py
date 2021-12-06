@@ -3,20 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from .models.models import UserProfile
 # from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import UserProfileSerializer
+from rest_framework import viewsets
 
-
-class UserProfileListCreateView(ListCreateAPIView):
+class UsersViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-
-    # permission_classes=[IsAuthenticated]
-
-    def perform_create(self, serializer):
-        user = self.request.user
-        serializer.save(user=user)
-
-
-class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = UserProfile.objects.all()
-    serializer_class = UserProfileSerializer
-    # permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]

@@ -8,13 +8,13 @@ function Nav() {
                 <Link to='/about'><li>about</li></Link>
                 <Link to='/l'><li>login</li></Link>
                 <Link to='/add-comment'><li>add a comment</li></Link>
+                <Link to='/list-of-comments'><li>list of comments</li></Link>
                 <Link to='/add-game'><li>add a game</li></Link>
                 <Link to='/games-list'><li>list of games</li></Link>
                 <Link to='/reg'><li>registration</li></Link>
                 <Link to='/login'><li>login</li></Link>
                 <Link to='/add-country'><li>add country</li></Link>
                 <Link to='/add-city'><li>add city</li></Link>
-                <Link to='/comments'><li>comments</li></Link>
                 <Link to='/news'><li>news</li></Link>
                 <Link to='/teams'><li>teams</li></Link>
                 <Link to='/players'><li>players</li></Link>

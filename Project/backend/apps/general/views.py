@@ -21,11 +21,11 @@ class CommentsViewSet(viewsets.ModelViewSet):
     serializer_class = CommentsSerializers
     #permission_classes = [CommentPermission]
 
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(author=self.request.user)
 
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(author=self.request.user)
 
 
 class NewsViewSet(viewsets.ModelViewSet):

@@ -4,7 +4,7 @@ from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, Countr
 from apps.leagues.views import LeagueViewSet
 from apps.teams.views import TeamViewSet, StadiumViewSet, GameViewSet
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet, HeadToHeadViewSet
-from apps.users.views import UserProfileListCreateView, UserProfileDetailView
+from apps.users.views import UsersViewSet
 router = routers.DefaultRouter()
 # general
 router.register(r'comments', CommentsViewSet)

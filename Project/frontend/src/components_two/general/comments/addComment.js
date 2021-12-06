@@ -3,20 +3,13 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-function AddRealComment() {
-    //const id = props.object_id;
+function AddComment({obj}) {
     let history = useHistory();
-    let newDate = new Date()
-let date = newDate.getDate();
-let month = newDate.getMonth() + 1;
-let year = newDate.getFullYear();
-
-let fin = `${year}${month<10?`0${month}`:`${month}`}${date}`
     const [name, setName] = useState('')
     const [content_type, setContent_type] = useState('18')
-    const [object_id, setObject_id] = useState('1')
+    const [object_id, setObject_id] = useState(obj)
     const [author, setAuthor] = useState('1')
-    const [created_at, setCreated_at] = useState(fin)
+    //const [created_at, setCreated_at] = useState(s)
 
     const Add = async () => {
         let formField = new FormData()
@@ -24,7 +17,7 @@ let fin = `${year}${month<10?`0${month}`:`${month}`}${date}`
         formField.append('content_type',content_type)
         formField.append('object_id',object_id)
         formField.append('author',author)
-        formField.append('created_at',created_at)
+        //formField.append('created_at',created_at)
 
 
 
@@ -58,7 +51,7 @@ let fin = `${year}${month<10?`0${month}`:`${month}`}${date}`
             />
           </div>
          
-          <button className="btn btn-primary btn-block" onClick={Add}>add city</button>
+          <button className="btn btn-primary btn-block" onClick={Add}>add comment</button>
        
       </div>
     </div>
@@ -66,4 +59,4 @@ let fin = `${year}${month<10?`0${month}`:`${month}`}${date}`
     );
 };
 
-export default AddRealComment;
+export default AddComment;
