@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import AddComment from "../general/comments/addComment";
 import CommentsList from "../general/comments/commentsList";
 import content_type from "../general/content_type";
+import PlayerMainInfo from "./playerMainInfo";
+import PlayerPersonalInfo from "./playerPersonalInfo";
 
 function PlayerDetail({ match }) {
     const[state, setState] = useState([{
@@ -44,7 +46,8 @@ function PlayerDetail({ match }) {
             <h2>leave a comment</h2>
                 <AddComment obj={id}/>
             <br/>
-
+            <PlayerPersonalInfo obj={player.id} />
+            <PlayerMainInfo obj={player.id} />
         </div>
     )
 }

@@ -17,7 +17,6 @@ const AddGame = () => {
         let formField = new FormData()
         formField.append('home_team',home_team)
         formField.append('away_team',away_team)
-
         await axios({
           method: 'post',
           url:'http://127.0.0.1:8000/api/games/',
@@ -31,34 +30,34 @@ const AddGame = () => {
     return (
         <div className="container">
             <div className="container">
-      <div className="w-75 mx-auto shadow p-5">
-        <h2 className="text-center mb-4">login</h2>
-        
-        <div className="form-group">
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="home team"
-              name="home_team"
-              value={home_team}
-              onChange={(e) => setHome_team(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="away team"
-              name="away_team"
-              value={away_team}
-              onChange={(e) => setAway_team(e.target.value)}
-            />
-          </div>
-          <button className="btn btn-primary btn-block" onClick={Add}>add a game</button>       
-      </div>
-    </div>
+              <div className="w-75 mx-auto shadow p-5">
+                <h2 className="text-center mb-4">login</h2>
+                  <div className="form-group">
+                    </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          className="form-control form-control-lg"
+                          placeholder="home team"
+                          name="home_team"
+                          value={home_team}
+                          onChange={(e) => setHome_team(e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          className="form-control form-control-lg"
+                          placeholder="away team"
+                          name="away_team"
+                          value={away_team}
+                          onChange={(e) => setAway_team(e.target.value)}
+                        />
+                      </div>
+                 <button className="btn btn-primary btn-block" 
+                 onClick={Add}>add a game</button>       
+              </div>
+            </div>
         </div>
     );
 };
