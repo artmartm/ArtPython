@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 
-const LogIn = () => {
+const SetAccount = () => {
 
     let history = useHistory();
 
@@ -66,4 +66,4 @@ const LogIn = () => {
     );
 };
 
-export default LogIn;
+export default SetAccount;
