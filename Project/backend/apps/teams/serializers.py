@@ -102,3 +102,4 @@ class StadiumDetailSerializers(StadiumSerializers):
 class GameDetailSerializers(GameSerializers):
     stadium = serializers.ReadOnlyField()
     name = serializers.ReadOnlyField()
+    win = serializers.ReadOnlyField()
