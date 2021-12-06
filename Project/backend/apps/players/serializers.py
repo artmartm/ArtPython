@@ -1,4 +1,4 @@
-from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo
+from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo, HeadToHead
 from rest_framework import serializers
 from apps.general.models.generals import News, Comments, Just2
 from apps.teams.models.models import Team
