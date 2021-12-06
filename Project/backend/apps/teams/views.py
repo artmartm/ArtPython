@@ -37,7 +37,7 @@ class StadiumViewSet(viewsets.ModelViewSet):
 
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
-    serializer_class = GameSerializers
+    serializer_class = GameDetailSerializers
     action_to_serializer = {
         "retrieve": GameDetailSerializers
     }
