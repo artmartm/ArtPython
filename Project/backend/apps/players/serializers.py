@@ -24,6 +24,13 @@ class PlayerMainInfoSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
+class HeadToHeadSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = HeadToHead
+        fields = '__all__'
+
+
 ###DETAIL
 
 
@@ -62,4 +69,7 @@ class PlayerDetailSerializers(PlayerSerializers):
     def get_personal_info(player):
         return PlayerPersonalInfoSerializers(PlayerPersonalInfo.objects.
                                              filter(player=player), many=True).data
+
+class HeadToHeadDetailSerializers(HeadToHeadSerializers):
+    win = serializers.ReadOnlyField()
 
