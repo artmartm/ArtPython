@@ -57,3 +57,19 @@ class PlayerPersonalInfo(models.Model):
 
     def __str__(self):
         return f'{self.player.name} personal info'
+
+
+class HeadToHead(models.Model):
+    player_1 = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='player_1')
+    player_2 = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='player_2')
+    date = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def win(self):
+        if self.player_1.score > self.player_2.score:
+            return f'{self.player_1} won'
+        else:
+            return f'{self.player_2} won'
+
+    def __str__(self):
+        return f'{self.player_1} vs {self.player_2}'
