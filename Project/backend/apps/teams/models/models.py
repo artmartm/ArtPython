@@ -2,6 +2,7 @@ from django.db import models
 from apps.leagues.models.models import League
 from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
 from apps.general.models.choices import SPORT_BRANDS
+from random import randint
 
 
 class Team(StillActive, BaseModel, PLTSBaseModel):
@@ -45,6 +46,9 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
         return self.name
 
 
+from apps.players.models.models import Player
+
+
 class Game(models.Model):
     home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team')
     away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team')
@@ -59,16 +63,36 @@ class Game(models.Model):
 
     @property
     def win(self):
-        if self.home_team.score > self.away_team.score:
+        home_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.home_team)
+        away_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.away_team)
+        home_team_goals = sum(home_team_players_score) / 10 + self.home_team.score + 5
+        away_team_goals = sum(away_team_players_score) / 10 + self.away_team.score
+        if min(away_team_players_score) > min(home_team_players_score):
+            away_team_goals += 5
+        else:
+            home_team_goals += 10
+        if max(away_team_players_score) > max(home_team_players_score):
+            away_team_goals += 10
+        else:
+            home_team_goals += 10
+        luck = abs(home_team_goals - away_team_goals) + 1
+        rand = randint(1, Team.objects.count())
+        if rand == self.home_team.id:
+            home_team_goals += luck
+        if home_team_goals > away_team_goals:
             self.winner = self.home_team.name
             self.loser = self.away_team.name
+            self.home_team_goals = home_team_goals
+            self.away_team_goals = away_team_goals
             self.save()
-            return self.home_team.name
+            return rand
         else:
             self.winner = self.away_team.name
             self.loser = self.home_team.name
+            self.home_team_goals = home_team_goals
+            self.away_team_goals = away_team_goals
             self.save()
-            return self.away_team.name
+            return rand
 
     @property
     def stadium(self):
