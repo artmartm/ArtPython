@@ -23,7 +23,9 @@ function TeamDetail({ match }) {
     return(
         <div>
             <h1>{team.name}</h1>
+            <h1>id is {team.id}</h1>
             <h1>{team.games}</h1>
+            <p>amount of points {team.points}</p>
 
             <h2>{team.team_logo}</h2>
             <div style={{backgroundImage:team.team_logo}}><h1></h1></div>

@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
+import {Link} from 'react-router-dom';
+
 
 
 function ListOfStadiums() {
@@ -18,7 +20,7 @@ function ListOfStadiums() {
             <h2>list of stadiums</h2>
             {stadiums.length ?
                 stadiums.map(e=>(
-                    <h3 key={e.id}>{e.name}</h3>
+                    <Link key={e.id} to={{ pathname: `/stadium/${e.id}/`, fromDashboard: false}}>{e.name}</Link>
                 )) : <p>no stadiums yet</p>
             }
         </div>

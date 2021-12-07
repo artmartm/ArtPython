@@ -38,7 +38,7 @@ function CommentsList({obj}) {
             {particular_comments.length ? 
             particular_comments.map(e=>(
                 <div>
-                    <h3 key={e.id}>{e.name}</h3>
+                    <Link key={e.id} to={{ pathname: `/comments/${e.id}/`, fromDashboard: false}}><h3>{e.name}</h3></Link>
                 </div>
             )):
             <p>no comments</p>}
