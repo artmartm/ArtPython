@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import '../App.css';
+import '../../App.css';
 import {Link} from 'react-router-dom';
-function Nav() {
+function Navigation() {
     return(
         <nav style={{ background:'gray' }}>
             <ul className='nav-links'>
                 <Link to='/about'><li>about</li></Link>
-                <Link to='/l'><li>login</li></Link>
                 <Link to='/add-comment'><li>add a comment</li></Link>
                 <Link to='/list-of-comments'><li>list of comments</li></Link>
                 <Link to='/add-game'><li>add a game</li></Link>
@@ -27,4 +26,4 @@ function Nav() {
 }
 
 
-export default Nav;
+export default Navigation;

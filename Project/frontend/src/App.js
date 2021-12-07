@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Nav from "./components_two/nav";
+
 import Leagues from "./components_two/leagues/leagues";
 import LeagueDetail from "./components_two/leagues/leagueDetail";
 import Teams from "./components_two/teams/teams";
@@ -10,10 +10,7 @@ import Players from "./components_two/players/players";
 import PlayerDetail from "./components_two/players/playerDetail";
 import News from "./components_two/general/news";
 import ListOfStadiums from "./components_two/general/stadium";
-import Registration from "./components_two/users/registration";
-import LogIn from "./components_two/users/login";
 import About from "./components_two/general/about";
-import Login from "./components/login/Login";
 import AddGame from "./components_two/teams/addGame";
 import Games from "./components_two/teams/gamesList";
 //COMMENTS
@@ -22,22 +19,26 @@ import CommentsList from "./components_two/general/comments/commentsList";
 //LOCATIONS
 import AddCity from "./components_two/general/locations/cities";
 import AddCountry from "./components_two/general/locations/countries";
+//NAVIGATION
+import Navigation from "./components_two/general/navigation";
+//LOGIN LOGOUT SIGNUP
+import Registration from "./components_two/users/registration";
+import LogIn from "./components_two/users/login";
+
+
 
 function App() {
 
     return(
        <Router>
             <div className="App">
-            <Nav />
+              <Navigation />
                 <Switch>
                     <Route path ='/' exact component={Home} />
                     <Route path='/add-comment' exact component={AddComment}/>
                     <Route path='/list-of-comments' exact component={CommentsList}/>
-
                     <Route path='/add-city' exact component={AddCity}/>
                     <Route path='/add-country' exact component={AddCountry}/>
-                    
-                    <Route path='/l' exact component={Login}/>
                     <Route path='/add-game' exact component={AddGame}/>
                     <Route path='/games-list' exact component={Games}/>
                     <Route path='/about' exact component={About}/>
