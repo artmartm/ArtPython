@@ -1,30 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import '../Model.css';
+//import '../Model.css';
 import {Link} from 'react-router-dom';
-function Games() {
+function Teams() {
 
-    const [games, setGames] = useState([]);
+    const [teams, setTeams] = useState([]);
 
     useEffect( () => {
         axios({
             method:"GET",
-            url:"http://127.0.0.1:8000/api/games/",
+            url:"http://127.0.0.1:8000/api/teams/",
             mode: "no-cors"
         }).then(response => {
-            setGames(response.data)
+            setTeams(response.data)
         })
     },[])
     return(
         <div>
-            <h1>Games page</h1>
+            <h1>Teams page</h1>
+            <h2>country</h2>
             <hr/>      
                 <hr/>      
-                {games.map(item => (
+                {teams.map(item => (
                     <div>
                     <h1 key={item.id}>
-                        <Link to={{ pathname: `/games/${item.id}/`, fromDashboard: false}}>
-                            {item.home_team}<br/>
+                        <Link to={{ pathname: `/teams/${item.id}/`, fromDashboard: false}}>
+                            {item.name}<br/>
                         </Link>
                     </h1>
                     </div>
@@ -32,4 +33,4 @@ function Games() {
                 </div>)
                 }
 
-export default Games;
+export default Teams;

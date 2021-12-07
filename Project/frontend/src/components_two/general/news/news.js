@@ -3,7 +3,7 @@ import axios from 'axios';
 //import './Model.css';
 import {Link} from 'react-router-dom';
 
-function News() {
+function NewsList() {
     
     const [news, setNews] = useState([]);
 
@@ -30,4 +30,4 @@ function News() {
     )
 }
 
-export default News;
+export default NewsList;

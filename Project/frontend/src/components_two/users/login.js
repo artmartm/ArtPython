@@ -25,7 +25,8 @@ const LogIn = () => {
           data: formField
         }).then(response=>{
           console.log(response.data);
-         // history.push('/')
+          localStorage.setItem('token',response.data.token)
+          history.push('/')
         })
     }
    
