@@ -50,6 +50,9 @@ class TeamDetailSerializer(TeamSerializers):
     wins = serializers.ReadOnlyField()
     games = serializers.ReadOnlyField()
     defeats = serializers.ReadOnlyField()
+    defeats_ot = serializers.ReadOnlyField()
+    goals_scored = serializers.ReadOnlyField()
+    goals_missed = serializers.ReadOnlyField()
     percentage_of_wins = serializers.ReadOnlyField()
     id_team = ContentType.objects.values_list('id', flat=True).get(model='team')
 
