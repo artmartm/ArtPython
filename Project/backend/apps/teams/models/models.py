@@ -25,16 +25,33 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
         return len(Game.objects.filter(home_team=self) | Game.objects.filter(away_team=self))
 
     @property
+    def goals_scored(self):
+        goals = sum(Game.objects.values_list('home_team_goals', flat=True).filter(home_team=self)) \
+                + sum(Game.objects.values_list('away_team_goals', flat=True).filter(away_team=self))
+        return goals
+
+    @property
+    def goals_missed(self):
+        goals = sum(Game.objects.values_list('home_team_goals', flat=True).filter(away_team=self)) \
+                + sum(Game.objects.values_list('away_team_goals', flat=True).filter(home_team=self))
+        return goals
+
+    @property
     def wins(self):
-        return len(Game.objects.filter(winner=self))
+        wins = len(Game.objects.filter(winner=self))+len(Game.objects.filter(winner_OT=self))
+        return wins
 
     @property
     def defeats(self):
         return len(Game.objects.filter(loser=self))
 
     @property
+    def defeats_ot(self):
+        return len(Game.objects.filter(loser_OT=self))
+
+    @property
     def points(self):
-        return int(self.wins) * 2
+        return int(self.wins) * 2 + int(self.defeats_ot)
 
     @property
     def percentage_of_wins(self):
@@ -68,6 +85,8 @@ class Game(models.Model):
     away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team')
     winner = models.CharField(max_length=50, null=True, blank=True)
     loser = models.CharField(max_length=50, null=True, blank=True)
+    winner_OT = models.CharField(max_length=50, null=True, blank=True)
+    loser_OT = models.CharField(max_length=50, null=True, blank=True)
     home_team_goals = models.PositiveIntegerField(null=True, blank=True)
     away_team_goals = models.PositiveIntegerField(null=True, blank=True)
 
@@ -76,48 +95,88 @@ class Game(models.Model):
         return f'{self.home_team} vs {self.away_team}'
 
     @property
+    def stadium(self):
+        return Stadium.objects.values_list('name', flat=True).get(team=self.home_team)
+
+    @property
     def win(self):
         home_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.home_team)
         away_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.away_team)
-        home_team_goals = sum(home_team_players_score) / 10 + self.home_team.score + 5
-        away_team_goals = sum(away_team_players_score) / 10 + self.away_team.score
-        if min(away_team_players_score) > min(home_team_players_score):
-            away_team_goals += 5
-        else:
-            home_team_goals += 10
-        if max(away_team_players_score) > max(home_team_players_score):
-            away_team_goals += 10
-        else:
-            home_team_goals += 10
-        if self.home_team.fanbase > self.away_team.fanbase:
-            home_team_goals += 5
-        else:
-            away_team_goals += 5
-        if sum(Stadium.objects.values_list('avg_attendence', flat=True).filter(team=self.home_team)) / sum(
-                Stadium.objects.values_list('max_capacity', flat=True).filter(team=self.home_team)) >= 0.95:
-            home_team_goals += 5
-        luck = abs(home_team_goals - away_team_goals) + 1
-        rand = randint(1, Team.objects.count())
-        if rand == self.home_team.id:
-            home_team_goals += luck
-        if home_team_goals > away_team_goals:
-            self.winner = self.home_team.name
-            self.loser = self.away_team.name
-            self.home_team_goals = home_team_goals
-            self.away_team_goals = away_team_goals
-            self.save()
-            return rand
-        else:
-            self.winner = self.away_team.name
-            self.loser = self.home_team.name
-            self.home_team_goals = home_team_goals
-            self.away_team_goals = away_team_goals
-            self.save()
-            return rand
+        home_team_game_points = sum(home_team_players_score) // 10 + self.home_team.score + 5
+        away_team_game_points = sum(away_team_players_score) // 10 + self.away_team.score
 
-    @property
-    def stadium(self):
-        return Stadium.objects.values_list('name', flat=True).get(team=self.home_team)
+        if away_team_players_score and home_team_players_score:
+            if min(away_team_players_score) > min(home_team_players_score):
+                away_team_game_points += 5
+            elif min(away_team_players_score) < min(home_team_players_score):
+                home_team_game_points += 5
+            else:
+                pass
+            if max(away_team_players_score) > max(home_team_players_score):
+                away_team_game_points += 10
+            elif max(away_team_players_score) < max(home_team_players_score):
+                home_team_game_points += 10
+            else:
+                pass
+        if self.home_team.fanbase > self.away_team.fanbase:
+            home_team_game_points += 5
+        elif self.home_team.fanbase < self.away_team.fanbase:
+            away_team_game_points += 5
+        else:
+            pass
+        if Stadium.objects.values_list('avg_attendence', flat=True).filter(team=self.home_team).count():
+            if sum(Stadium.objects.values_list('avg_attendence', flat=True).filter(team=self.home_team)) / sum(
+                    Stadium.objects.values_list('max_capacity', flat=True).filter(team=self.home_team)) >= 0.95:
+                home_team_game_points += 5
+        luck = abs(home_team_game_points - away_team_game_points) + 1
+        rand = randint(1, Team.objects.count())
+        OT = False
+        if home_team_game_points == away_team_game_points:
+            OT = True
+
+            rand_OT = randint(1, 2)
+            if rand_OT == 1:
+                home_team_game_points += 1
+            else:
+                away_team_game_points += 1
+
+        else:
+            if rand == self.home_team.id:
+                home_team_game_points += luck
+            else:
+                away_team_game_points += luck
+        if home_team_game_points > away_team_game_points:
+            if OT:
+                self.winner_OT = self.home_team.name
+                self.loser_OT = self.away_team.name
+                self.winner = ""
+                self.loser = ""
+                self.save()
+            else:
+                self.winner_OT = ""
+                self.loser_OT = ""
+                self.winner = self.home_team.name
+                self.loser = self.away_team.name
+            self.home_team_goals = home_team_game_points
+            self.away_team_goals = away_team_game_points
+            self.save()
+            return rand
+        else:
+            if OT:
+                self.winner_OT = self.away_team.name
+                self.loser_OT = self.home_team.name
+                self.winner = ""
+                self.loser = ""
+                self.save()
+            else:
+                self.winner_OT = ""
+                self.loser_OT = ""
+                self.winner = self.away_team.name
+                self.loser = self.home_team.name
+            self.home_team_goals = home_team_game_points
+            self.away_team_goals = away_team_game_points
+            self.save()
+            return rand
 
     def __str__(self):
         return self.name
