@@ -46,6 +46,7 @@ export const AuthProvider=({children})=> {
 
     let contextData = {
         user:user,
+        authTokens:authTokens,
         loginUser:loginUser,
         logoutUser:logoutUser,
     }
