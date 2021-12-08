@@ -44,7 +44,7 @@ function PlayerDetail({ match }) {
             <hr/>
             <React.Fragment>
                 <button onClick={()=>{setShowComments({isOpen:true})}}>show comments</button>        
-                    {state.isOpen && 
+                    {showComments.isOpen && 
                         <div>       
                             <CommentsList key={id}  obj={id}/>
                             <button onClick={()=>{setShowComments({isOpen:false})}}>close</button>
@@ -55,7 +55,7 @@ function PlayerDetail({ match }) {
             <br/>
             <React.Fragment>
                 <button onClick={()=>{setShowPersonalInfo({isOpen:true})}}>show personal info</button>        
-                    {state.isOpen && 
+                    {showPersonalInfo.isOpen && 
                         <div>       
                             <PlayerPersonalInfo obj={player.id} />
                             <button onClick={()=>{setShowPersonalInfo({isOpen:false})}}>close</button>
@@ -64,7 +64,7 @@ function PlayerDetail({ match }) {
             </React.Fragment>
             <React.Fragment>
                 <button onClick={()=>{setShowMainInfo({isOpen:true})}}>show personal info</button>        
-                    {state.isOpen && 
+                    {showMainInfo.isOpen && 
                         <div>       
                             <PlayerMainInfo obj={player.id} />
                             <button onClick={()=>{setShowMainInfo({isOpen:false})}}>close</button>
