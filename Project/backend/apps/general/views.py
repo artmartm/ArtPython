@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from .models.generals import Comments, News, City, Country, Just2
 from .serializers import CommentsSerializers, NewsSerializers, CitySerializers, CountrySerializers, JustSer
-from .custom_permissions import OnlyLookOrRequestUser, OnlyLookOrAdminModerator, OnlyAdminOrModerator
+from apps.custom_permissions import OnlyLookOrRequestUser, OnlyLookOrAdminModerator, OnlyAdminOrModerator
 
 
 class JustView(viewsets.ModelViewSet):

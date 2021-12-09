@@ -36,6 +36,7 @@ import CommentDetail from "./components_two/general/comments/commentDetail";
 //import { red } from "@material-ui/core/colors";
 //GENERAL
 import Home from "./components_two/general/home";
+import App2Page from "./components/pages/APP2";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
     return(
        <Router>
             <div className="App">
+                <App2Page/>
               <Navigation />
                 <Switch>
                     <Route path ='/' exact component={Home} />
