@@ -1,6 +1,5 @@
 from .models.models import League
 from rest_framework import serializers
-# from settings.apps.teams.serializers import TeamSerializers
 from apps.teams.models.models import Team
 from apps.general.models.generals import News, Comments
 from apps.teams.serializers import TeamSerializers
@@ -28,12 +27,14 @@ class LeagueDetailSerializer(LeagueSerializers):
 
     @staticmethod
     def get_news(league, id_league=id_league):
+        """return nested list of news for the league"""
         news = NewsSerializers(News.objects.filter(content_type=id_league).
                                filter(object_id=league.id), many=True).data
         return news
 
     @staticmethod
     def get_comments(league, id_league=id_league):
+        """return nested list of comments for the league"""
         comments = CommentsSerializers(Comments.objects.filter(content_type=id_league).
                                        filter(object_id=league.id), many=True).data
         return comments
