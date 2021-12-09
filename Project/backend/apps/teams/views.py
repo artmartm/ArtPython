@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAdminUser
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
     serializer_class = TeamSerializers
-    #permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser]
 
     action_to_serializer = {
         "retrieve": TeamDetailSerializer

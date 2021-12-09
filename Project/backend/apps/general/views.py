@@ -12,7 +12,7 @@ class JustView(viewsets.ModelViewSet):
 class CommentsViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializers
-    permission_classes = [OnlyLookOrRequestUser]
+    #permission_classes = [OnlyLookOrRequestUser]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
