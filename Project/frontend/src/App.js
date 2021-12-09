@@ -37,6 +37,7 @@ import CommentDetail from "./components_two/general/comments/commentDetail";
 //GENERAL
 import Home from "./components_two/general/home";
 import App2Page from "./components/pages/APP2";
+import New from "./new/New";
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
     return(
        <Router>
             <div className="App">
-                <App2Page/>
+                <New/>
               <Navigation />
                 <Switch>
                     <Route path ='/' exact component={Home} />

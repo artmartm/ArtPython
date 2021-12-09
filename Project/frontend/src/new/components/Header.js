@@ -14,7 +14,7 @@ const Header = () => {
                 <Link to="/login" >Login</Link>
             )}
            
-            {user && <p>Hello { user.user_id }!</p>}
+            {user && <p>Hello <Link to={{ pathname: `/players/${user.user_id}/`, fromDashboard: false}}>go to the dashboard</Link></p>}
            
         </div>
     )
