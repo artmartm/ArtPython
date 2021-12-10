@@ -38,7 +38,7 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
 
     @property
     def wins(self):
-        wins = len(Game.objects.filter(winner=self))+len(Game.objects.filter(winner_OT=self))
+        wins = len(Game.objects.filter(winner=self)) + len(Game.objects.filter(winner_OT=self))
         return wins
 
     @property
@@ -141,9 +141,9 @@ class Game(models.Model):
                 away_team_game_points += 1
 
         else:
-            if rand == self.home_team.id:
+            if rand == self.home_team.id and home_team_game_points < away_team_game_points:
                 home_team_game_points += luck
-            else:
+            elif rand == self.away_team.id and away_team_game_points < home_team_game_points:
                 away_team_game_points += luck
         if home_team_game_points > away_team_game_points:
             if OT:
@@ -157,10 +157,10 @@ class Game(models.Model):
                 self.loser_OT = ""
                 self.winner = self.home_team.name
                 self.loser = self.away_team.name
-            self.home_team_goals = home_team_game_points
-            self.away_team_goals = away_team_game_points
+            self.home_team_goals = home_team_game_points % 10
+            self.away_team_goals = away_team_game_points % 10
             self.save()
-            return rand
+            return (home_team_game_points, away_team_game_points, rand)
         else:
             if OT:
                 self.winner_OT = self.away_team.name
@@ -173,10 +173,10 @@ class Game(models.Model):
                 self.loser_OT = ""
                 self.winner = self.away_team.name
                 self.loser = self.home_team.name
-            self.home_team_goals = home_team_game_points
-            self.away_team_goals = away_team_game_points
+            self.home_team_goals = home_team_game_points % 10
+            self.away_team_goals = away_team_game_points % 10
             self.save()
-            return rand
+            return (home_team_game_points, away_team_game_points, rand)
 
     def __str__(self):
         return self.name
