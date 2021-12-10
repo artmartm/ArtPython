@@ -2,6 +2,8 @@ import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
 
+const us = ['','Art'];
+
 const Header = () => {
     let {user, logoutUser} = useContext(AuthContext);
     return (
@@ -14,7 +16,7 @@ const Header = () => {
                 <Link to="/login" >Login</Link>
             )}
            
-            {user && <p>Hello <Link to={{ pathname: `/players/${user.user_id}/`, fromDashboard: false}}>go to the dashboard</Link></p>}
+            {user && <p>Hello <Link to={{ pathname: `/players/${user.user_id}/`, fromDashboard: false}}>{us[user.user_id]}</Link></p>}
            
         </div>
     )
