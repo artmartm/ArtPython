@@ -13,7 +13,7 @@ class CommentsSerializers(serializers.ModelSerializer):
         model = Comments
         read_only_fields = (
             "created_at",
-            "author",
+           # "author",
         )
         fields = '__all__'
 

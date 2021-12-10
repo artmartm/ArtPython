@@ -14,8 +14,8 @@ class CommentsViewSet(viewsets.ModelViewSet):
     serializer_class = CommentsSerializers
     #permission_classes = [OnlyLookOrRequestUser]
 
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(author=self.request.user)
 
 
 class NewsViewSet(viewsets.ModelViewSet):

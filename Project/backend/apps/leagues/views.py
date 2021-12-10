@@ -1,13 +1,11 @@
 from rest_framework import viewsets
 from .models.models import League
 from .serializers import LeagueSerializers, LeagueDetailSerializer
-from .custom_permisson import OnlyLookOrAdmin
 
 class LeagueViewSet(viewsets.ModelViewSet):
     queryset = League.objects.all()
     serializer_class = LeagueSerializers
 
-    permission_classes = [OnlyLookOrAdmin]
 
     action_to_serializer = {
         "retrieve": LeagueDetailSerializer
