@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import AuthContext from '../../../new/context/AuthContext';
+
+
 
 
 function AddComment({obj}) {
     let history = useHistory();
+    //let {user} = useContext(AuthContext);
+    let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     const [name, setName] = useState('')
     const [content_type, setContent_type] = useState('18')
     const [object_id, setObject_id] = useState(obj)
@@ -19,8 +24,6 @@ function AddComment({obj}) {
         formField.append('author',author)
         //formField.append('created_at',created_at)
 
-
-
         await axios({
           method: 'post',
           url:'http://127.0.0.1:8000/api/comments/',
@@ -28,16 +31,13 @@ function AddComment({obj}) {
         }).then(response=>{
           console.log(response.data);
         })
-        
-        
     }
    
     return (
         <div className="container">
             <div className="container">
       <div className="w-75 mx-auto shadow p-5">
-        <h2 className="text-center mb-4">add a comments</h2>
-        
+        <h2 className="text-center mb-4">add a comments {user.user_id}!</h2>
         <div className="form-group">
           </div>
           <div className="form-group">

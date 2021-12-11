@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App2Page from './components/pages/APP2';
+//import App2Page from './components/pages/APP2';
 //import App from './App2';
 import './index.css';
-//import App from './App';
+//import New from './new/New';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
+import App2Page from './components/pages/APP2';
+import New from './new/New';
 //import "react-toastify/dist/ReactToastify.css";
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App2Page />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

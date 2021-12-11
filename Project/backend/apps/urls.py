@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, CountryViewSet, JustView, home
+from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, CountryViewSet, JustView#, home
 from apps.leagues.views import LeagueViewSet
 from apps.teams.views import TeamViewSet, StadiumViewSet, GameViewSet
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet, HeadToHeadViewSet
@@ -29,6 +29,6 @@ router.register(r'users-profile', UsersViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('', home),
+   # path('', home),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

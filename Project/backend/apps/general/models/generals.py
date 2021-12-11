@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from smart_selects.db_fields import ChainedForeignKey
-from django.utils.timezone import now
+
 
 class BaseModel(models.Model):
     """General fields for all models"""
@@ -27,7 +27,7 @@ class LocationBaseModel(models.Model):
 
 
 class StillActive(models.Model):
-    """Check if player/team/league still playing"""
+    """Check if player/team/league...etc still active"""
     still_active = models.BooleanField(default=True)
 
     class Meta:
@@ -63,6 +63,7 @@ class Comments(BaseModel, NewsCommentsBaseModel):
 
 
 class Country(BaseModel, StillActive, LocationBaseModel):
+    """Model with all countries"""
     name = models.CharField(max_length=50)
     language = models.CharField(max_length=30)
 
@@ -75,8 +76,10 @@ class Country(BaseModel, StillActive, LocationBaseModel):
 
 
 class City(BaseModel, LocationBaseModel):
+    """Model with all cities"""
     name = models.CharField(max_length=100)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
 
@@ -100,12 +103,25 @@ class PLTSBaseModel(models.Model):
         abstract = True
 
 
+class FunClubs(PLTSBaseModel, BaseModel, StillActive):
+    """Fun clubs model"""
+
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Fun Club'
+        verbose_name_plural = 'Fun Clubs'
+
+
 class Just2(models.Model):
-    """General fields for news and comments"""
     name = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+
     def __str__(self):
         return self.name
