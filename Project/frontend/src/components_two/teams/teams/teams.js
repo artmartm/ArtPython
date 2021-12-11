@@ -1,16 +1,47 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 //import '../Model.css';
 import {Link} from 'react-router-dom';
+import AuthContext from '../../../components/pages/authContext';
+
+
 function Teams() {
 
-    const [teams, setTeams] = useState([]);
 
-    useEffect( () => {
+    
+    const [teams, setTeams] = useState([]);
+    {/*let {authTokens, logoutUser} = useContext(AuthContext);
+    
+   useEffect(()=>{
+        getTeams()
+    },[])
+    
+    let getTeams = async()=>{
+        let response = await fetch('http://127.0.0.1:8000/api/teams/', {
+            method: 'GET',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer '+String(authTokens.access)
+            }
+        })
+        let data = await response.json()
+        if(response.status) {
+            setTeams(data)
+        } else if (response.statusText === 'Unauthorized') {
+            logoutUser()
+        }
+    } */}
+
+                {/*headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer '+String(authTokens.access)
+            }*/}
+ useEffect( () => {
         axios({
             method:"GET",
             url:"http://127.0.0.1:8000/api/teams/",
-            mode: "no-cors"
+            mode: "no-cors",
+
         }).then(response => {
             setTeams(response.data)
         })

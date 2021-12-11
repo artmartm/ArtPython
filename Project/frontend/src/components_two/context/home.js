@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
-import MyAuthContext from "../../components_two/context/myContext";
+import AuthContext from "./authContext";
 
 function HomePage() {
     let [profiles, setProfiles] = useState([]);
-    let {authTokens, logoutUser} = useContext(MyAuthContext);
+    let {authTokens, logoutUser} = useContext(AuthContext);
 
     useEffect(()=>{
         getNotes()

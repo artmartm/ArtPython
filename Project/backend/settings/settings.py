@@ -44,11 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     ###
     'corsheaders',
-    'rest_framework.authtoken',
-    'rest_framework_simplejwt',
-    'djoser',
+    # 'rest_framework.authtoken',
+    # 'rest_framework_simplejwt',
+    # 'djoser',
     'smart_selects',
-    'rest_framework_simplejwt.token_blacklist'
+    # 'rest_framework_simplejwt.token_blacklist'
 
 ]
 
@@ -147,12 +147,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #
 CORS_ALLOW_ALL_ORIGINS = True
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#        # 'rest_framework.authentication.TokenAuthentication',
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     ),
+# }
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     )
+# }
+
 #
 # SIMPLE_JWT = {
 #     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
