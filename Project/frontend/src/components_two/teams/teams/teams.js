@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 //import '../Model.css';
 import {Link} from 'react-router-dom';
-import AuthContext from '../../../components/pages/authContext';
+//import AuthContext from '../../../components/pages/authContext';
 
 
 function Teams() {

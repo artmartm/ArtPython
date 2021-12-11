@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './App.css';
+//import './App.css';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import axios from "axios";
 
@@ -16,7 +16,7 @@ import AddCountry from "./components_two/general/locations/countries";
 import Navigation from "./components_two/general/navigation";
 //LOGIN LOGOUT SIGNUP
 import Registration from "./components_two/users/registration";
-import LogIn from "./components_two/users/login";
+//import LogIn from "./components_two/users/login";
 // GAMES
 import AddGame from "./components_two/teams/games/addGame";
 import Games from "./components_two/teams/games/gamesList";
@@ -36,8 +36,7 @@ import CommentDetail from "./components_two/general/comments/commentDetail";
 //import { red } from "@material-ui/core/colors";
 //GENERAL
 import Home from "./components_two/general/home";
-import MyAuthContext from "./components_two/context/myContext";
-import App2Page from "./components/pages/APP2";
+import LogIn from "./components_two/users/login/login";
 
 //<New/>
 

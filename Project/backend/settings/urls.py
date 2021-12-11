@@ -13,10 +13,10 @@ urlpatterns = [
     #path('api-auth/', include('rest_framework')),
     path('', include('apps.urls')),
     # path('auth/', include('djoser.urls')),
-    # # path('auth/', include('djoser.urls.jwt')),
-    # # path('auth/', include('djoser.urls.authtoken')),
-    # path('api2/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('api2/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('auth/', include('djoser.urls.jwt')),
+    # path('auth/', include('djoser.urls.authtoken')),
+    path('api2/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api2/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('chaining/', include('smart_selects.urls')),
 ]
 
