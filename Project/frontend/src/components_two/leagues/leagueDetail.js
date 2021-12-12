@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
+import AddComment from "../general/comments/addComment";
+import CommentsList from "../general/comments/commentsList";
 
 function LeagueDetail({ match }) {
     
@@ -8,7 +10,10 @@ function LeagueDetail({ match }) {
     const[team, setTeam] = useState([]);
     const[cm, setCm] = useState([]);
     const id = match.params.id;
-
+    const content_type = '13';
+    const[showComments, setShowComments] = useState([{
+        isOpen:false
+    }])
     useEffect(()=>{
         axios({
             method:'GET',
@@ -35,6 +40,17 @@ function LeagueDetail({ match }) {
             {cm.map(e=>(
                 <Link key={e.id}><p>{e.name}</p></Link>
             ))}
+               <React.Fragment>
+                <button onClick={()=>{setShowComments({isOpen:true})}}>show comments</button>        
+                    {showComments.isOpen && 
+                        <div>       
+                            <CommentsList key={id}  obj={id} ct={content_type}/>
+                            <button onClick={()=>{setShowComments({isOpen:false})}}>close</button>
+                        </div>
+                    }
+            </React.Fragment>
+                <AddComment obj={id} ct={content_type}/>
+            <br/>
         </div>
     )
 }

@@ -4,13 +4,16 @@ from .serializers import TeamSerializers, StadiumSerializers, GameSerializers, T
     TeamDetailSerializer, StadiumDetailSerializers, GameDetailSerializers
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
-
+#from rest_framework.authentication import TokenAuthentication
+# from rest_framework_simplejwt.authentication import TokenAuthentication
+# from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
     serializer_class = TeamSerializers
     # permission_classes = [IsAdminUser]
-
+    # authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
     # def perform_authentication(self, request):
     #     user=request.user
     action_to_serializer = {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import AddComment from './addComment';
 
-function CommentsList({obj}) {
+function CommentsList({obj, ct}) {
     
     const [comments, setComments] = useState([]);
     const particular_comments = [];
@@ -22,7 +22,7 @@ function CommentsList({obj}) {
     {comments.length ?
         comments.map(e=>(
             <div>
-            {e.object_id==obj && e.content_type==18 ?
+            {e.object_id==obj && e.content_type==ct ?
             particular_comments.push(e)
             :
             <p></p>

@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import TA from './components_two/teams/teams/TeamApp';
+import TA from './components_two/teams/teams/TeamApp';
+import TA3 from './components_two/users/login/TeamApp';
 //import "react-toastify/dist/ReactToastify.css";
 
 

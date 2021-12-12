@@ -36,14 +36,14 @@ function Teams() {
                 'Content-Type':'application/json',
                 'Authorization':'Bearer '+String(authTokens.access)
             }*/}
-        useEffect( () => {
+ useEffect( () => {
         axios({
             method:"GET",
             url:"http://127.0.0.1:8000/api/teams/",
             mode: "no-cors",
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Token ${tok}`
+                Authorization: `Token 8a20846e084b4d0082960ff01da35d26`
               },
         }).then(response => {
             setTeams(response.data)
