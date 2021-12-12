@@ -44,10 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     ###
     'corsheaders',
-    # 'rest_framework.authtoken',
-    # 'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'smart_selects',
-    'rest_framework_simplejwt.token_blacklist'
+    'rest_framework_simplejwt.token_blacklist',
+    'djoser',
 
 ]
 

@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework import routers
 from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, CountryViewSet, JustView  # , home
 from apps.leagues.views import LeagueViewSet
-from apps.teams.views import StadiumViewSet, GameViewSet, getTeams #TeamViewSet,
+from apps.teams.views import StadiumViewSet, GameViewSet, TeamViewSet
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet, HeadToHeadViewSet
 from apps.users.views import UsersViewSet
 
@@ -26,8 +26,7 @@ router.register(r'players', PlayerViewSet)
 router.register(r'player-main-info', PlayerMainInfoViewSet)
 router.register(r'player-personal-info', PlayerPersonalInfoViewSet)
 # team
-#router.register(r'teams', TeamViewSet)
-router.register(r'teams', getTeams)
+router.register(r'teams', TeamViewSet)
 router.register(r'stadiums', StadiumViewSet)
 router.register(r'games', GameViewSet)
 # users
@@ -36,7 +35,7 @@ router.register(r'users-profile', UsersViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     # path('', home),
-    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     #     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     #     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
