@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const LogIn = () => {
 
     let history = useHistory();
-
+    
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [token, setToken] = useState('');
@@ -21,7 +21,7 @@ const LogIn = () => {
 
         await axios({
           method: 'post',
-          url:'http://127.0.0.1:8000/auth/token/login/',
+          url:'http://127.0.0.1:8000/api2/token/',
           data: formField
         }).then(response=>{
           console.log(response.data);

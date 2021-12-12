@@ -1,22 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import AuthContext from '../../teams/teams/AuthContext';
-//import AuthContext from '../../../new/context/AuthContext';
 
 
-
-
-function AddComment({obj, ct}) {
-
-  let {user,authTokens, logoutUser} = useContext(AuthContext)
-
+function AddTeam() {
     let history = useHistory();
-    //let {user} = useContext(AuthContext);
     const [name, setName] = useState('')
-    const [content_type, setContent_type] = useState(ct)
+    const [content_type, setContent_type] = useState('18')
     const [object_id, setObject_id] = useState(obj)
-    const [author, setAuthor] = useState(user.user_id)
+    const [author, setAuthor] = useState('1')
     //const [created_at, setCreated_at] = useState(s)
 
     const Add = async () => {
@@ -27,6 +19,8 @@ function AddComment({obj, ct}) {
         formField.append('author',author)
         //formField.append('created_at',created_at)
 
+
+
         await axios({
           method: 'post',
           url:'http://127.0.0.1:8000/api/comments/',
@@ -34,14 +28,16 @@ function AddComment({obj, ct}) {
         }).then(response=>{
           console.log(response.data);
         })
+        
+        
     }
    
     return (
         <div className="container">
             <div className="container">
       <div className="w-75 mx-auto shadow p-5">
-        {true && user ?
-        <h2 className="text-center mb-4">add a comments !{user.user_id}!</h2> : <p>asdasdasd</p>}
+        <h2 className="text-center mb-4">add a comments</h2>
+        
         <div className="form-group">
           </div>
           <div className="form-group">
@@ -63,4 +59,4 @@ function AddComment({obj, ct}) {
     );
 };
 
-export default AddComment;
+export default AddTeam;

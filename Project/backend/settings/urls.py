@@ -7,11 +7,13 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView
 )
-
+from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
     path('admin/', admin.site.urls),
-   # path('api-auth/', include('rest_framework')),
+    #path('api-auth/', include('rest_framework')),
     path('', include('apps.urls')),
+    path('auth/', obtain_auth_token),
+
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.urls.authtoken')),

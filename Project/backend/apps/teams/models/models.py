@@ -38,7 +38,12 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
 
     @property
     def wins(self):
-        wins = len(Game.objects.filter(winner=self)) + len(Game.objects.filter(winner_OT=self))
+        wins = len(Game.objects.filter(winner=self))
+        return wins
+
+    @property
+    def wins_ot(self):
+        wins = len(Game.objects.filter(winner_OT=self))
         return wins
 
     @property

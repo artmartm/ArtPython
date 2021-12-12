@@ -19,7 +19,7 @@ function PlayerDetail({ match }) {
 
     const[player, setPlayer] = useState({});
     const id = match.params.id;
-    const cotent_type = '18';
+    const content_type = '18';
 
     useEffect(()=>{
         axios({
@@ -46,12 +46,12 @@ function PlayerDetail({ match }) {
                 <button onClick={()=>{setShowComments({isOpen:true})}}>show comments</button>        
                     {showComments.isOpen && 
                         <div>       
-                            <CommentsList key={id}  obj={id}/>
+                            <CommentsList key={id}  obj={id} ct={content_type}/>
                             <button onClick={()=>{setShowComments({isOpen:false})}}>close</button>
                         </div>
                     }
             </React.Fragment>
-                <AddComment obj={id}/>
+                <AddComment obj={id} ct={content_type}/>
             <br/>
             <React.Fragment>
                 <button onClick={()=>{setShowPersonalInfo({isOpen:true})}}>show personal info</button>        

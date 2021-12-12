@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 //import '../../Model.css';
 import {Link} from 'react-router-dom';
+import TeamDetail from '../teams/teamDetail';
+import TeamLogo from '../teams/teamsLogo';
 function Games() {
 
     const [games, setGames] = useState([]);
@@ -26,6 +28,7 @@ function Games() {
                         <Link to={{ pathname: `/game/${item.id}/`, fromDashboard: false}}>
                             {item.name}<br/>
                         </Link>
+                        <Link to={{ pathname: `/game/${item.id}/`, fromDashboard: false}}><TeamLogo id={item.home_team}/> vs <TeamLogo id={item.away_team}/> </Link>
                     </h1>
                     </div>
                     ))}

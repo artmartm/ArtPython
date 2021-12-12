@@ -1,18 +1,18 @@
-//import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import PrivateRoute from './utils/PrivateRoute'
-import { AuthProvider } from './context/AuthContext'
+import { AuthProvider } from './AuthContext'
+import Header from './header';
+import HomePage from './homepage';
+import LoginPage from './loginpage';
 
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import Header from './components/Header'
+import PrivateRoute from './privaterouter';
 
-function New() {
+function TA3() {
   return (
     <div className="App">
       <Router>
         <AuthProvider>
           <Header/>
+          <h1>jhkjjk</h1>
           <PrivateRoute component={HomePage} path="/" exact/>
           <Route component={LoginPage} path="/login"/>
         </AuthProvider>
@@ -21,4 +21,4 @@ function New() {
   );
 }
 
-export default New;
+export default TA3;
