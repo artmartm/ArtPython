@@ -49,8 +49,6 @@ function App() {
               <Navigation />
                 <Switch>
                     <Route path ='/' exact component={Home} />
-                    <Route path='/add-comment' exact component={AddComment}/>
-                    <Route path='/list-of-comments' exact component={CommentsList}/>
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-city' exact component={AddCity}/>
                     <Route path='/add-country' exact component={AddCountry}/>

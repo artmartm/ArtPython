@@ -48,6 +48,7 @@ class TeamDetailSerializer(TeamSerializers):
     team_stats = serializers.SerializerMethodField()
     points = serializers.ReadOnlyField()
     wins = serializers.ReadOnlyField()
+    wins_ot = serializers.ReadOnlyField
     games = serializers.ReadOnlyField()
     defeats = serializers.ReadOnlyField()
     defeats_ot = serializers.ReadOnlyField()
