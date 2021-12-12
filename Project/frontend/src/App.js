@@ -55,7 +55,6 @@ function App() {
                 <Header />
                     <Route path ='/' exact component={Home} />
                     <Route path='/comments/:id' exact component={CommentDetail}/>
-                    <Route path='/add-city' exact component={AddCity}/>
                     <Route path='/add-country' exact component={AddCountry}/>
                     <Route path='/add-game' exact component={AddGame}/>
                     <Route path='/games-list' exact component={Games}/>

@@ -60,7 +60,7 @@ let getNotes = async() =>{
     return(
         <div>
             <h1>Teams page</h1>
-            <h2>!{tok}</h2>
+            <h2>!{tok}</h2><br/>
             <h2>country</h2>
             <hr/>      
                 <hr/>      

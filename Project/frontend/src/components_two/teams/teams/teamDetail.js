@@ -35,8 +35,9 @@ function TeamDetail({ match }) {
     },[id])
     return(
         <div>
-            <h1>{team.name}</h1>
-            <h1>id is {team.id}</h1>
+            <h1>{team.name} <img src={team.team_logo} width={50} height={50}/></h1>
+            
+
             <p>games {team.games}</p>
             <p>amount of points {team.points}</p>
             <p>wins {team.wins}</p>
