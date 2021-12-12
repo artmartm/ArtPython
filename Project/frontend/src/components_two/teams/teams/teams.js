@@ -10,6 +10,8 @@ function Teams() {
     let tok = localStorage.getItem('auth_token');
     let l = '99276f25482a71de3baa2a6d76b6fb7680e478d5';
     const [teams, setTeams] = useState([]);
+
+
     {/*let {authTokens, logoutUser} = useContext(AuthContext);
     
    useEffect(()=>{
@@ -49,6 +51,8 @@ function Teams() {
             setTeams(response.data)
         })
     },[])
+
+
     return(
         <div>
             <h1>Teams page</h1>
