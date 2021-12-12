@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import AddComment from "../../general/comments/addComment";
 import CommentsList from "../../general/comments/commentsList";
+import AuthContext from "./AuthContext";
 
 function TeamDetail({ match }) {
     
@@ -15,11 +16,17 @@ function TeamDetail({ match }) {
     const[showPlayers, setShowPlayers] = useState([{
         isOpen:false
     }])
+    let {authTokens, logoutUser} = useContext(AuthContext)
+
     const content_type = '14';
     useEffect(()=>{
         axios({
             method:'GET',
             url:`http://127.0.0.1:8000/api/teams/${id}`,
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer ' + String(authTokens.access)
+            }
         }).then(response=>{
             setTeam(response.data)
             setPl(response.data.players)

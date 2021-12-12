@@ -1,19 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import AuthContext from '../../teams/teams/AuthContext';
 //import AuthContext from '../../../new/context/AuthContext';
 
 
 
 
 function AddComment({obj, ct}) {
+
+  let {user,authTokens, logoutUser} = useContext(AuthContext)
+
     let history = useHistory();
     //let {user} = useContext(AuthContext);
-    let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     const [name, setName] = useState('')
     const [content_type, setContent_type] = useState(ct)
     const [object_id, setObject_id] = useState(obj)
-    const [author, setAuthor] = useState('1')
+    const [author, setAuthor] = useState(user.user_id)
     //const [created_at, setCreated_at] = useState(s)
 
     const Add = async () => {
@@ -37,7 +40,8 @@ function AddComment({obj, ct}) {
         <div className="container">
             <div className="container">
       <div className="w-75 mx-auto shadow p-5">
-        <h2 className="text-center mb-4">add a comments {user.user_id}!</h2>
+        {true && user ?
+        <h2 className="text-center mb-4">add a comments !{user.user_id}!</h2> : <p>asdasdasd</p>}
         <div className="form-group">
           </div>
           <div className="form-group">

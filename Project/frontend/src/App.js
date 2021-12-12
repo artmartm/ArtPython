@@ -37,6 +37,11 @@ import CommentDetail from "./components_two/general/comments/commentDetail";
 //GENERAL
 import Home from "./components_two/general/home";
 import LogIn from "./components_two/users/login/login";
+import TA from "./components_two/teams/teams/TeamApp";
+import PrivateRoute from "./components_two/teams/teams/privaterouter";
+import { AuthProvider } from "./components_two/teams/teams/AuthContext";
+import Header from "./components_two/teams/teams/header";
+import LoginPage from "./components_two/teams/teams/loginpage";
 
 //<New/>
 
@@ -46,8 +51,8 @@ function App() {
     return(
        <Router>
             <div className="App">
-              <Navigation />
-                <Switch>
+                <AuthProvider>
+                <Header />
                     <Route path ='/' exact component={Home} />
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-city' exact component={AddCity}/>
@@ -56,19 +61,19 @@ function App() {
                     <Route path='/games-list' exact component={Games}/>
                     <Route path='/game/:id' exact component={GameDetail}/>
                     <Route path='/about' exact component={About}/>
-                    <Route path='/login' exact component={LogIn} />
+                    <Route path='/login' exact component={LoginPage} />
                     <Route path='/reg' exact component={Registration}/>
                     <Route path='/add-city' exact component={AddCity}/>
                     <Route path ='/news' exact component={NewsList} />
                     <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} />
-                    <Route path='/teams' exact component={Teams} />
+                    <PrivateRoute path='/teams' exact component={Teams} />
                     <Route path='/teams/:id' exact component={TeamDetail} />
                     <Route path='/players' exact component={Players} />
                     <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadiums' exact component={ListOfStadiums} />
                     <Route path='/stadium/:id' exact component={StadiumDetail} />
-                </Switch>
+                </AuthProvider>
             </div>
         </Router>
     );

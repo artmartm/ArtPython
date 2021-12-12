@@ -17,7 +17,7 @@ ReactDOM.render(
   <React.StrictMode>
    {/*} <Provider store={store}>
       <MainRedux/>
-  </Provider>*/} <TA/>
+  </Provider>*/} <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );
