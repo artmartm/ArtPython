@@ -15,9 +15,9 @@ const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>
-   {/* <Provider store={store}>
+   {/*} <Provider store={store}>
       <MainRedux/>
-  </Provider>*/} <App/>
+  </Provider>*/} <TA/>
   </React.StrictMode>,
   document.getElementById('root')
 );

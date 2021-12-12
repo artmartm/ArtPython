@@ -5,6 +5,7 @@ import HomePage from './homepage';
 import LoginPage from './loginpage';
 
 import PrivateRoute from './privaterouter';
+import Teams from './teams';
 
 function TA() {
   return (
@@ -12,8 +13,9 @@ function TA() {
       <Router>
         <AuthProvider>
           <Header/>
-          <PrivateRoute component={HomePage} path="/" exact/>
+          //<PrivateRoute component={HomePage} path="/" exact/>
           <Route component={LoginPage} path="/login"/>
+          <PrivateRoute component={Teams} path="/teams"/>
         </AuthProvider>
       </Router>
     </div>

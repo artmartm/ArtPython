@@ -3,9 +3,9 @@ import { useContext } from 'react'
 import AuthContext from './AuthContext'
 
 const PrivateRoute = ({children, ...rest}) => {
-    let {user} = useContext(AuthContext)
+    let {authTokens} = useContext(AuthContext)
     return(
-        <Route {...rest}>{!user ? <Redirect to="/login" /> :   children}</Route>
+        <Route {...rest}>{!authTokens ? <Redirect to="/login" /> :   children}</Route>
     )
 }
 

@@ -13,7 +13,7 @@ class TeamViewSet(viewsets.ModelViewSet):
     serializer_class = TeamSerializers
     # permission_classes = [IsAdminUser]
     # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser]
     # def perform_authentication(self, request):
     #     user=request.user
     action_to_serializer = {
