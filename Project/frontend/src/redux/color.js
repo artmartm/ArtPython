@@ -6,7 +6,7 @@ function Color(props) {
     return(
         <div>
             <button onClick={()=>props.onGreen()}>GREEN</button>
-            <>{props.color}</>
+            <p style={{background:props.color}}>{props.color}</p>
             <button onClick={()=>props.onBlue()}>blue</button>
         </div>
     )
