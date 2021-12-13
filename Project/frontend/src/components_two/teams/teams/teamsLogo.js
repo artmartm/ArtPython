@@ -1,7 +1,14 @@
 import axios from "axios";
 import React, {useState, useEffect, useContext} from "react";
+import AuthContext from "../../general/base/AuthContext";
 
-import AuthContext from "./AuthContext";
+
+const styles = {
+    img:{
+    width:40,
+    height:40,
+    borderRadius:20}
+}
 
 function TeamLogo({id}) {
     
@@ -25,7 +32,7 @@ function TeamLogo({id}) {
     },[id])
     return(
         <div>
-            <h1>{team.name} <img src={team.team_logo} width={50} height={50}/></h1>
+            <p>{team.name} <img src={team.team_logo} style={styles.img}/></p>
         </div>
 
     )

@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import TA from './components_two/teams/teams/TeamApp';
-import TA3 from './components_two/users/login/TeamApp';
 import MainRedux from './redux/mainredux';
 //import "react-toastify/dist/ReactToastify.css";
 import {createStore} from 'redux';
@@ -15,9 +13,9 @@ const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>
-   {/*} <Provider store={store}>
+  {/*} <Provider store={store}>
       <MainRedux/>
-  </Provider>*/} <App/>
+  </Provider>*/}  <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

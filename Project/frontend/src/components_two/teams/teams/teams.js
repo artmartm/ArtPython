@@ -2,10 +2,9 @@ import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 //import '../Model.css';
 import {Link} from 'react-router-dom';
-import AuthContext from './AuthContext';
-//import AuthContext from '../../../components/pages/authContext';
 
-
+import TeamLogo from './teamsLogo';
+import AuthContext from '../../general/base/AuthContext';
 function Teams() {
 
     let tok = localStorage.getItem('auth_token');
@@ -39,8 +38,6 @@ let getNotes = async() =>{
     }
     
 }
-
-
             ///////////
         {/*useEffect( () => {
         axios({
@@ -60,17 +57,14 @@ let getNotes = async() =>{
     return(
         <div>
             <h1>Teams page</h1>
-            <h2>!{tok}</h2><br/>
-            <h2>country</h2>
             <hr/>      
-                <hr/>      
                 {teams.map(item => (
                     <div>
-                    <h1 key={item.id}>
+                    <h2 key={item.id}>
                         <Link to={{ pathname: `/teams/${item.id}/`, fromDashboard: false}}>
-                            {item.name}<br/>
+                            <TeamLogo id={item.id}/><br/>
                         </Link>
-                    </h1>
+                    </h2>
                     </div>
                     ))}
                 </div>)

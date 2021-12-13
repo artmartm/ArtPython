@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../general/base/AuthContext";
 import AddComment from "../../general/comments/addComment";
 import CommentsList from "../../general/comments/commentsList";
-import AuthContext from "./AuthContext";
 
 function TeamDetail({ match }) {
     
@@ -44,7 +44,6 @@ function TeamDetail({ match }) {
             <p>defeats {team.defeats}</p>
             <p>wins OT {team.wins_ot}</p>
             <p>defeats OT {team.defeats_ot}</p>
-            <h2>{team.team_logo}</h2>
             <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
             {team.team_logo ? <img src={team.team_logo} /> : <p>no photo yet</p>}
             <hr/>

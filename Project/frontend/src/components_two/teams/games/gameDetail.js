@@ -23,6 +23,7 @@ function GameDetail({ match }) {
     return(
         <div>
             <h1>{game.name}</h1>
+            <h2>{game.home_team_goals} : {game.away_team_goals}</h2>
             <p>winner is <b>{game.winner}</b></p>
         </div>
     )

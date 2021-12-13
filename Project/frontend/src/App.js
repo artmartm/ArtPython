@@ -34,16 +34,14 @@ import StadiumDetail from "./components_two/teams/stadiums/stadiumDetail";
 import NewsList from "./components_two/general/news/news";
 import CommentDetail from "./components_two/general/comments/commentDetail";
 //import { red } from "@material-ui/core/colors";
-//GENERAL
+//GENERAL and BASE
 import Home from "./components_two/general/home";
-import LogIn from "./components_two/users/login/login";
-import TA from "./components_two/teams/teams/TeamApp";
-import PrivateRoute from "./components_two/teams/teams/privaterouter";
-import { AuthProvider } from "./components_two/teams/teams/AuthContext";
-import Header from "./components_two/teams/teams/header";
-import LoginPage from "./components_two/teams/teams/loginpage";
+import { AuthProvider } from "./components_two/general/base/AuthContext";
+import  PrivateRoute  from "./components_two/general/base/privaterouter";
+import  Header  from "./components_two/general/base/header";
+import  LoginPage  from "./components_two/general/base/loginpage";
 
-//<New/>
+
 
 function App() {
 
@@ -52,7 +50,7 @@ function App() {
        <Router>
             <div className="App">
                 <AuthProvider>
-                <Header />
+                <Header/>
                 {/*<Switch>
                 <Navigation />*/}
                     <Route path ='/' exact component={Home} />

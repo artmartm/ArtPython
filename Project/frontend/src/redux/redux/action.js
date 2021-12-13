@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE, COMMENT_UPDATE } from "./types";
+import { INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE, COMMENT_UPDATE, GET_TEAM, ADD_TEAM } from "./types";
 
 export function incrementLikes() {
     return {
@@ -30,5 +30,19 @@ export function commentUpdate(text,id) {
     return {
         type: COMMENT_UPDATE,
         data: {text,id}
+    }
+}
+
+export function getTeam(team) {
+    return {
+        type: GET_TEAM,
+        //data: {text,id}
+    }
+}
+
+export function addTeam(team) {
+    return {
+        type: ADD_TEAM,
+        data: {team}
     }
 }

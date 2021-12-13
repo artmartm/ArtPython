@@ -1,6 +1,7 @@
 import React from 'react';
 import Comments from './comments';
 import Likes from './likes';
+import TeamListRed from './teams';
 import Title from './title';
 
 function MainRedux() {
@@ -10,6 +11,7 @@ function MainRedux() {
             <Likes />
             <Title />
             <Comments/>
+            <TeamListRed id={0}/>
         </div>
     )
 }
