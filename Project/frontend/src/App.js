@@ -7,15 +7,13 @@ import Leagues from "./components_two/leagues/leagues";
 import LeagueDetail from "./components_two/leagues/leagueDetail";
 import About from "./components_two/general/about";
 //COMMENTS
-import AddComment from "./components_two/general/comments/addComment";
-import CommentsList from "./components_two/general/comments/commentsList";
 //LOCATIONS
 import AddCity from "./components_two/general/locations/cities";
 import AddCountry from "./components_two/general/locations/countries";
 //NAVIGATION
 import Navigation from "./components_two/general/navigation";
 //LOGIN LOGOUT SIGNUP
-import Registration from "./components_two/users/registration";
+import Registration from "./components_two/users/signUp.js/registration";
 //import LogIn from "./components_two/users/login";
 // GAMES
 import AddGame from "./components_two/teams/games/addGame";
@@ -39,7 +37,7 @@ import Home from "./components_two/general/home";
 import { AuthProvider } from "./components_two/general/base/AuthContext";
 import  PrivateRoute  from "./components_two/general/base/privaterouter";
 import  Header  from "./components_two/general/base/header";
-import  LoginPage  from "./components_two/general/base/loginpage";
+import  LoginPage  from "./components_two/users/login/logIn";
 
 
 

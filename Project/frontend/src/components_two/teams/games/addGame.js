@@ -32,7 +32,7 @@ const AddGame = () => {
         <div className="container">
             <div className="container">
               <div className="w-75 mx-auto shadow p-5">
-                <h2 className="text-center mb-4">login</h2>
+                <h2 className="text-center mb-4">add a game</h2>
                   <div className="form-group">
                     </div>
                       <div className="form-group">

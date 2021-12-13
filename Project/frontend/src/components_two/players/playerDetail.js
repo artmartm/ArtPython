@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import AddComment from "../general/comments/addComment";
 import CommentsList from "../general/comments/commentsList";
+import TeamLogo from "../teams/teams/teamsLogo";
 import PlayerMainInfo from "./playerMainInfo";
 import PlayerPersonalInfo from "./playerPersonalInfo";
 
@@ -35,12 +36,13 @@ function PlayerDetail({ match }) {
             <h1>{player.name} page</h1>
             <h3>team is {player.team}</h3>
             <h3>position is {player.position}</h3>
-            <Link 
+            <h3>current team is <Link 
                 style={{textDecoration: 'none'}} 
                 key={player.team} 
                 to={`/teams/${player.team}`}>
-                <p>to the player's team</p>
+                <p><TeamLogo id={'1'}/></p>
             </Link>
+            </h3>
             <hr/>
             <React.Fragment>
                 <button onClick={()=>{setShowComments({isOpen:true})}}>show comments</button>        
