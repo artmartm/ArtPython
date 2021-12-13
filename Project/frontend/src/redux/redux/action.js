@@ -1,4 +1,17 @@
-import { INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE, COMMENT_UPDATE, GET_TEAM, ADD_TEAM } from "./types";
+import { GREEN, BLUE, INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE, COMMENT_UPDATE, GET_TEAM, ADD_TEAM } from "./types";
+
+export function makeGreen() {
+    return {
+        type: GREEN
+    }
+}
+
+
+export function makeBlue() {
+    return {
+        type: BLUE
+    }
+}
 
 export function incrementLikes() {
     return {

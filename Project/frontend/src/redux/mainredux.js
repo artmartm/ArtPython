@@ -3,6 +3,7 @@ import Comments from './comments';
 import Likes from './likes';
 import TeamListRed from './teams';
 import Title from './title';
+import Color from './color';
 
 function MainRedux() {
     return(
@@ -12,6 +13,7 @@ function MainRedux() {
             <Title />
             <Comments/>
             <TeamListRed id={0}/>
+            <Color />
         </div>
     )
 }

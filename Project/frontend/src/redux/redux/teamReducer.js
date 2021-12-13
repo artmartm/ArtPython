@@ -5,40 +5,17 @@ import axios from 'axios';
 import TeamLogo from "../../components_two/teams/teams/teamsLogo";
 import Teams from "../../components_two/teams/teams/teams";
 import AllTeams from "../../components_two/teams/teams/allTeams";
+import take_team from "../../components_two/teams/teams/allTeams";
 //import '../Model.css';
 
-function Teams1() {
 
-    const [teams, setTeams] = useState([]);
-
-   useEffect(()=> {
-    getNotes()
-}, [])
-
-
-let getNotes = async() =>{
-    let response = await fetch('http://127.0.0.1:8000/api/teams/', {
-        method:'GET',
-        headers:{
-            'Content-Type':'application/json',
-            //'Authorization':'Bearer ' + String(authTokens.access)
-        }
-    })
-    let data = await response.json()
-    if(response.status ){
-        setTeams(data)
-    }
-    
-}
-    return({teams})
-}
 
 const lol = []
 
 
 const initialState = {
     
-    teams: Teams1
+    teams: take_team
 }
 
 export const teamReducer=(state=initialState, action) => {
@@ -51,7 +28,7 @@ export const teamReducer=(state=initialState, action) => {
         case ADD_TEAM:
             return {
                 ...state,
-                teams: state.teams
+                teams: state.teams.push[action]
             }
         default:
             return state;

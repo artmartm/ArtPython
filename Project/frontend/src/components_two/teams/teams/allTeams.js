@@ -3,14 +3,11 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 
-
+const take_team = [];
 function AllTeams() {
 
     const all_teams = [];
     const [teams, setTeams] = useState([]);
-
-
-   
         useEffect( () => {
         axios({
             method:"GET",
@@ -24,10 +21,10 @@ function AllTeams() {
         })
     },[])
 
-    {teams.map(item => (all_teams.push(item)))}
+    {teams.map(item => (take_team.push(item)))}
 
     return(
-        {all_teams}
+        [{all_teams}]
     )}
 
-export default AllTeams;
+export default take_team;
