@@ -53,6 +53,8 @@ function App() {
             <div className="App">
                 <AuthProvider>
                 <Header />
+                {/*<Switch>
+                <Navigation />*/}
                     <Route path ='/' exact component={Home} />
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-country' exact component={AddCountry}/>
@@ -72,6 +74,7 @@ function App() {
                     <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadiums' exact component={ListOfStadiums} />
                     <Route path='/stadium/:id' exact component={StadiumDetail} />
+                {/*</Switch>*/}
                 </AuthProvider>
             </div>
         </Router>

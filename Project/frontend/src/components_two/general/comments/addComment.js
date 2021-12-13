@@ -2,14 +2,13 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../../teams/teams/AuthContext';
-//import AuthContext from '../../../new/context/AuthContext';
 
 
 
 
 function AddComment({obj, ct}) {
 
-  let {user,authTokens, logoutUser} = useContext(AuthContext)
+  let {user} = useContext(AuthContext)
 
     let history = useHistory();
     //let {user} = useContext(AuthContext);
