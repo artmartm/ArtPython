@@ -2,6 +2,8 @@ import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from './AuthContext'
 
+const users = {1:'Art',4:'kit'}
+
 const Header = () => {
     let {user,authTokens, logoutUser} = useContext(AuthContext)
     return (

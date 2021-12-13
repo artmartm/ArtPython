@@ -48,18 +48,18 @@ function PlayerDetail({ match }) {
             setPlayer(response.data)
         })
     },[id])
-//{{backgroundImage: player.background }}
+    //style={{marginTop:'250px'}}
     return(
-        <div style={styles.div}> 
+        <div className='player_div' style={{backgroundImage: `url(${player.background})`, position:'center'}}> 
+            <div >  
             <h1>{player.name} page</h1>
             <img src={player.image} style={styles.img}/>
-            <h3>team is {player.team}</h3>
             <h3>position is {player.position}</h3>
             <h3>current team is <Link 
                 style={{textDecoration: 'none'}} 
                 key={player.team} 
                 to={`/teams/${player.team}`}>
-                <p style={styles.p}><TeamLogo id={player.team}/></p>
+                <p><TeamLogo id={player.team}/></p>
             </Link>
             </h3>
             <hr/>
@@ -92,6 +92,7 @@ function PlayerDetail({ match }) {
                         </div>
                     }
             </React.Fragment>
+            </div>
         </div>
     )
 }

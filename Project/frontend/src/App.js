@@ -63,8 +63,8 @@ function App() {
                     <Route path='/add-city' exact component={AddCity}/>
                     <Route path ='/news' exact component={NewsList} />
                     <Route path='/leagues' exact component={Leagues} />
-                    <Route path='/leagues/:id' exact component={LeagueDetail} />
-                    <PrivateRoute path='/teams' exact component={Teams} />
+                    <Route path='/leagues/:id' exact component={LeagueDetail} /> {/*PrivateRoute*/}
+                    <Route path='/teams' exact component={Teams} />
                     <Route path='/teams/:id' exact component={TeamDetail} />
                     <Route path='/players' exact component={Players} />
                     <Route path='/players/:id' exact component={PlayerDetail} />

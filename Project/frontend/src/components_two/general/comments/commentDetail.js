@@ -26,6 +26,7 @@ function CommentDetail({ match }) {
         <div>
             <h1>{comment.name}</h1>
             <h2>author is {comment.author}</h2>
+            <h3>created at {comment.created_at}</h3>
         </div>
     )
 }

@@ -45,7 +45,7 @@ function TeamDetail({ match }) {
             <p>wins OT {team.wins_ot}</p>
             <p>defeats OT {team.defeats_ot}</p>
             <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
-            {team.team_logo ? <img src={team.team_logo} /> : <p>no photo yet</p>}
+            {team.team_logo ? <img src={team.team_logo} width={500} height={500}/> : <p>no photo yet</p>}
             <hr/>
             <h3>list of players</h3>
             <React.Fragment>
