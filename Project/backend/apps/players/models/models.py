@@ -8,6 +8,7 @@ from datetime import date
 class Player(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=50)
     image = models.ImageField(blank=True, null=True)
+    background = models.ImageField(blank=True, null=True, default=None)
     score = models.PositiveIntegerField()
     shoots = models.CharField(max_length=7, choices=SHOOTS, default='L')
     team = models.ForeignKey(Team, on_delete=models.CASCADE)

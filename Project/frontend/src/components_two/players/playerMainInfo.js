@@ -19,7 +19,7 @@ function PlayerMainInfo({ obj }) {
 
     return(
         <div>
-  <h1>Player personal info</h1>
+  <h1>Player main info</h1>
             <h2>{player.weight}</h2>
             <h2>{player.height}</h2>
             <h2>{player.captain}!</h2>

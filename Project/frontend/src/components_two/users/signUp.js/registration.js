@@ -31,49 +31,35 @@ const Registration = () => {
    
     return (
         <div className="container">
-            <div className="container">
-      <div className="w-75 mx-auto shadow p-5">
-        <h2 className="text-center mb-4">registration</h2>
-        
-        <div className="form-group">
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="Enter Your Name"
-              name="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button className="btn btn-primary btn-block" onClick={Add}>signup</button>
+          <div class="main-signin">
+		<div class="main-signin__head">
+			<p>SIGNUP</p>
+		</div>
+		<div class="main-signin__middle">
+			<div class="middle__form">
+      <input type="text" placeholder="name" name="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+      <input type="text" placeholder="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+      <input type="password" placeholder="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+      <input type="submit" placeholder="login" onClick={Add}/>
+
+			</div>
+		</div>
+		<div class="main-signin__foot">
+			<div class="foot__left">
+				<p>through:</p>
+			</div>
+			<div class="foot__right">
+				<div class="twit"><a href="#"></a></div>
+				<div class="face"><a href="#"></a></div>
+			</div>
+		</div>
+	</div>
           <p>already have an account? <Link to={`/login`}>login</Link> </p>
        
       </div>
-    </div>
-        </div>
     );
 };
 
 export default Registration;
+
+

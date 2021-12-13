@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import AddComment from "../../general/comments/addComment";
 import CommentsList from "../../general/comments/commentsList";
+import TeamLogo from "../teams/teamsLogo";
 
 function StadiumDetail({ match }) {
     const[showComments, setShowComments] = useState([{
@@ -25,7 +26,12 @@ function StadiumDetail({ match }) {
     return(
         <div>
             <h1>{stadium.name}</h1>
-            <h2>{stadium.team}</h2>
+    
+            <Link  style={{textDecoration: 'none'}} 
+                key={stadium.team} 
+                to={`/teams/${stadium.team}`}>
+                <TeamLogo id={stadium.team}/>
+            </Link>
             <React.Fragment>
                 <button onClick={()=>{setShowComments({isOpen:true})}}>show comments</button>        
                     {showComments.isOpen && 

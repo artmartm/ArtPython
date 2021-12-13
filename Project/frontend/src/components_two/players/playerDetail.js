@@ -1,3 +1,4 @@
+import { rgbToHex } from "@material-ui/core";
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
@@ -6,6 +7,23 @@ import CommentsList from "../general/comments/commentsList";
 import TeamLogo from "../teams/teams/teamsLogo";
 import PlayerMainInfo from "./playerMainInfo";
 import PlayerPersonalInfo from "./playerPersonalInfo";
+
+const styles = {
+    img:{
+        width:150,
+        height:150,
+        borderRadius:75,
+        background:'blue',
+        border:'2px',
+        padding: '2px'
+    },
+    div:{
+        backgroundColor:'#c76f6f'
+    },
+    p:{
+        backgroundColor:'yellow',
+    }
+}
 
 function PlayerDetail({ match }) {
     const[showComments, setShowComments] = useState([{
@@ -30,17 +48,18 @@ function PlayerDetail({ match }) {
             setPlayer(response.data)
         })
     },[id])
-
+//{{backgroundImage: player.background }}
     return(
-        <div>
+        <div style={styles.div}> 
             <h1>{player.name} page</h1>
+            <img src={player.image} style={styles.img}/>
             <h3>team is {player.team}</h3>
             <h3>position is {player.position}</h3>
             <h3>current team is <Link 
                 style={{textDecoration: 'none'}} 
                 key={player.team} 
                 to={`/teams/${player.team}`}>
-                <p><TeamLogo id={'1'}/></p>
+                <p style={styles.p}><TeamLogo id={player.team}/></p>
             </Link>
             </h3>
             <hr/>
@@ -65,7 +84,7 @@ function PlayerDetail({ match }) {
                     }
             </React.Fragment>
             <React.Fragment>
-                <button onClick={()=>{setShowMainInfo({isOpen:true})}}>show personal info</button>        
+                <button onClick={()=>{setShowMainInfo({isOpen:true})}}>show main info</button>        
                     {showMainInfo.isOpen && 
                         <div>       
                             <PlayerMainInfo obj={player.id} />

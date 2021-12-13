@@ -33,9 +33,9 @@ let getNotes = async() =>{
 
     if(response.status === 200){
         setTeams(data)
-    }else if(response.statusText === 'Unauthorized'){
-        logoutUser()
-    }
+    }//else if(response.statusText === 'Unauthorized'){
+        //logoutUser()
+    //}
     
 }
             ///////////
