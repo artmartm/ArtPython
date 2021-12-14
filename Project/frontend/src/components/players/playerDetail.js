@@ -50,7 +50,7 @@ function PlayerDetail({ match }) {
     },[id])
     //style={{marginTop:'250px'}}
     return(
-        <div className='player_div' style={{backgroundImage: `url(${player.background})`, position:'center'}}> 
+        <div className='player_div' style={{backgroundImage: `url(${player.background})`, position:'center', backgroundRepeat:'no-repeat', backgroundPosition:'center'}}> 
             <div >  
             <h1>{player.name} page</h1>
             <img src={player.image} style={styles.img}/>
@@ -59,7 +59,7 @@ function PlayerDetail({ match }) {
                 style={{textDecoration: 'none'}} 
                 key={player.team} 
                 to={`/teams/${player.team}`}>
-                <p><TeamLogo id={player.team}/></p>
+                <p style={{marginBottom:'250px'}}><TeamLogo id={'1'}/></p> {/*{player.team}*/}
             </Link>
             </h3>
             <hr/>

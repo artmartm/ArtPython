@@ -42,8 +42,17 @@ import teamsList from "./components/teams/teams/teamsList";
 
 
 
-function App() {
+class App extends React.Component {
 
+    componentWillMount() {
+        console.log('works before')
+    }
+
+    componentDidMount() {
+        console.log('wors after')
+    }
+
+    render() {
     
     return(
        <Router>
@@ -78,5 +87,5 @@ function App() {
         </Router>
     );
 }
-
+}
 export default App;

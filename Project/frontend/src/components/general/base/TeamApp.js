@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+{/*import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { AuthProvider } from './AuthContext'
 import Header from './header';
 import HomePage from './homepage';
@@ -22,4 +22,4 @@ function TA() {
   );
 }
 
-export default TA;
+export default TA;*/}

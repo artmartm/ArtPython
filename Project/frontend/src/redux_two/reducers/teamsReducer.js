@@ -1,7 +1,6 @@
 import { GET_ALL_TEAMS, GET_PARTICULAR_TEAM } from "../types/types";
 
 const initialState = {
-    
     teams: []
 }
 

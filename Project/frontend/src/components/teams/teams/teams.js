@@ -26,7 +26,7 @@ let getNotes = async() =>{
         method:'GET',
         headers:{
             'Content-Type':'application/json',
-            'Authorization':'Bearer ' + String(authTokens.access)
+            //'Authorization':'Bearer ' + String(authTokens.access)
         }
     })
     let data = await response.json()

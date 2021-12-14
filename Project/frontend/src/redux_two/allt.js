@@ -9,24 +9,24 @@ function MainRedux2() {
     const dispatch = useDispatch();
     const teams = useSelector(state => state.teamsReducer.teams)
     const color = useSelector(state=> state.colorReducer.color)
-
-    const doRed=()=>{
-        dispatch(makeRed())
-    }
-
-    const doBlue=()=>{
-        dispatch(makeBlue())
-    }
+    const team = useSelector(state=> state.particularTeamReducer.team)
+   
 
     return(
         <div>
             <h1>redux</h1>
+            {team ? 
+            <h2 key={team.id}>!!!{team}!!!</h2>
+                :
+                <p>no team sel</p>
+            }
+            <hr/>
             {teams.length>0 ?
             <div >
-                {teams.map(team => 
-                    <div key={team.id}>
-                    <h1><Link to={{ pathname: `/teams/${team.id}/`, fromDashboard: false}}>{team.name}</Link></h1>
-                    <img src={team.team_logo} style={{width:350, height:350}}/>
+                {teams.map(teamz => 
+                    <div key={teamz.id}>
+                    <h1><Link to={{ pathname: `/teams/${teamz.id}/`, fromDashboard: false}}>{teamz.name}</Link></h1>
+                    <img src={teamz.team_logo} style={{width:350, height:350}}/>
                     </div>
                     )}
             </div>
@@ -34,9 +34,6 @@ function MainRedux2() {
             <p>no teams</p>
             }
             <button onClick={()=>dispatch(fetchTeams())}>get all teams</button><br/>
-            <button onClick={()=>dispatch(getParticularTeam(1))}>some teams</button><br/>
-            <button onClick={()=>{doRed()}}>red</button><br/>
-            <button onClick={()=>{doBlue()}}>blue</button><br/>
             <button style={{ background:color }}>current color is {color}</button>
         </div>
     )

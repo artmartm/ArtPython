@@ -24,7 +24,7 @@ const Header = () => {
                 <Link to='/stadiums'><li>stadiums</li></Link>
                  </div>
                  
-            : (<div>
+            : (<div style={{  display: 'inline-block' }}>
                 <Link to="/login" >Login</Link>
                 <Link to='/about'><li>about</li></Link>
                 <Link to='/reg'><li>registration</li></Link>               

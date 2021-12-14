@@ -53,3 +53,6 @@ class GameViewSet(viewsets.ModelViewSet):
             self.action,
             self.serializer_class
         )
+
+    # componentDIDmount
+    # lifecicle

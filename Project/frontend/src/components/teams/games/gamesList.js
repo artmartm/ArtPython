@@ -24,7 +24,11 @@ function Games() {
                 {games.map(item => (
                     <div>
                     <p key={item.id}>
-                        <Link to={{ pathname: `/game/${item.id}/`, fromDashboard: false}}><TeamLogo id={item.home_team}/> vs <TeamLogo id={item.away_team}/> </Link>
+                        <Link to={{ pathname: `/game/${item.id}/`, fromDashboard: false}}>
+                            <div style={{ display:'inline-block' }}>
+                                <TeamLogo id={item.home_team}/> vs <TeamLogo id={item.away_team}/>
+                            </div>
+                        </Link>
                     </p>
                     <hr/>
                     </div>
