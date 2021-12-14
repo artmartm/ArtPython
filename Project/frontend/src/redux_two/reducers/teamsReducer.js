@@ -1,11 +1,11 @@
-import { GET_ALL_TEAMS } from './types/types'
+import { GET_ALL_TEAMS } from "../types/types";
 
 const initialState = {
     
     teams: []
 }
 
-export const teamReducer=(state=initialState, action) => {
+export const teamsReducer=(state=initialState, action) => {
     switch (action.type) {
         case GET_ALL_TEAMS:
             return {

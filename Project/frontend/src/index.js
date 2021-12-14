@@ -16,7 +16,7 @@ ReactDOM.render(
   <React.StrictMode>
    {/*<Provider store={store}>
       <MainRedux/>
-  </Provider>*/}  
+  </Provider>  */} 
   <Provider store={store}>
     <App/>
   </Provider>
