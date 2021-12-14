@@ -1,7 +1,7 @@
-import { GREEN, BLUE } from "./types"
+import { GREEN, BLUE, RED } from "./types"
 
 const initialState = {
-    color:'GREEN'
+    color:'YELLOW'
 }
 
 export const colorReducer=(state=initialState, action) => {
@@ -16,6 +16,11 @@ export const colorReducer=(state=initialState, action) => {
                 ...state,
                 color: state.color='BLUE'
             }
+            case RED:
+                return {
+                    ...state,
+                    color: state.color='RED'
+                }
         default:
             return state;
 

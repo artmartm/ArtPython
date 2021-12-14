@@ -6,19 +6,11 @@ function TeamListRed(props) {
     
     return(
         <div>
-           {/*} {props.teams.map(e=>{
-                return <h1>{e}</h1>
-            })}*/}
-            <h1>{props.teams[props.id]}</h1>
+
+            <h1>abv</h1>
         </div>
     )
 }
 
-function mapStateToProps(state) {
-    const {teamReducer} = state;
-    return {
-        teams: teamReducer.teams
-    }
-}
 
-export default connect(mapStateToProps)(TeamListRed);
+export default TeamListRed;

@@ -1,4 +1,28 @@
-import { GREEN, BLUE, INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE, COMMENT_UPDATE, GET_TEAM, ADD_TEAM } from "./types";
+import { ADD_CUSTOMER, DELETE_CUSTOMER, RED, GREEN, BLUE, INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE, COMMENT_UPDATE, GET_TEAM, ADD_TEAM } from "./types";
+
+
+
+export const addCustomer=(payload) => {
+    return {
+        type: ADD_CUSTOMER,
+        payload
+    }
+}
+
+export const addTeam=(payload) => {
+    return {
+        type: ADD_TEAM,
+        payload
+    }
+}
+
+export const deleteCustomer=(payload) => {
+    return {
+        type: DELETE_CUSTOMER,
+        payload
+    }
+}
+
 
 export function makeGreen() {
     return {
@@ -6,6 +30,12 @@ export function makeGreen() {
     }
 }
 
+
+export function makeRed() {
+    return {
+        type: RED
+    }
+}
 
 export function makeBlue() {
     return {
@@ -50,12 +80,5 @@ export function getTeam(team) {
     return {
         type: GET_TEAM,
         //data: {text,id}
-    }
-}
-
-export function addTeam(team) {
-    return {
-        type: ADD_TEAM,
-        data: {team}
     }
 }

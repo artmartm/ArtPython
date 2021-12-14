@@ -4,10 +4,14 @@ import { inputReducer } from "./textReducer";
 import { commentReducer } from "./commentReducer";
 import { teamReducer } from "./teamReducer";
 import { colorReducer } from "./colorReducer";
+import { customerReducer } from "./customerReducer";
+import { addTeamReducer } from "./addTeam";
 export const rootReducer = combineReducers({
    likeReducer,
    inputReducer,
    commentReducer,
    teamReducer,
-   colorReducer
+   colorReducer,
+   customerReducer,
+   addTeamReducer
 })

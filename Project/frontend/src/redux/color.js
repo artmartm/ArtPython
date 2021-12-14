@@ -1,13 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { makeBlue, makeGreen } from './redux/action';
+import { makeBlue, makeGreen, makeRed } from './redux/action';
 
 function Color(props) {
     return(
         <div>
+            <button onClick={()=>props.onRed()}>RED</button>
+            <button onClick={()=>props.onBlue()}>BLUE</button>
             <button onClick={()=>props.onGreen()}>GREEN</button>
-            <p style={{background:props.color}}>{props.color}</p>
-            <button onClick={()=>props.onBlue()}>blue</button>
+            <p style={{background:props.color, width:50 }}>{props.color}</p>
+
         </div>
     )
 }
@@ -26,6 +28,9 @@ function matchDispatchToProps(dispatch) {
         },
         onGreen:()=>{
             return dispatch(makeGreen())
+        },
+        onRed:()=>{
+            return dispatch(makeRed())
         }
     }
 }
