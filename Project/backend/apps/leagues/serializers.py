@@ -1,7 +1,7 @@
-from .models.models import League
+from .models import League
 from rest_framework import serializers
 from apps.teams.models.models import Team
-from apps.general.models.generals import News, Comments
+from apps.general.models import News, Comments
 from apps.teams.serializers import TeamSerializers
 from apps.general.serializers import NewsSerializers, CommentsSerializers
 from django.contrib.contenttypes.models import ContentType

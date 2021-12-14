@@ -1,7 +1,7 @@
 from django.db import models
-from apps.leagues.models.models import League
-from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
-from apps.general.models.choices import SPORT_BRANDS
+from apps.leagues.models import League
+from apps.general.models import StillActive, BaseModel, PLTSBaseModel
+from apps.general.models import SPORT_BRANDS
 from random import randint
 
 

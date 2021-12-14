@@ -2,7 +2,7 @@ from .models.models import Team, Stadium, Game, TeamStats
 from rest_framework import serializers
 from apps.players.models.models import Player
 from apps.players.serializers import PlayerSerializers
-from apps.general.models.generals import News, Comments
+from apps.general.models import News, Comments
 from apps.general.serializers import NewsSerializers, CommentsSerializers
 from django.contrib.contenttypes.models import ContentType
 

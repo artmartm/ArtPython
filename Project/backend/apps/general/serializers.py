@@ -1,4 +1,4 @@
-from .models.generals import Comments, News, City, Country, Just2
+from .models import Comments, News, City, Country, Just2
 from rest_framework import serializers
 
 

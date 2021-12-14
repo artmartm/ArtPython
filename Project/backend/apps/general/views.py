@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models.generals import Comments, News, City, Country, Just2
+from .models import Comments, News, City, Country, Just2
 from .serializers import CommentsSerializers, NewsSerializers, CitySerializers, CountrySerializers, JustSer
 from apps.custom_permissions import OnlyLookOrRequestUser, OnlyLookOrAdminModerator, OnlyAdminOrModerator
 

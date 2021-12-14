@@ -1,7 +1,7 @@
 from django.db import models
 from apps.teams.models.models import Team
-from apps.general.models.choices import SHOOTS, SPORT_BRANDS, POSITIONS
-from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
+from apps.general.models import SHOOTS, SPORT_BRANDS, POSITIONS
+from apps.general.models import StillActive, BaseModel, PLTSBaseModel
 from datetime import date
 
 

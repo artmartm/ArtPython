@@ -1,5 +1,5 @@
 from django.db import models
-from apps.general.models.generals import StillActive, BaseModel, PLTSBaseModel
+from apps.general.models import StillActive, BaseModel, PLTSBaseModel
 
 class League(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=30)

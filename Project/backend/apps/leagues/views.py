@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models.models import League
+from .models import League
 from .serializers import LeagueSerializers, LeagueDetailSerializer
 
 class LeagueViewSet(viewsets.ModelViewSet):

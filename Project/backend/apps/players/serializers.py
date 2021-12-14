@@ -1,6 +1,6 @@
 from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo, HeadToHead
 from rest_framework import serializers
-from apps.general.models.generals import News, Comments, Just2
+from apps.general.models import News, Comments, Just2
 from apps.teams.models.models import Team
 from apps.general.serializers import NewsSerializers, CommentsSerializers, JustSer
 from django.contrib.contenttypes.models import ContentType
