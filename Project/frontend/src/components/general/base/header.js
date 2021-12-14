@@ -11,7 +11,9 @@ const Header = () => {
                         {authTokens &&   <p>Hello !!!</p>}
             {authTokens ? <div>
                     <p  onClick={logoutUser}>Logout</p>
-                    <Link to='/add-game'><li>add a game</li></Link>
+                    <Link to='/teams2'><li>teams2</li></Link>
+                <Link to='/'><li>home</li></Link>
+                <Link to='/add-game'><li>add a game</li></Link>
                 <Link to='/games-list'><li>list of games</li></Link>
                 <Link to='/add-city'><li>add city</li></Link>
                 <Link to='/add-country'><li>add country</li></Link>

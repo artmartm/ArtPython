@@ -62,7 +62,7 @@ let getNotes = async() =>{
                     <div>
                     <h2 key={item.id}>
                         <Link to={{ pathname: `/teams/${item.id}/`, fromDashboard: false}}>
-                            <TeamLogo id={item.id}/><br/>
+                            <TeamLogo key={item} id={item.id}/><br/>
                         </Link>
                     </h2>
                     </div>

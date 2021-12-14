@@ -38,6 +38,7 @@ import { AuthProvider } from "./components/general/base/AuthContext";
 import  PrivateRoute  from "./components/general/base/privaterouter";
 import  Header  from "./components/general/base/header";
 import  LoginPage  from "./components/users/login/logIn";
+import teamsList from "./components/teams/teams/teamsList";
 
 
 
@@ -54,6 +55,7 @@ function App() {
                     <Route path ='/' exact component={Home} />
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-country' exact component={AddCountry}/>
+                    <Route path='/teams2' exact component={teamsList}/>
                     <Route path='/add-game' exact component={AddGame}/>
                     <Route path='/games-list' exact component={Games}/>
                     <Route path='/game/:id' exact component={GameDetail}/>

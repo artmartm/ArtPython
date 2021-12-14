@@ -11,10 +11,6 @@ export const teamsReducer=(state=initialState, action) => {
             return {
                 ...state, teams: [...state.teams, ...action.payload]
             }
-        case GET_PARTICULAR_TEAM:
-            return {
-                ...state, teams: [state.teams, action.payload]
-            }
         default:
             return state;
     }
