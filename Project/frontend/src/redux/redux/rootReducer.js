@@ -6,7 +6,9 @@ import { teamReducer } from "./teamReducer";
 import { colorReducer } from "./colorReducer";
 import { customerReducer } from "./customerReducer";
 import { addTeamReducer } from "./addTeam";
-export const rootReducer = combineReducers({
+
+
+const rootReducer = combineReducers({
    likeReducer,
    inputReducer,
    commentReducer,
@@ -15,3 +17,5 @@ export const rootReducer = combineReducers({
    customerReducer,
    addTeamReducer
 })
+
+export default rootReducer;

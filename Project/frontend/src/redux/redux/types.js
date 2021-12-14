@@ -11,3 +11,4 @@ export const RED = 'RED';
 /////////////
 export const ADD_CUSTOMER = 'ADD_CUSTOMER';
 export const DELETE_CUSTOMER = 'DELETE_CUSTOMER';
+export const ADD_MANY_CUSTOMERS='ADD_MANY_CUSTOMERS'

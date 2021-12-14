@@ -3,41 +3,41 @@ import React, { useState } from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import axios from "axios";
 
-import Leagues from "./components_two/leagues/leagues";
-import LeagueDetail from "./components_two/leagues/leagueDetail";
-import About from "./components_two/general/about";
+import Leagues from "./components/leagues/leagues";
+import LeagueDetail from "./components/leagues/leagueDetail";
+import About from "./components/general/about";
 //COMMENTS
 //LOCATIONS
-import AddCity from "./components_two/general/locations/cities";
-import AddCountry from "./components_two/general/locations/countries";
+import AddCity from "./components/general/locations/cities";
+import AddCountry from "./components/general/locations/countries";
 //NAVIGATION
-import Navigation from "./components_two/general/navigation";
+import Navigation from "./components/general/navigation";
 //LOGIN LOGOUT SIGNUP
-import Registration from "./components_two/users/signUp.js/registration";
+import Registration from "./components/users/signUp.js/registration";
 //import LogIn from "./components_two/users/login";
 // GAMES
-import AddGame from "./components_two/teams/games/addGame";
-import Games from "./components_two/teams/games/gamesList";
-import GameDetail from "./components_two/teams/games/gameDetail";
+import AddGame from "./components/teams/games/addGame";
+import Games from "./components/teams/games/gamesList";
+import GameDetail from "./components/teams/games/gameDetail";
 // STADIUMS
-import ListOfStadiums from "./components_two/teams/stadiums/stadium";
+import ListOfStadiums from "./components/teams/stadiums/stadium";
 // PLAYERS
-import Players from "./components_two/players/players";
-import PlayerDetail from "./components_two/players/playerDetail";
+import Players from "./components/players/players";
+import PlayerDetail from "./components/players/playerDetail";
 //TEAMS
-import Teams from "./components_two/teams/teams/teams";
-import TeamDetail from "./components_two/teams/teams/teamDetail";
-import StadiumDetail from "./components_two/teams/stadiums/stadiumDetail";
+import Teams from "./components/teams/teams/teams";
+import TeamDetail from "./components/teams/teams/teamDetail";
+import StadiumDetail from "./components/teams/stadiums/stadiumDetail";
 //NEWS
-import NewsList from "./components_two/general/news/news";
-import CommentDetail from "./components_two/general/comments/commentDetail";
+import NewsList from "./components/general/news/news";
+import CommentDetail from "./components/general/comments/commentDetail";
 //import { red } from "@material-ui/core/colors";
 //GENERAL and BASE
-import Home from "./components_two/general/home";
-import { AuthProvider } from "./components_two/general/base/AuthContext";
-import  PrivateRoute  from "./components_two/general/base/privaterouter";
-import  Header  from "./components_two/general/base/header";
-import  LoginPage  from "./components_two/users/login/logIn";
+import Home from "./components/general/home";
+import { AuthProvider } from "./components/general/base/AuthContext";
+import  PrivateRoute  from "./components/general/base/privaterouter";
+import  Header  from "./components/general/base/header";
+import  LoginPage  from "./components/users/login/logIn";
 
 
 

@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { addCustomer, addTeam, deleteCustomer } from './redux/action';
 import React, {useState, useEffect, useContext} from "react";
 import axios from 'axios';
+import { fetchCustomers } from './asyncAdctions/customers';
 function MainRedux() {
 
     const dispatch = useDispatch();
@@ -55,6 +56,7 @@ function MainRedux() {
             <h1>a lot of teams</h1>
             :
             <p>no teams yet</p>}
+            <button onClick={()=>dispatch(fetchCustomers(prompt()))}>get all clients</button>
         </div>
     )
 }

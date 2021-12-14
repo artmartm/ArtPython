@@ -1,6 +1,8 @@
-import { ADD_CUSTOMER, DELETE_CUSTOMER, RED, GREEN, BLUE, INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE, COMMENT_UPDATE, GET_TEAM, ADD_TEAM } from "./types";
+import { ADD_MANY_CUSTOMERS, ADD_CUSTOMER, DELETE_CUSTOMER, RED, GREEN, BLUE, INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE, COMMENT_UPDATE, GET_TEAM, ADD_TEAM } from "./types";
 
-
+export const addManyCustomers = (payload) => ({
+    type: ADD_MANY_CUSTOMERS, payload
+})
 
 export const addCustomer=(payload) => {
     return {

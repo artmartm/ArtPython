@@ -1,21 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import MainRedux from './redux/mainredux';
 //import "react-toastify/dist/ReactToastify.css";
-import {createStore} from 'redux';
-import { rootReducer } from './redux/redux/rootReducer';
 import { Provider } from 'react-redux';
+//Trainee
+import MainRedux from './redux/mainredux';
+//import {store} from './redux/store'
+//MAIN
+import App from './App';
+import { store } from './redux_two/store';
 
-const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>
-   <Provider store={store}>
+   {/*<Provider store={store}>
       <MainRedux/>
-  </Provider>  {/*<App/>*/}
+  </Provider>*/}  
+  <Provider store={store}>
+    <App/>
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

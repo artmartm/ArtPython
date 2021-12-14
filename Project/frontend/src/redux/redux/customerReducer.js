@@ -1,4 +1,4 @@
-import { ADD_CUSTOMER, DELETE_CUSTOMER } from "./types"
+import { ADD_CUSTOMER, DELETE_CUSTOMER, ADD_MANY_CUSTOMERS } from "./types"
 
 const initialState = {
     customers: []
@@ -6,6 +6,10 @@ const initialState = {
 
 export const customerReducer=(state=initialState, action) => {
     switch(action.type) {
+        case ADD_MANY_CUSTOMERS:
+            return {
+                ...state, customers: [...state.customers, ...action.payload]
+            }
         case ADD_CUSTOMER:
             return {
                 ...state,
