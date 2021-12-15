@@ -9,6 +9,7 @@ import { leaguesReducer } from "./reducers/leaguesReducer";
 import { stadiumsReducer } from "./reducers/stadiumsReducer";
 import { newsReducer } from "./reducers/newsReducer";
 import { commentsReducer } from "./reducers/commentsReducer";
+import { usersReducer } from "./reducers/usersReducer"
 
 
 const rootReducer = combineReducers({
@@ -22,7 +23,10 @@ const rootReducer = combineReducers({
     newsReducer,
     commentsReducer,
     /////////////
+    usersReducer,
+
     particularTeamReducer,
+
 
 })
 

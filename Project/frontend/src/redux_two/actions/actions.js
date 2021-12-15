@@ -12,7 +12,8 @@ import { GET_ALL_STADIUMS, GET_PARTICULAR_STADIUM } from "../types/types";
 import { GET_ALL_NEWS, GET_PARTICULAR_NEWS } from "../types/types";
 //comments
 import { GET_ALL_COMMENTS, GET_PARTICULAR_COMMENT } from "../types/types";
-
+//users
+import { GET_ALL_USERS } from "../types/types";
 
 
 //teams
@@ -74,6 +75,11 @@ export const getAllComments = (payload) => ({
 
 export const getParticularComment = (payload) => ({
     type: GET_PARTICULAR_COMMENT, payload
+})
+
+//users
+export const getAllUsers = (payload) => ({
+    type: GET_ALL_USERS, payload
 })
 
 ////////////////

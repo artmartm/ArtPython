@@ -29,7 +29,10 @@ function UserDetail({ match }) {
 
     return(
         <div>
-            <h1>{team.username}</h1>
+            <h1>username: {team.username}</h1>
+            <h1>profile: {team.profile}</h1>
+            <h1>{team.name}!!</h1>
+
             
         </div>
 

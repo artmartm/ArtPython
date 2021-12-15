@@ -58,6 +58,7 @@ import { HashRouter } from 'react-router-dom';
 import { store } from "./redux/store";
 import UserList from "./components/users/usersList";
 import UserDetail from "./components/users/userDetail";
+import { fetchUsers } from "./redux_two/actions/asyncActions/asyncAllUsers";
 
 
 function App() {
@@ -75,6 +76,9 @@ function App() {
         dispatch(fetchComments())
     }, [])
 
+    {/*useEffect(()=> {
+        dispatch(fetchUsers())
+    }, []) */}
     return(
        <Router>
             <div className="App">
@@ -101,7 +105,7 @@ function App() {
                     <Route path ='/news' exact component={NewsList} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} /> {/*PrivateRoute*/}
                     <Route path='/teams/:id' exact component={TeamDetail} />
-                    <Route path='/teams2/:id' exact component={TeamDetail2} />
+                    {/*<Route path='/teams2/:id' exact component={TeamDetail2} />*/}
 
                     <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadiums' exact component={StadiumsList} />
