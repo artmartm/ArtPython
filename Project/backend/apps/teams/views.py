@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 from rest_framework import viewsets
 from .models.models import Team, Stadium, Game, TeamStats
 from .serializers import TeamSerializers, StadiumSerializers, GameSerializers, TeamStatsSerializers, \
@@ -56,3 +58,9 @@ class GameViewSet(viewsets.ModelViewSet):
 
     # componentDIDmount
     # lifecicle
+
+def clean(request):
+    # t = Game.objects.all().delete()
+    # data = {'t':t}
+    # return render(request,'clean.html',data)
+    return None

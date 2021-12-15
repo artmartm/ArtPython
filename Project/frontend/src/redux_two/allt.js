@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function MainRedux2() {
 
     const dispatch = useDispatch();
-    const teams = useSelector(state => state.particularTeamReducer.team)
+    const teams = useSelector(state => state.teamsReducer.teams)
     const color = useSelector(state=> state.colorReducer.color)
   
     function getSome(number) {
@@ -24,9 +24,9 @@ function MainRedux2() {
     return(
         <div>
             <h1>redux</h1>
-            <button onClick={()=>{getSome(1)}}>get</button>
+            <button onClick={()=>{getSome(0)}}>get</button>
             <hr/>
-            {teams ? <p>{teams}</p> : <p>no teams</p>}
+            {teams ? <p>{teams[0].name}</p> : <p>no teams</p>}
             {/*{teams.length>0 ?
             <div >
                 {teams.map(teamz => 

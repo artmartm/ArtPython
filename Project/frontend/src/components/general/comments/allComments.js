@@ -12,7 +12,7 @@ const AllCommentsList=()=> {
             <h1>list of comments</h1>
             <hr/>
             {comments.length ?
-            <div >
+            <div>
                 {comments.map(comment => 
                     <div key={comment.id}>
                     <h1><Link to={{ pathname: `/comments/${comment.id}/`, fromDashboard: false}}>{comment.name}</Link></h1>
@@ -20,7 +20,7 @@ const AllCommentsList=()=> {
                     )}
             </div>
             :
-            <p>no stadiums</p>
+            <p>no comments</p>
             }
         </div>
     )

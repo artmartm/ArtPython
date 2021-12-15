@@ -50,8 +50,15 @@ import { fetchNews } from "./redux_two/actions/asyncActions/asyncAllNews";
 import AllCommentsLis from "./components/general/comments/allComments";
 import AllCommentsList from "./components/general/comments/allComments";
 import { fetchComments } from "./redux_two/actions/asyncActions/asyncAllComments";
+/////
+import { syncHistoryWithStore } from 'react-router-redux';
+import { HashRouter } from 'react-router-dom';
+import { store } from "./redux/store";
+
 
 function App() {
+
+    //const history = syncHistoryWithStore(HashRouter, store)
 
     const dispatch = useDispatch();
     //get teams

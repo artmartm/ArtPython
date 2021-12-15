@@ -1,4 +1,6 @@
 import { combineReducers } from "redux";
+import { routerReducer } from "react-router-redux";
+//reducers
 import { teamsReducer } from "./reducers/teamsReducer";
 import { colorReducer } from "./reducers/colorReducer";
 import { particularTeamReducer } from "./reducers/particularTeamReducer";
@@ -10,6 +12,8 @@ import { commentsReducer } from "./reducers/commentsReducer";
 
 
 const rootReducer = combineReducers({
+    routing: routerReducer,
+    //reducers
     teamsReducer,
     colorReducer,
     playersReducer,
