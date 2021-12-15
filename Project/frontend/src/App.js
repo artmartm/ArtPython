@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import './App.css';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import axios from "axios";
@@ -39,20 +39,19 @@ import  PrivateRoute  from "./components/general/base/privaterouter";
 import  Header  from "./components/general/base/header";
 import  LoginPage  from "./components/users/login/logIn";
 import teamsList from "./components/teams/teams/teamsList";
+import { fetchTeams } from "./redux_two/actions/asyncActions/asynAllTeams";
 
+//REDUX
+import {useDispatch, useSelector} from 'react-redux';
 
+function App() {
 
-class App extends React.Component {
-
-    componentWillMount() {
-        console.log('works before')
-    }
-
-    componentDidMount() {
-        console.log('wors after')
-    }
-
-    render() {
+    const dispatch = useDispatch();
+    const teams = useSelector(state => state.teamsReducer.teams)
+    useEffect(()=> {
+        dispatch(fetchTeams())
+    }, [])
+    
     
     return(
        <Router>
@@ -86,6 +85,5 @@ class App extends React.Component {
             </div>
         </Router>
     );
-}
 }
 export default App;

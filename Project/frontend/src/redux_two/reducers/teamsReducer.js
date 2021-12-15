@@ -12,7 +12,7 @@ export const teamsReducer=(state=initialState, action) => {
             }
         case GET_PARTICULAR_TEAM:
             return {
-                ...state, teams: [state.teams, action.payload]
+                state, teams:[state.teams[action.id]]
             }
         default:
             return state;

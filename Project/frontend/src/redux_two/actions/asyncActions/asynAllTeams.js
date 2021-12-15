@@ -8,3 +8,4 @@ export const fetchTeams =()=>{
             .then(json => dispatch(getAllTeams(json)))
     }
 }
+
