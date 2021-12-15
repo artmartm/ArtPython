@@ -24,7 +24,7 @@ function Games() {
     return(
         <div>
             <h1>Games page</h1>
-            {teams ? teams.map(e=><p>{e.name}</p>) : <p>no</p>}
+            {teams ? teams.map(e=><p>{e.id}...{e.name}</p>) : <p>no</p>}
             <hr/>      
                 <hr/>      
                 {games.map(item => (
@@ -32,8 +32,7 @@ function Games() {
                     <p key={item.id}>
                         <Link to={{ pathname: `/game/${item.id}/`, fromDashboard: false}}>
                             <div style={{ display:'inline-block' }}>
-                            <h3>{teams[0].name} vs {teams[1].name}</h3>
-
+                            <h3>{teams[item.home_team-1].name} vs {teams[item.away_team-1].name}</h3>
                                 <TeamLogo id={item.home_team}/> vs <TeamLogo id={item.away_team}/>
                             </div>
                         </Link>

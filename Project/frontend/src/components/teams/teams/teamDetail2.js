@@ -4,35 +4,32 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../general/base/AuthContext";
 import AddComment from "../../general/comments/addComment";
 import CommentsList from "../../general/comments/commentsList";
+import {useDispatch, useSelector} from 'react-redux';
+import { fetchParticularTeam } from "../../../redux_two/actions/asyncActions/asyncParticularTeam";
 
-function TeamDetail({ match }) {
-    
-    const[team, setTeam] = useState({});
-    const[pl, setPl] = useState([]);
+function TeamDetail2({ match }) {
+
     const id = match.params.id;
+
+
+    const dispatch = useDispatch();
+
+    const team = useSelector(state => state.particularTeamReducer.team)
+    useEffect(()=> {
+        dispatch(fetchParticularTeam(id))
+    }, [])
+
+    
     const[showComments, setShowComments] = useState([{
         isOpen:false
     }])
     const[showPlayers, setShowPlayers] = useState([{
         isOpen:false
     }])
-    let {authTokens, logoutUser} = useContext(AuthContext)
-
+    
     const content_type = '14';
-    useEffect(()=>{
-        axios({
-            method:'GET',
-            url:`http://127.0.0.1:8000/api/teams/${id}`,
-            headers:{
-                'Content-Type':'application/json',
-          //      'Authorization':'Bearer ' + String(authTokens.access)
-            }
-        }).then(response=>{
-            setTeam(response.data)
-            setPl(response.data.players)
+    
 
-        })
-    },[id])
     return(
         <div>
             <h1>{team.name} <img src={team.team_logo} width={50} height={50}/></h1>
@@ -48,7 +45,7 @@ function TeamDetail({ match }) {
             {team.team_logo ? <img src={team.team_logo} width={500} height={500}/> : <p>no photo yet</p>}
             <hr/>
             <h3>list of players</h3>
-            <React.Fragment>
+            {/*<React.Fragment>
             <button onClick={()=>{setShowPlayers({isOpen:true})}}>show players</button>        
     {showPlayers.isOpen && 
         <div>       
@@ -60,7 +57,7 @@ function TeamDetail({ match }) {
         </div>
     }
     <hr/>
-        </React.Fragment>
+</React.Fragment>*/}
         <br/>
         <React.Fragment>
                 <button onClick={()=>{setShowComments({isOpen:true})}}>show comments</button>        
@@ -78,4 +75,8 @@ function TeamDetail({ match }) {
     )
 }
 
-export default TeamDetail;
+export default TeamDetail2;
+
+
+
+

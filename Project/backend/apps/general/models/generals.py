@@ -5,6 +5,10 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from smart_selects.db_fields import ChainedForeignKey
+from django.db import models
+
+from django_countries.fields import CountryField
+
 
 
 class BaseModel(models.Model):
@@ -78,7 +82,7 @@ class Country(BaseModel, StillActive, LocationBaseModel):
 class City(BaseModel, LocationBaseModel):
     """Model with all cities"""
     name = models.CharField(max_length=100)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = CountryField()
 
     def __str__(self):
         return self.name
@@ -90,7 +94,7 @@ class City(BaseModel, LocationBaseModel):
 
 class PLTSBaseModel(models.Model):
     """General fields for players/teams/leagues/stadiums"""
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = CountryField()
     city = ChainedForeignKey(
         City,
         chained_field="country",
@@ -122,6 +126,7 @@ class Just2(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+    country = CountryField()
 
     def __str__(self):
         return self.name

@@ -15,7 +15,6 @@ import environ
 import os
 from datetime import timedelta
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,7 +48,8 @@ INSTALLED_APPS = [
     'smart_selects',
     'rest_framework_simplejwt.token_blacklist',
     'djoser',
-
+    'django_countries',
+    #'cities',
 ]
 
 INSTALLED_APPS += [
@@ -149,7 +149,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-       # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }

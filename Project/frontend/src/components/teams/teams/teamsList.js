@@ -16,6 +16,8 @@ const TeamsList=()=> {
                 {teams.map(team => 
                     <div key={team.id}>
                     <h1><Link to={{ pathname: `/teams/${team.id}/`, fromDashboard: false}}>{team.name}</Link></h1>
+                    <h1><Link to={{ pathname: `/teams2/${team.id}/`, fromDashboard: false}}>{team.name}2</Link></h1>
+
                     <img src={team.team_logo} style={{width:350, height:350}}/>
                     </div>
                     )}

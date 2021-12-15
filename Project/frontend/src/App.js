@@ -24,6 +24,8 @@ import Players from "./components/players/playerFE";
 import PlayerDetail from "./components/players/playerDetail";
 //TEAMS
 import TeamDetail from "./components/teams/teams/teamDetail";
+import TeamDetail2 from "./components/teams/teams/teamDetail2";
+
 import StadiumDetail from "./components/teams/stadiums/stadiumDetail";
 //NEWS
 import NewsList from "./components/general/news/newsList";
@@ -96,6 +98,7 @@ function App() {
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-country' exact component={AddCountry}/>
                     <Route path='/teams' exact component={teamsList}/>
+                    
                     <Route path='/leagues' exact component={LeaguesList}/>
                     <Route path='/players' exact component={PlayersList}/>
                     <Route path='/add-game' exact component={AddGame}/>
@@ -108,6 +111,8 @@ function App() {
                     <Route path ='/news' exact component={NewsList} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} /> {/*PrivateRoute*/}
                     <Route path='/teams/:id' exact component={TeamDetail} />
+                    <Route path='/teams2/:id' exact component={TeamDetail2} />
+
                     <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadiums' exact component={StadiumsList} />
                     <Route path='/all-comments' exact component={AllCommentsList} />
