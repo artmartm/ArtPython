@@ -1,49 +1,32 @@
 import {useDispatch, useSelector} from 'react-redux';
-import { getAllTeams, makeRed, makeBlue, getParticularTeam } from './actions/actions' 
+import { makeRed, makeBlue, getParticularTeam } from './actions/actions' 
 import React, {useEffect}  from "react";
-import { fetchTeams } from './actions/asyncActions/asynAllTeams';
-import { fetchParticularTeam } from './actions/asyncActions/asyncParticularTeam';
 import { Link } from 'react-router-dom';
 
 function MainRedux2() {
 
     const dispatch = useDispatch();
-    const teams = useSelector(state => state.teamsReducer.teams)
+    const teams = useSelector(state => state.particularTeamReducer.team)
     const color = useSelector(state=> state.colorReducer.color)
   
     function getSome(number) {
         dispatch(getParticularTeam(number))
     }
- {/*}   const addCust=(name) => {
-        const customer ={
-            name,
-            id: Date.now()
-        }
-        dispatch(addCustomer(customer))
+
+
+    function doRed(){
+        dispatch(makeRed())
     }
 
-    const delCust=(customer) => {
- 
-        dispatch(deleteCustomer(customer))
-    } 
-
-    const addT=(team) => {
-        dispatch(addTeam(team))
+    function doBlue(){
+        dispatch(makeBlue())
     }
-*/}
-
     return(
         <div>
             <h1>redux</h1>
+            <button onClick={()=>{getSome(1)}}>get</button>
             <hr/>
-            <button onClick={()=>getSome(prompt())}>get some team</button>
-            {teams.lenght>0 ?
-            teams.map(e=>{
-                <p>{e.name}</p>
-            })
-            :
-            <p>no teams</p>
-            }
+            {teams ? <p>{teams}</p> : <p>no teams</p>}
             {/*{teams.length>0 ?
             <div >
                 {teams.map(teamz => 
@@ -56,7 +39,9 @@ function MainRedux2() {
             :
             <p>no teams</p>
             }*/}
+            <button onClick={()=>doRed()}>red</button>
             <button style={{ background:color }}>current color is {color}</button>
+            <button onClick={()=>doBlue()}>blue</button>
         </div>
     )
 }

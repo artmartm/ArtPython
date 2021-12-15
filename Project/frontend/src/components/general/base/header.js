@@ -13,7 +13,7 @@ const Header = () => {
                     <p  onClick={logoutUser}>Logout</p>
                     <Link to='/teams'><li>teams</li></Link>
                     <Link to='/players'><li>players</li></Link>
-
+                    <Link to='/leagues'><li>leagues</li></Link>
                 <Link to='/'><li>home</li></Link>
                 <Link to='/add-game'><li>add a game</li></Link>
                 <Link to='/games-list'><li>list of games</li></Link>
@@ -21,8 +21,8 @@ const Header = () => {
                 <Link to='/add-country'><li>add country</li></Link>
                 <Link to='/news'><li>news</li></Link>
                 <Link to='/teams'><li>teams</li></Link>
-                <Link to='/leagues'><li>leagues</li></Link>
                 <Link to='/stadiums'><li>stadiums</li></Link>
+                <Link to='/all-comments'><li>all comments</li></Link>
                  </div>
                  
             : (<div style={{  display: 'inline-block' }}>

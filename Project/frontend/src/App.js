@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import axios from "axios";
 
-import Leagues from "./components/leagues/leagues";
 import LeagueDetail from "./components/leagues/leagueDetail";
 import About from "./components/general/about";
 //COMMENTS
@@ -20,7 +19,6 @@ import AddGame from "./components/teams/games/addGame";
 import Games from "./components/teams/games/gamesList";
 import GameDetail from "./components/teams/games/gameDetail";
 // STADIUMS
-import ListOfStadiums from "./components/teams/stadiums/stadium";
 // PLAYERS
 import Players from "./components/players/playerFE";
 import PlayerDetail from "./components/players/playerDetail";
@@ -28,7 +26,7 @@ import PlayerDetail from "./components/players/playerDetail";
 import TeamDetail from "./components/teams/teams/teamDetail";
 import StadiumDetail from "./components/teams/stadiums/stadiumDetail";
 //NEWS
-import NewsList from "./components/general/news/news";
+import NewsList from "./components/general/news/newsList";
 import CommentDetail from "./components/general/comments/commentDetail";
 //import { red } from "@material-ui/core/colors";
 //GENERAL and BASE
@@ -38,12 +36,20 @@ import  PrivateRoute  from "./components/general/base/privaterouter";
 import  Header  from "./components/general/base/header";
 import  LoginPage  from "./components/users/login/logIn";
 import teamsList from "./components/teams/teams/teamsList";
-import { fetchTeams } from "./redux_two/actions/asyncActions/asynAllTeams";
+import { fetchTeams } from "./redux_two/actions/asyncActions/asyncAllTeams";
 
 //REDUX
 import {useDispatch, useSelector} from 'react-redux';
 import PlayersList from "./components/players/playersList";
 import { fetchPlayers } from "./redux_two/actions/asyncActions/asyncAllPlayers";
+import LeaguesList from "./components/leagues/leaguesList";
+import { fetchLeagues } from "./redux_two/actions/asyncActions/asyncAllLeagues";
+import StadiumsList from "./components/teams/stadiums/stadiumsList";
+import { fetchStadiums } from "./redux_two/actions/asyncActions/asyncAllStadiums";
+import { fetchNews } from "./redux_two/actions/asyncActions/asyncAllNews";
+import AllCommentsLis from "./components/general/comments/allComments";
+import AllCommentsList from "./components/general/comments/allComments";
+import { fetchComments } from "./redux_two/actions/asyncActions/asyncAllComments";
 
 function App() {
 
@@ -56,7 +62,22 @@ function App() {
     useEffect(()=> {
         dispatch(fetchPlayers())
     }, [])
-    
+    //get leagues
+     useEffect(()=> {
+        dispatch(fetchLeagues())
+    }, [])
+    //get stadiums
+     useEffect(()=> {
+        dispatch(fetchStadiums())
+    }, [])
+    //get news
+     useEffect(()=> {
+        dispatch(fetchNews())
+    }, [])
+    //get comments
+     useEffect(()=> {
+        dispatch(fetchComments())
+    }, [])
     return(
        <Router>
             <div className="App">
@@ -68,6 +89,7 @@ function App() {
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-country' exact component={AddCountry}/>
                     <Route path='/teams' exact component={teamsList}/>
+                    <Route path='/leagues' exact component={LeaguesList}/>
                     <Route path='/players' exact component={PlayersList}/>
                     <Route path='/add-game' exact component={AddGame}/>
                     <Route path='/games-list' exact component={Games}/>
@@ -77,11 +99,11 @@ function App() {
                     <Route path='/reg' exact component={Registration}/>
                     <Route path='/add-city' exact component={AddCity}/>
                     <Route path ='/news' exact component={NewsList} />
-                    <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} /> {/*PrivateRoute*/}
                     <Route path='/teams/:id' exact component={TeamDetail} />
                     <Route path='/players/:id' exact component={PlayerDetail} />
-                    <Route path='/stadiums' exact component={ListOfStadiums} />
+                    <Route path='/stadiums' exact component={StadiumsList} />
+                    <Route path='/all-comments' exact component={AllCommentsList} />
                     <Route path='/stadium/:id' exact component={StadiumDetail} />
                 {/*</Switch>*/}
                 </AuthProvider>
