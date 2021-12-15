@@ -1,13 +1,11 @@
 import {useDispatch, useSelector} from 'react-redux';
-import React, {useState, useEffect, useContext} from 'react';
-import { fetchTeams } from '../../../redux_two/actions/asyncActions/asynAllTeams';
+import React from 'react';
 import { Link } from 'react-router-dom';
 const TeamsList=()=> {
 
     const dispatch = useDispatch();
     const teams = useSelector(state => state.teamsReducer.teams)
 
-    const l = () => {dispatch(fetchTeams())}
 
     return(
         <div>
@@ -31,25 +29,5 @@ const TeamsList=()=> {
 export default TeamsList;
 
 
-{/*}
-export default teamsList;
 
 
-    return(
-        <div>
-            <h1>Teams page</h1>
-            <hr/>      
-                {teams.map(item => (
-                    <div>
-                    <h2 key={item.id}>
-                        <Link to={{ pathname: `/teams/${item.id}/`, fromDashboard: false}}>
-                            <TeamLogo key={item.id} id={item.id} /><br/>
-                        </Link>
-                    </h2>
-                    </div>
-                    ))}
-                </div>)
-                }
-
-
-            */}

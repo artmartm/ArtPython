@@ -22,10 +22,9 @@ import GameDetail from "./components/teams/games/gameDetail";
 // STADIUMS
 import ListOfStadiums from "./components/teams/stadiums/stadium";
 // PLAYERS
-import Players from "./components/players/players";
+import Players from "./components/players/playerFE";
 import PlayerDetail from "./components/players/playerDetail";
 //TEAMS
-import Teams from "./components/teams/teams/teams";
 import TeamDetail from "./components/teams/teams/teamDetail";
 import StadiumDetail from "./components/teams/stadiums/stadiumDetail";
 //NEWS
@@ -43,15 +42,20 @@ import { fetchTeams } from "./redux_two/actions/asyncActions/asynAllTeams";
 
 //REDUX
 import {useDispatch, useSelector} from 'react-redux';
+import PlayersList from "./components/players/playersList";
+import { fetchPlayers } from "./redux_two/actions/asyncActions/asyncAllPlayers";
 
 function App() {
 
     const dispatch = useDispatch();
-    const teams = useSelector(state => state.teamsReducer.teams)
+    //get teams
     useEffect(()=> {
         dispatch(fetchTeams())
     }, [])
-    
+    //get players
+    useEffect(()=> {
+        dispatch(fetchPlayers())
+    }, [])
     
     return(
        <Router>
@@ -63,7 +67,8 @@ function App() {
                     <Route path ='/' exact component={Home} />
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-country' exact component={AddCountry}/>
-                    <Route path='/teams2' exact component={teamsList}/>
+                    <Route path='/teams' exact component={teamsList}/>
+                    <Route path='/players' exact component={PlayersList}/>
                     <Route path='/add-game' exact component={AddGame}/>
                     <Route path='/games-list' exact component={Games}/>
                     <Route path='/game/:id' exact component={GameDetail}/>
@@ -74,9 +79,7 @@ function App() {
                     <Route path ='/news' exact component={NewsList} />
                     <Route path='/leagues' exact component={Leagues} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} /> {/*PrivateRoute*/}
-                    <Route path='/teams' exact component={Teams} />
                     <Route path='/teams/:id' exact component={TeamDetail} />
-                    <Route path='/players' exact component={Players} />
                     <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadiums' exact component={ListOfStadiums} />
                     <Route path='/stadium/:id' exact component={StadiumDetail} />

@@ -11,11 +11,39 @@ function MainRedux2() {
     const teams = useSelector(state => state.teamsReducer.teams)
     const color = useSelector(state=> state.colorReducer.color)
   
+    function getSome(number) {
+        dispatch(getParticularTeam(number))
+    }
+ {/*}   const addCust=(name) => {
+        const customer ={
+            name,
+            id: Date.now()
+        }
+        dispatch(addCustomer(customer))
+    }
+
+    const delCust=(customer) => {
+ 
+        dispatch(deleteCustomer(customer))
+    } 
+
+    const addT=(team) => {
+        dispatch(addTeam(team))
+    }
+*/}
 
     return(
         <div>
             <h1>redux</h1>
             <hr/>
+            <button onClick={()=>getSome(prompt())}>get some team</button>
+            {teams.lenght>0 ?
+            teams.map(e=>{
+                <p>{e.name}</p>
+            })
+            :
+            <p>no teams</p>
+            }
             {/*{teams.length>0 ?
             <div >
                 {teams.map(teamz => 
