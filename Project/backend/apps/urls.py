@@ -4,7 +4,7 @@ from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, Countr
 from apps.leagues.views import LeagueViewSet
 from apps.teams.views import StadiumViewSet, GameViewSet, TeamViewSet, clean
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet, HeadToHeadViewSet
-from apps.users.views import UsersViewSet
+from apps.users.views import UsersViewSet, UsersListViewSet
 
 # from django.urls import path
 # from .views import MyTokenObtainPairView
@@ -31,6 +31,7 @@ router.register(r'stadiums', StadiumViewSet)
 router.register(r'games', GameViewSet)
 # users
 router.register(r'users-profile', UsersViewSet)
+router.register(r'users2', UsersListViewSet)
 #########
 
 urlpatterns = [

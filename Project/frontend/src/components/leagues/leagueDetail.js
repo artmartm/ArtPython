@@ -29,7 +29,8 @@ function LeagueDetail({ match }) {
 
     return(
         <div>
-            <h1>hello this is {league.name}</h1>            
+            <h1>hello this is {league.name}</h1> 
+            <img src={league.league_logo} width={600} height={500}/>          
             <hr/>
             <h3>teams:</h3>
             {team.map(e=>(

@@ -56,6 +56,8 @@ import { fetchComments } from "./redux_two/actions/asyncActions/asyncAllComments
 import { syncHistoryWithStore } from 'react-router-redux';
 import { HashRouter } from 'react-router-dom';
 import { store } from "./redux/store";
+import UserList from "./components/users/usersList";
+import UserDetail from "./components/users/userDetail";
 
 
 function App() {
@@ -84,7 +86,9 @@ function App() {
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-country' exact component={AddCountry}/>
                     <Route path='/teams' exact component={teamsList}/>
-                    
+                    <Route path='/users' exact component={UserList}/>
+                    <Route path='/users/:id' exact component={UserDetail}/>
+
                     <Route path='/leagues' exact component={LeaguesList}/>
                     <Route path='/players' exact component={PlayersList}/>
                     <Route path='/add-game' exact component={AddGame}/>

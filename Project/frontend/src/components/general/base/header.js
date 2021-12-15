@@ -12,6 +12,8 @@ const Header = () => {
             {authTokens ? <div>
                     <p  onClick={logoutUser}>Logout</p>
                     <Link to='/teams'><li>teams</li></Link>
+                    <Link to='/users'><li>users</li></Link>
+
                     <Link to='/players'><li>players</li></Link>
                     <Link to='/leagues'><li>leagues</li></Link>
                 <Link to='/'><li>home</li></Link>
