@@ -6,7 +6,10 @@ function Leagues() {
 
     const [leagues, setLeagues] = useState([]);
         //const [players, setPlayers] = useState([])
-        const[state, setState] = useState([{
+    const[state, setState] = useState([{
+            isOpen:false
+        }])
+    const[info, setInfo] = useState([{
             isOpen:false
         }])
 
@@ -30,9 +33,9 @@ function Leagues() {
                 {leagues.map(item => (
                     <div>
                     <h1 key={item.id}>
-                        <Link to={{ pathname: `/leagues/${item.id}/`, fromDashboard: false}}>
+                        <h2 to={{ pathname: `/leagues/${item.id}/`, fromDashboard: false}}>
                             {item.name}<br/>
-                        </Link>
+                        </h2>
                     </h1>
                     </div>
                     

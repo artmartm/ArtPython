@@ -59,7 +59,7 @@ function PlayerDetail({ match }) {
                 style={{textDecoration: 'none'}} 
                 key={player.team} 
                 to={`/teams/${player.team}`}>
-                <p style={{marginBottom:'250px'}}><TeamLogo id={'1'}/></p> {/*{player.team}*/}
+                <p style={{marginBottom:'250px'}}><TeamLogo id={player.team}/></p> {/*{player.team}*/}
             </Link>
             </h3>
             <hr/>

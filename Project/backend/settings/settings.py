@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
 from pathlib import Path
 import environ
 import os
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
     'djoser',
     'django_countries',
     #'cities',
+    'cities_light'
 ]
 
 INSTALLED_APPS += [
@@ -61,7 +61,7 @@ INSTALLED_APPS += [
     'rest_framework'
 
 ]
-
+#CITIES_INCLUDE_NUMERIC_ALTERNATIVE_NAMES = True
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',

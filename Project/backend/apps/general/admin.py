@@ -7,3 +7,4 @@ admin.site.register(News)
 admin.site.register(City)
 admin.site.register(Comments)
 admin.site.register(Just2)
+

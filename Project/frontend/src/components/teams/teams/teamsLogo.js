@@ -24,6 +24,7 @@ function TeamLogo({id}) {
             headers:{
                 'Content-Type':'application/json',
                 //'Authorization':'Bearer ' + String(authTokens.access)
+                //Asdasdasd
             }
         }).then(response=>{
             setTeam(response.data)

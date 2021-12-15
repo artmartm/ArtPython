@@ -8,8 +8,15 @@ from smart_selects.db_fields import ChainedForeignKey
 from django.db import models
 
 from django_countries.fields import CountryField
-
-
+# from cities_light.abstract_models import (AbstractCity, AbstractRegion,
+#     AbstractCountry)
+# from cities_light.receivers import connect_default_signals
+#
+#
+# class Country22(AbstractCountry):
+#     pass
+# class City22(AbstractCity):
+#     pass
 
 class BaseModel(models.Model):
     """General fields for all models"""
@@ -126,7 +133,7 @@ class Just2(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-    country = CountryField()
+
 
     def __str__(self):
         return self.name

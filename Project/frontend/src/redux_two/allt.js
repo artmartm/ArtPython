@@ -26,7 +26,7 @@ function MainRedux2() {
             <h1>redux</h1>
             <button onClick={()=>{getSome(0)}}>get</button>
             <hr/>
-            {teams ? <p>{teams[0].name}</p> : <p>no teams</p>}
+            {teams ? <p>{teams.name}</p> : <p>no teams</p>}
             {/*{teams.length>0 ?
             <div >
                 {teams.map(teamz => 

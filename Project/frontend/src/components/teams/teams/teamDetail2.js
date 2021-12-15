@@ -13,12 +13,13 @@ function TeamDetail2({ match }) {
 
 
     const dispatch = useDispatch();
+    const queryTeam = useSelector(state => state.particularTeamReducer.team)
 
-    const team = useSelector(state => state.particularTeamReducer.team)
+
     useEffect(()=> {
-        dispatch(fetchParticularTeam(id))
-    }, [])
-
+        dispatch(fetchParticularTeam(1))
+    }, [1])
+    const team = queryTeam[0];
     
     const[showComments, setShowComments] = useState([{
         isOpen:false
@@ -32,6 +33,7 @@ function TeamDetail2({ match }) {
 
     return(
         <div>
+            {team.length>0 ? <p>some teams</p> : <p>no team</p>}
             <h1>{team.name} <img src={team.team_logo} width={50} height={50}/></h1>
             
 

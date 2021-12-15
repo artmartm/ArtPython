@@ -66,27 +66,13 @@ function App() {
     //get teams
     useEffect(()=> {
         dispatch(fetchTeams())
-    }, [])
-    //get players
-    useEffect(()=> {
         dispatch(fetchPlayers())
-    }, [])
-    //get leagues
-     useEffect(()=> {
         dispatch(fetchLeagues())
-    }, [])
-    //get stadiums
-     useEffect(()=> {
         dispatch(fetchStadiums())
-    }, [])
-    //get news
-     useEffect(()=> {
         dispatch(fetchNews())
-    }, [])
-    //get comments
-     useEffect(()=> {
         dispatch(fetchComments())
     }, [])
+
     return(
        <Router>
             <div className="App">

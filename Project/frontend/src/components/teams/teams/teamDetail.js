@@ -33,9 +33,10 @@ function TeamDetail({ match }) {
 
         })
     },[id])
+    const [color,setColor] = useState('yellow')
     return(
-        <div>
-            <h1>{team.name} <img src={team.team_logo} width={50} height={50}/></h1>
+        <div style={{ backgroundColor:color }}>
+            <h1 onClick={()=>setColor('red')}>{team.name} <img src={team.team_logo} width={50} height={50}/></h1>
             
 
             <p>games {team.games}</p>
