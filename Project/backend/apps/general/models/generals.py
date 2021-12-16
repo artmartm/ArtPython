@@ -8,6 +8,8 @@ from smart_selects.db_fields import ChainedForeignKey
 from django.db import models
 
 from django_countries.fields import CountryField
+
+
 # from cities_light.abstract_models import (AbstractCity, AbstractRegion,
 #     AbstractCountry)
 # from cities_light.receivers import connect_default_signals
@@ -73,19 +75,6 @@ class Comments(BaseModel, NewsCommentsBaseModel):
         return self.name
 
 
-class Country(BaseModel, StillActive, LocationBaseModel):
-    """Model with all countries"""
-    name = models.CharField(max_length=50)
-    language = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Country'
-        verbose_name_plural = 'Countries'
-
-
 class City(BaseModel, LocationBaseModel):
     """Model with all cities"""
     name = models.CharField(max_length=100)
@@ -133,7 +122,6 @@ class Just2(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-
 
     def __str__(self):
         return self.name

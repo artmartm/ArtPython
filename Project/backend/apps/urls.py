@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, CountryViewSet, JustView  # , home
+from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, JustView  # , home
 from apps.leagues.views import LeagueViewSet
 from apps.teams.views import StadiumViewSet, GameViewSet, TeamViewSet, clean
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet, HeadToHeadViewSet
@@ -16,7 +16,6 @@ router = routers.DefaultRouter()
 router.register(r'comments', CommentsViewSet)
 router.register(r'news', NewsViewSet)
 router.register(r'cities', CityViewSet)
-router.register(r'countries', CountryViewSet)
 router.register(r'just', JustView)
 # league
 router.register(r'leagues', LeagueViewSet)

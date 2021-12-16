@@ -60,6 +60,8 @@ import UserList from "./components/users/usersList";
 import UserDetail from "./components/users/userDetail";
 import { fetchUsers } from "./redux_two/actions/asyncActions/asyncAllUsers";
 import NewsDetail from "./components/general/news/newsDetail";
+import UsersProfilesList from "./components/users/usersProfilesList";
+import UserProfileDetail from "./components/users/userProfileDetail";
 
 
 function App() {
@@ -93,7 +95,8 @@ function App() {
                     <Route path='/teams' exact component={teamsList}/>
                     <Route path='/users' exact component={UserList}/>
                     <Route path='/users/:id' exact component={UserDetail}/>
-
+                    <Route path='/profiles' exact component={UsersProfilesList}/>
+                    <Route path='/profiles/:id' exact component={UserProfileDetail}/>
                     <Route path='/leagues' exact component={LeaguesList}/>
                     <Route path='/players' exact component={PlayersList}/>
                     <Route path='/add-game' exact component={AddGame}/>

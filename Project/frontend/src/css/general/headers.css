@@ -1,0 +1,26 @@
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    html, body{
+        height: 100%;
+    }
+    body{
+        background-color: #ccc;
+    }
+
+    div {
+        border: 1px solid #fff;
+        margin:10px;
+        text-align: center;
+    }
+    #main{
+        width: 1119px;
+        height: 150px;
+        overflow: hidden;
+    }
+    #main>div{
+        width: 150px;
+        height: 120px;
+        display: inline-block;
+    }

@@ -14,6 +14,7 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     position = models.CharField(max_length=7, choices=POSITIONS, default='F')
     playing_for_national_team = models.BooleanField(default=True)
+    player_number = models.PositiveIntegerField(default=10)
 
     def __str__(self):
         return self.name

@@ -1,4 +1,4 @@
-from .models import Comments, News, City, Country, Just2
+from .models import Comments, News, City, Just2
 from rest_framework import serializers
 
 
@@ -33,8 +33,3 @@ class CitySerializers(serializers.ModelSerializer):
         model = City
         fields = '__all__'
 
-
-class CountrySerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Country
-        fields = '__all__'

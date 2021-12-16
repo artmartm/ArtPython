@@ -1,12 +1,24 @@
 import axios from "axios";
 import React, {useState, useEffect, useContext} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchUsersProfiles } from "../../redux_two/actions/asyncActions/asyncAllUsersProfiles";
 import AuthContext from "../general/base/AuthContext";
 
 function UserDetail({ match }) {
     
-    const[team, setTeam] = useState({});
-    const[pl, setPl] = useState([]);
+
+    const dispatch = useDispatch();
+
+    useEffect(()=> {
+        dispatch(fetchUsersProfiles())
+    }, [])
+
+    const profiles = useSelector(state => state.usersProfilesReducer.usersProfiles)
+
+
+    const[user, setUser] = useState({});
+    const[pr,setPr] = useState([])
     const id = match.params.id;
 
     let {authTokens, logoutUser} = useContext(AuthContext)
@@ -21,19 +33,16 @@ function UserDetail({ match }) {
                 'Authorization':'Bearer ' + String(authTokens.access)
             }
         }).then(response=>{
-            setTeam(response.data)
-            setPl(response.data.players)
-
+            setUser(response.data)
+            setPr(response.data.profile)
         })
     },[id])
-
+    
     return(
         <div>
-            <h1>username: {team.username}</h1>
-            <h1>profile: {team.profile}</h1>
-            <h1>{team.name}!!</h1>
-
-            
+            <h1>username: {user.username}</h1>
+            <h1>profile: </h1>
+            {profiles.map(e=>(<p>{e.ban}!</p>))}   
         </div>
 
     )

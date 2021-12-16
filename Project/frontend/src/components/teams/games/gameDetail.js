@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function GameDetail({ match }) {
-    
+
+    const teams = useSelector(state => state.teamsReducer.teams)
+
     const[game, setGame] = useState({});
     //const[pl, setPl] = useState([]);
     const id = match.params.id;

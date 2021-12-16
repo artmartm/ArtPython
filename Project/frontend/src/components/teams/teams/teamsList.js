@@ -14,7 +14,7 @@ const TeamsList=()=> {
             <div >
                 {teams.map(team => 
                     <div key={team.id}>
-                    <h1>{team.name}</h1>
+                    <h1>{team.name} and {team.id}</h1>
                     <h2>{team.second_name}</h2>
                     <h1><Link to={{ pathname: `/teams/${team.id}/`, fromDashboard: false}}><img src={team.team_logo} style={{width:350, height:350}}/></Link></h1>
                     <hr style={{width:250}}/>

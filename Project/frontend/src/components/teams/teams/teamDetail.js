@@ -3,10 +3,14 @@ import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import AddComment from "../../general/comments/addComment";
 import { useSelector } from "react-redux";
-import AllCommentsList from "../../general/comments/allComments";
 import ParticularNewsList from "../../general/news/particularNewsList";
 
-//import CommentsList from "../../general/comments/commentsList";
+import './../../../css/teams/j.css'
+
+//coments
+import CommentsList from "../../general/comments/commentsList";
+import AllCommentsList from "../../general/comments/allComments";
+
 //import AuthContext from "../../general/base/AuthContext";
 
 function TeamDetail({ match }) {
@@ -54,6 +58,7 @@ function TeamDetail({ match }) {
     return(
         <div>
             <h1>{team.name} <img src={team.team_logo} width={50} height={50}/></h1>
+            <h2>{team.second_name}</h2>
             <h2>id is {team.id}</h2>
             <p>games {team.games}</p>
             <p>amount of points {team.points}</p>
@@ -62,8 +67,8 @@ function TeamDetail({ match }) {
             <p>wins OT {team.wins_ot}</p>
             <p>defeats OT {team.defeats_ot}</p>
             {stadium.map(e=>(
-                <p>stadium is 
-                    <Link key={e.id} to={`/stadiums/${e.id}`}>{e.name}!!!</Link>
+                <p>stadium is   
+                    <Link style={{ textDecoration: "none" }} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
                 </p>
             ))}
             <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
@@ -71,10 +76,24 @@ function TeamDetail({ match }) {
             <hr/>
 
             <h3>list of players</h3>
+                            <div style={{ width:250, height:300, align:'center', border:'1px solid', borderRadius:'50px', margin:'auto' }}>       
+                                {pl.map(e=>(
+                                    <div style={{backgroundImage: `url(${e.background})` ,position:'center', backgroundRepeat:'no-repeat', backgroundPosition:'center'}}>
+                                        <Link key={e.id} to={`/players/${e.id}`} >
+                                            <h2>{e.name}!!!</h2>
+                                        </Link>
+                                        <div >
+                                            <img style={{border:'1px solid', borderRadius:'10px',}} src={e.image} width={180} height={180}/>
+                                        </div>
+                                        <p>score:{e.score}</p>
+                                    </div>
+                                ))}
+                                
+                            </div>
                 <React.Fragment>
                     <button onClick={()=>{setShowPlayers({isOpen:true})}}>show players</button>        
                         {showPlayers.isOpen && 
-                            <div>       
+                            <div style={{ width:500, height:600, align:'canter', border:'1px' }}>       
                                 {pl.length ? pl.map(e=>(
                                     <Link key={e.id} to={`/players/${e.id}`} >
                                         <h2>{e.name}!!!</h2>
@@ -111,7 +130,7 @@ function TeamDetail({ match }) {
                 <button onClick={()=>{setShowComments({isOpen:true})}}>show comments</button>        
                     {showComments.isOpen && 
                         <div>       
-                            <AllCommentsList key={id}  obj={id} ct={content_type}/>
+                            <CommentsList key={id}  obj={id} ct={content_type}/> {/* through redux AllCommentsList */}
                             <button onClick={()=>{setShowComments({isOpen:false})}}>close</button>
                         </div>
                     }

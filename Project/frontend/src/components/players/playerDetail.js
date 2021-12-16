@@ -52,7 +52,8 @@ function PlayerDetail({ match }) {
     return(
         <div className='player_div' style={{backgroundImage: `url(${player.background})`, position:'center', backgroundRepeat:'no-repeat', backgroundPosition:'center'}}> 
             <div >  
-            <h1>{player.name} page</h1>
+            <h1>{player.name}</h1>
+            <h2># {player.player_number}</h2>
             <img src={player.image} style={styles.img}/>
             <h3>position is {player.position}</h3>
             <h3>current team is <Link 

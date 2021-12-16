@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Comments, News, City, Country, Just2
-from .serializers import CommentsSerializers, NewsSerializers, CitySerializers, CountrySerializers, JustSer
+from .models import Comments, News, City, Just2
+from .serializers import CommentsSerializers, NewsSerializers, CitySerializers, JustSer
 from apps.custom_permissions import OnlyLookOrRequestUser, OnlyLookOrAdminModerator, OnlyAdminOrModerator
 
 
@@ -33,8 +33,3 @@ class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerializers
     permission_classes = [OnlyLookOrAdminModerator]
 
-
-class CountryViewSet(viewsets.ModelViewSet):
-    queryset = Country.objects.all()
-    serializer_class = CountrySerializers
-    permission_classes = [OnlyLookOrAdminModerator]

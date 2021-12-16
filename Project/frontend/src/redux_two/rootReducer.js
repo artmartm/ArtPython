@@ -11,6 +11,7 @@ import { newsReducer } from "./reducers/newsReducer";
 import { commentsReducer } from "./reducers/commentsReducer";
 import { usersReducer } from "./reducers/usersReducer"
 import { particularUserReducer } from "./reducers/particularUserReducer";
+import { usersProfilesReducer } from "./reducers/usersProfilesReducer";
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -25,7 +26,7 @@ const rootReducer = combineReducers({
     /////////////
     usersReducer,
     particularUserReducer,
-
+    usersProfilesReducer,
     particularTeamReducer,
 
 

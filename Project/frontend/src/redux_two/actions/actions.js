@@ -13,7 +13,7 @@ import { GET_ALL_NEWS, GET_PARTICULAR_NEWS } from "../types/types";
 //comments
 import { GET_ALL_COMMENTS, GET_PARTICULAR_COMMENT } from "../types/types";
 //users
-import { GET_ALL_USERS, GET_PARTICULAR_USER } from "../types/types";
+import { GET_ALL_USERS, GET_PARTICULAR_USER, GET_PARTICULAR_USER_PROFILE, GET_ALL_USERS_PROFILES } from "../types/types";
 
 
 //teams
@@ -84,6 +84,10 @@ export const getAllUsers = (payload) => ({
 
 export const getParticularUser = (payload) => ({
     type: GET_PARTICULAR_USER, payload
+})
+
+export const getAllUsersProfiles = (payload) => ({
+    type: GET_ALL_USERS_PROFILES, payload
 })
 
 ////////////////
