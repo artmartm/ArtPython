@@ -1,13 +1,16 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from './AuthContext'
+//import './../../css/general/general.css';
 
 const users = {1:'Art',4:'kit'}
 
 const Header = () => {
     let {user,authTokens, logoutUser} = useContext(AuthContext)
+    //className={'just_class'}
     return (
         <div style={{ background:'gray' }}>
+                    <p className={'just_p'}>hello</p>
                         {authTokens &&   <p>Hello !!!</p>}
             {authTokens ? <div>
                     <p  onClick={logoutUser}>Logout</p>

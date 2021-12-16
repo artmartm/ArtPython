@@ -5,12 +5,6 @@ const TeamsList=()=> {
 
     const dispatch = useDispatch();
     const teams = useSelector(state => state.teamsReducer.teams)
-    {/*const emp = {};
-    const [info, setInfo] = useState(emp);
-    for(let i in teams.length) {
-        emp[`isOpen${i}`]=false
-    }*/}
-
 
     return(
         <div>
@@ -25,12 +19,10 @@ const TeamsList=()=> {
                     <h1><Link to={{ pathname: `/teams/${team.id}/`, fromDashboard: false}}><img src={team.team_logo} style={{width:350, height:350}}/></Link></h1>
                     <hr style={{width:250}}/>
                     {/*<h1><Link to={{ pathname: `/teams2/${team.id}/`, fromDashboard: false}}>{team.name}2</Link></h1>*/}
-                    </div>
-                    
+                    </div>                    
                     )}
             </div>
-            :
-            <p>no teams</p>
+            : <p>no teams</p>
             }
         </div>
     )

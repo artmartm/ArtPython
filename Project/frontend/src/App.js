@@ -59,6 +59,7 @@ import { store } from "./redux/store";
 import UserList from "./components/users/usersList";
 import UserDetail from "./components/users/userDetail";
 import { fetchUsers } from "./redux_two/actions/asyncActions/asyncAllUsers";
+import NewsDetail from "./components/general/news/newsDetail";
 
 
 function App() {
@@ -103,6 +104,7 @@ function App() {
                     <Route path='/reg' exact component={Registration}/>
                     <Route path='/add-city' exact component={AddCity}/>
                     <Route path ='/news' exact component={NewsList} />
+                    <Route path ='/news/:id' exact component={NewsDetail} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} /> {/*PrivateRoute*/}
                     <Route path='/teams/:id' exact component={TeamDetail} />
                     {/*<Route path='/teams2/:id' exact component={TeamDetail2} />*/}
@@ -110,7 +112,7 @@ function App() {
                     <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadiums' exact component={StadiumsList} />
                     <Route path='/all-comments' exact component={AllCommentsList} />
-                    <Route path='/stadium/:id' exact component={StadiumDetail} />
+                    <Route path='/stadiums/:id' exact component={StadiumDetail} />
                 {/*</Switch>*/}
                 </AuthProvider>
             </div>

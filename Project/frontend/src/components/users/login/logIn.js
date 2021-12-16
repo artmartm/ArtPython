@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import AuthContext from '../../general/base/AuthContext'
-import './login.css'
+import './../../css/users/login/login.css'
 const LoginPage = () => {
     let {loginUser} = useContext(AuthContext)
     return (

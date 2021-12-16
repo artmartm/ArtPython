@@ -15,7 +15,7 @@ const lol = []
 
 const initialState = {
     
-    teams: take_team
+    teams: ['']
 }
 
 export const teamReducer=(state=initialState, action) => {

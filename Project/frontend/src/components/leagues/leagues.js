@@ -9,7 +9,7 @@ function Leagues() {
     const[state, setState] = useState([{
             isOpen:false
         }])
-    const[info, setInfo] = useState([{
+    const[info, setState] = useState([{
             isOpen:false
         }])
 
@@ -33,9 +33,9 @@ function Leagues() {
                 {leagues.map(item => (
                     <div>
                     <h1 key={item.id}>
-                        <h2 to={{ pathname: `/leagues/${item.id}/`, fromDashboard: false}}>
+                        <Link to={{ pathname: `/leagues/${item.id}/`, fromDashboard: false}}>
                             {item.name}<br/>
-                        </h2>
+                        </Link>
                     </h1>
                     </div>
                     

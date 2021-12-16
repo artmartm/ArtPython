@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AddComment from "../../general/comments/addComment";
 import { useSelector } from "react-redux";
 import AllCommentsList from "../../general/comments/allComments";
+import ParticularNewsList from "../../general/news/particularNewsList";
 
 //import CommentsList from "../../general/comments/commentsList";
 //import AuthContext from "../../general/base/AuthContext";
@@ -22,6 +23,9 @@ function TeamDetail({ match }) {
     const[matches, setMatches] = useState([]);
     //show close
     const[showComments, setShowComments] = useState([{
+        isOpen:false
+    }])
+    const[showNews, setShowNews] = useState([{
         isOpen:false
     }])
     const[showMatches, setShowMatches] = useState([{
@@ -50,6 +54,7 @@ function TeamDetail({ match }) {
     return(
         <div>
             <h1>{team.name} <img src={team.team_logo} width={50} height={50}/></h1>
+            <h2>id is {team.id}</h2>
             <p>games {team.games}</p>
             <p>amount of points {team.points}</p>
             <p>wins {team.wins}</p>
@@ -108,6 +113,16 @@ function TeamDetail({ match }) {
                         <div>       
                             <AllCommentsList key={id}  obj={id} ct={content_type}/>
                             <button onClick={()=>{setShowComments({isOpen:false})}}>close</button>
+                        </div>
+                    }
+            </React.Fragment>
+            <br/><br/>
+            <React.Fragment>
+                <button onClick={()=>{setShowNews({isOpen:true})}}>show news</button>        
+                    {showNews.isOpen && 
+                        <div>       
+                            <ParticularNewsList key={id}  obj={id} ct={content_type}/>
+                            <button onClick={()=>{setShowNews({isOpen:false})}}>close</button>
                         </div>
                     }
             </React.Fragment>
