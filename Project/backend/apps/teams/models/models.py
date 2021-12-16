@@ -103,8 +103,15 @@ class Game(models.Model):
     def stadium(self):
         return Stadium.objects.values_list('name', flat=True).get(team=self.home_team)
 
+    rand = randint(1, Team.objects.count())
+
     @property
     def win(self):
+        # rand = randint(1, Team.objects.count())
+        def get_rand():
+            return randint(1, Team.objects.count())
+
+        rand = get_rand()
         home_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.home_team)
         away_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.away_team)
         home_team_game_points = sum(home_team_players_score) // 10 + self.home_team.score + 5
@@ -134,7 +141,7 @@ class Game(models.Model):
                     Stadium.objects.values_list('max_capacity', flat=True).filter(team=self.home_team)) >= 0.95:
                 home_team_game_points += 5
         luck = abs(home_team_game_points - away_team_game_points) + 1
-        rand = randint(1, Team.objects.count())
+        #   rand = randint(1, Team.objects.count())
         over_time = False
 
         def get_the_score(home, away):
@@ -160,16 +167,19 @@ class Game(models.Model):
         if home_team_game_points == away_team_game_points:
             over_time = True
 
-            rand_over_time = randint(1, 2)
+            rand_over_time = 1
+            # rand_over_time = randint(1, 2)
             if rand_over_time == 1:
-                home_team_game_points += 1
+                # home_team_game_points += 1
+                home_team_game_points = 1
             else:
+                away_team_game_points = 1
                 away_team_game_points += 1
 
         else:
-            if rand == self.home_team.id and home_team_game_points < away_team_game_points:
+            if self.rand == self.home_team.id and home_team_game_points < away_team_game_points:
                 home_team_game_points += luck
-            elif rand == self.away_team.id and away_team_game_points < home_team_game_points:
+            elif self.rand == self.away_team.id and away_team_game_points < home_team_game_points:
                 away_team_game_points += luck
         if home_team_game_points > away_team_game_points:
             if over_time:
@@ -183,13 +193,16 @@ class Game(models.Model):
                 self.loser_OT = ""
                 self.winner = self.home_team.name
                 self.loser = self.away_team.name
+                self.save()
             if home_team_game_points % 10 < away_team_game_points % 10:
-                self.home_team_goals, self.away_team_goals = get_the_score(home_team_game_points, away_team_game_points)
+                # self.home_team_goals, self.away_team_goals = get_the_score(home_team_game_points, away_team_game_points)
+                self.home_team_goals, self.away_team_goals = [100, 100]
+                self.save()
             else:
                 self.home_team_goals = home_team_game_points % 10
                 self.away_team_goals = away_team_game_points % 10
-            self.save()
-            return home_team_game_points, away_team_game_points, rand
+                self.save()
+            return home_team_game_points, away_team_game_points, self.rand
         else:
             if over_time:
                 self.winner_OT = self.away_team.name
@@ -202,16 +215,21 @@ class Game(models.Model):
                 self.loser_OT = ""
                 self.winner = self.away_team.name
                 self.loser = self.home_team.name
+                self.save()
             if home_team_game_points % 10 > away_team_game_points % 10:
-                self.away_team_goals, self.home_team_goals = get_the_score(away_team_game_points, home_team_game_points)
+                # self.away_team_goals, self.home_team_goals = get_the_score(away_team_game_points, home_team_game_points)
+                self.home_team_goals, self.away_team_goals = [100, 100]
+                self.save()
             else:
                 self.home_team_goals = home_team_game_points % 10
                 self.away_team_goals = away_team_game_points % 10
-            self.save()
+                self.save()
+            # self.save()
             return home_team_game_points, away_team_game_points, rand
 
-    def __str__(self):
-        return self.name
+
+def __str__(self):
+    return self.name
 
 
 class TeamStats(models.Model):
