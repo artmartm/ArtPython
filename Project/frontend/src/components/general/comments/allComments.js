@@ -1,19 +1,29 @@
 import {useDispatch, useSelector} from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
-const AllCommentsList=()=> {
+const AllCommentsList=({obj, ct})=> {
 
     const dispatch = useDispatch();
     const comments = useSelector(state => state.commentsReducer.comments)
-
-
+    const particular_comments=[];
+    {comments.length ?
+        comments.map(e=>(
+            <div>
+            {e.object_id==obj && e.content_type==ct ?
+            particular_comments.push(e)
+            :
+            <p></p>
+        }
+        </div>
+        )) : <p>no comments yet</p>
+    }
     return(
         <div>
             <h1>list of comments</h1>
             <hr/>
-            {comments.length ?
+            {particular_comments.length ?
             <div>
-                {comments.map(comment => 
+                {particular_comments.map(comment => 
                     <div key={comment.id}>
                     <h1><Link to={{ pathname: `/comments/${comment.id}/`, fromDashboard: false}}>{comment.name}</Link></h1>
                     </div>
@@ -26,7 +36,5 @@ const AllCommentsList=()=> {
     )
 }
 export default AllCommentsList;
-
-
 
 
