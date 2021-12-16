@@ -1,16 +1,26 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchTeams } from "../../../redux_two/actions/asyncActions/asyncAllTeams";
+import AddComment from "../../general/comments/addComment";
+import CommentsList from "../../general/comments/commentsList";
 
 function GameDetail({ match }) {
 
+
+    const dispatch = useDispatch();
+    useEffect(()=> {
+        dispatch(fetchTeams())
+    }, [])
     const teams = useSelector(state => state.teamsReducer.teams)
 
+    
+    const [showComments,setShowComments]=useState({isOpen:false})
     const[game, setGame] = useState({});
     //const[pl, setPl] = useState([]);
     const id = match.params.id;
-
+    const content_type='17';
     useEffect(()=>{
         axios({
             method:'GET',
@@ -28,6 +38,16 @@ function GameDetail({ match }) {
             <h1>{game.name}</h1>
             <h2>{game.home_team_goals} : {game.away_team_goals}</h2>
             <p>winner is <b>{game.winner}</b></p>
+            <React.Fragment>
+                <button onClick={()=>{setShowComments({isOpen:true})}}>show comments</button>        
+                    {showComments.isOpen && 
+                        <div>       
+                            <CommentsList key={id}  obj={id} ct={content_type}/>
+                            <button onClick={()=>{setShowComments({isOpen:false})}}>close</button>
+                        </div>
+                    }
+            </React.Fragment>
+                <AddComment obj={id} ct={content_type}/>
         </div>
     )
 }

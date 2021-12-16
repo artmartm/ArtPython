@@ -18,21 +18,28 @@ const Header = () => {
                                 <li><Link to='/teams'>teams</Link></li>
                                 <li><Link to='/leagues'>leagues</Link></li>
                                 <li><Link to='/players'>players</Link></li>
-                                <li><Link to='/profiles'>profiles</Link></li>
-                                <li><Link to='/users'>users</Link></li>
                                 <li><Link to='/'>home</Link></li>
                                 <li><Link to='/games-list'>list of games</Link></li>
+                                <li><Link to='/news'>news</Link></li>
+                                {/*
+                                <li> <Link to='/all-comments'>all comments</Link></li>
                                 <li><Link to='/add-city'>add city</Link></li>
                                 <li><Link to='/add-country'>add country</Link></li>
-                                <li><Link to='/news'>news</Link></li>
-                                <li> <Link to='/all-comments'>all comments</Link></li>
-                                <li><Link to="/login" >Login</Link></li>
+                                */}
                                 <li><Link to='/about'>about</Link></li>
-                                <li><Link to='/reg'>registration</Link></li>
 
-
+                                {authTokens ?
+                                <>
                                 <li><Link onClick={logoutUser}>logout</Link></li>
-        
+                                <li><Link to='/profiles'>profiles</Link></li>
+                                <li><Link to='/users'>users</Link></li>
+                                </>
+                                :
+                                <>
+                                <li><Link to='/reg'>registration</Link></li>
+                                <li><Link to="/login" >Login</Link></li>
+                                </>
+                                }
              
 
                             </ul>

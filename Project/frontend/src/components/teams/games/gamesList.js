@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {Link} from 'react-router-dom';
 import TeamLogo from '../teams/teamsLogo';
+import AddGame from './addGame';
 function Games() {
 
     const [games, setGames] = useState([]);
@@ -24,9 +25,7 @@ function Games() {
     return(
         <div>
             <h1>Games page</h1>
-            {teams ? teams.map(e=><p>{e.id}...{e.name}</p>) : <p>no</p>}
             <hr/>      
-                <hr/>      
                 {games.map(item => (
                     <div>
                     <p key={item.id}>
@@ -40,6 +39,7 @@ function Games() {
                     <hr/>
                     </div>
                     ))}
+                <AddGame/>
                 </div>)
                 }
 

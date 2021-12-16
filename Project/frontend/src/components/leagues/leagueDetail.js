@@ -1,11 +1,15 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../general/base/AuthContext";
 import AddComment from "../general/comments/addComment";
 import CommentsList from "../general/comments/commentsList";
 
 function LeagueDetail({ match }) {
     
+    let {authTokens, logoutUser} = useContext(AuthContext)
+
+
     const[league, setLeague] = useState({});
     const[team, setTeam] = useState([]);
     const[cm, setCm] = useState([]);
@@ -37,7 +41,6 @@ function LeagueDetail({ match }) {
                 <Link key={e.id} to={`/teams/${e.id}`} ><h2>{e.name}!</h2></Link>
             ))}
             <hr/>
-            <h3>news:</h3>
             {cm.map(e=>(
                 <Link key={e.id}><p>{e.name}</p></Link>
             ))}
@@ -50,7 +53,11 @@ function LeagueDetail({ match }) {
                         </div>
                     }
             </React.Fragment>
+            {authTokens ?
                 <AddComment obj={id} ct={content_type}/>
+                :
+                <p>can not add comments</p>
+            }
             <br/>
         </div>
     )

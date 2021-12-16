@@ -10,6 +10,7 @@ import './../../../css/teams/j.css'
 //coments
 import CommentsList from "../../general/comments/commentsList";
 import AllCommentsList from "../../general/comments/allComments";
+import AuthContext from "../../general/base/AuthContext";
 
 //import AuthContext from "../../general/base/AuthContext";
 
@@ -41,6 +42,7 @@ function TeamDetail({ match }) {
             backgroundPosition:'center'
         }
     }
+    let {authTokens, logoutUser} = useContext(AuthContext)
 
     const id = match.params.id;
     const content_type = '14';
@@ -164,7 +166,11 @@ function TeamDetail({ match }) {
                         </div>
                     }
             </React.Fragment>
+            {authTokens ?
                 <AddComment obj={id} ct={content_type}/>
+                :
+                <p>can not add comments</p>
+            }
             <br/>
         </div>
 
