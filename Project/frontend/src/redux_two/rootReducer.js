@@ -10,7 +10,7 @@ import { stadiumsReducer } from "./reducers/stadiumsReducer";
 import { newsReducer } from "./reducers/newsReducer";
 import { commentsReducer } from "./reducers/commentsReducer";
 import { usersReducer } from "./reducers/usersReducer"
-
+import { particularUserReducer } from "./reducers/particularUserReducer";
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
     commentsReducer,
     /////////////
     usersReducer,
+    particularUserReducer,
 
     particularTeamReducer,
 

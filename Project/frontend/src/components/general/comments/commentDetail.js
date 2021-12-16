@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchParticularUser } from "../../../redux_two/actions/asyncActions/asyncParticularUser";
 
 
 function CommentDetail({ match }) {
@@ -11,6 +13,11 @@ function CommentDetail({ match }) {
     //const[team,setTeam] = useState([]);
     const id = match.params.id;
     //const ct = '18';
+    const dispatch = useDispatch();
+
+    useEffect(()=> {
+        dispatch(fetchParticularUser())
+    }, []) 
 
     useEffect(()=>{
         axios({

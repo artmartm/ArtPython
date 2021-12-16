@@ -19,6 +19,7 @@ export const GET_PARTICULAR_COMMENT = 'GET_PARTICULAR_COMMENT';
 
 //users
 export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const GET_PARTICULAR_USER = 'GET_PARTICULAR_USER';
 
 
 

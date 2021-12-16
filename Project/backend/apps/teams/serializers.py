@@ -46,6 +46,8 @@ class TeamDetailSerializer(TeamSerializers):
     comments = serializers.SerializerMethodField()
     stadium = serializers.SerializerMethodField()
     team_stats = serializers.SerializerMethodField()
+    matches = serializers.SerializerMethodField()
+    # read only
     points = serializers.ReadOnlyField()
     wins = serializers.ReadOnlyField()
     wins_ot = serializers.ReadOnlyField()
@@ -84,6 +86,14 @@ class TeamDetailSerializer(TeamSerializers):
         team_stats = TeamStatsSerializers(TeamStats.objects.filter(team=team), many=True).data
         return team_stats
 
+    @staticmethod
+    def get_matches(team):
+        matches = []
+        home_matches = GameSerializers(Game.objects.filter(home_team=team), many=True).data
+        away_matches = GameSerializers(Game.objects.filter(away_team=team), many=True).data
+        matches.extend(home_matches)
+        matches.extend(away_matches)
+        return matches
 
 class StadiumDetailSerializers(StadiumSerializers):
     news = serializers.SerializerMethodField()
