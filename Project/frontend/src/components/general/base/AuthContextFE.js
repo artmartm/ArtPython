@@ -1,3 +1,4 @@
+{/*
 import { createContext, useState, useEffect } from 'react'
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom'
@@ -7,11 +8,12 @@ const AuthContext = createContext()
 export default AuthContext;
 
 
+
+
 export const AuthProvider = ({children}) => {
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
-    let [loading, setLoading] = useState(true)
-
+    let [loading, setLoading]=useState(true);
     const history = useHistory()
 
     let loginUser = async (e )=> {
@@ -29,12 +31,13 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
-            history.push('/')
+            history.push('/successful-login')
         }else{
             alert('Something went wrong!')
         }
     }
 
+    
 
     let logoutUser = () => {
         setAuthTokens(null)
@@ -42,11 +45,12 @@ export const AuthProvider = ({children}) => {
         localStorage.removeItem('authTokens')
         history.push('/login')
     }
-
-
-    let updateToken = async ()=> {
-        console.log('token is updated')
-        let response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
+    
+    let updateToken= async ()=> {
+        //alert('update token')
+        console.log('token was updated')
+        //e.preventDefault()
+        let response = await fetch('http://127.0.0.1:8000/api/token/refresh', {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -55,19 +59,20 @@ export const AuthProvider = ({children}) => {
         })
 
         let data = await response.json()
-        
-        if (response.status === 200){
+
+        if(response.status === 200){
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
         }else{
+            //alert('Something went wrong!')
             logoutUser()
         }
-
         if(loading){
             setLoading(false)
         }
     }
+
 
     let contextData = {
         user:user,
@@ -76,21 +81,20 @@ export const AuthProvider = ({children}) => {
         logoutUser:logoutUser,
     }
 
-
-    useEffect(()=> {
+    useEffect(()=>{
 
         if(loading){
             updateToken()
         }
 
-        let interval =  setInterval(()=> {
+        let interval = setInterval(()=>{
             if(authTokens){
                 updateToken()
             }
-        }, 2000)
-        return ()=> clearInterval(interval)
+        },2000)
+        return ()=>clearInterval(interval)
 
-    }, [authTokens, loading])
+    },[authTokens,loading])
 
     return(
         <AuthContext.Provider value={contextData} >
@@ -98,3 +102,6 @@ export const AuthProvider = ({children}) => {
         </AuthContext.Provider>
     )
 }
+
+*/}
+

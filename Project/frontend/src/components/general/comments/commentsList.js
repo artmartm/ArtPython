@@ -7,7 +7,7 @@ import AuthContext from '../base/AuthContext';
 
 function CommentsList({obj, ct}) {
     
-    let {user,authTokens, logoutUser} = useContext(AuthContext)
+    //let {user,authTokens, logoutUser} = useContext(AuthContext)
 
     const [comments, setComments] = useState([]);
     const particular_comments = [];
@@ -38,7 +38,7 @@ function CommentsList({obj, ct}) {
         <div>
             <h1>list of comments</h1>
             <hr />
-            {particular_comments.length ? 
+            {particular_comments.length? 
             particular_comments.map(e=>(
                 <div>
                     <Link key={e.id} to={{ pathname: `/comments/${e.id}/`, fromDashboard: false}}><h3>{e.name}...added{e.author}</h3></Link>

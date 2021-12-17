@@ -26,12 +26,15 @@ const AddGame = () => {
           data: formField
         }).then(response=>{
           console.log(response.data);
-          history.push('/')
+          history.push('/games-list')
         })
     }
    
     return (
         <div className="container">
+          <div>
+
+          </div>
                 <h2 className="text-center mb-4">add a game</h2>
                 <div className="form-group">
                         <label>
