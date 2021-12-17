@@ -16,8 +16,8 @@ class CommentsViewSet(viewsets.ModelViewSet):
 
     # def perform_create(self, serializer):
     #     serializer.save(author=self.request.user)
-    def perform_authentication(self, request):
-        user=request.user
+    # def perform_authentication(self, request):
+    #     user=request.user
 
 class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()

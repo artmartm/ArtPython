@@ -8,6 +8,8 @@ function Dashboard() {
         <div>
             <h1>Hello, {user.username}</h1>
             <h2>this is your dashboard</h2>
+            <h2>{user.info.description}!</h2>
+            <h2>{user.info.favorite_team}!</h2>
         </div>
     )
 }

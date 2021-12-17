@@ -65,6 +65,7 @@ import UserProfileDetail from "./components/users/userProfileDetail";
 import Dashboard from "./components/users/dashboard/dashboard";
 import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin";
 import SignUp from "./components/users/signup/signUp";
+import Update from "./components/general/comments/update";
 
 function App() {
 
@@ -115,6 +116,7 @@ function App() {
                     <Route path='/teams/:id' exact component={TeamDetail} />
                     <Route path='/successful-login' component={SuccessfulLogIn}/>
                     {/*<Route path='/teams2/:id' exact component={TeamDetail2} />*/}
+                    <Route path='/update/:id' exact component={Update} />
 
                     <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadiums' exact component={StadiumsList} />

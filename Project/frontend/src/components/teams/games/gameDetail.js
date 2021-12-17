@@ -10,10 +10,7 @@ import CommentsList from "../../general/comments/commentsList";
 function GameDetail({ match }) {
 
 
-    const dispatch = useDispatch();
-    useEffect(()=> {
-        dispatch(fetchTeams())
-    }, [])
+  
     const teams = useSelector(state => state.teamsReducer.teams)
 
     
@@ -37,6 +34,13 @@ function GameDetail({ match }) {
     return(
         <div>
             <h1>{game.name}</h1>
+            <Link to={`/teams/${game.home_team}`}>{game.home_team}</Link>
+            {teams.map(e=>(
+                <div>
+                {e.id==game.home_team ?
+                <div><Link to={`/teams/${e.id}`}>{e.name}</Link></div>:<></>}
+                </div>
+            ))}
             <h2>{game.home_team_goals} : {game.away_team_goals}</h2>
             <p>winner is <b>{game.winner}</b></p>
             <React.Fragment>

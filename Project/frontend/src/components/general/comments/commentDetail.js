@@ -10,7 +10,8 @@ function CommentDetail({ match }) {
     const[state, setState] = useState([{
         isOpen:false
     }])
-    let {user,authTokens} = useContext(AuthContext)
+    //let {user,authTokens} = useContext(AuthContext)
+    const user ='123'
     const[comment, setComment] = useState({});
     //const[team,setTeam] = useState([]);
     const id = match.params.id;
@@ -30,10 +31,40 @@ function CommentDetail({ match }) {
         })
     },[id])
 
+
+    return(
+        <div>
+            <h1>{comment.name} id is{comment.id}</h1>
+            <h2>author is {comment.author}</h2>
+            <h3>created at {comment.created_at}</h3>
+            <Link to={{ pathname: `/update/${id}/`, fromDashboard: false}}>update</Link>
+            <hr/>    
+        </div>
+    )
+}
+
+export default CommentDetail;
+{/*}
+
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import AuthContext from '../base/AuthContext';
+
+
+
+
+function AddComment({obj, ct}) {
+
+  let {user,authTokens} = useContext(AuthContext)
+  
+    let history = useHistory();
+    //let {user} = useContext(AuthContext);
     const [name, setName] = useState('')
-    const [content_type, setContent_type] = useState(comment.content_type)
-    const [object_id, setObject_id] = useState(comment.object_id)
-    const [author, setAuthor] = useState(comment.author)
+    const [content_type, setContent_type] = useState(ct)
+    const [object_id, setObject_id] = useState(obj)
+    const [author, setAuthor] = useState(user.user_id)
+    //const [created_at, setCreated_at] = useState(s)
 
     const Add = async () => {
         let formField = new FormData()
@@ -41,24 +72,19 @@ function CommentDetail({ match }) {
         formField.append('content_type',content_type)
         formField.append('object_id',object_id)
         formField.append('author',author)
-
+        //formField.append('created_at',created_at)
 
         await axios({
           method: 'post',
-          url:`http://127.0.0.1:8000/api/comments/${id}`,
+          url:'http://127.0.0.1:8000/api/comments/',
           data: formField
         }).then(response=>{
           console.log(response.data);
         })
     }
-
-    return(
-        <div>
-            <h1>{comment.name}</h1>
-            <h2>author is {comment.author}</h2>
-            <h3>created at {comment.created_at}</h3>
-            <div>
-            <hr/>    
+   
+    return (
+      <div>
         <div className="container">
             <div className="container">
       <div className="w-75 mx-auto shadow p-5">
@@ -83,18 +109,7 @@ function CommentDetail({ match }) {
     </div>
         </div>
       </div>
-        </div>
-    )
-}
+    );
+};
 
-export default CommentDetail;
-
-
-{/*
-        formField.append('name',name)
-        formField.append('name',name)
-        formField.append('name',name)
-        formField.append('content_type',content_type)
-        formField.append('object_id',object_id)
-        formField.append('author',author)
-*/}
+export default AddComment; */}
