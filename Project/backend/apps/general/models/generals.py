@@ -116,6 +116,8 @@ class FunClubs(PLTSBaseModel, BaseModel, StillActive):
         verbose_name_plural = 'Fun Clubs'
 
 
+
+
 class Just2(models.Model):
     name = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)

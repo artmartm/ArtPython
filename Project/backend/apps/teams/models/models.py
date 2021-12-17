@@ -5,9 +5,18 @@ from apps.general.models import SPORT_BRANDS
 from random import randint
 
 
+def get_upload_to_teams(instance, name):
+    return f'teams/{instance.name}/{name}'
+
+
+def get_upload_to_leagues(instance, name):
+    return f'leagues/{instance.name}/{name}'
+
+
 class Team(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=30)
-    team_logo = models.ImageField(blank=True, null=True)
+    team_logo = models.ImageField(blank=True, null=True, upload_to=get_upload_to_teams)
+    team_background = models.ImageField(blank=True, null=True, upload_to=get_upload_to_teams)
     history = models.TextField()
     league = models.ForeignKey(League, on_delete=models.CASCADE)
     description = models.TextField()
