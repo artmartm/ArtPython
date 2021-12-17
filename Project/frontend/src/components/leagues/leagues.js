@@ -32,11 +32,14 @@ function Leagues() {
                 {state.isOpen && <div>       
                 {leagues.map(item => (
                     <div>
+                    {item.is_private ?
                     <h1 key={item.id}>
                         <Link to={{ pathname: `/leagues/${item.id}/`, fromDashboard: false}}>
                             {item.name}<br/>
                         </Link>
                     </h1>
+                    :
+                    <></>}
                     </div>
                     
                     ))}

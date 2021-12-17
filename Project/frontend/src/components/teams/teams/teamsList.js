@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './../../../css/teams/teamList.css'
 const TeamsList=()=> {
 
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const TeamsList=()=> {
                     <div key={team.id}>
                     <h1>{team.name} and {team.id}</h1>
                     <h2>{team.second_name}</h2>
-                    <h1><Link to={{ pathname: `/teams/${team.id}/`, fromDashboard: false}}><img src={team.team_logo} style={{width:350, height:350, borderRadius:175}}/></Link></h1>
+                    <h1><Link to={{ pathname: `/teams/${team.id}/`, fromDashboard: false}}><img className={'team_img'} src={team.team_logo}/></Link></h1>
                     <hr style={{width:250}}/>
                     {/*<h1><Link to={{ pathname: `/teams2/${team.id}/`, fromDashboard: false}}>{team.name}2</Link></h1>*/}
                     </div>                    

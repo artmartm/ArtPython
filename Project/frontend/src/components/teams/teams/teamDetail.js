@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AddComment from "../../general/comments/addComment";
 import { useSelector } from "react-redux";
 import ParticularNewsList from "../../general/news/particularNewsList";
-
+import './../../../css/teams/teamDetail.css'
 import './../../../css/teams/j.css'
 
 //coments
@@ -17,32 +17,6 @@ import CommentComponent from "../../general/comments/commentComponent";
 
 function TeamDetail({ match }) {
 
-    const styles = {
-        game_img:{
-            width:50,
-            height:50, 
-            borderRadius:'25px'
-        },
-        main_img:{
-            width:500,
-            height:500, 
-            borderRadius:'250px'
-        },
-        link:{
-            textDecoration: "none"
-        },
-        player_img:{
-            border:'1px solid', 
-            borderRadius:'10px',
-            width:180,
-            height:180
-        },
-        player_back:{
-            position:'center', 
-            backgroundRepeat:'no-repeat', 
-            backgroundPosition:'center'
-        }
-    }
     let {authTokens, logoutUser} = useContext(AuthContext)
 
     const id = match.params.id;
@@ -87,7 +61,7 @@ function TeamDetail({ match }) {
     
     return(
         <div>
-            <h1>{team.name} <img src={team.team_logo} width={75} height={75}/></h1>
+            <h1>{team.name} <img src={team.team_logo} className={'first_img'}/></h1>
             <h2>{team.second_name}</h2>
             <h2>id is {team.id}</h2>
             <p>games {team.games}</p>
@@ -98,11 +72,11 @@ function TeamDetail({ match }) {
             <p>defeats OT {team.defeats_ot}</p>
             {stadium.map(e=>(
                 <p>stadium is   
-                    <Link style={styles.link} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
+                    <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
                 </p>
             ))}
             <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
-            {team.team_logo ? <img style={styles.main_img} src={team.team_logo} /> : <p>no photo yet</p>}
+            {team.team_logo ? <img className={'main_img'} src={team.team_logo} /> : <p>no photo yet</p>}
             <hr/>
 
             <h3>list of players</h3>
@@ -113,10 +87,10 @@ function TeamDetail({ match }) {
                                 <div style={{ width:250, height:300, align:'center', border:'1px solid', borderRadius:'50px', margin:'auto' }}>       
                                     {pl.length ? pl.map(e=>(
                                         <div style={{backgroundImage: `url(${e.background})` ,position:'center', backgroundRepeat:'no-repeat', backgroundPosition:'center'}}>
-                                            <Link style={styles.link} key={e.id} to={`/players/${e.id}`} >
+                                            <Link className={'link'} key={e.id} to={`/players/${e.id}`} >
                                                 <h2>{e.name}!!!</h2>
                                             </Link>
-                                            <img style={styles.player_img} src={e.image}/>
+                                            <img className={'player_img'} src={e.image}/>
                                         </div>
                                     )) : <p>no players</p>
                                     }
@@ -135,9 +109,9 @@ function TeamDetail({ match }) {
                                 {matches.length ? matches.map(e=>(
                                     <Link key={e.id} to={`/game/${e.id}`} >
                                         <div>
-                                            {teams[e.home_team-1].name} <img style={styles.game_img} src={teams[e.home_team-1].team_logo}/>
+                                            {teams[e.home_team-1].name} <img className={'game_img'} src={teams[e.home_team-1].team_logo}/>
                                                 vs 
-                                            {teams[e.away_team-1].name} <img style={styles.game_img} src={teams[e.away_team-1].team_logo} />
+                                            {teams[e.away_team-1].name} <img className={'game_img'} src={teams[e.away_team-1].team_logo} />
                                         </div>
                                     </Link>
                                  )) : <p>no matches</p>

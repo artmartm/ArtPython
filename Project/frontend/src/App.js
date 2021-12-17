@@ -66,7 +66,6 @@ import Dashboard from "./components/users/dashboard/dashboard";
 import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin";
 import SignUp from "./components/users/signup/signUp";
 
-
 function App() {
 
     //const history = syncHistoryWithStore(HashRouter, store)
