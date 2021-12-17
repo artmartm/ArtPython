@@ -7,6 +7,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView
 )
+from .set_up_token import MyTokenObtainPairView
 from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,7 +18,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.urls.authtoken')),
-    path('api2/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api2/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api2/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('chaining/', include('smart_selects.urls')),
 ]
