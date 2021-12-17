@@ -11,6 +11,7 @@ import './../../../css/teams/j.css'
 import CommentsList from "../../general/comments/commentsList";
 import AllCommentsList from "../../general/comments/allComments";
 import AuthContext from "../../general/base/AuthContext";
+import CommentComponent from "../../general/comments/commentComponent";
 
 //import AuthContext from "../../general/base/AuthContext";
 
@@ -166,11 +167,7 @@ function TeamDetail({ match }) {
                         </div>
                     }
             </React.Fragment>
-            {authTokens ?
-                <AddComment obj={id} ct={content_type}/>
-                :
-                <p>can not add comments</p>
-            }
+                <CommentComponent obj={id} ct={content_type}/>
             <br/>
         </div>
 

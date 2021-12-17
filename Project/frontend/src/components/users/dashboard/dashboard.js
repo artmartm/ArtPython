@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../../general/base/AuthContext";
 
 function Dashboard() {
+    let {user,authTokens, logoutUser} = useContext(AuthContext)
+
     return(
         <div>
-            <h1>This is dashboard</h1>
+            <h1>Hello, {user.username}</h1>
+            <h2>this is your dashboard</h2>
         </div>
     )
 }

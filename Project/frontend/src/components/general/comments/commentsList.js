@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 //import './Model.css';
 import {Link} from 'react-router-dom';
 import AddComment from './addComment';
+import AuthContext from '../base/AuthContext';
 
 function CommentsList({obj, ct}) {
     
+    let {user,authTokens, logoutUser} = useContext(AuthContext)
+
     const [comments, setComments] = useState([]);
     const particular_comments = [];
 

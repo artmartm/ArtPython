@@ -28,7 +28,7 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
-            history.push('/')
+            history.push('/successful-login')
         }else{
             alert('Something went wrong!')
         }

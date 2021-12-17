@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 
-const Registration = () => {
+const SignUp = () => {
 
     let history = useHistory();
 
@@ -60,6 +60,6 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default SignUp;
 
 

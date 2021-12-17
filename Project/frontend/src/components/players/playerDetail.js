@@ -3,6 +3,7 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import AddComment from "../general/comments/addComment";
+import CommentComponent from "../general/comments/commentComponent";
 import CommentsList from "../general/comments/commentsList";
 import TeamLogo from "../teams/teams/teamsLogo";
 import PlayerMainInfo from "./playerMainInfo";
@@ -73,7 +74,7 @@ function PlayerDetail({ match }) {
                         </div>
                     }
             </React.Fragment>
-                <AddComment obj={id} ct={content_type}/>
+            <CommentComponent obj={id} ct={content_type}/>
             <br/>
             <React.Fragment>
                 <button onClick={()=>{setShowPersonalInfo({isOpen:true})}}>show personal info</button>        

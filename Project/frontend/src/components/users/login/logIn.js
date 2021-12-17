@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, {useContext} from 'react'
 import AuthContext from '../../general/base/AuthContext'
 import './../../../css/users/login/login.css'
@@ -27,7 +28,11 @@ const LoginPage = () => {
 			</div>
 		</div>
 	</div>
-            </form>
+            </form>			
+			<p>Don't have an account? <Link to={`/signup`}>Sign Up</Link> </p>
+
+<p>Forgot your password? <Link to={`#`}>Reset password</Link> </p>
+
         </div>
     )
 }

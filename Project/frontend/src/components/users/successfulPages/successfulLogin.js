@@ -1,59 +1,27 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import AuthContext from './AuthContext'
-//import './../../../css/general/headers.css'
-import './ex.css'
-const users = {1:'Art',4:'kit'}
+import AuthContext from '../../general/base/AuthContext'
+//import './ex.css'
 
-const Header = () => {
+const SuccessfulLogIn = () => {
     let {user,authTokens, logoutUser} = useContext(AuthContext)
-    //className={'just_class'}
     return (
-        <div style={{ background:'gray' }}>
+        <div>
                     <div>
                         <div>
-                        <div id="container">
-                        <nav>
-                            <ul>
-                                <li><Link to='/teams'>teams</Link></li>
-                                <li><Link to='/leagues'>leagues</Link></li>
-                                <li><Link to='/players'>players</Link></li>
-                                <li><Link to='/'>home</Link></li>
-                                <li><Link to='/games-list'>list of games</Link></li>
-                                <li><Link to='/news'>news</Link></li>
-                                {/*
-                                <li> <Link to='/all-comments'>all comments</Link></li>
-                                <li><Link to='/add-city'>add city</Link></li>
-                                <li><Link to='/add-country'>add country</Link></li>
-                                */}
-                                <li><Link to='/about'>about</Link></li>
-
+                            <div id="container">
                                 {authTokens ?
-                                <>
-                                <li><Link onClick={logoutUser}>logout</Link></li>
-                                <li><Link to='/profiles'>profiles</Link></li>
-                                <li><Link to='/users'>users</Link></li>
-                                <li><Link to='/dashboard'>dashboard</Link></li>
-                                </>
+                                <h1>Hello, {user.username} you were logged in successfully!</h1>
                                 :
-                                <>
-                                <li><Link to='/signup'>registration</Link></li>
-                                <li><Link to="/login" >Login</Link></li>
-                                </>
-                                }
-             
-
-                            </ul>
-                        </nav>
-                    </div>
+                                <></>}
+                            </div>
                         </div>
                     </div>
-
         </div>
     )
 }
 
-export default Header
+export default SuccessfulLogIn;
 
 
 //simple

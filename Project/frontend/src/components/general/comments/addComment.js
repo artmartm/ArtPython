@@ -8,8 +8,8 @@ import AuthContext from '../base/AuthContext';
 
 function AddComment({obj, ct}) {
 
-  let {user} = useContext(AuthContext)
-
+  let {user,authTokens} = useContext(AuthContext)
+  
     let history = useHistory();
     //let {user} = useContext(AuthContext);
     const [name, setName] = useState('')
@@ -36,6 +36,7 @@ function AddComment({obj, ct}) {
     }
    
     return (
+      <div>
         <div className="container">
             <div className="container">
       <div className="w-75 mx-auto shadow p-5">
@@ -59,6 +60,7 @@ function AddComment({obj, ct}) {
       </div>
     </div>
         </div>
+      </div>
     );
 };
 

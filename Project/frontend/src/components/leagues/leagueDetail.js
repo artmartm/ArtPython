@@ -3,6 +3,7 @@ import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../general/base/AuthContext";
 import AddComment from "../general/comments/addComment";
+import CommentComponent from "../general/comments/commentComponent";
 import CommentsList from "../general/comments/commentsList";
 
 function LeagueDetail({ match }) {
@@ -53,11 +54,7 @@ function LeagueDetail({ match }) {
                         </div>
                     }
             </React.Fragment>
-            {authTokens ?
-                <AddComment obj={id} ct={content_type}/>
-                :
-                <p>can not add comments</p>
-            }
+                    <CommentComponent obj={id} ct={content_type}/>
             <br/>
         </div>
     )

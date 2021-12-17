@@ -12,7 +12,7 @@ import AddCountry from "./components/general/locations/countries";
 //NAVIGATION
 import Navigation from "./components/general/navigation";
 //LOGIN LOGOUT SIGNUP
-import Registration from "./components/users/signUp.js/registration";
+
 //import LogIn from "./components_two/users/login";
 // GAMES
 import AddGame from "./components/teams/games/addGame";
@@ -62,6 +62,9 @@ import { fetchUsers } from "./redux_two/actions/asyncActions/asyncAllUsers";
 import NewsDetail from "./components/general/news/newsDetail";
 import UsersProfilesList from "./components/users/usersProfilesList";
 import UserProfileDetail from "./components/users/userProfileDetail";
+import Dashboard from "./components/users/dashboard/dashboard";
+import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin";
+import SignUp from "./components/users/signup/signUp";
 
 
 function App() {
@@ -104,12 +107,14 @@ function App() {
                     <Route path='/game/:id' exact component={GameDetail}/>
                     <Route path='/about' exact component={About}/>
                     <Route path='/login' exact component={LoginPage} />
-                    <Route path='/reg' exact component={Registration}/>
+                    <Route path='/signup' exact component={SignUp}/>
+                    <Route path='/dashboard' exact component={Dashboard}/>
                     <Route path='/add-city' exact component={AddCity}/>
                     <Route path ='/news' exact component={NewsList} />
                     <Route path ='/news/:id' exact component={NewsDetail} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} /> {/*PrivateRoute*/}
                     <Route path='/teams/:id' exact component={TeamDetail} />
+                    <Route path='/successful-login' component={SuccessfulLogIn}/>
                     {/*<Route path='/teams2/:id' exact component={TeamDetail2} />*/}
 
                     <Route path='/players/:id' exact component={PlayerDetail} />

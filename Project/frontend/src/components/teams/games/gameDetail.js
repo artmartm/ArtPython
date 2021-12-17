@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchTeams } from "../../../redux_two/actions/asyncActions/asyncAllTeams";
 import AddComment from "../../general/comments/addComment";
+import CommentComponent from "../../general/comments/commentComponent";
 import CommentsList from "../../general/comments/commentsList";
 
 function GameDetail({ match }) {
@@ -47,7 +48,7 @@ function GameDetail({ match }) {
                         </div>
                     }
             </React.Fragment>
-                <AddComment obj={id} ct={content_type}/>
+            <CommentComponent obj={id} ct={content_type}/>
         </div>
     )
 }
