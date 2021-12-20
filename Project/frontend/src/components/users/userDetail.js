@@ -42,6 +42,7 @@ function UserDetail({ match }) {
         <div>
             <h1>username: {user.username}</h1>
             <h1>profile: </h1>
+            <h2>profile is {user.profile}</h2>
             {profiles.map(e=>(<p>{e.ban}!</p>))}   
         </div>
 

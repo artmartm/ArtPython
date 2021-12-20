@@ -3,17 +3,20 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
-
+import './../../../css/teams/addGame.css';
+import Loader from '../../general/loader';
 
 
 const AddGame = () => {
 
     let history = useHistory();
 
+    const [loading, setLoading] = useState(true);
+
     const [home_team, setHome_team] = useState('')
     const [away_team, setAway_team] = useState('')
     const teams = useSelector(state => state.teamsReducer.teams)
-
+    const [team, setTeam]= useState([]);
 
 
     const Add = async () => {
@@ -27,18 +30,21 @@ const AddGame = () => {
         }).then(response=>{
           console.log(response.data);
           history.push('/games-list')
-        })
+          setLoading(false)
+        },2000)
     }
-   
+
+  
     return (
         <div className="container">
           <div>
-
           </div>
                 <h2 className="text-center mb-4">add a game</h2>
+                {loading && <Loader/>}
+
                 <div className="form-group">
                         <label>
-                        <select value={home_team} onChange={(e) => setHome_team(e.target.value)}>
+                        <select  className='home_team_ceil' value={home_team} onChange={(e) => setHome_team(e.target.value)}>
                           {teams.map(e=>(
                             <option value={e.id}>{e.name}</option>
                           )
@@ -48,16 +54,17 @@ const AddGame = () => {
                       </div>
                       <div className="form-group">
                         <label>
-                        <select value={away_team} onChange={(e) => setAway_team(e.target.value)}>
+                        <select className='away_team_ceil'  value={away_team} onChange={(e) => setAway_team(e.target.value)}>
                           {teams.map(e=>(
-                            <option value={e.id}>{e.name}</option>
+                            <option style={{color:'blue'}} value={e.id}>{e.name}</option>
                           )
                         )}
                         </select>
                         </label>
-                      </div>
-                 <button className="btn btn-primary btn-block" 
-                 onClick={Add}>add a game</button>       
+                        
+                      </div>     
+                                       <button className='vs' 
+                 onClick={Add}>VS</button>  
         </div>
     );
 };

@@ -1,0 +1,34 @@
+.home_team_ceil
+{
+    background:bisque;
+    width:350px;
+    height:350px;
+    border-radius: 25px;
+    text-align: center;
+    font-size:55px;
+    float: left;
+    margin: 155px;
+}
+
+.away_team_ceil
+{
+    background:bisque;
+    width:350px;
+    height:350px;
+    border-radius: 25px;
+    text-align: center;
+    float: right;
+    margin: 155px;
+    font-size:55px;
+}
+
+.vs
+{
+    width:150px;
+    height:350px;
+    border-radius: 25px;
+    text-align: center;
+    position: relative;
+    margin: 155px;
+    font-size:55px;
+}

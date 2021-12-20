@@ -25,5 +25,6 @@ class UsersListViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         return self.action_to_serializer.get(
             self.action,
-            self.serializer_class
+            self.serializer_class,
+
         )

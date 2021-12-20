@@ -18,14 +18,14 @@ function TeamLogo({id}) {
 
     const content_type = '14';
     useEffect(()=>{
-        axios({
+         axios({
             method:'GET',
             url:`http://127.0.0.1:8000/api/teams/${id}`,
-            headers:{
-                'Content-Type':'application/json',
+           // headers:{
+              //  'Content-Type':'application/json',
                 //'Authorization':'Bearer ' + String(authTokens.access)
                 //Asdasdasd
-            }
+            //}
         }).then(response=>{
             setTeam(response.data)
 
