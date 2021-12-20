@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchParticularUser } from "../../../redux_two/actions/asyncActions/asyncParticularUser";
 import AuthContext from "../base/AuthContext";
+import DeleteComment from "./deleteComment";
 
 
 function CommentDetail({ match }) {
@@ -38,7 +39,8 @@ function CommentDetail({ match }) {
             <h2>author is {comment.author}</h2>
             <h3>created at {comment.created_at}</h3>
             <Link to={{ pathname: `/update/${id}/`, fromDashboard: false}}>update</Link>
-            <hr/>    
+            <hr/>
+            <DeleteComment id={id}/>    
         </div>
     )
 }
