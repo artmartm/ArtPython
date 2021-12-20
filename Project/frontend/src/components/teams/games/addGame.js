@@ -38,7 +38,8 @@ const AddGame = () => {
     return (
         <div className="container">
           <div>
-          </div>
+            {/* <img src={teams[1].team_logo}/> */}
+                      </div>
                 <h2 className="text-center mb-4">add a game</h2>
                 {loading && <Loader/>}
               
@@ -54,7 +55,9 @@ const AddGame = () => {
                       </div>
                       <div className="form-group">
                         <label>
+                        <div><span>some text</span></div>
                         <select className='away_team_ceil'  value={away_team} onChange={(e) => setAway_team(e.target.value)}>
+                          
                           {teams.map(e=>(
                             <option style={{color:'blue'}} value={e.id}>{e.name}</option>
                           )

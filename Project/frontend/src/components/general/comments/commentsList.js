@@ -7,9 +7,7 @@ import AuthContext from '../base/AuthContext';
 import CommentComponent from './commentComponent';
 
 function CommentsList({obj, ct}) {
-    
     //let {user,authTokens, logoutUser} = useContext(AuthContext)
-
     const [comments, setComments] = useState([]);
     const particular_comments = [];
 

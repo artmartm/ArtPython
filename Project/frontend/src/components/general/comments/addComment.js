@@ -18,13 +18,7 @@ function AddComment({obj, ct}) {
     const [author, setAuthor] = useState(user.user_id)
     //const [created_at, setCreated_at] = useState(s)
 
-    function SubmitHandler(event) {
-      event.preventDefault()
-      if(name.trim()){
-        Add()
-        setName('')
-      }
-    }
+  
 
     const Add = async () => {
 
@@ -42,7 +36,7 @@ function AddComment({obj, ct}) {
           url:'http://127.0.0.1:8000/api/comments/',
           data: formField
         }).then(response=>{
-          console.log(response.data);
+          setName('')
         })
     }
    
@@ -55,7 +49,7 @@ function AddComment({obj, ct}) {
         <h2 className="text-center mb-4">add a comments !{user.user_id}!</h2> : <p>asdasdasd</p>}
         <div className="form-group">
           </div>
-          <div className="form-group" onSubmit={SubmitHandler}>
+          <div className="form-group" >
             <input
               type="text"
               className="form-control form-control-lg"

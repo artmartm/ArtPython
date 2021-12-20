@@ -3,12 +3,32 @@
         width:50px;
         height:50px; 
         border-radius:25px;
+        
+    }
+.position {
+    /* position: relative;
+    top: 50px;
+    bottom: 50px; */
+    /* left: 450px; */
+    font-size:82pt
+}
+.logo-container
+    {
+        display: flex;
+        flex-direction: row;
+        /* justify-content: space-between; */
+        padding: 0 50px;
+        box-sizing: border-box;
     }
 .main_img
     {
         width:500px;
         height:500px;
         border-radius:250px;
+        /* position: relative;
+        top: 50px;
+        bottom: 50px; */
+        right: 450px
     }
 .link
     {
@@ -42,4 +62,28 @@
     background-color: rgba(5, 5, 5, 0.9);
     border:1px solid red;
     border-radius: 150px;
+}
+
+.line_block { 
+    float:left; 
+    margin: 0 15px 15px 0; 
+    text-align:center;
+    padding: 10px;
+    width:250;
+    height:300;
+    border:'1px solid red';
+    border-radius:'20px';
+    margin:'auto';
+    background-color: red;
+    }
+
+
+
+.player-card {
+    height: 100px;
+    width: 250px;
+    background-color: cyan;
+    border-radius: 12px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }

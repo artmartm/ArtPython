@@ -62,7 +62,11 @@ function TeamDetail({ match }) {
     return(
         <div style={{backgroundImage: `url(${team.team_background})`}}> {/*style={{backgroundImage: `url(${team.team_background})`}}}*/}
             <div className='main_div'>
-            <h1>{team.name} <img src={team.team_logo} className={'first_img'}/></h1>
+            <section className="logo-container">
+                {team.team_logo ? <img className={'main_img'} src={team.team_logo} /> : <p>no photo yet</p>}
+                <h1 className='position'>{team.name} <img src={team.team_logo} className={'first_img'}/></h1>
+            </section>
+            
             <h2>{team.second_name}</h2>
             <h2>id is {team.id}</h2>
             <p>games {team.games}</p>
@@ -77,7 +81,6 @@ function TeamDetail({ match }) {
                 </p>
             ))}
             <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
-            {team.team_logo ? <img className={'main_img'} src={team.team_logo} /> : <p>no photo yet</p>}
             <hr/>
 
             <h3>list of players</h3>
@@ -85,17 +88,22 @@ function TeamDetail({ match }) {
                     <button onClick={()=>{setShowPlayers({isOpen:true})}}>show players</button>    
                         {showPlayers.isOpen && 
                             <div>
-                                <div style={{ width:250, height:300, align:'center', border:'1px solid', borderRadius:'50px', margin:'auto' }}>       
-                                    {pl.length ? pl.map(e=>(
-                                        <div style={{backgroundImage: `url(${e.background})` ,position:'center', backgroundRepeat:'no-repeat', backgroundPosition:'center'}}>
-                                            <Link className={'link'} key={e.id} to={`/players/${e.id}`} >
-                                                <h2>{e.name}!!!</h2>
-                                            </Link>
-                                            <img className={'player_img'} src={e.image}/>
-                                        </div>
-                                    )) : <p>no players</p>
-                                    }
+                               {pl.length ? pl.map(e=>(
+                                // <div className='line_block' >       
+                                //         <div className='line_block' style={{backgroundImage: `url(${e.background})` ,
+                                //         position:'center', backgroundRepeat:'no-repeat', 
+                                //         backgroundPosition:'center'}}>
+                                //             <Link className={'link'} key={e.id} to={`/players/${e.id}`} >
+                                //                 <h2>{e.name}!!!</h2>
+                                //             </Link>
+                                //             <img className={'player_img'} src={e.image}/>
+                                //         </div>
+                                    
+                                // </div>
+                                <div className="player-card" style={{backgroundImage: `url(${e.background})`}}>
+
                                 </div>
+                                    )) : <p>no players</p> }
                                 <br/>
                                 <button onClick={()=>{setShowPlayers({isOpen:false})}}>close</button>
                             </div>
