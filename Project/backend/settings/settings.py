@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'django_countries',
     #'cities',
     'cities_light',
-    'django_tables2'
+    'django_tables2',
+    'django_filters',
 ]
 
 INSTALLED_APPS += [
@@ -153,6 +154,8 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+
 }
 
 # REST_FRAMEWORK = {

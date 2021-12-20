@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework import routers
 from apps.general.views import CommentsViewSet, NewsViewSet, CityViewSet, JustView  # , home
 from apps.leagues.views import LeagueViewSet
-from apps.teams.views import StadiumViewSet, GameViewSet, TeamViewSet, clean
+from apps.teams.views import StadiumViewSet, GameViewSet, TeamViewSet, clean, TournamentView
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet, HeadToHeadViewSet
 from apps.users.views import UsersViewSet, UsersListViewSet
 
@@ -28,6 +28,7 @@ router.register(r'player-personal-info', PlayerPersonalInfoViewSet)
 router.register(r'teams', TeamViewSet)
 router.register(r'stadiums', StadiumViewSet)
 router.register(r'games', GameViewSet)
+router.register(r'tournament', TournamentView)
 # users
 router.register(r'users-profile', UsersViewSet)
 router.register(r'users2', UsersListViewSet)

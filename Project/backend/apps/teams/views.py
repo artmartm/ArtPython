@@ -6,7 +6,8 @@ from .serializers import TeamSerializers, StadiumSerializers, GameSerializers, T
     TeamDetailSerializer, StadiumDetailSerializers, GameDetailSerializers
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
-#from rest_framework.authentication import TokenAuthentication
+
+# from rest_framework.authentication import TokenAuthentication
 # from rest_framework_simplejwt.authentication import TokenAuthentication
 # from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
@@ -59,8 +60,21 @@ class GameViewSet(viewsets.ModelViewSet):
     # componentDIDmount
     # lifecicle
 
+
 def clean(request):
     # t = Game.objects.all().delete()
     # data = {'t':t}
     # return render(request,'clean.html',data)
     return None
+
+
+from .models.Tournament import Tournament
+from .serializers import TournamentSerializers
+from rest_framework.filters import OrderingFilter
+
+
+class TournamentView(viewsets.ModelViewSet):
+    queryset = Tournament.Meta.model.objects.all()
+    serializer_class = TournamentSerializers
+    filter_backends = [OrderingFilter]
+    ordering_fields = ['sum_points']

@@ -142,7 +142,7 @@ function TeamDetail({ match }) {
                         </div>
                     }
             </React.Fragment>
-                <CommentComponent obj={id} ct={content_type}/>
+                            <CommentsList key={id}  obj={id} ct={content_type}/> {/* through redux AllCommentsList */}
             <br/>
             </div>
         </div>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import AddComment from './addComment';
 import AuthContext from '../base/AuthContext';
+import CommentComponent from './commentComponent';
 
 function CommentsList({obj, ct}) {
     
@@ -46,6 +47,7 @@ function CommentsList({obj, ct}) {
             )):
             <p>no comments</p>}
             <hr/>
+            <CommentComponent obj={obj} ct={ct}/>
         </div>
     )
 }

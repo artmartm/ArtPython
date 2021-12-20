@@ -18,7 +18,18 @@ function AddComment({obj, ct}) {
     const [author, setAuthor] = useState(user.user_id)
     //const [created_at, setCreated_at] = useState(s)
 
+    function SubmitHandler(event) {
+      event.preventDefault()
+      if(name.trim()){
+        Add()
+        setName('')
+      }
+    }
+
     const Add = async () => {
+
+
+
         let formField = new FormData()
         formField.append('name',name)
         formField.append('content_type',content_type)
@@ -44,7 +55,7 @@ function AddComment({obj, ct}) {
         <h2 className="text-center mb-4">add a comments !{user.user_id}!</h2> : <p>asdasdasd</p>}
         <div className="form-group">
           </div>
-          <div className="form-group">
+          <div className="form-group" onSubmit={SubmitHandler}>
             <input
               type="text"
               className="form-control form-control-lg"

@@ -28,6 +28,7 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
     sport_brand = models.CharField(max_length=30, choices=SPORT_BRANDS)
     score = models.PositiveIntegerField(default=10)
     win = models.PositiveIntegerField(default=0)
+    sum_points = models.PositiveIntegerField(default=0)
 
     @property
     def games(self):
@@ -65,6 +66,9 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
 
     @property
     def points(self):
+        a = int(self.wins) * 2 + int(self.defeats_ot)
+        self.sum_points = a
+        self.save()
         return int(self.wins) * 2 + int(self.defeats_ot)
 
     @property

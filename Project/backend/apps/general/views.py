@@ -2,7 +2,8 @@ from rest_framework import viewsets
 from .models import Comments, News, City, Just2
 from .serializers import CommentsSerializers, NewsSerializers, CitySerializers, JustSer
 from apps.custom_permissions import OnlyLookOrRequestUser, OnlyLookOrAdminModerator, OnlyAdminOrModerator
-
+import django_filters.rest_framework
+from rest_framework import filters
 
 class JustView(viewsets.ModelViewSet):
     queryset = Just2.objects.all()
@@ -33,3 +34,4 @@ class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerializers
     permission_classes = [OnlyLookOrAdminModerator]
 
+    ###########
