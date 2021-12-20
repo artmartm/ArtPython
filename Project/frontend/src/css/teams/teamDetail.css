@@ -34,3 +34,12 @@
         height:75px;
         border-radius: 37px;
     }
+
+.main_div {
+    width: 150vh;
+    align-items: center;
+    margin:0 auto;
+    background-color: rgba(5, 5, 5, 0.9);
+    border:1px solid red;
+    border-radius: 150px;
+}

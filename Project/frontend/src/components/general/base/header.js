@@ -41,8 +41,6 @@ const Header = () => {
                                 <li><Link to="/login" >Login</Link></li>
                                 </>
                                 }
-             
-
                             </ul>
                         </nav>
                     </div>

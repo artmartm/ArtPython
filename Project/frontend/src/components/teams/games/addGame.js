@@ -41,10 +41,10 @@ const AddGame = () => {
           </div>
                 <h2 className="text-center mb-4">add a game</h2>
                 {loading && <Loader/>}
-
+              
                 <div className="form-group">
                         <label>
-                        <select  className='home_team_ceil' value={home_team} onChange={(e) => setHome_team(e.target.value)}>
+                        <select className='home_team_ceil' value={home_team} onChange={(e) => setHome_team(e.target.value)}>
                           {teams.map(e=>(
                             <option value={e.id}>{e.name}</option>
                           )

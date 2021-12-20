@@ -60,7 +60,8 @@ function TeamDetail({ match }) {
     },[id])
     
     return(
-        <div>
+        <div style={{backgroundImage: `url(${team.team_background})`}}> {/*style={{backgroundImage: `url(${team.team_background})`}}}*/}
+            <div className='main_div'>
             <h1>{team.name} <img src={team.team_logo} className={'first_img'}/></h1>
             <h2>{team.second_name}</h2>
             <h2>id is {team.id}</h2>
@@ -143,6 +144,7 @@ function TeamDetail({ match }) {
             </React.Fragment>
                 <CommentComponent obj={id} ct={content_type}/>
             <br/>
+            </div>
         </div>
 
     )

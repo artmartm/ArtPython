@@ -8,6 +8,20 @@ import TeamLogo from '../teams/teamsLogo';
 import AddGame from './addGame';
 import AuthContext from '../../general/base/AuthContext';
 function Games() {
+    
+    const styles = {
+        im:{
+            width:75,
+            height:75,
+            borderRadius:37,
+            margin:25,
+            padding:1
+
+        },
+        h:{
+            margin:20,
+        }
+    }
 
     const [games, setGames] = useState([]);
     let {authTokens} = useContext(AuthContext)
@@ -33,8 +47,12 @@ function Games() {
                     <p key={item.id}>
                         <Link to={{ pathname: `/game/${item.id}/`, fromDashboard: false}}>
                             <div style={{ display:'inline-block' }}>
-                            <h3>{teams[item.home_team-1].name} vs {teams[item.away_team-1].name}</h3>
-                                <TeamLogo id={item.home_team}/> vs <TeamLogo id={item.away_team}/>
+                            <h3 style={styles.h}>{teams[item.home_team-1].name} <img src={teams[item.home_team-1].team_logo} style={styles.im} /> 
+                            vs  
+                            <img src={teams[item.away_team-1].team_logo} style={styles.im} /> 
+                              {teams[item.away_team-1].name}
+                            </h3>
+                              {/*}  <TeamLogo id={item.home_team}/> vs <TeamLogo id={item.away_team}/> */}
                             </div>
                         </Link>
                     </p>

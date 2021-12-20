@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'djoser',
     'django_countries',
     #'cities',
-    'cities_light'
+    'cities_light',
+    'django_tables2'
 ]
 
 INSTALLED_APPS += [
