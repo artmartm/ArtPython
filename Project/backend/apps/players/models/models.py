@@ -3,16 +3,17 @@ from apps.teams.models.models import Team
 from apps.general.models import SHOOTS, SPORT_BRANDS, POSITIONS
 from apps.general.models import StillActive, BaseModel, PLTSBaseModel
 from datetime import date
+from apps.general.uploads import get_upload_to_players
 
 
 class Player(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=50)
-    image = models.ImageField(blank=True, null=True)
-    background = models.ImageField(blank=True, null=True, default=None)
+    image = models.ImageField(blank=True, null=True, upload_to=get_upload_to_players)
+    background = models.ImageField(blank=True, null=True, default=None, upload_to=get_upload_to_players)
     score = models.PositiveIntegerField()
-    shoots = models.CharField(max_length=7, choices=SHOOTS, default='L')
+    shoots = models.CharField(max_length=10, choices=SHOOTS, default='L')
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    position = models.CharField(max_length=7, choices=POSITIONS, default='F')
+    position = models.CharField(max_length=10, choices=POSITIONS, default='Forward')
     playing_for_national_team = models.BooleanField(default=True)
     player_number = models.PositiveIntegerField(default=10)
 

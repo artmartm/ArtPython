@@ -13,7 +13,7 @@ SHOOTS = [
 ]
 
 POSITIONS = [
-    ('GK', 'Goalkeeper'),
-    ('D', 'Defender'),
-    ('F', 'Forward'),
+    ('Goalkeeper', 'Goalkeeper'),
+    ('Defender', 'Defender'),
+    ('Forward', 'Forward'),
 ]

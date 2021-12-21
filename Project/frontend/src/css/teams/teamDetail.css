@@ -10,7 +10,8 @@
     top: 50px;
     bottom: 50px; */
     /* left: 450px; */
-    font-size:82pt
+    font-size:82pt;
+    margin: auto;
 }
 .logo-container
     {
@@ -36,10 +37,11 @@
     }
 .player_img
     {
-        border:'1px solid'; 
-        border-radius:'10px';
+        border:1px solid; 
+        border-radius:70px;
         width:180;
         height:180;
+        margin-top: 50px;
     }
 .player_back
     {
@@ -77,13 +79,22 @@
     background-color: red;
     }
 
-
+.paarent_div {
+    position: absolute;
+    max-width:495px;
+    max-height: auto;
+}
 
 .player-card {
-    height: 100px;
-    width: 250px;
-    background-color: cyan;
+    height: 350px;
+    width: 300px;
+    background-color:rgba(14, 12, 12, 0.836);
     border-radius: 12px;
     background-size: contain;
     background-repeat: no-repeat;
+    opacity: 0.8;
+    flex-direction: row;
+    justify-content: space-between ;
+    display: inline-block;
+    margin: 15px;
 }

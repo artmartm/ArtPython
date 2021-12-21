@@ -64,11 +64,11 @@ function TeamDetail({ match }) {
             <div className='main_div'>
             <section className="logo-container">
                 {team.team_logo ? <img className={'main_img'} src={team.team_logo} /> : <p>no photo yet</p>}
-                <h1 className='position'>{team.name} <img src={team.team_logo} className={'first_img'}/></h1>
+                <h1 className='position'>{team.name}</h1>
+                
+
             </section>
-            
-            <h2>{team.second_name}</h2>
-            <h2>id is {team.id}</h2>
+                        <h2>id is {team.id}</h2>
             <p>games {team.games}</p>
             <p>amount of points {team.points}</p>
             <p>wins {team.wins}</p>
@@ -85,9 +85,9 @@ function TeamDetail({ match }) {
 
             <h3>list of players</h3>
                 <React.Fragment>
-                    <button onClick={()=>{setShowPlayers({isOpen:true})}}>show players</button>    
+                    {/* <button onClick={()=>{setShowPlayers({isOpen:true})}}>show players</button>    
                         {showPlayers.isOpen && 
-                            <div>
+                            <div> */}
                                {pl.length ? pl.map(e=>(
                                 // <div className='line_block' >       
                                 //         <div className='line_block' style={{backgroundImage: `url(${e.background})` ,
@@ -100,14 +100,17 @@ function TeamDetail({ match }) {
                                 //         </div>
                                     
                                 // </div>
-                                <div className="player-card" style={{backgroundImage: `url(${e.background})`}}>
-
-                                </div>
-                                    )) : <p>no players</p> }
+                                <div className="player-card" style={{backgroundImage: `url(${team.team_background})`}}>
+                                                <img className='player_img' src={e.image}/>
+                                                <p>{e.name}</p>
+                                                <p>{e.position} &#127954;</p>
+                                                {e.captain?<p>C</p>:<></>}
+                                 </div> )) : <p>no players</p> }
+                                  {/*}  )) : <p>no players</p> }
                                 <br/>
                                 <button onClick={()=>{setShowPlayers({isOpen:false})}}>close</button>
                             </div>
-                        }
+                        } */}
                 <hr/>
                 </React.Fragment>
             <h3>list of matches</h3>
