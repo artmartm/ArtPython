@@ -3,7 +3,7 @@
     background:bisque;
     width:350px;
     height:350px;
-    border-radius: 25px;
+    border-radius: 175px;
     text-align: center;
     font-size:55px;
     float: left;
@@ -14,8 +14,8 @@
 {
     background:bisque;
     width:350px;
-    /* height:350px; */
-    border-radius: 25px;
+    height:350px;
+    border-radius: 175px;
     text-align: center;
     float: right;
     margin: 155px;

@@ -36,75 +36,46 @@ const AddGame = () => {
 
   
     return (
-        <div className="container">
-          <div>
-            {/* <img src={teams[1].team_logo}/> */}
-                      </div>
-                <h2 className="text-center mb-4">add a game</h2>
-                {loading && <Loader/>}
-              
-                <div className="form-group">
-                        <label>
-                        <select className='home_team_ceil' value={home_team} onChange={(e) => setHome_team(e.target.value)}>
-                          {teams.map(e=>(
-                            <option value={e.id}>{e.name}</option>
-                          )
-                        )}
-                        </select>
-                        </label>
-                      </div>
-                      <div className="form-group">
-                        <label>
-                        <div><span>some text</span></div>
-                        <select className='away_team_ceil'  value={away_team} onChange={(e) => setAway_team(e.target.value)}>
-                          
-                          {teams.map(e=>(
-                            <option style={{color:'blue'}} value={e.id}>{e.name}</option>
-                          )
-                        )}
-                        </select>
-                        </label>
-                        
-                      </div>     
-                                       <button className='vs' 
-                 onClick={Add}>VS</button>  
-        </div>
+      <div className="container">
+      <div>
+
+      </div>
+            <h2 className="text-center mb-4">add a game</h2>
+            <div className="form-group">
+            {loading && <Loader/>}
+                    <label>
+                    <div>{home_team ? 
+                    <img className='home_team_ceil' src={teams[home_team-1].team_logo}/> 
+                    :
+                    <select className='home_team_ceil' value={home_team} onChange={(e) => setHome_team(e.target.value)}>
+                    {teams.map(e=>(
+                      <option value={e.id}>{e.name}</option>
+                    )
+                  )}
+                  </select> } </div>
+
+
+                    </label>
+                  </div>
+                  <div className="form-group">
+                  <label>
+                    <div>{away_team ? 
+                    <img src={teams[away_team-1].team_logo} className='away_team_ceil'/> 
+                    :
+                    <select className='away_team_ceil' value={away_team} onChange={(e) => setAway_team(e.target.value)}>
+                    {teams.map(e=>(
+                      <option value={e.id}>{e.name}</option>
+                    )
+                  )}
+                  </select> } </div>
+
+
+                    </label>
+                  </div>
+             <button className="btn btn-primary btn-block" 
+             onClick={Add}>add a game</button>       
+    </div>
     );
 };
 
 export default AddGame;
-
-
-
-{/*
- <div className="container">
-                <h2 className="text-center mb-4">add a game</h2>
-                  <div className="form-group">
-                    </div>
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          className="form-control form-control-lg"
-                          placeholder="home team"
-                          name="home_team"
-                          value={home_team}
-                          onChange={(e) => setHome_team(e.target.value)}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label>
-                        <select value={away_team} onChange={(e) => setAway_team(e.target.value)}>
-                          {teams.map(e=>(
-                            <option value={e.id}>{e.name}</option>
-                          )
-                        )}
-                        </select>
-                        </label>
-                       {/*} <input
-                          type="hidden"
-                          className="form-control form-control-lg"
-                          //placeholder="away team"
-                          name="away_team"
-                          value={away_team}
-                          onChange={(e) => setAway_team(e.target.value)}
-    />*/}
