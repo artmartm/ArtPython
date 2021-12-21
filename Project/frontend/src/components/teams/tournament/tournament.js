@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import SortableTable from './sortTable';
+import Main from './main';
 
 
 function Tournamnet() {
@@ -13,7 +15,7 @@ function Tournamnet() {
 
 
 let getNotes = async() =>{
-    let response = await fetch('http://127.0.0.1:8000/api/tournament/', {
+    let response = await fetch('http://127.0.0.1:8000/api/tournament/?ordering=-sum_points', {
         method:'GET',
         headers:{
             'Content-Type':'application/json',

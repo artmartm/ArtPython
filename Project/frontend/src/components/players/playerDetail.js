@@ -1,32 +1,21 @@
 import { rgbToHex } from "@material-ui/core";
 import axios from "axios";
 import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchTeams } from "../../redux_two/actions/asyncActions/asyncAllTeams";
 import AddComment from "../general/comments/addComment";
 import CommentComponent from "../general/comments/commentComponent";
 import CommentsList from "../general/comments/commentsList";
 import TeamLogo from "../teams/teams/teamsLogo";
 import PlayerMainInfo from "./playerMainInfo";
 import PlayerPersonalInfo from "./playerPersonalInfo";
+import './../../css/players/player.css'
 
-const styles = {
-    img:{
-        width:150,
-        height:150,
-        borderRadius:75,
-        background:'blue',
-        border:'2px',
-        padding: '2px'
-    },
-    div:{
-        backgroundColor:'#c76f6f'
-    },
-    p:{
-        backgroundColor:'yellow',
-    }
-}
+
 
 function PlayerDetail({ match }) {
+
     const[showComments, setShowComments] = useState([{
         isOpen:false
     }])
@@ -41,6 +30,14 @@ function PlayerDetail({ match }) {
     const id = match.params.id;
     const content_type = '18';
 
+    const dispatch = useDispatch();
+    const teams = useSelector(state => state.teamsReducer.teams)
+
+    useEffect(()=> {
+        dispatch(fetchTeams())
+    }, [])
+
+    
     useEffect(()=>{
         axios({
             method:'GET',
@@ -49,19 +46,17 @@ function PlayerDetail({ match }) {
             setPlayer(response.data)
         })
     },[id])
-    //style={{marginTop:'250px'}}
     return(
-        <div className='player_div' style={{backgroundImage: `url(${player.background})`, position:'center', backgroundRepeat:'no-repeat', backgroundPosition:'center'}}> 
-            <div >  
+        <div className='player_div' style={{backgroundImage: `url(${player.background})`}}> 
+            <div>  
             <h1>{player.name}</h1>
             <h2># {player.player_number}</h2>
-            <img src={player.image} style={styles.img}/>
+            <img src={player.image} className='small_img'/>
             <h3>position is {player.position}</h3>
-            <h3>current team is <Link 
+            <h3>current team is {player.team} teams[player.team].name<Link 
                 style={{textDecoration: 'none'}} 
                 key={player.team} 
                 to={`/teams/${player.team}`}>
-                {/*<p style={{marginBottom:'250px'}}><TeamLogo id={player.team}/></p> {/*{player.team}*/}
             </Link>
             </h3>
             <hr/>

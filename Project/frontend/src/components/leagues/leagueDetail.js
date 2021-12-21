@@ -5,6 +5,8 @@ import AuthContext from "../general/base/AuthContext";
 import AddComment from "../general/comments/addComment";
 import CommentComponent from "../general/comments/commentComponent";
 import CommentsList from "../general/comments/commentsList";
+import './../../css/leagues/leagueDetail.css'
+
 
 function LeagueDetail({ match }) {
     
@@ -34,14 +36,21 @@ function LeagueDetail({ match }) {
 
     return(
         <div>
-            <h1>hello this is {league.name}</h1> 
+            <h1>This is {league.name}</h1> 
             <img src={league.league_logo} width={600} height={500}/>          
-            <hr/>
+                <hr/>
             <h3>teams:</h3>
-            {team.map(e=>(
-                <Link key={e.id} to={`/teams/${e.id}`} ><h2>{e.name}!</h2></Link>
-            ))}
-            <hr/>
+                {team.map(e=>(
+                    <Link key={e.id} 
+                        to={`/teams/${e.id}`} 
+                        className='link'>
+                        <h2 className='h'>
+                            {e.name}
+                            <img className='img' src={e.team_logo}/>
+                        </h2>
+                    </Link>
+                ))}
+                <hr/>
             {cm.map(e=>(
                 <Link key={e.id}><p>{e.name}</p></Link>
             ))}

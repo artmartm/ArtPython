@@ -16,6 +16,8 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
     position = models.CharField(max_length=10, choices=POSITIONS, default='Forward')
     playing_for_national_team = models.BooleanField(default=True)
     player_number = models.PositiveIntegerField(default=10)
+    captain = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.name
@@ -30,7 +32,6 @@ class PlayerMainInfo(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     height = models.PositiveIntegerField()
     weight = models.PositiveIntegerField()
-    captain = models.BooleanField(default=False)
     salary_per_year = models.PositiveIntegerField()
     sport_brand = models.CharField(max_length=15, choices=SPORT_BRANDS)
     contract_till = models.DateField()

@@ -62,26 +62,27 @@ function TeamDetail({ match }) {
     return(
         <div style={{backgroundImage: `url(${team.team_background})`}}> {/*style={{backgroundImage: `url(${team.team_background})`}}}*/}
             <div className='main_div'>
-            <section className="logo-container">
-                {team.team_logo ? <img className={'main_img'} src={team.team_logo} /> : <p>no photo yet</p>}
-                <h1 className='position'>{team.name}</h1>
-                
-
-            </section>
-                        <h2>id is {team.id}</h2>
-            <p>games {team.games}</p>
-            <p>amount of points {team.points}</p>
-            <p>wins {team.wins}</p>
-            <p>defeats {team.defeats}</p>
-            <p>wins OT {team.wins_ot}</p>
-            <p>defeats OT {team.defeats_ot}</p>
-            {stadium.map(e=>(
-                <p>stadium is   
-                    <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
-                </p>
-            ))}
-            <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
-            <hr/>
+                <section className="logo-container">
+                    {team.team_logo ? <img className={'main_img'} src={team.team_logo} /> : <p>no photo yet</p>}
+                        <div className='position'>
+                            <h1 className='text_in_position'>{team.name}</h1><br/>
+                            <h1 className='text_in_position2'>{team.second_name}</h1>
+                        </div>
+                </section>
+                <h2>id is {team.id}</h2>
+                <p>games {team.games}</p>
+                <p>amount of points {team.points}</p>
+                <p>wins {team.wins}</p>
+                <p>defeats {team.defeats}</p>
+                <p>wins OT {team.wins_ot}</p>
+                <p>defeats OT {team.defeats_ot}</p>
+                {stadium.map(e=>(
+                    <p>stadium is   
+                        <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
+                    </p>
+                ))}
+                <div style={{backgroundImage:team.team_logo}}><h1></h1></div>
+                <hr/>
 
             <h3>list of players</h3>
                 <React.Fragment>
@@ -89,22 +90,20 @@ function TeamDetail({ match }) {
                         {showPlayers.isOpen && 
                             <div> */}
                                {pl.length ? pl.map(e=>(
-                                // <div className='line_block' >       
-                                //         <div className='line_block' style={{backgroundImage: `url(${e.background})` ,
-                                //         position:'center', backgroundRepeat:'no-repeat', 
-                                //         backgroundPosition:'center'}}>
-                                //             <Link className={'link'} key={e.id} to={`/players/${e.id}`} >
-                                //                 <h2>{e.name}!!!</h2>
-                                //             </Link>
-                                //             <img className={'player_img'} src={e.image}/>
-                                //         </div>
-                                    
-                                // </div>
                                 <div className="player-card" style={{backgroundImage: `url(${team.team_background})`}}>
-                                                <img className='player_img' src={e.image}/>
-                                                <p>{e.name}</p>
-                                                <p>{e.position} &#127954;</p>
-                                                {e.captain?<p>C</p>:<></>}
+                                                <Link to={{ pathname: `/players/${e.id}/`, fromDashboard: false}}><img className='player_img' src={e.image}/></Link>
+                                                <p>{e.name} #{e.player_number}</p>
+                                                {e.position=='Forward' ? 
+                                                    <Link className='link'>
+                                                        {e.position} &#127954;
+                                                    </Link> :
+                                                e.position=='Defender' ? 
+                                                    <Link className='link'>
+                                                        {e.position} &#128737;
+                                                    </Link> :
+                                                    <Link className='link'>
+                                                        {e.position} &#129349;
+                                                    </Link> }
                                  </div> )) : <p>no players</p> }
                                   {/*}  )) : <p>no players</p> }
                                 <br/>

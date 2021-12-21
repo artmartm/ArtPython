@@ -3,4 +3,9 @@
         width:350px;
         height:350px;
         border-radius:175px;
+        transition: 0.7s
     }
+
+.team_img:hover {
+    transform: scale(1.1)
+}

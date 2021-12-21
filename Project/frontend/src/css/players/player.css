@@ -1,0 +1,24 @@
+.player_div {
+    align-items: center;
+    position:center; 
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.for_p {
+    background-color:'yellow'
+
+}
+
+.small_img
+{
+    width:150px;
+    height:150;
+    border-radius:75px;
+    background:blue;
+    border:2px;
+    padding: 2px;
+}
+.for_div {
+    background-color:'#c76f6f'
+}
