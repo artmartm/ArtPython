@@ -1,62 +1,67 @@
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './../../css/players/playersList.css'
 
 
-const PlayersList=()=> {
+const PlayersList = () => {
 
-    const[filterPlayers,setFilterPlayers]=useState([])
+    const [filterPlayers, setFilterPlayers] = useState([])
     const [search, setSearch] = useState(false);
     const dispatch = useDispatch();
     const players = useSelector(state => state.playersReducer.players)
 
-        let GetFilterPlayers = async(position) =>{
-            let response = await fetch(`http://127.0.0.1:8000/api/players/?search=${position}`, {
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json',
-                }
-            })
-            let data = await response.json()
-                setFilterPlayers(data)
-                setSearch(true)
+    let GetFilterPlayers = async (position, score = '') => {
+        let response = await fetch(`http://127.0.0.1:8000/api/players/?ordering=${score}&search=${position}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
             }
-        let ThrowSearch=()=>{
-            setSearch(false)
-        }
+        })
+        let data = await response.json()
+        setFilterPlayers(data)
+        setSearch(true)
+    }
+    let ThrowSearch = () => {
+        setSearch(false)
+    }
 
-    return(
+    return (
         <div>
             <h1>list of players</h1>
-            <hr/>
+            <hr />
             {search ? <div>
+                { filterPlayers.length ?
+                <div>
                 {filterPlayers.map
-                    (e=>
+                    (e =>
                         <h1 className='h'>
-                            <Link className='link' 
-                                to={{ pathname: `/players/${e.id}/`, 
-                                    fromDashboard: false}}>{
-                                        e.name}
+                            <Link className='link'
+                                to={{
+                                    pathname: `/players/${e.id}/`,
+                                    fromDashboard: false
+                                }}>{
+                                    e.name}
                             </Link>
                         </h1>
-                    )}
-                <button onClick={()=>{ThrowSearch()}}>throw search</button>
+                    )}</div>
+                                :<p>empty search</p>}
+                <button onClick={() => { ThrowSearch() }}>throw search</button>
             </div>
-            :
-            <div>
-                <button onClick={()=>GetFilterPlayers(prompt())}>search</button>
-                {players.length>0 ?
-            <div >
-                {players.map(player => 
-                    <div key={player.id}>
-                    <h1 className='h'><Link className='link' to={{ pathname: `/players/${player.id}/`, fromDashboard: false}}>{player.name}</Link></h1>
-                    </div>
-                    )}
-            </div>
-            :
-            <p>no players</p>}
-            </div>
+                :
+                <div>
+                    <button onClick={() => GetFilterPlayers(prompt())}>search</button>
+                    {players.length > 0 ?
+                        <div >
+                            {players.map(player =>
+                                <div key={player.id}>
+                                    <h1 className='h'><Link className='link' to={{ pathname: `/players/${player.id}/`, fromDashboard: false }}>{player.name}</Link></h1>
+                                </div>
+                            )}
+                        </div>
+                        :
+                        <p>no players</p>}
+                </div>
             }
         </div>
     )

@@ -4,11 +4,12 @@ from .serializers import PlayerSerializers, PlayerPersonalInfoSerializers, Playe
     PlayerDetailSerializers, HeadToHeadSerializers, HeadToHeadDetailSerializers
 from rest_framework.filters import OrderingFilter, SearchFilter
 
+
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = Player.objects.all()
     serializer_class = PlayerSerializers
     filter_backends = [OrderingFilter, SearchFilter]
-    ordering_fields = ['position']
+    ordering_fields = ['score']
     search_fields = ['position']
     action_to_serializer = {
         "retrieve": PlayerDetailSerializers
