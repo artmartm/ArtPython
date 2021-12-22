@@ -69,7 +69,6 @@ function CommentDetail({ match }) {
             <h1>{comment.name} id is{comment.id}</h1>
             <h2>author is {comment.author}</h2>
             <h3>created at {comment.created_at}</h3>
-            <Link to={{ pathname: `/update/${id}/`, fromDashboard: false}}>update</Link>
             <hr/>
             <DeleteComment id={id}/>   
             <div className="form-group">

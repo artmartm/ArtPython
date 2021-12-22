@@ -3,7 +3,16 @@
     height: 250px;
     border-radius: 150px;
     padding: 1px;
+    transition: 0.5s;
+
 }
+
+.game-image-container:hover {
+    scale: 1.1;
+    box-shadow: 0 0 10px 5px rgba(224, 222, 215, 0.5);
+
+}
+
 .link {
     text-decoration: none;
 }
@@ -11,6 +20,7 @@
 .main-container{
     width: 700px;
     margin: auto;
+    padding-top: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,12 +33,17 @@
     opacity: 1;
 }
 
-.position {
+.team {
     font-size: 22pt;
     margin: auto;
     position: center;
     padding-top:20px;
+    transition: 0.5s;
 }
+.team:hover {
+    scale: 1.1;
+}
+
 .team-container {
     margin: 0;
 
