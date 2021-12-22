@@ -45,15 +45,13 @@ function AddComment({obj, ct}) {
         <div className="container">
             <div className="container">
       <div className="w-75 mx-auto shadow p-5">
-        {true && user ?
-        <h2 className="text-center mb-4">add a comments !{user.user_id}!</h2> : <p>asdasdasd</p>}
         <div className="form-group">
           </div>
           <div className="form-group" >
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="Enter Your Name"
+              placeholder="leave a comment"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}

@@ -174,3 +174,29 @@ li:hover {
 
 .news-games-container {
 }
+
+.additional-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.history {
+    overflow-x: auto;
+    scroll-snap-type: y mandatory;
+    border: 1px solid red;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+}
+
+.description {
+    overflow-x: auto;
+    scroll-snap-type: y mandatory;
+    border: 1px solid red;
+    margin: 10px 10px 0px 10px ;
+    width: 500px;
+    height: 300px;
+}
+

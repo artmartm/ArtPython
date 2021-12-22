@@ -1,0 +1,12 @@
+.for_p {
+	transition: 0.7s;
+}
+
+.for_p:hover { 
+    scale: 1.1;
+    color: rgb(114, 47, 47);
+}
+
+.link {
+    text-decoration: none;
+}

@@ -6,6 +6,8 @@ import AddComment from './addComment';
 import AuthContext from '../base/AuthContext';
 import CommentComponent from './commentComponent';
 
+import './../../../css/general/commentsList.css'
+
 function CommentsList({obj, ct}) {
     //let {user,authTokens, logoutUser} = useContext(AuthContext)
     const [comments, setComments] = useState([]);
@@ -35,17 +37,17 @@ function CommentsList({obj, ct}) {
 
     return(
         <div>
-            <h1>list of comments</h1>
-            <hr />
+            <h2>list of comments</h2>
+            <hr style={{ width:300 }}/>
             {particular_comments.length? 
             particular_comments.map(e=>(
                 <div>
-                    <Link key={e.id} to={{ pathname: `/comments/${e.id}/`, fromDashboard: false}}><h3>{e.name}...added{e.author}</h3></Link>
+                    <Link className='link' key={e.id} to={{ pathname: `/comments/${e.id}/`, fromDashboard: false}}>
+                        <p className='for_p'>{e.name}...added{e.author}</p>
+                        </Link>
                 </div>
             )):
             <p>no comments</p>}
-            <hr/>
-            <CommentComponent obj={obj} ct={ct}/>
         </div>
     )
 }

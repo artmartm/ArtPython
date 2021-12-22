@@ -40,10 +40,12 @@ function TeamDetail({ match }) {
     const [showMatches, setShowMatches] = useState([{
         isOpen: false
     }])
-    const [showPlayers, setShowPlayers] = useState([{
+    const [showHistory, setShowHistory] = useState([{
         isOpen: false
     }])
-
+    const [showDescription, setShowDescription] = useState([{
+        isOpen: false
+    }])
     const [show, setShow] = useState(true);
 
     useEffect(() => {
@@ -76,18 +78,18 @@ function TeamDetail({ match }) {
                     <div className='info_div'>
                         <h2>Main info</h2>
                         <ol>
-                        <li className='for_list'>country is {team.country}</li>
-                        <li>games {team.games}</li>
-                        <li>points {team.points}</li>
-                        <li>wins {team.wins}</li>
-                        <li>defeats {team.defeats}</li>
-                        <li>wins OT {team.wins_ot}</li>
-                        <li>defeats OT {team.defeats_ot}</li>
-                        {stadium.map(e => (
-                            <li>stadium is
-                                <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
-                            </li>
-                        ))}
+                            <li className='for_list'>country is {team.country}</li>
+                            <li>games {team.games}</li>
+                            <li>points {team.points}</li>
+                            <li>wins {team.wins}</li>
+                            <li>defeats {team.defeats}</li>
+                            <li>wins OT {team.wins_ot}</li>
+                            <li>defeats OT {team.defeats_ot}</li>
+                            {stadium.map(e => (
+                                <li>stadium is
+                                    <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
+                                </li>
+                            ))}
                         </ol>
                     </div>
                     <div className='news-games-container'>
@@ -122,10 +124,7 @@ function TeamDetail({ match }) {
                 <hr />
 
                 <h3>Squad</h3>
-                <React.Fragment>
-                    {/* <button onClick={()=>{setShowPlayers({isOpen:true})}}>show players</button>    
-                        {showPlayers.isOpen && 
-                            <div> */}
+                <div>
                     {pl.length ? pl.map(e => (
                         <div className="player-card" style={{ backgroundImage: `url(${team.team_background})` }}>
                             <Link to={{ pathname: `/players/${e.id}/`, fromDashboard: false }}><img className='player_img' src={e.image} /></Link>
@@ -142,13 +141,35 @@ function TeamDetail({ match }) {
                                         {e.position} &#129349;
                                     </Link>}
                         </div>)) : <p>no players</p>}
-                    {/*}  )) : <p>no players</p> }
-                                <br/>
-                                <button onClick={()=>{setShowPlayers({isOpen:false})}}>close</button>
-                            </div>
-                        } */}
-                    <hr />
-                </React.Fragment>
+                    <br />
+                </div>
+                <hr />
+                <h2>Additional info</h2>
+                <div className='additional-info'>
+                    <div className='history'>
+                        <React.Fragment>
+                            <button onClick={() => { setShowHistory({ isOpen: true }) }}>show history</button>
+                            {showHistory.isOpen &&
+                                <div className='history'>
+                                    <div>{team.history}</div>
+                                    <button onClick={() => { setShowHistory({ isOpen: false }) }}>close</button>
+                                </div>
+                            }
+                        </React.Fragment>
+                    </div>
+                    <div className='description'>
+                        <React.Fragment>
+                            <button onClick={() => { setShowDescription({ isOpen: true }) }}>show description</button>
+                            {showDescription.isOpen &&
+                                <div className='description'>
+                                    <div>{team.description}</div>
+                                    <button onClick={() => { setShowDescription({ isOpen: false }) }}>close</button>
+                                </div>
+                            }
+                        </React.Fragment>
+                    </div>
+                </div>
+                <hr />
                 <React.Fragment>
                     <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
                     {showComments.isOpen &&
@@ -158,8 +179,7 @@ function TeamDetail({ match }) {
                         </div>
                     }
                 </React.Fragment>
-                <br /><br />
-                <CommentsList key={id} obj={id} ct={content_type} /> {/* through redux AllCommentsList */}
+                <CommentComponent key={id} obj={id} ct={content_type} /> {/* through redux AllCommentsList */}
                 <br />
             </div>
         </div>
