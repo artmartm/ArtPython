@@ -40,7 +40,7 @@ let getNotes = async() =>{
 
     return(
         <div>
-            <h1>Teams page</h1>
+            <h1>Users page</h1>
             <hr/>
                 {teams.map(item => (
                     <div>

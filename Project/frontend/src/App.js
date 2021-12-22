@@ -58,7 +58,6 @@ import { HashRouter } from 'react-router-dom';
 import { store } from "./redux/store";
 import UserList from "./components/users/usersList";
 import UserDetail from "./components/users/userDetail";
-import { fetchUsers } from "./redux_two/actions/asyncActions/asyncAllUsers";
 import NewsDetail from "./components/general/news/newsDetail";
 import UsersProfilesList from "./components/users/usersProfilesList";
 import UserProfileDetail from "./components/users/userProfileDetail";
