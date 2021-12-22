@@ -42,7 +42,23 @@ function ParticularTeamGame({ team, show }) {
                 <div>
                     {show ?
                         <div>
-                            {particularGames.map(e => (
+                            <h1><Link className='link' to={{ pathname: `/game/${particularGames[0].id}/`, fromDashboard: false }}>
+                                <div>
+                                    <div className='special-game-container'>
+                                        <div className='team-container'>
+                                            <img className='position' src={teams[particularGames[0].home_team - 1].team_logo} className='img-container' />
+                                            <p className='position'>{teams[particularGames[0].home_team - 1].name}</p>
+                                        </div>
+                                        <p className='position'>{particularGames[0].home_team_goals} : {particularGames[0].away_team_goals}</p>
+                                        <div className='team-container'>
+                                            <img className='position' src={teams[particularGames[0].away_team - 1].team_logo} className='img-container' />
+                                            <p className='position'>{teams[particularGames[0].away_team - 1].name}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                            </h1>
+                            {/*{particularGames.map(e => (
                                 <h1><Link className='link' to={{ pathname: `/game/${e.id}/`, fromDashboard: false }}>
                                     <div>
                                         <div className='game-container'>
@@ -60,7 +76,7 @@ function ParticularTeamGame({ team, show }) {
                                     </div>
                                 </Link>
                                 </h1>
-                            ))}
+                            ))} */}
                         </div>
                         :
                         <div>

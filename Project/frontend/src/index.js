@@ -4,19 +4,12 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 //import "react-toastify/dist/ReactToastify.css";
 import { Provider } from 'react-redux';
-//Trainee
-import MainRedux from './redux/mainredux';
-//import {store} from './redux/store'
-//MAIN
 import App from './App';
 import { store } from './redux_two/store';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    {/*<Provider store={store}>
-      <MainRedux/>
-  </Provider> */}
     <Provider store={store}>
       <App />
     </Provider>

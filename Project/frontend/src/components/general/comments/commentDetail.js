@@ -95,8 +95,8 @@ let getNotes = async () => {
     return(
         <div>
             <h1>{comment.name}</h1>
-            {comment && users ? <h2>author is {users[comment.author].username}</h2>
-            :<></>} 
+            {/*{comment && users ? <h2>author is {users[comment.author].username}</h2>
+            :<></>} */}
             <h3>created at {comment.created_at}</h3>
             <hr/>
             <DeleteComment id={id}/>   

@@ -43,7 +43,7 @@ function CommentsList({obj, ct}) {
             particular_comments.map(e=>(
                 <div>
                     <Link className='link' key={e.id} to={{ pathname: `/comments/${e.id}/`, fromDashboard: false}}>
-                        <p className='for_p'>{e.name}...added{e.author}</p>
+                        <p className='for_p'>{e.name}</p>
                         </Link>
                 </div>
             )):

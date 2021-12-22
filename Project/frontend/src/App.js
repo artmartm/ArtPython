@@ -55,7 +55,6 @@ import { fetchComments } from "./redux_two/actions/asyncActions/asyncAllComments
 /////
 import { syncHistoryWithStore } from 'react-router-redux';
 import { HashRouter } from 'react-router-dom';
-import { store } from "./redux/store";
 import UserList from "./components/users/usersList";
 import UserDetail from "./components/users/userDetail";
 import NewsDetail from "./components/general/news/newsDetail";

@@ -15,9 +15,10 @@
     width:150px;
     height:150;
     border-radius:75px;
-    background:blue;
-    border:2px;
+    margin-top: 120px;
     padding: 2px;
+    box-shadow: 0 0 10px 5px rgba(129, 122, 104, 0.5);
+
 }
 .for_div {
     background-color:'#c76f6f'
@@ -25,17 +26,17 @@
 
 
 .player_main {
+    background-repeat: no-repeat;
     width: 150vh;
     align-items: center;
     margin: 0 auto;
-    background-color: rgba(5, 5, 5, 0.8);
-    border-radius: 0 0 150px 150px;
-    box-shadow: 0 10px 10px 5px rgba(221, 221, 221, 1);
+    background-color: rgba(5, 5, 5, 0.9);
+    border-radius: 150px;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 }
 
 .back-card {
     width: 150vh;
-    background-color: rgba(20, 19, 32, 0.9);
     border-radius: 12px;
     margin: auto;
     background-size: contain;
@@ -43,7 +44,16 @@
     transition: 0.5s;
     opacity: 0.8;
 }
-.back-card:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px 5px rgba(204, 152, 9, 0.5);
+
+.personal-player-card {
+    margin: auto;
+    background-color: rgba(20, 19, 32, 0.9);
+    border-radius: 12px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    flex-direction: row;
+    justify-content: space-between;
+    display: inline-block;
+    transition: 0.7s;
 }

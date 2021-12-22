@@ -109,11 +109,12 @@ function TeamDetail({ match }) {
                             <div className='games-container'>
                                 <h1 className='inside-game-container'>games</h1>
                                 <React.Fragment>
-                                    <button onClick={() => { setShowMatches({ isOpen: true }) }}>show all matches</button>
+                                    <button onClick={() => { setShowMatches({ isOpen: true });setShow(false)}}>show all matches</button>
+                                    {show ? <ParticularTeamGame show={show} team={team.id} /> :<></>}
                                     {showMatches.isOpen &&
                                         <div>
                                             <ParticularTeamGame show={show} team={team.id} />
-                                            <button onClick={() => { setShowMatches({ isOpen: false }) }}>close</button>
+                                            <button onClick={() => { setShowMatches({ isOpen: false });;setShow(true)}}>close</button>
                                         </div>
                                     }
                                 </React.Fragment>
@@ -148,9 +149,9 @@ function TeamDetail({ match }) {
                 <div className='additional-info'>
                     <div className='history'>
                         <React.Fragment>
-                            <button onClick={() => { setShowHistory({ isOpen: true }) }}>show history</button>
+                            <h1 onClick={() => { setShowHistory({ isOpen: true }) }}>show history</h1>
                             {showHistory.isOpen &&
-                                <div className='history'>
+                                <div className='inside-history'>
                                     <div>{team.history}</div>
                                     <button onClick={() => { setShowHistory({ isOpen: false }) }}>close</button>
                                 </div>
@@ -159,9 +160,10 @@ function TeamDetail({ match }) {
                     </div>
                     <div className='description'>
                         <React.Fragment>
-                            <button onClick={() => { setShowDescription({ isOpen: true }) }}>show description</button>
+                            <h1 onClick={() => { setShowDescription({ isOpen: true }) }}>show description</h1>
                             {showDescription.isOpen &&
-                                <div className='description'>
+                                <div className='inside-description'>
+                                    <h2>Description</h2>
                                     <div>{team.description}</div>
                                     <button onClick={() => { setShowDescription({ isOpen: false }) }}>close</button>
                                 </div>
