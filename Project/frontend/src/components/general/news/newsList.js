@@ -16,8 +16,6 @@ const NewsList = () => {
     }
     return (
         <div>
-            <h1>list of news</h1>
-            <hr />
             {listOfNews.length > 0 ?
                 <div>
                     {listOfNews.map(news =>

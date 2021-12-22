@@ -32,8 +32,6 @@ function ParticularNewsList({ obj, ct }) {
 
     return (
         <div>
-            <h1>list of news</h1>
-            <hr />
             {particular_news.length ?
                 particular_news.map(e => (
                     <div>

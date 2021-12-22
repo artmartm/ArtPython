@@ -111,11 +111,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 50px;
+    padding: 0px 50px 0px 50px;
+    width: 500px;
     text-align: left;
     margin: 0px 110px 110px 110px;
     box-sizing: border-box;
+    transition: 0.5s;
 }
+
 
 .info-container {
     display: flex;
@@ -126,13 +129,48 @@
 }
 
 .news-container {
-    margin: 10px 50px 10px 10px ;
-    width: 450px;
+    overflow-x: auto;
+    scroll-snap-type: y mandatory;
+    margin: 10px 10px 70px 10px ;
+    background-color: rgb(12, 10, 10,0.3);
+    width: 650px;
     height: 300px;
-    border: 1px solid red;
-    border-radius: 15px;
+    border: 0.1px solid rgb(39, 35, 35);
+    box-shadow: 0 0 10px 5px rgb(119, 73, 73);
+    border-radius: 35px;
 }
 
 .inside-news-container {
     margin: 10px 0px 20px 0px ;
+}
+
+.games-container {
+    overflow-x: auto;
+    scroll-snap-type: y mandatory;
+    margin: 10px 10px 0px 10px ;
+    width: 650px;
+    height: 300px;
+    border-radius: 35px;
+    box-shadow: 0 0 10px 5px rgb(119, 73, 73);
+
+}
+
+
+.inside-game-container {
+    margin: 10px 0px 20px 0px ;
+}
+
+li {
+    list-style-type: none;
+    transition: 0.5s;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 25pt;
+}
+
+li:hover {
+    background-color: red;
+}
+
+.news-games-container {
 }
