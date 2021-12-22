@@ -14,12 +14,12 @@ import { store } from './redux_two/store';
 
 ReactDOM.render(
   <React.StrictMode>
-  {/*<Provider store={store}>
+    {/*<Provider store={store}>
       <MainRedux/>
   </Provider> */}
-   <Provider store={store}>
-    <App/>
-  </Provider>  
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

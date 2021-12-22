@@ -31,26 +31,26 @@ const PlayersList = () => {
             <h1>list of players</h1>
             <hr />
             {search ? <div>
-                { filterPlayers.length ?
-                <div>
-                {filterPlayers.map
-                    (e =>
-                        <h1 className='h'>
-                            <Link className='link'
-                                to={{
-                                    pathname: `/players/${e.id}/`,
-                                    fromDashboard: false
-                                }}>{
-                                    e.name}
-                            </Link>
-                        </h1>
-                    )}</div>
-                                :<p>empty search</p>}
+                {filterPlayers.length ?
+                    <div>
+                        {filterPlayers.map
+                            (e =>
+                                <h1 className='h'>
+                                    <Link className='link'
+                                        to={{
+                                            pathname: `/players/${e.id}/`,
+                                            fromDashboard: false
+                                        }}>{
+                                            e.name}
+                                    </Link>
+                                </h1>
+                            )}</div>
+                    : <p>empty search</p>}
                 <button onClick={() => { ThrowSearch() }}>throw search</button>
             </div>
                 :
                 <div>
-                    <button onClick={() => GetFilterPlayers(prompt())}>search</button>
+                    <button onClick={() => GetFilterPlayers(prompt('select position'), prompt('select score'))}>search</button>
                     {players.length > 0 ?
                         <div >
                             {players.map(player =>

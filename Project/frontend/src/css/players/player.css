@@ -22,3 +22,28 @@
 .for_div {
     background-color:'#c76f6f'
 }
+
+
+.player_main {
+    width: 150vh;
+    align-items: center;
+    margin: 0 auto;
+    background-color: rgba(5, 5, 5, 0.8);
+    border-radius: 0 0 150px 150px;
+    box-shadow: 0 10px 10px 5px rgba(221, 221, 221, 1);
+}
+
+.back-card {
+    width: 150vh;
+    background-color: rgba(20, 19, 32, 0.9);
+    border-radius: 12px;
+    margin: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+    opacity: 0.8;
+}
+.back-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 5px rgba(204, 152, 9, 0.5);
+}

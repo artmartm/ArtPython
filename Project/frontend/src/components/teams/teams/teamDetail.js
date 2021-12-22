@@ -69,19 +69,37 @@ function TeamDetail({ match }) {
                         <h1 className='text_in_position2'>{team.second_name}</h1>
                     </div>
                 </section>
-                <h2>id is {team.id}</h2>
-                <p>games {team.games}</p>
-                <p>amount of points {team.points}</p>
-                <p>wins {team.wins}</p>
-                <p>defeats {team.defeats}</p>
-                <p>wins OT {team.wins_ot}</p>
-                <p>defeats OT {team.defeats_ot}</p>
-                {stadium.map(e => (
-                    <p>stadium is
-                        <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
-                    </p>
-                ))}
-                <div style={{ backgroundImage: team.team_logo }}></div>
+                <div className='info-container'>
+                    <div className='info_div'>
+                        <h2>id is {team.id}</h2>
+                        <h2>country is {team.country}</h2>
+                        <p>games {team.games}</p>
+                        <p>amount of points {team.points}</p>
+                        <p>wins {team.wins}</p>
+                        <p>defeats {team.defeats}</p>
+                        <p>wins OT {team.wins_ot}</p>
+                        <p>defeats OT {team.defeats_ot}</p>
+                        {stadium.map(e => (
+                            <p>stadium is
+                                <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
+                            </p>
+                        ))}
+                    </div>
+                    <div>
+                        <div className='news-container'>
+                            <h1 className='inside-news-container'>Team's news</h1>
+                            <React.Fragment>
+                                <button onClick={() => { setShowNews({ isOpen: true }) }}>show news</button>
+                                {showNews.isOpen &&
+                                    <div>
+                                        <ParticularNewsList key={id} obj={id} ct={content_type} />
+                                        <button onClick={() => { setShowNews({ isOpen: false }) }}>close</button>
+                                    </div>
+                                }
+                            </React.Fragment>
+                        </div>
+                    </div>
+                </div>
                 <hr />
 
                 <h3>list of players</h3>
@@ -143,15 +161,6 @@ function TeamDetail({ match }) {
                     }
                 </React.Fragment>
                 <br /><br />
-                <React.Fragment>
-                    <button onClick={() => { setShowNews({ isOpen: true }) }}>show news</button>
-                    {showNews.isOpen &&
-                        <div>
-                            <ParticularNewsList key={id} obj={id} ct={content_type} />
-                            <button onClick={() => { setShowNews({ isOpen: false }) }}>close</button>
-                        </div>
-                    }
-                </React.Fragment>
                 <CommentsList key={id} obj={id} ct={content_type} /> {/* through redux AllCommentsList */}
                 <br />
             </div>

@@ -1,11 +1,11 @@
-.team_img
-    {
-        width:350px;
-        height:350px;
-        border-radius:175px;
-        transition: 0.7s
-    }
+.team_img {
+    width: 350px;
+    height: 350px;
+    border-radius: 175px;
+    transition: 0.7s
+}
 
 .team_img:hover {
-    transform: scale(1.1)
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 5px rgba(13, 182, 35, 0.5);
 }
