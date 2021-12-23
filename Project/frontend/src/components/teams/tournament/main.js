@@ -1,16 +1,16 @@
 import React from "react";
 import TablePlayers from "./playersTable";
 import { TableGrid } from "./table";
-import TableTeams from "./table2";
+import TableTeams from "./teamTable";
 import Another from "./another";
 import './simple.css';
-import Table2 from "./table2";
+import TeamTable from "./teamTable";
 
 function Tournament(){
     return(
         <div className='mm_cl'>
             <h1>tournament table</h1>
-            <Table2 />
+            <TeamTable />
 {/*             <TablePlayers />
  */}        </div>
     )

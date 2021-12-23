@@ -11,6 +11,8 @@
 
 .mm_cl {
     margin: auto;
+    margin-bottom: 25px;
     position: center;
     width: 80%;
+    padding-bottom: 10px;
 }

@@ -66,6 +66,8 @@ import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin"
 import SignUp from "./components/users/signup/signUp";
 import Update from "./components/general/comments/update";
 import Tournament from "./components/teams/tournament/main";
+import PlayersTable from "./components/players/playersTable";
+import PlTable from "./components/players/plTable";
 
 function App() {
 
@@ -102,8 +104,10 @@ function App() {
                     <Route path='/profiles' exact component={UsersProfilesList}/>
                     <Route path='/profiles/:id' exact component={UserProfileDetail}/>
                     <Route path='/leagues' exact component={LeaguesList}/>
-                    <Route path='/players' exact component={PlayersList}/>
-                    <Route path='/add-game' exact component={AddGame}/>
+                    
+                    <Route path='/players' exact component={PlTable}/>
+{/*                     <Route path='/players' exact component={PlayersList}/>
+ */}                    <Route path='/add-game' exact component={AddGame}/>
                     <Route path='/games-list' exact component={Games}/>
                     <Route path='/game/:id' exact component={GameDetail}/>
                     <Route path='/about' exact component={About}/>

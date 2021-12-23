@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import './simple.css';
 import { Link } from 'react-router-dom';
 import { height } from 'dom-helpers';
-const Table2 = () => {
+const TeamTable = () => {
     const [rowData, setRowData] = useState([]);
     const teams = useSelector(state => state.teamsReducer.teams)
 
@@ -76,34 +76,4 @@ const Table2 = () => {
     );
 };
 
-export default Table2;
-
-/* import React, { useEffect, useState } from 'react';
-import { AgGridColumn, AgGridReact } from 'ag-grid-react';
-import { useSelector } from 'react-redux';
-
-const TableTeams = () => {
-    const [rowData, setRowData] = useState([]);
-    const teams = useSelector(state => state.teamsReducer.teams)
-
-    useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/teams/')
-        .then(result => result.json())
-        .then(rowData => setRowData(rowData))
-    }, []);
-    return (
-        <div className="ag-theme-alpine" style={{ height: 400, backgroundColor:'black'}}>
-            <AgGridReact
-                rowData={rowData}>
-                <AgGridColumn field="name" sortable={true} filter={true}></AgGridColumn>
-                <AgGridColumn field="sum_points" sortable={true} filter={true}></AgGridColumn>
-                <AgGridColumn field="wins" sortable={true} filter={true}></AgGridColumn>
-                <AgGridColumn field="defeats" sortable={true} filter={true}></AgGridColumn>
-                <AgGridColumn field="goals_scored" sortable={true} filter={true}></AgGridColumn>
-                <AgGridColumn field="goals_missed" sortable={true} filter={true}></AgGridColumn>
-            </AgGridReact>
-        </div>
-    );
-};
-
-export default TableTeams; */
+export default TeamTable;
