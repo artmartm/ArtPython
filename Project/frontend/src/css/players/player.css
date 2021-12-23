@@ -77,6 +77,11 @@
     background-color: rgba(5, 5, 5, 0.5);
     border-radius: 150px;
     box-shadow: 0px 0px 10px 0px rgba(221, 221, 221, 0.5);
+    transition: 0.3s;
+}
+
+.player-main-div:hover{
+    background-color: rgba(5, 5, 5,0);
 }
 
 .player-info-div {
@@ -95,4 +100,16 @@
     border-radius: 50px;
     margin-bottom: 30px;
     padding: auto;
+}
+
+.container-div {
+    padding:0px;
+}
+
+.player-additional-info  {
+    display: flex;
+    padding-top: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
 }

@@ -1,30 +1,37 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import './../../css/players/playerInfo.css';
 function PlayerMainInfo({ obj }) {
-    
-    const[player, setPlayer] = useState({});
+
+    const [player, setPlayer] = useState({});
     //const id = match.params.id;
 
-    useEffect(()=>{
+    useEffect(() => {
         axios({
-            method:'GET',
-            url:`http://127.0.0.1:8000/api/player-main-info/${obj}`,
-        }).then(response=>{
+            method: 'GET',
+            url: `http://127.0.0.1:8000/api/player-main-info/${obj}`,
+        }).then(response => {
             setPlayer(response.data)
         })
-    },[obj])
+    }, [obj])
 
 
-    return(
-        <div>
-  <h1>Player main info</h1>
-            <h2>{player.weight}</h2>
-            <h2>{player.height}</h2>
-            <h2>{player.captain}!</h2>
-            <h2>{player.academy}</h2>
-
+    return (
+        <div className='main-info-container'>
+            <ol>
+                <li>height: {player.weight}</li>
+                <hr />
+                <li>weight lb: {player.height}</li>
+                <hr />
+                <li>academy: {player.academy}</li>
+                <hr />
+                <li>sport brand: {player.sport_brand}</li>
+                <hr />
+                <li>salary: {player.salary_per_year}$</li>
+                <hr />
+                <li>contract: {player.contract_till}</li>
+            </ol>
         </div>
     )
 }

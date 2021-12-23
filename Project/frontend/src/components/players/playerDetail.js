@@ -19,12 +19,7 @@ function PlayerDetail({ match }) {
     const [showComments, setShowComments] = useState([{
         isOpen: false
     }])
-    const [showPersonalInfo, setShowPersonalInfo] = useState([{
-        isOpen: false
-    }])
-    const [showMainInfo, setShowMainInfo] = useState([{
-        isOpen: false
-    }])
+
 
     const [player, setPlayer] = useState({});
     const id = match.params.id;
@@ -44,7 +39,7 @@ function PlayerDetail({ match }) {
     }, [id])
     useEffect(() => {
         dispatch(fetchTeams())
-    },[])
+    }, [])
 
     const teams = useSelector(state => state.teamsReducer.teams)
 
@@ -57,8 +52,8 @@ function PlayerDetail({ match }) {
                     <div className='player_main' style={{ backgroundImage: `url(${player.background})` }}>
                         <div className='player-main-div'>
                             <div>
-                                <div>
-                                    <img src={player.image} className='small_img' />
+                                <img src={player.image} className='small_img' />
+                                <div className='container-div'>
                                     <h1>{player.second_name} {player.name}</h1>
                                     <div className='player-info-div'>
                                         <h2>{player.position == 'Forward' ?
@@ -88,30 +83,18 @@ function PlayerDetail({ match }) {
                                     </div>
                                 </div>
                             </div>
-                            <hr style={{ width:'100vh' }}/>
+                            <hr style={{ width: '100vh' }} />
                             <h2>Additional info</h2>
-                            <div className='additional-info'>
+                            <div className='player-additional-info '>
                                 <div className='history'>
-                                    <React.Fragment>
-                                        <button onClick={() => { setShowPersonalInfo({ isOpen: true }) }}>show personal info</button>
-                                        {showPersonalInfo.isOpen &&
-                                            <div className='inside-history'>
-                                                <PlayerPersonalInfo obj={player.id} />
-                                                <button onClick={() => { setShowPersonalInfo({ isOpen: false }) }}>close</button>
-                                            </div>
-                                        }
-                                    </React.Fragment>
+                                    <div className='inside-history'>
+                                        <PlayerPersonalInfo obj={player.id} />
+                                    </div>
                                 </div>
                                 <div className='description'>
-                                    <React.Fragment>
-                                        <button onClick={() => { setShowMainInfo({ isOpen: true }) }}>show main info</button>
-                                        {showMainInfo.isOpen &&
-                                            <div className='inside-description'>
-                                                <PlayerMainInfo obj={player.id} />
-                                                <button onClick={() => { setShowMainInfo({ isOpen: false }) }}>close</button>
-                                            </div>
-                                        }
-                                    </React.Fragment>
+                                    <div className='inside-description'>
+                                        <PlayerMainInfo obj={player.id} />
+                                    </div>
                                 </div>
                             </div>
                             <br />
@@ -130,6 +113,7 @@ function PlayerDetail({ match }) {
                         </div>
                     </div>
                 </div> : <></>}
+
         </div>
     )
 }

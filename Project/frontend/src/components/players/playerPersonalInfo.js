@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import './../../css/players/player.css'
 
 function PlayerPersonalInfo({ obj }) {
 
@@ -18,11 +19,22 @@ function PlayerPersonalInfo({ obj }) {
 
 
     return (
-        <div>
-            <h1>Player personal info</h1>
-            <h2>{player.favorite_color}</h2>
-            <h2>{player.favorite_music}</h2>
-            <h2>{player.favorite_car}</h2>
+        <div className='main-info-container'>
+            <ol>
+                <li>color: {player.favorite_color}</li>
+                <hr />
+                <li>music: {player.favorite_music}</li>
+                <hr />
+                <li>movie: {player.favorite_movie}</li>
+                <hr />
+                <li>family: {player.family}</li>
+                <hr />
+                <li>education: {player.education}</li>
+                <hr />
+                <li>game: {player.favorite_game}</li>
+                <hr />
+                <li>car: {player.favorite_car}</li>
+            </ol>
         </div>
     )
 }
