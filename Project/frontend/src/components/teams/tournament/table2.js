@@ -3,10 +3,18 @@ import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { useSelector } from 'react-redux';
 import './simple.css';
 import { Link } from 'react-router-dom';
+import { height } from 'dom-helpers';
 const Table2 = () => {
     const [rowData, setRowData] = useState([]);
     const teams = useSelector(state => state.teamsReducer.teams)
 
+    const styles = {
+        mini_img:{
+            width:40,
+            height:40,
+            borderRadius:20
+        }
+    }
 
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/teams/')
@@ -26,7 +34,9 @@ const Table2 = () => {
             return (<Link>{params.value}</Link>)
         } */},
         { headerName: "logo", field: "id", cellRendererFramework: (params) => <div>
-            <Link key={params} to={`/teams/${1}`}><img src={teams[1].team_logo} style={{ width: 30, height: 30 }} /></Link>
+            {params ?
+            <Link key={params} to={`/teams/${params.value}`}><img src={teams[params.value-1].team_logo} style={styles.mini_img} /></Link>
+            :<></>}
             </div> },
         { headerName: "Defeats", field: "defeats" },
         { headerName: "Games", field: "games" },
