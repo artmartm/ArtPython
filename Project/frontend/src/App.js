@@ -65,7 +65,7 @@ import Dashboard from "./components/users/dashboard/dashboard";
 import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin";
 import SignUp from "./components/users/signup/signUp";
 import Update from "./components/general/comments/update";
-import MainTable from "./components/teams/tournament/main";
+import Tournament from "./components/teams/tournament/main";
 
 function App() {
 
@@ -93,7 +93,7 @@ function App() {
                 {/*<Switch>
                 <Navigation />*/}
                     <Route path ='/' exact component={Home} />
-                    <Route path ='/tournament' exact component={MainTable} />
+                    <Route path ='/tournament' exact component={Tournament} />
                     <Route path='/comments/:id' exact component={CommentDetail}/>
                     <Route path='/add-country' exact component={AddCountry}/>
                     <Route path='/teams' exact component={teamsList}/>

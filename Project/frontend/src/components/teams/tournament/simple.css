@@ -1,0 +1,16 @@
+.more100 {
+    background-color: blue;
+}
+
+.forwardCl{
+    background-color: brown;
+}
+.simpleCl {
+    background-color: chartreuse;
+}
+
+.mm_cl {
+    margin: auto;
+    position: center;
+    width: 80%;
+}

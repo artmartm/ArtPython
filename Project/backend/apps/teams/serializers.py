@@ -53,6 +53,7 @@ class TeamDetailSerializer(TeamSerializers):
     team_stats = serializers.SerializerMethodField()
     matches = serializers.SerializerMethodField()
     # read only
+    goals_difference=serializers.ReadOnlyField()
     points = serializers.ReadOnlyField()
     wins = serializers.ReadOnlyField()
     wins_ot = serializers.ReadOnlyField()

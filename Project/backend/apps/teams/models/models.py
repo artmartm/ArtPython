@@ -43,6 +43,11 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
         return goals
 
     @property
+    def goals_difference(self):
+        return self.goals_scored-self.goals_missed
+
+
+    @property
     def wins(self):
         wins = len(Game.objects.filter(winner=self))
         return wins

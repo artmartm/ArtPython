@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../../App.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function Navigation() {
-    return(
-        <nav style={{ background:'gray' }}>
+    return (
+        <nav style={{ background: 'gray' }}>
             <ul className='nav-links'>
                 <Link to='/about'><li>about</li></Link>
                 <Link to='/login-2'><li>login2</li></Link>
