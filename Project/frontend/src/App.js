@@ -65,6 +65,7 @@ import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin"
 import SignUp from "./components/users/signup/signUp";
 import Update from "./components/general/comments/update";
 import Tournamnet from "./components/teams/tournament/tournament";
+import MainTable from "./components/teams/teams/main";
 
 function App() {
 
@@ -125,6 +126,7 @@ function App() {
                 {/*</Switch>*/}
                 </AuthProvider>
             </div>
+            <MainTable/>
         </Router>
     );
 }
