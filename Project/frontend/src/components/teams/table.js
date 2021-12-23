@@ -9,26 +9,39 @@ export const TableGrid = () => {
     ]
     const columns = [
         {
-            headerName: 'Name', field: 'name', sortable:true, editable:true, filter:true, checkboxSelection:true
+            headerName: 'Name', field: 'name', checkboxSelection: true
         },
         {
-            headerName: 'Score', field: 'score', sortable:true ,editable:true, filter:true
+            headerName: 'Score', field: 'score',
         },
     ]
-    const defaultColDef={
-        sortable:true, editable:true, filter:true
+    const defaultColDef = {
+        sortable: true, editable: true, filter: true, floatingFilter: true, flex: 1
     }
+/*
+    const onGridReady = params => {
+        gridApi = params.api
+    }
+ 
+    const onExportClick = ()=>{
+        gridApi.exportDataAsCsv();
+    }
+ */
     return (
-        <div
-            className="ag-theme-alpine"
-            style={{
-                height: '250px',
-                position: 'row',
-                width: '600px',
-                margin:'auto',
-                padding:'auto'
-            }}>
-            <AgGridReact rowData={data} columnDefs={columns} />
+        <div>
+            {/* <button onClick={()=>onExportClick}>export</button> */}
+            <div
+                className="ag-theme-alpine"
+                style={{
+                    height: '250px',
+                    width: '600px',
+                    margin: 'auto',
+                    padding: 'auto'
+                }}>
+                <AgGridReact rowData={data} columnDefs={columns}
+                    defaultColDef={defaultColDef}
+                   /*  onGridReady={onGridReady} */ />
+            </div>
         </div>
     )
 }

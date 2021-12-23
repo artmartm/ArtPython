@@ -31,8 +31,7 @@ function PlayerDetail({ match }) {
     const content_type = '18';
 
     const dispatch = useDispatch();
-    const teams = useSelector(state => state.teamsReducer.teams)
-
+    const [jt, setJt] = useState([]);
 
 
     useEffect(() => {
@@ -43,71 +42,94 @@ function PlayerDetail({ match }) {
             setPlayer(response.data)
         })
     }, [id])
+    useEffect(() => {
+        dispatch(fetchTeams())
+    },[])
+
+    const teams = useSelector(state => state.teamsReducer.teams)
+
+
     return (
         <div>
-            {player.team ?
-            <div style={{ backgroundImage: `url(${teams[player.team-1].team_background}})`}} className='main_div'>
-            <div className='player_main' style={{ backgroundImage: `url(${player.background})` }}>
-                <div className='main_div'>
-                    <div>
-                        <div>
-                            <img src={player.image} className='small_img' />
-                            <h3>position is {player.position}</h3>
-                            {player.team ?
-                                <h3>current team is <Link
-                                    style={{ textDecoration: 'none' }}
-                                    key={player.team}
-                                    to={`/teams/${player.team}`}>
-                                    {teams[player.team - 1].name}
-                                </Link>
-                                </h3>
-                                : <></>}
-                            <h1>{player.name}</h1>
-                            <h2># {player.player_number}</h2>
-                        </div>
-                    </div>
-                    <hr />
-                    <h2>Additional info</h2>
-                    <div className='additional-info'>
-                        <div className='history'>
-                            <React.Fragment>
-                                <button onClick={() => { setShowPersonalInfo({ isOpen: true }) }}>show personal info</button>
-                                {showPersonalInfo.isOpen &&
-                                    <div className='inside-history'>
-                                        <PlayerPersonalInfo obj={player.id} />
-                                        <button onClick={() => { setShowPersonalInfo({ isOpen: false }) }}>close</button>
-                                    </div>
-                                }
-                            </React.Fragment>
-                        </div>
-                        <div className='description'>
-                            <React.Fragment>
-                                <button onClick={() => { setShowMainInfo({ isOpen: true }) }}>show main info</button>
-                                {showMainInfo.isOpen &&
-                                    <div className='inside-description'>
-                                        <PlayerMainInfo obj={player.id} />
-                                        <button onClick={() => { setShowMainInfo({ isOpen: false }) }}>close</button>
-                                    </div>
-                                }
-                            </React.Fragment>
-                        </div>
-                    </div>
-                    <br />
-                    <hr />
-                    <React.Fragment>
-                        <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
-                        {showComments.isOpen &&
+            {player.team > 0 && teams.length > 0 ?
+                <div style={{ backgroundImage: `url(${teams[player.team].team_background}})` }}
+                    className='player-main-div'>
+                    <div className='player_main' style={{ backgroundImage: `url(${player.background})` }}>
+                        <div className='player-main-div'>
                             <div>
-                                <CommentsList key={id} obj={id} ct={content_type} />
-                                <button onClick={() => { setShowComments({ isOpen: false }) }}>close</button>
+                                <div>
+                                    <img src={player.image} className='small_img' />
+                                    <h1>{player.second_name} {player.name}</h1>
+                                    <div className='player-info-div'>
+                                        <h2>{player.position == 'Forward' ?
+                                            <Link className='link'>
+                                                {player.position} &#127954;
+                                            </Link> :
+                                            player.position == 'Defender' ?
+                                                <Link className='link'>
+                                                    {player.position} &#128737;
+                                                </Link> :
+                                                <Link className='link'>
+                                                    {player.position} &#129349;
+                                                </Link>}
+                                        </h2>
+                                        <Link
+                                            className='player-team-link'
+                                            style={{ textDecoration: 'none' }}
+                                            key={player.team}
+                                            to={`/teams/${player.team}`}>
+                                            <img className='player-team-logo'
+                                                src={teams[player.team - 1].team_logo} />
+                                        </Link>
+                                        <h2># {player.player_number}</h2>
+                                        <h2>shoots: {player.shoots}</h2>
+                                        <h2>score: {player.score}</h2>
+                                        {player.captain ? <h2>C</h2> : <></>}
+                                    </div>
+                                </div>
                             </div>
-                        }
-                    </React.Fragment>
-                    <CommentComponent obj={id} ct={content_type} />
-                    <br />
-                </div>
-            </div>
-            </div>:<></>}
+                            <hr style={{ width:'100vh' }}/>
+                            <h2>Additional info</h2>
+                            <div className='additional-info'>
+                                <div className='history'>
+                                    <React.Fragment>
+                                        <button onClick={() => { setShowPersonalInfo({ isOpen: true }) }}>show personal info</button>
+                                        {showPersonalInfo.isOpen &&
+                                            <div className='inside-history'>
+                                                <PlayerPersonalInfo obj={player.id} />
+                                                <button onClick={() => { setShowPersonalInfo({ isOpen: false }) }}>close</button>
+                                            </div>
+                                        }
+                                    </React.Fragment>
+                                </div>
+                                <div className='description'>
+                                    <React.Fragment>
+                                        <button onClick={() => { setShowMainInfo({ isOpen: true }) }}>show main info</button>
+                                        {showMainInfo.isOpen &&
+                                            <div className='inside-description'>
+                                                <PlayerMainInfo obj={player.id} />
+                                                <button onClick={() => { setShowMainInfo({ isOpen: false }) }}>close</button>
+                                            </div>
+                                        }
+                                    </React.Fragment>
+                                </div>
+                            </div>
+                            <br />
+                            <hr />
+                            <React.Fragment>
+                                <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
+                                {showComments.isOpen &&
+                                    <div>
+                                        <CommentsList key={id} obj={id} ct={content_type} />
+                                        <button onClick={() => { setShowComments({ isOpen: false }) }}>close</button>
+                                    </div>
+                                }
+                            </React.Fragment>
+                            <CommentComponent obj={id} ct={content_type} />
+                            <br />
+                        </div>
+                    </div>
+                </div> : <></>}
         </div>
     )
 }

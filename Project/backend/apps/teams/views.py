@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
-    serializer_class = TeamSerializers
+    serializer_class = TeamDetailSerializer
     # permission_classes = [IsAdminUser]
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [IsAdminUser]

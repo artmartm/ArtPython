@@ -8,6 +8,7 @@ import TeamLogo from '../teams/teamsLogo';
 import AddGame from './addGame';
 import AuthContext from '../../general/base/AuthContext';
 import './../../../css/teams/particularTeamGame.css';
+import { fetchTeams } from '../../../redux_two/actions/asyncActions/asyncAllTeams';
 
 function ParticularTeamGame({ team, show }) {
 
@@ -18,6 +19,7 @@ function ParticularTeamGame({ team, show }) {
     const teams = useSelector(state => state.teamsReducer.teams)
 
     const particularGames = [];
+    const oneGame=[]
 
     useEffect(() => {
         axios({
@@ -29,39 +31,24 @@ function ParticularTeamGame({ team, show }) {
         })
     }, [])
 
-    {
+
         games.map(e => {
             if (e.home_team == team || e.away_team == team)
                 particularGames.push(e)
+            if((e.home_team == team || e.away_team == team) && oneGame.length<1)
+                oneGame.push(e)
         })
-    }
 
     return (
         <div>
-            {particularGames.length ?
+            {particularGames.length>0 && oneGame.length>0 && teams.length >0 ?
                 <div>
                     {show ?
                         <div>
-                            <h1><Link className='link' to={{ pathname: `/game/${particularGames[0].id}/`, fromDashboard: false }}>
-                                <div>
-                                    <div className='special-game-container'>
-                                        <div className='team-container'>
-                                            <img className='position' src={teams[particularGames[0].home_team - 1].team_logo} className='img-container' />
-                                            <p className='position'>{teams[particularGames[0].home_team - 1].name}</p>
-                                        </div>
-                                        <p className='position'>{particularGames[0].home_team_goals} : {particularGames[0].away_team_goals}</p>
-                                        <div className='team-container'>
-                                            <img className='position' src={teams[particularGames[0].away_team - 1].team_logo} className='img-container' />
-                                            <p className='position'>{teams[particularGames[0].away_team - 1].name}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                            </h1>
-                            {/*{particularGames.map(e => (
+                           {oneGame.map(e => (
                                 <h1><Link className='link' to={{ pathname: `/game/${e.id}/`, fromDashboard: false }}>
                                     <div>
-                                        <div className='game-container'>
+                                        <div className='special-game-container'>
                                             <div className='team-container'>
                                                 <img className='position' src={teams[e.home_team - 1].team_logo} className='img-container' />
                                                 <p className='position'>{teams[e.home_team - 1].name}</p>
@@ -72,11 +59,10 @@ function ParticularTeamGame({ team, show }) {
                                                 <p className='position'>{teams[e.away_team - 1].name}</p>
                                             </div>
                                         </div>
-                                        <hr style={{ width: 400 }} />
                                     </div>
                                 </Link>
                                 </h1>
-                            ))} */}
+                            ))}
                         </div>
                         :
                         <div>
@@ -110,3 +96,20 @@ function ParticularTeamGame({ team, show }) {
 
 export default ParticularTeamGame;
 
+/* 
+<h1><Link className='link' to={{ pathname: `/game/${particularGames[0].id}/`, fromDashboard: false }}>
+<div>
+    <div className='special-game-container'>
+        <div className='team-container'>
+            <img className='position' src={teams[particularGames[0].home_team - 1].team_logo} className='img-container' />
+            <p className='position'>{teams[particularGames[0].home_team - 1].name}</p>
+        </div>
+        <p className='position'>{particularGames[0].home_team_goals} : {particularGames[0].away_team_goals}</p>
+        <div className='team-container'>
+            <img className='position' src={teams[particularGames[0].away_team - 1].team_logo} className='img-container' />
+            <p className='position'>{teams[particularGames[0].away_team - 1].name}</p>
+        </div>
+    </div>
+</div>
+</Link>
+</h1> */

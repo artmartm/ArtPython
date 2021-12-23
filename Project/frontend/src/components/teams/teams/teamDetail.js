@@ -65,6 +65,8 @@ function TeamDetail({ match }) {
     }, [id])
 
     return (
+        <div>
+            {team ?
         <div style={{ backgroundImage: `url(${team.team_background})` }}> {/*style={{backgroundImage: `url(${team.team_background})`}}}*/}
             <div className='main_div'>
                 <section className="logo-container">
@@ -90,6 +92,7 @@ function TeamDetail({ match }) {
                                     <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
                                 </li>
                             ))}
+                            <li><Link to={`/tournament`}>to the table</Link></li>
                         </ol>
                     </div>
                     <div className='news-games-container'>
@@ -184,6 +187,7 @@ function TeamDetail({ match }) {
                 <CommentComponent key={id} obj={id} ct={content_type} /> {/* through redux AllCommentsList */}
                 <br />
             </div>
+        </div>:<></>}
         </div>
 
     )

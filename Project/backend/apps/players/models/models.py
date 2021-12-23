@@ -8,6 +8,7 @@ from apps.general.uploads import get_upload_to_players
 
 class Player(StillActive, BaseModel, PLTSBaseModel):
     name = models.CharField(max_length=50)
+    second_name = models.CharField(max_length=50, default='')
     image = models.ImageField(blank=True, null=True, upload_to=get_upload_to_players)
     background = models.ImageField(blank=True, null=True, default=None, upload_to=get_upload_to_players)
     score = models.PositiveIntegerField()
