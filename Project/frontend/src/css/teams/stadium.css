@@ -1,0 +1,22 @@
+
+.main-stadium-div{
+    width: 150vh;
+    align-items: center;
+    margin: auto;
+    padding: 0%;
+    background-color: rgba(5, 5, 5, 0.9);
+    border-radius: 150px;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+
+.main-stadium-div {
+    width: 120vh;
+    margin: auto;
+    padding: 5px;
+}
+
+.main_img {
+    width:500px;
+    height:500px;
+    border-radius:250px
+}

@@ -41,6 +41,12 @@ const PlayersTable = () => {
         <Link key={params} /* to={`/teams/${params.value}`} */><img src={params.value} style={styles.mini_img} /></Link>
         :<></>}
         </div> },
+         { headerName: "team2", field: "team", cellRendererFramework: (params) => <div>
+        {params && teams.length>0 ?
+        <Link key={params} /* to={`/teams/${params.value}`} */ style={{backgroundImage: `url(${teams[params.value-1].team_background})` }}>
+            {teams[params.value-1].name}</Link>
+        :<></>}
+        </div> },
         { headerName: "Score", field: "score" },
         { headerName: "Shoots", field: "shoots" },
         { headerName: "Position", field: "position" },

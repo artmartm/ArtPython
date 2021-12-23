@@ -26,7 +26,6 @@ function PlayerDetail({ match }) {
     const content_type = '18';
 
     const dispatch = useDispatch();
-    const [jt, setJt] = useState([]);
 
 
     useEffect(() => {

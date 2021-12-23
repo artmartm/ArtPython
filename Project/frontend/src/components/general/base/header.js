@@ -20,7 +20,7 @@ const Header = () => {
                                 <li><Link to='/players'>players</Link></li>
                                 <li><Link to='/'>home</Link></li>
                                 <li><Link to='/games-list'>list of games</Link></li>
-                                <li><Link to='/news'>news</Link></li>
+                             {/*    <li><Link to='/news'>news</Link></li> */}
                                 <li><Link to='/tournament'>tournament</Link></li>
                                 {/*
                                 <li> <Link to='/all-comments'>all comments</Link></li>
