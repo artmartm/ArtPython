@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './../../../css/general/news.css';
 
-function ParticularNewsList({ obj, ct }) {
+function ParticularNewsList({ obj, ct, show }) {
 
     const [news, setNews] = useState([]);
     const particular_news = [];
+    const latest_news = [];
 
     useEffect(() => {
         axios({
@@ -17,29 +19,64 @@ function ParticularNewsList({ obj, ct }) {
         })
     }, [])
 
-    {
-        news.length ?
+    news.length ?
         news.map(e => (
             <div>
                 {e.object_id == obj && e.content_type == ct ?
-                    particular_news.push(e)
+                    <div>
+                        {particular_news.push(e)}
+                        {latest_news.length < 1 ? latest_news.push(e) : <></>}
+                    </div>
                     :
                     <p></p>
                 }
             </div>
         )) : <p>no news yet</p>
-    }
 
     return (
         <div>
-            {particular_news.length ?
-                particular_news.map(e => (
-                    <div>
-                        <Link key={e.id} to={{ pathname: `/news/${e.id}/`, fromDashboard: false }}><h3>{e.name}...added{e.author}</h3></Link>
-                    </div>
-                )) :
-                <p>no news</p>}
-            <hr />
+            {show ?
+                <div>
+                    {
+                        latest_news.length ?
+                            latest_news.map(e => (
+                                <div>
+                                    <div className='one-news-container'>
+                                        <p className='for-inside-p'>{e.name}</p>
+                                        <p>{e.body}</p>
+                                        <Link className='news-link'
+                                            key={e.id}
+                                            to={{ pathname: `/news/${e.id}/`, fromDashboard: false }}>
+                                            <p className='for-inside-p'>detail</p>
+                                        </Link>
+                                    </div>
+
+                                </div>
+                            )) :
+                            <p>no news</p>
+                    }
+                </div>
+                :
+                <div>
+                    {
+                        particular_news.length ?
+                            particular_news.map(e => (
+                                <div>
+                                    <Link className='news-link'
+                                        key={e.id}
+                                        to={{ pathname: `/news/${e.id}/`, fromDashboard: false }}>
+                                        <div className='one-news-container'>
+                                            <h3 className='for-inside-p'>{e.name}</h3>
+                                            <p>{e.body}</p>
+                                        </div>
+                                    </Link>
+                                    < hr />
+
+                                </div>
+                            )) :
+                            <p>no news</p>
+                    }
+                </div>}
         </div>
     )
 }

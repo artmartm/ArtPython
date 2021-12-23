@@ -20,21 +20,23 @@ function PlayerPersonalInfo({ obj }) {
 
     return (
         <div className='main-info-container'>
-            <ol>
-                <li>color: {player.favorite_color}</li>
-                <hr />
-                <li>music: {player.favorite_music}</li>
-                <hr />
-                <li>movie: {player.favorite_movie}</li>
-                <hr />
-                <li>family: {player.family}</li>
-                <hr />
-                <li>education: {player.education}</li>
-                <hr />
-                <li>game: {player.favorite_game}</li>
-                <hr />
-                <li>car: {player.favorite_car}</li>
-            </ol>
+            {player.favorite_color ?
+                <ol>
+                    <li>color: {player.favorite_color}</li>
+                    <hr />
+                    <li>music: {player.favorite_music}</li>
+                    <hr />
+                    <li>movie: {player.favorite_movie}</li>
+                    <hr />
+                    <li>family: {player.family}</li>
+                    <hr />
+                    <li>education: {player.education}</li>
+                    <hr />
+                    <li>game: {player.favorite_game}</li>
+                    <hr />
+                    <li>car: {player.favorite_car}</li>
+                </ol>
+                : <h1>no info</h1>}
         </div>
     )
 }

@@ -47,6 +47,7 @@ function TeamDetail({ match }) {
         isOpen: false
     }])
     const [show, setShow] = useState(true);
+    const [showLatestNews, setLatestShowNews] = useState(true);
 
     useEffect(() => {
         axios({
@@ -99,11 +100,12 @@ function TeamDetail({ match }) {
                         <div className='news-container'>
                             <h1 className='inside-news-container'>Team's news</h1>
                             <React.Fragment>
-                                <button onClick={() => { setShowNews({ isOpen: true }) }}>show a news</button>
+                            <button onClick={() => { setShowNews({ isOpen: true });setLatestShowNews(false)}}>show all news</button>
+                            {showLatestNews ? <ParticularNewsList key={id} obj={id} show={showLatestNews} ct={content_type} /> :<></>}
                                 {showNews.isOpen &&
                                     <div>
-                                        <ParticularNewsList key={id} obj={id} ct={content_type} />
-                                        <button onClick={() => { setShowNews({ isOpen: false }) }}>close</button>
+                                        <ParticularNewsList key={id} obj={id} show={showLatestNews} ct={content_type} />
+                                        <button onClick={() => { setShowNews({ isOpen: false });setLatestShowNews(true) }}>close</button>
                                     </div>
                                 }
                             </React.Fragment>
@@ -117,7 +119,7 @@ function TeamDetail({ match }) {
                                     {showMatches.isOpen &&
                                         <div>
                                             <ParticularTeamGame show={show} team={team.id} />
-                                            <button onClick={() => { setShowMatches({ isOpen: false });;setShow(true)}}>close</button>
+                                            <button onClick={() => { setShowMatches({ isOpen: false });setShow(true)}}>close</button>
                                         </div>
                                     }
                                 </React.Fragment>
@@ -166,7 +168,6 @@ function TeamDetail({ match }) {
                             <h1 onClick={() => { setShowDescription({ isOpen: true }) }}>show description</h1>
                             {showDescription.isOpen &&
                                 <div className='inside-description'>
-                                    <h2>Description</h2>
                                     <div>{team.description}</div>
                                     <button onClick={() => { setShowDescription({ isOpen: false }) }}>close</button>
                                 </div>

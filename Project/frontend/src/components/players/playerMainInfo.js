@@ -19,19 +19,21 @@ function PlayerMainInfo({ obj }) {
 
     return (
         <div className='main-info-container'>
-            <ol>
-                <li>height: {player.weight}</li>
-                <hr />
-                <li>weight lb: {player.height}</li>
-                <hr />
-                <li>academy: {player.academy}</li>
-                <hr />
-                <li>sport brand: {player.sport_brand}</li>
-                <hr />
-                <li>salary: {player.salary_per_year}$</li>
-                <hr />
-                <li>contract: {player.contract_till}</li>
-            </ol>
+            {player.weight ?
+                <ol>
+                    <li>height: {player.weight}</li>
+                    <hr />
+                    <li>weight lb: {player.height}</li>
+                    <hr />
+                    <li>academy: {player.academy}</li>
+                    <hr />
+                    <li>sport brand: {player.sport_brand}</li>
+                    <hr />
+                    <li>salary: {player.salary_per_year}$</li>
+                    <hr />
+                    <li>contract: {player.contract_till}</li>
+                </ol>
+                : <h1>no info</h1>}
         </div>
     )
 }
