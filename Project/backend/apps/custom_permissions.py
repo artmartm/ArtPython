@@ -4,6 +4,7 @@ from apps.users.models.models import UserProfile
 from apps.general.models.generals import Comments
 
 GENERAL_METHODS = ('GET', 'HEAD', 'OPTIONS')
+SPECIAL_METHODS = ('GET', 'HEAD', 'OPTIONS', 'POST')
 
 
 class OnlyAdminOrModerator(IsAuthenticated):

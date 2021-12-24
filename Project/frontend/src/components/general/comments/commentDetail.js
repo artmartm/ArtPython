@@ -2,9 +2,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { FetchUsers } from "../../../redux_two/actions/asyncActions/asyncAllUsers";
-import { fetchParticularUser } from "../../../redux_two/actions/asyncActions/asyncParticularUser";
+import { useHistory } from "react-router-dom";
 import AuthContext from "../base/AuthContext";
 import DeleteComment from "./deleteComment";
 import './../../../css/general/news.css';
@@ -32,7 +30,7 @@ function CommentDetail({ match }) {
     const users = useSelector(state => state.usersReducer.users)*/}
     const [users, setUsers] = useState([]);
 
-    let { authTokens, logoutUser } = useContext(AuthContext)
+    let { authTokens, logoutUser, user } = useContext(AuthContext)
 
 
     useEffect(() => {
@@ -97,25 +95,28 @@ function CommentDetail({ match }) {
         <div className='single-news-container'>
             <div className='inside-single-news-container'>
                 <h1>{comment.name}</h1>
-                {comment.name && users.length > 0 ?
+                {comment.name && users.length > 0 && user.admin ?
                     <h2>author is {users[comment.author].username}</h2>
                     : <></>}
                 <h3>created at {comment.created_at}</h3>
                 <hr />
-                <div className="form-group">
-                    <input
-                        type="text"
-                        className="for-input"
-                        placeholder="Enter Your Name"
-                        name="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                </div>
-                <div className='for-delete-update'>
-                    <button onClick={UpdateCom} >Update</button>
-                    <DeleteComment id={id} />
-                </div>
+                {user.user_id == comment.author || user.admin ?
+                    <div>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                className="for-input"
+                                placeholder="Enter Your Name"
+                                name="name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className='for-delete-update'>
+                            <button onClick={UpdateCom} >Update</button>
+                            <DeleteComment id={id} />
+                        </div>
+                    </div>:<></>}
             </div>
         </div>
 

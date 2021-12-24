@@ -9,6 +9,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
 
         token['username'] = user.username
+        token['admin'] = user.is_superuser
         token['info'] = UserProfileSerializer(UserProfile.objects.filter(user=user), many=True).data[0]
         #GameSerializers(Game.objects.filter(home_team=team), many=True).data
         return token

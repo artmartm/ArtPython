@@ -22,7 +22,8 @@ function NewsDetail({ match }) {
 
     const [users, setUsers] = useState([]);
 
-    let { authTokens, logoutUser } = useContext(AuthContext)
+
+    let { authTokens, logoutUser, user } = useContext(AuthContext)
 
     useEffect(() => {
         axios({
@@ -81,38 +82,43 @@ function NewsDetail({ match }) {
     }
     return (
         <div className='single-news-container'>
-            {news.name && users.length > 0 ?
+            {news.name ?
                 <div>
                     <div className='inside-single-news-container'>
                         <h1>{news.name}</h1>
-                        <h2>author is {users[news.author].username}</h2>
+                        {user.admin && users.length > 0 ?
+                            <h2>author is {users[news.author].username}</h2>
+                            : <></>}
                         <h3>created at {news.created_at}</h3>
                         <h4>body: {news.body}</h4>
                     </div>
                     <hr style={{ width: '90vh' }} />
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            placeholder="Enter Your Name"
-                            className='for-input'
-                            name="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                        <br />
-                        <textarea
-                            className='text-area'
-                            type="text"
-                            placeholder="Enter body"
-                            name="body"
-                            value={body}
-                            onChange={(e) => setBody(e.target.value)}
-                        />
-                    </div>
-                    <div className='for-delete-update'>
-                        <button onClick={UpdateCom}>Update</button>
-                        <DeleteNews id={id_id} />
-                    </div>
+                    {user.user_id == news.author || user.admin ?
+                        <div>
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    placeholder="Enter Your Name"
+                                    className='for-input'
+                                    name="name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                                <br />
+                                <textarea
+                                    className='text-area'
+                                    type="text"
+                                    placeholder="Enter body"
+                                    name="body"
+                                    value={body}
+                                    onChange={(e) => setBody(e.target.value)}
+                                />
+                            </div>
+                            <div className='for-delete-update'>
+                                <button onClick={UpdateCom}>Update</button>
+                                <DeleteNews id={id_id} />
+                            </div>
+                        </div> : <></>}
                 </div> : <></>}
         </div>
     )
