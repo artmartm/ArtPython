@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchTeams } from "../../redux_two/actions/asyncActions/asyncAllTeams";
+import { fetchTeams } from "../../redux/actions/asyncActions/asyncAllTeams";
 import CommentComponent from "../general/comments/commentComponent";
 import CommentsList from "../general/comments/commentsList";
 import PlayerMainInfo from "./playerMainInfo";

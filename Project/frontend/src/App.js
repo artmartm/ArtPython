@@ -1,26 +1,31 @@
 import React, { useState, useEffect } from "react";
-
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import LeagueDetail from "./components/leagues/leagueDetail";
-//COMMENTS
-
-//LOGIN LOGOUT SIGNUP
+import { useDispatch } from 'react-redux';
 
 // GAMES
 import AddGame from "./components/teams/games/addGame";
 import Games from "./components/teams/games/gamesList";
 import GameDetail from "./components/teams/games/gameDetail";
-// STADIUMS
+
 // PLAYERS
 import PlayerDetail from "./components/players/playerDetail";
+import PlayersTable from "./components/players/playersTable";
+
 //TEAMS
 import TeamDetail from "./components/teams/teams/teamDetail";
+import TeamTable from "./components/teams/tournament/teamTable";
 
+// STADIUMS
 import StadiumDetail from "./components/teams/stadiums/stadiumDetail";
-//NEWS
+import StadiumsList from "./components/teams/stadiums/stadiumsList";
+
+//NEWS AND COMMENTS
 import CommentDetail from "./components/general/comments/commentDetail";
+import NewsDetail from "./components/general/news/newsDetail";
+import Update from "./components/general/comments/update";
+import AllCommentsList from "./components/general/comments/allComments";
+
 //GENERAL and BASE
 import Home from "./components/general/home";
 import { AuthProvider } from "./components/general/base/AuthContext";
@@ -28,31 +33,27 @@ import PrivateRoute from "./components/general/base/privaterouter";
 import Header from "./components/general/base/header";
 import LoginPage from "./components/users/login/logIn";
 import teamsList from "./components/teams/teams/teamsList";
-import { fetchTeams } from "./redux_two/actions/asyncActions/asyncAllTeams";
+import { fetchTeams } from "./redux/actions/asyncActions/asyncAllTeams";
 
 //REDUX
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPlayers } from "./redux_two/actions/asyncActions/asyncAllPlayers";
-import LeaguesList from "./components/leagues/leaguesList";
-import { fetchLeagues } from "./redux_two/actions/asyncActions/asyncAllLeagues";
-import StadiumsList from "./components/teams/stadiums/stadiumsList";
-import { fetchStadiums } from "./redux_two/actions/asyncActions/asyncAllStadiums";
-import { fetchNews } from "./redux_two/actions/asyncActions/asyncAllNews";
-import AllCommentsList from "./components/general/comments/allComments";
-import { fetchComments } from "./redux_two/actions/asyncActions/asyncAllComments";
-/////
+import { fetchPlayers } from "./redux/actions/asyncActions/asyncAllPlayers";
+import { fetchLeagues } from "./redux/actions/asyncActions/asyncAllLeagues";
+import { fetchStadiums } from "./redux/actions/asyncActions/asyncAllStadiums";
+import { fetchNews } from "./redux/actions/asyncActions/asyncAllNews";
+import { fetchComments } from "./redux/actions/asyncActions/asyncAllComments";
 
+//LEAGUES
+import LeaguesList from "./components/leagues/leaguesList";
+import LeagueDetail from "./components/leagues/leagueDetail";
+
+//USERS
 import UserList from "./components/users/usersList";
 import UserDetail from "./components/users/userDetail";
-import NewsDetail from "./components/general/news/newsDetail";
 import UsersProfilesList from "./components/users/usersProfilesList";
 import UserProfileDetail from "./components/users/userProfileDetail";
 import Dashboard from "./components/users/dashboard/dashboard";
 import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin";
 import SignUp from "./components/users/signup/signUp";
-import Update from "./components/general/comments/update";
-import PlayersTable from "./components/players/playersTable";
-import TeamTable from "./components/teams/tournament/teamTable";
 
 function App() {
 
@@ -84,7 +85,6 @@ function App() {
                     <Route path='/profiles' exact component={UsersProfilesList} />
                     <Route path='/profiles/:id' exact component={UserProfileDetail} />
                     <Route path='/leagues' exact component={LeaguesList} />
-
                     <Route path='/players' exact component={PlayersTable} />
                     <Route path='/add-game' exact component={AddGame} />
                     <Route path='/games-list' exact component={Games} />
