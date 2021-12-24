@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 //import '../Model.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import TeamLogo from './teamsLogo';
 import AuthContext from '../../general/base/AuthContext';
@@ -12,34 +12,34 @@ function Teams() {
     const [teams, setTeams] = useState([]);
 
 
-    let {authTokens, logoutUser} = useContext(AuthContext)
+    let { authTokens, logoutUser } = useContext(AuthContext)
 
-   //////////////////
+    //////////////////
 
-   useEffect(()=> {
-    getNotes()
-}, [])
+    useEffect(() => {
+        getNotes()
+    }, [])
 
 
-let getNotes = async() =>{
-    let response = await fetch('http://127.0.0.1:8000/api/teams/', {
-        method:'GET',
-        headers:{
-            'Content-Type':'application/json',
-            //'Authorization':'Bearer ' + String(authTokens.access)
-        }
-    })
-    let data = await response.json()
+    let getNotes = async () => {
+        let response = await fetch('http://127.0.0.1:8000/api/teams/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                //'Authorization':'Bearer ' + String(authTokens.access)
+            }
+        })
+        let data = await response.json()
 
-    if(response.status === 200){
-        setTeams(data)
-    }//else if(response.statusText === 'Unauthorized'){
+        if (response.status === 200) {
+            setTeams(data)
+        }//else if(response.statusText === 'Unauthorized'){
         //logoutUser()
-    //}
-    
-}
-            ///////////
-        {/*useEffect( () => {
+        //}
+
+    }
+    ///////////
+    {/*useEffect( () => {
         axios({
             method:"GET",
             url:"http://127.0.0.1:8000/api/teams/",
@@ -54,20 +54,20 @@ let getNotes = async() =>{
     },[])*/}
 
 
-    return(
+    return (
         <div>
             <h1>Teams page</h1>
-            <hr/>      
-                {teams.map(item => (
-                    <div>
+            <hr />
+            {teams.map(item => (
+                <div>
                     <h2 key={item.id}>
-                        <Link to={{ pathname: `/teams/${item.id}/`, fromDashboard: false}}>
-                            <TeamLogo key={item} id={item.id}/><br/>
+                        <Link to={{ pathname: `/teams/${item.id}/`, fromDashboard: false }}>
+                            <TeamLogo key={item} id={item.id} /><br />
                         </Link>
                     </h2>
-                    </div>
-                    ))}
-                </div>)
-                }
+                </div>
+            ))}
+        </div>)
+}
 
 export default Teams;
