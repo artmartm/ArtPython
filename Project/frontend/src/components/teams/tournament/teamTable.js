@@ -9,10 +9,10 @@ const TeamTable = () => {
     const teams = useSelector(state => state.teamsReducer.teams)
 
     const styles = {
-        mini_img:{
-            width:40,
-            height:40,
-            borderRadius:20
+        mini_img: {
+            width: 40,
+            height: 40,
+            borderRadius: 20
         }
     }
 
@@ -26,28 +26,35 @@ const TeamTable = () => {
     const defaultColDef = {
         sortable: true, editable: true, filter: true, floatingFilter: true, flex: 1
     }
-    
+
     const columnDefs = [
         {
             headerName: "Name", field: "name",
         /* cellRenderer: function(params) {
             return (<Link>{params.value}</Link>)
         } */},
-        { headerName: "logo", field: "id", cellRendererFramework: (params) => <div>
-            {params ?
-            <Link key={params} to={`/teams/${params.value}`}><img src={teams[params.value-1].team_logo} style={styles.mini_img} /></Link>
-            :<></>}
-            </div> },
-        { headerName: "Defeats", field: "defeats" },
+        {
+            headerName: "logo", field: "id", cellRendererFramework: (params) => <div>
+                {params ?
+                    <Link key={params} to={`/teams/${params.value}`}><img src={teams[params.value - 1].team_logo} style={styles.mini_img} className="for-tournament-logo" /></Link>
+                    : <></>}
+            </div>
+        },
         { headerName: "Games", field: "games" },
+        { headerName: "scored", field: "goals_scored" },
+        { headerName: "missed", field: "goals_missed" },
+        { headerName: "difference", field: "goals_difference", cellClass: (params) => (params.value > 0 ? "positive" : params.value < 0 ? "negative" : "no-games") },
+        { headerName: 'points', field: 'points', cellClass:()=>("main-column")},
+        { headerName: 'wins', field: 'wins'},
         { headerName: "wins_ot", field: "wins_ot" },
+        { headerName: "Defeats", field: "defeats" },
         { headerName: "defeats_ot", field: "defeats_ot" },
-        { headerName: "goals_scored", field: "goals_scored" },
-        { headerName: "goals_missed", field: "goals_missed" },
-        { headerName: "goals_difference", field: "goals_difference" },
         { headerName: "percentage_of_wins", field: "percentage_of_wins" },
-        { headerName: 'sum_points', field: 'sum_points', cellClass: (params) => (params.value > 100 ? "more100" : "less100") },
-        { headerName: 'wins', field: 'wins', cellClass: (params) => (params.value = "Forward" ? "forwardCl" : "simpleCl") },
+        { headerName: "team_background", field: "team_background", cellRendererFramework: (params) => <div>
+        {params ?
+            <Link key={params} to={`/teams/${params.value}`}><img src={params.value} style={styles.mini_img} className="for-tournament-logo" /></Link>
+            : <></>}
+    </div>},
     ]
 
     const rowSelectionType = 'single'
@@ -59,7 +66,8 @@ const TeamTable = () => {
     }
 
     return (
-        <div>
+        <div className='mm_cl'>
+            <h1>tournament table</h1>
             <div className="ag-theme-alpine" style={{ width: 1500, height: 400 }}>
                 <AgGridReact
                     rowData={rowData}
