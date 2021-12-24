@@ -1,5 +1,4 @@
 from .models.models import Team, Stadium, Game, TeamStats
-from .models.Tournament import Tournament
 from rest_framework import serializers
 from apps.players.models.models import Player
 from apps.players.serializers import PlayerSerializers
@@ -36,10 +35,6 @@ class TeamStatsSerializers(serializers.ModelSerializer):
     class Meta:
         model = TeamStats
         fields = '__all__'
-
-class TournamentSerializers(serializers.ModelSerializer):
-    class Meta(Tournament.Meta):
-        exclude = ()
 
 
 ### DETAIALS
@@ -122,4 +117,4 @@ class StadiumDetailSerializers(StadiumSerializers):
 class GameDetailSerializers(GameSerializers):
     stadium = serializers.ReadOnlyField()
     name = serializers.ReadOnlyField()
-    win = serializers.ReadOnlyField()
+   # win = serializers.ReadOnlyField()

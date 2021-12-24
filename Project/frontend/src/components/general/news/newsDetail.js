@@ -90,17 +90,18 @@ function NewsDetail({ match }) {
                         <h4>body: {news.body}</h4>
                     </div>
                     <hr style={{ width: '90vh' }} />
-                    <DeleteNews id={id_id} />
                     <div className="form-group">
                         <input
                             type="text"
                             placeholder="Enter Your Name"
+                            className='for-input'
                             name="name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
                         <br />
-                        <input
+                        <textarea
+                            className='text-area'
                             type="text"
                             placeholder="Enter body"
                             name="body"
@@ -108,7 +109,10 @@ function NewsDetail({ match }) {
                             onChange={(e) => setBody(e.target.value)}
                         />
                     </div>
-                    <button onClick={UpdateCom} >Update</button>
+                    <div className='for-delete-update'>
+                        <button onClick={UpdateCom}>Update</button>
+                        <DeleteNews id={id_id} />
+                    </div>
                 </div> : <></>}
         </div>
     )

@@ -20,3 +20,51 @@
     height:500px;
     border-radius:250px
 }
+
+.name-container {
+    font-size: 100pt;
+}
+
+.stadium_main_img {
+    width: 350px;
+    height: 350px;
+    border-radius: 175px;
+    transition: 0.5s;
+}
+
+.stadium_main_img:hover{
+    scale: 1.05;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+
+.stadium-main-div{
+    opacity: 1;
+}
+
+.stadium-image {
+    width: 800px;
+    height: 600px;
+    border-radius: 100px;
+    transition: 0.7s;
+}
+
+.stadium-image:hover {
+    scale: 1.05;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+
+.stadium-info-div {
+    width: auto;
+    background-color: crimson;
+    display:'flex';
+    flex-direction:'row';
+    margin: auto;
+    padding: auto;
+    box-sizing: border-box;
+    justify-content: 'space-between';
+}
+
+.nested-stadium-image{
+    border-radius: 50px;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}

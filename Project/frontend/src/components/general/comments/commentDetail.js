@@ -102,18 +102,20 @@ function CommentDetail({ match }) {
                     : <></>}
                 <h3>created at {comment.created_at}</h3>
                 <hr />
-                <DeleteComment id={id} />
                 <div className="form-group">
                     <input
                         type="text"
-                        className="form-control form-control-lg"
+                        className="for-input"
                         placeholder="Enter Your Name"
                         name="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                 </div>
-                <button onClick={UpdateCom} >Update</button>
+                <div className='for-delete-update'>
+                    <button onClick={UpdateCom} >Update</button>
+                    <DeleteComment id={id} />
+                </div>
             </div>
         </div>
 

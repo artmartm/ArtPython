@@ -46,7 +46,7 @@ class StadiumViewSet(viewsets.ModelViewSet):
 
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
-    serializer_class = GameDetailSerializers
+    serializer_class = GameSerializers
     action_to_serializer = {
         "retrieve": GameDetailSerializers
     }
@@ -57,8 +57,6 @@ class GameViewSet(viewsets.ModelViewSet):
             self.serializer_class
         )
 
-    # componentDIDmount
-    # lifecicle
 
 
 def clean(request):
@@ -67,14 +65,3 @@ def clean(request):
     # return render(request,'clean.html',data)
     return None
 
-
-from .models.Tournament import Tournament
-from .serializers import TournamentSerializers
-from rest_framework.filters import OrderingFilter
-
-
-class TournamentView(viewsets.ModelViewSet):
-    queryset = Tournament.Meta.model.objects.all()
-    serializer_class = TournamentSerializers
-    filter_backends = [OrderingFilter]
-    ordering_fields = ['sum_points']

@@ -34,7 +34,8 @@
     width: 150vh;
     align-items: center;
     margin: auto;
-    padding: 0%;
+    margin-bottom: 25px;
+    padding: 10px;
     background-color: rgba(5, 5, 5, 0.9);
     border-radius: 150px;
     box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
@@ -44,4 +45,31 @@
     width: 120vh;
     margin: auto;
     padding: 5px;
+}
+
+.for-input{
+    width: 700px;
+    height: 20px;
+    background-color: cornsilk;
+    border-radius: 5px;
+    margin: auto;
+    padding: 10px;
+}
+.text-area {
+    width: 700px;
+    height: 300px;
+    background-color: cornsilk;
+    border-radius: 25px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.for-delete-update{
+    display:'flex';
+    flex-direction:'row';
+    height: 70px;
+    margin: auto;
+    padding: auto;
+    justify-content: 'space-between';
+    width:200px;
 }

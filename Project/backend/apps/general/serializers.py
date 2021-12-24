@@ -1,11 +1,8 @@
-from .models import Comments, News, City, Just2
+from .models import Comments, News
 from rest_framework import serializers
 
 
-class JustSer(serializers.ModelSerializer):
-    class Meta:
-        model = Just2
-        fields = '__all__'
+
 
 
 class CommentsSerializers(serializers.ModelSerializer):
@@ -28,7 +25,3 @@ class NewsSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CitySerializers(serializers.ModelSerializer):
-    class Meta:
-        model = City
-        fields = '__all__'

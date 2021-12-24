@@ -9,3 +9,10 @@
     transform: scale(1.1);
     box-shadow: 0 0 20px 5px rgba(13, 182, 35, 0.5);
 }
+.for-hr {
+    width: 90vh;
+}
+
+.for-h2 {
+    font-size: 45px;
+}

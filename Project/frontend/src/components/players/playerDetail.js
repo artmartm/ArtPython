@@ -111,7 +111,7 @@ function PlayerDetail({ match }) {
                             <br />
                         </div>
                     </div>
-                </div> : <></>}
+                </div> : <>someting goes wrong</>}
 
         </div>
     )

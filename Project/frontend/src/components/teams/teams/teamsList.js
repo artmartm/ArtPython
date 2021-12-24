@@ -10,13 +10,13 @@ const TeamsList=()=> {
     return(
         <div>
             <h1>list of teams</h1>
-            <hr/>
+            <hr className="for-hr"/>
             {teams.length>0 ?
             <div >
                 {teams.map(team => 
                     <div key={team.id}>
-                    <h1>{team.name} and {team.id}</h1>
-                    <h2>{team.second_name}</h2>
+                    <h1>{team.name}</h1>
+                    <h2 className="for-h2">{team.second_name}</h2>
                     <h1><Link to={{ pathname: `/teams/${team.id}/`, fromDashboard: false}}><img className={'team_img'} src={team.team_logo}/></Link></h1>
                     <hr style={{width:250}}/>
                     {/*<h1><Link to={{ pathname: `/teams2/${team.id}/`, fromDashboard: false}}>{team.name}2</Link></h1>*/}

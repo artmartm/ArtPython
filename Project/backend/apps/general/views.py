@@ -1,13 +1,11 @@
 from rest_framework import viewsets
-from .models import Comments, News, City, Just2
-from .serializers import CommentsSerializers, NewsSerializers, CitySerializers, JustSer
+from .models import Comments, News
+from .serializers import CommentsSerializers, NewsSerializers
 from apps.custom_permissions import OnlyLookOrRequestUser, OnlyLookOrAdminModerator, OnlyAdminOrModerator
 import django_filters.rest_framework
 from rest_framework import filters
 
-class JustView(viewsets.ModelViewSet):
-    queryset = Just2.objects.all()
-    serializer_class = JustSer
+
 
 
 class CommentsViewSet(viewsets.ModelViewSet):
@@ -29,9 +27,3 @@ class NewsViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 
 
-class CityViewSet(viewsets.ModelViewSet):
-    queryset = City.objects.all()
-    serializer_class = CitySerializers
-    permission_classes = [OnlyLookOrAdminModerator]
-
-    ###########

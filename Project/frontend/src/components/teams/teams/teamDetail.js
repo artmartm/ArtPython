@@ -68,7 +68,7 @@ function TeamDetail({ match }) {
     return (
         <div>
             {team ?
-        <div style={{ backgroundImage: `url(${team.team_background})` }}> {/*style={{backgroundImage: `url(${team.team_background})`}}}*/}
+        <div style={{ backgroundImage: `url(${team.team_background})` }}>
             <div className='main_div'>
                 <section className="logo-container">
                     {team.team_logo ? <img className={'main_img'} src={team.team_logo} /> : <p>no photo yet</p>}
@@ -81,7 +81,7 @@ function TeamDetail({ match }) {
                     <div className='info_div'>
                         <h2>Main info</h2>
                         <ol>
-                            <li className='for_list'>country is {team.country}</li>
+                            <li>country is {team.country}</li>
                             <li>games {team.games}</li>
                             <li>points {team.points}</li>
                             <li>wins {team.wins}</li>
@@ -89,11 +89,10 @@ function TeamDetail({ match }) {
                             <li>wins OT {team.wins_ot}</li>
                             <li>defeats OT {team.defeats_ot}</li>
                             {stadium.map(e => (
-                                <li>stadium is
-                                    <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}> {e.name}!!!</Link>
-                                </li>
+                                    <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}><li>stadium {e.name} </li>                                    </Link>
+
                             ))}
-                            <li><Link to={`/tournament`}>to the table</Link></li>
+                            <Link className='link' to={`/tournament`}><li>to the table</li></Link>
                         </ol>
                     </div>
                     <div className='news-games-container'>

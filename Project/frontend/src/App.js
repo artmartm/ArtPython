@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import LeagueDetail from "./components/leagues/leagueDetail";
-import About from "./components/general/about";
 //COMMENTS
 //LOCATIONS
 import AddCity from "./components/general/locations/cities";
@@ -96,7 +95,7 @@ function App() {
                 <Navigation />*/}
                     <Route path='/' exact component={Home} />
                     <Route path='/tournament' exact component={TeamTable} />
-                    <Route path='/comments/:id' exact component={CommentDetail} />
+                    <PrivateRoute path='/comments/:id' exact component={CommentDetail} />
                     <Route path='/add-country' exact component={AddCountry} />
                     <Route path='/teams' exact component={teamsList} />
                     <Route path='/users' exact component={UserList} />
@@ -110,13 +109,12 @@ function App() {
  */}                    <Route path='/add-game' exact component={AddGame} />
                     <Route path='/games-list' exact component={Games} />
                     <Route path='/game/:id' exact component={GameDetail} />
-                    <Route path='/about' exact component={About} />
                     <Route path='/login' exact component={LoginPage} />
                     <Route path='/signup' exact component={SignUp} />
                     <Route path='/dashboard' exact component={Dashboard} />
                     <Route path='/add-city' exact component={AddCity} />
                     {/*                     <Route path ='/news' exact component={NewsList} />
- */}                    <Route path='/news/:id' exact component={NewsDetail} />
+ */}                    <PrivateRoute path='/news/:id' exact component={NewsDetail} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} /> {/*PrivateRoute*/}
                     <Route path='/teams/:id' exact component={TeamDetail} />
                     <Route path='/successful-login' component={SuccessfulLogIn} />

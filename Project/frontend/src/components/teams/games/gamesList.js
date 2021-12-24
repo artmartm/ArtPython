@@ -31,32 +31,35 @@ function Games() {
 
     return (
         <div>
-            {games.map(e => (
-                <h1><Link className='link' to={{ pathname: `/game/${e.id}/`, fromDashboard: false }}>
-                    <div>
-                        <div className='game-container'>
-                            <div className='team-container'>
-                                <img className='position' src={teams[e.home_team - 1].team_logo} className='image-container' />
-                                <p className='position'>{teams[e.home_team - 1].name}</p>
-                            </div>
-                            <p className='position'>{e.home_team_goals} : {e.away_team_goals}</p>
-                            <div className='team-container'>
-                                <img className='position' src={teams[e.away_team - 1].team_logo} className='image-container' />
-                                <p className='position'>{teams[e.away_team - 1].name}</p>
-                            </div>
-                        </div>
-                        <hr style={{ width: 400 }} />
-                    </div>
-                </Link>
-                </h1>
-            ))}
-            {authTokens ?
+            {teams.length>0 ?
                 <div>
-                <AddGame />
+                    {games.map(e => (
+                        <h1><Link className='link' to={{ pathname: `/game/${e.id}/`, fromDashboard: false }}>
+                            <div>
+                                <div className='game-container'>
+                                    <div className='team-container'>
+                                        <img className='position' src={teams[e.home_team - 1].team_logo} className='image-container' />
+                                        <p className='position'>{teams[e.home_team - 1].name}</p>
+                                    </div>
+                                    <p className='position'>{e.home_team_goals} : {e.away_team_goals}</p>
+                                    <div className='team-container'>
+                                        <img className='position' src={teams[e.away_team - 1].team_logo} className='image-container' />
+                                        <p className='position'>{teams[e.away_team - 1].name}</p>
+                                    </div>
+                                </div>
+                                <hr style={{ width: 400 }} />
+                            </div>
+                        </Link>
+                        </h1>
+                    ))}
+                    {authTokens ?
+                        <div>
+                            <AddGame />
+                        </div>
+                        :
+                        <p>to add a game you need to be <Link to={'/login'}>logged-in</Link></p>}
                 </div>
-                :
-                <p>to add a game you need to be <Link to={'/login'}>logged-in</Link></p>}
-                
+                : <></>}
         </div>)
 }
 
