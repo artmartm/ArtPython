@@ -90,6 +90,10 @@ class Stadium(StillActive, BaseModel, PLTSBaseModel):
         return self.name
 
 
+    class Meta:
+        verbose_name = 'Stadium'
+        verbose_name_plural = 'Stadiums'
+
 class Game(models.Model):
     home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team')
     away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team')
@@ -116,6 +120,11 @@ class Game(models.Model):
 
     def __str__(self):
         return self.name
+
+
+    class Meta:
+        verbose_name = 'Game'
+        verbose_name_plural = 'Games'
 
 
 class TeamStats(models.Model):

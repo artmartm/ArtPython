@@ -3,7 +3,7 @@ from rest_framework import routers
 from apps.general.views import CommentsViewSet, NewsViewSet
 from apps.leagues.views import LeagueViewSet
 from apps.teams.views import StadiumViewSet, GameViewSet, TeamViewSet, clean
-from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet, HeadToHeadViewSet
+from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet
 from apps.users.views import UsersViewSet, UsersListViewSet
 
 router = routers.DefaultRouter()
@@ -13,7 +13,6 @@ router.register(r'news', NewsViewSet)
 # league
 router.register(r'leagues', LeagueViewSet)
 # player
-router.register(r'head-to-head', HeadToHeadViewSet)
 router.register(r'players', PlayerViewSet)
 router.register(r'player-main-info', PlayerMainInfoViewSet)
 router.register(r'player-personal-info', PlayerPersonalInfoViewSet)

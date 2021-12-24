@@ -1,4 +1,4 @@
-from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo, HeadToHead
+from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo
 from rest_framework import serializers
 from apps.general.models import News, Comments
 from apps.general.serializers import NewsSerializers, CommentsSerializers
@@ -20,12 +20,6 @@ class PlayerPersonalInfoSerializers(serializers.ModelSerializer):
 class PlayerMainInfoSerializers(serializers.ModelSerializer):
     class Meta:
         model = PlayerMainInfo
-        fields = '__all__'
-
-
-class HeadToHeadSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = HeadToHead
         fields = '__all__'
 
 
@@ -58,7 +52,3 @@ class PlayerDetailSerializers(PlayerSerializers):
     def get_personal_info(player):
         return PlayerPersonalInfoSerializers(PlayerPersonalInfo.objects.
                                              filter(player=player), many=True).data
-
-
-class HeadToHeadDetailSerializers(HeadToHeadSerializers):
-    win = serializers.ReadOnlyField()

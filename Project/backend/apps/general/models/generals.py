@@ -44,12 +44,20 @@ class News(BaseModel, NewsCommentsBaseModel):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'News'
+        verbose_name_plural = 'News'
+
 
 class Comments(BaseModel, NewsCommentsBaseModel):
     """Model with all comments"""
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Comments'
+        verbose_name_plural = 'Comments'
 
 
 class PLTSBaseModel(models.Model):
@@ -59,15 +67,3 @@ class PLTSBaseModel(models.Model):
     class Meta:
         abstract = True
 
-
-class FunClubs(PLTSBaseModel, BaseModel, StillActive):
-    """Fun clubs model"""
-
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Fun Club'
-        verbose_name_plural = 'Fun Clubs'

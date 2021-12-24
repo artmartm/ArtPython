@@ -16,3 +16,7 @@ class League(StillActive, BaseModel, PLTSBaseModel):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Leagues'
+        verbose_name_plural = 'Leagues'
