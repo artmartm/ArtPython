@@ -26,4 +26,12 @@ class NewsViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+    action_to_serializer = {
+        "retrieve": NewsSerializers
+    }
 
+    def get_serializer_class(self):
+        return self.action_to_serializer.get(
+            self.action,
+            self.serializer_class
+        )

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import AddComment from "../../general/comments/addComment";
 import CommentsList from "../../general/comments/commentsList";
 import './../../../css/teams/stadium.css';
+import CommentComponent from "../../general/comments/commentComponent";
 
 function StadiumDetail({ match }) {
     const [showComments, setShowComments] = useState([{
@@ -27,7 +28,6 @@ function StadiumDetail({ match }) {
         })
     }, [id])
 
-    const a = { opacity: 1 }
 
     return (
         <div>
@@ -92,7 +92,7 @@ function StadiumDetail({ match }) {
                                         </div>
                                     }
                                 </React.Fragment>
-                                <AddComment obj={id} ct={content_type} />
+                                <CommentComponent obj={id} ct={content_type} />
                                 <br />
                             </div>
                         </div>
