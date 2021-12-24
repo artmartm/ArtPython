@@ -5,7 +5,6 @@ import './../../css/players/playerInfo.css';
 function PlayerMainInfo({ obj }) {
 
     const [player, setPlayer] = useState({});
-    //const id = match.params.id;
     const [mistake, setMistake] = useState(false);
 
 
@@ -15,8 +14,8 @@ function PlayerMainInfo({ obj }) {
             url: `http://127.0.0.1:8000/api/player-main-info/${obj}`,
         }).then(response => {
             setPlayer(response.data)
-        }).catch(error=>{
-            if(error.response) {
+        }).catch(error => {
+            if (error.response) {
                 setMistake(true)
             }
         })
@@ -25,7 +24,7 @@ function PlayerMainInfo({ obj }) {
 
     return (
         <div className='main-info-container'>
-            {mistake==false ?
+            {mistake == false ?
                 <ol>
                     <li>height: {player.weight}</li>
                     <hr />

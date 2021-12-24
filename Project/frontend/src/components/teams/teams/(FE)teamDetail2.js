@@ -1,7 +1,4 @@
-import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import AuthContext from "../../general/base/AuthContext";
 import AddComment from "../../general/comments/addComment";
 import CommentsList from "../../general/comments/commentsList";
 import { useDispatch, useSelector } from 'react-redux';

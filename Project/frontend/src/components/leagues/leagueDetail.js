@@ -2,16 +2,12 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../general/base/AuthContext";
-import AddComment from "../general/comments/addComment";
 import CommentComponent from "../general/comments/commentComponent";
 import CommentsList from "../general/comments/commentsList";
 import './../../css/leagues/leagueDetail.css'
 
 
 function LeagueDetail({ match }) {
-
-    let { authTokens, logoutUser } = useContext(AuthContext)
-
 
     const [league, setLeague] = useState({});
     const [team, setTeam] = useState([]);
@@ -54,18 +50,19 @@ function LeagueDetail({ match }) {
             } <hr /> {
                 cm.map(e => (<Link key={e.id} > <p> {e.name} </p></Link >
                 ))
-            } 
-                                      <React.Fragment>
-                                <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
-                                {showComments.isOpen &&
-                                    <div>
-                                        <CommentsList key={id} obj={id} ct={content_type} />
-                                        <button onClick={() => { setShowComments({ isOpen: false }) }}>close</button>
-                                    </div>
-                                }
-                            </React.Fragment>
-                            <CommentComponent obj={id} ct={content_type} />
-                            <br />
-                </div>)}
-                
-    export default LeagueDetail;
+            }
+            <React.Fragment>
+                <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
+                {showComments.isOpen &&
+                    <div>
+                        <CommentsList key={id} obj={id} ct={content_type} />
+                        <button onClick={() => { setShowComments({ isOpen: false }) }}>close</button>
+                    </div>
+                }
+            </React.Fragment>
+            <CommentComponent obj={id} ct={content_type} />
+            <br />
+        </div>)
+}
+
+export default LeagueDetail;

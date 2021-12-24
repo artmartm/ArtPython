@@ -2,8 +2,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchTeams } from "../../../redux_two/actions/asyncActions/asyncAllTeams";
-import AddComment from "../../general/comments/addComment";
 import CommentComponent from "../../general/comments/commentComponent";
 import CommentsList from "../../general/comments/commentsList";
 import './../../../css/teams/gameDetail.css'
@@ -16,7 +14,6 @@ function GameDetail({ match }) {
 
     const [showComments, setShowComments] = useState({ isOpen: false })
     const [game, setGame] = useState({});
-    //const[pl, setPl] = useState([]);
     const id = match.params.id;
     const content_type = '17';
     useEffect(() => {
@@ -43,7 +40,7 @@ function GameDetail({ match }) {
                     <div>
                         <div className='main-container'>
                             <div className='team-container'>
-                                <Link to={{ pathname: `/teams/${game.home_team}/`, fromDashboard: false}}>
+                                <Link to={{ pathname: `/teams/${game.home_team}/`, fromDashboard: false }}>
                                     <img src={teams[game.home_team - 1].team_logo}
                                         className='game-image-container' />
                                 </Link>
@@ -51,7 +48,7 @@ function GameDetail({ match }) {
                             </div>
                             <p className='position'>{game.home_team_goals} : {game.away_team_goals}</p>
                             <div className='team-container'>
-                                <Link to={{ pathname: `/teams/${game.away_team}/`, fromDashboard: false}}>
+                                <Link to={{ pathname: `/teams/${game.away_team}/`, fromDashboard: false }}>
                                     <img className='position' src={teams[game.away_team - 1].team_logo}
                                         className='game-image-container' />
                                 </Link>

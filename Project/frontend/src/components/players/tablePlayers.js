@@ -6,11 +6,11 @@ const TablePlayers = () => {
 
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/teams/')
-        .then(result => result.json())
-        .then(rowData => setRowData(rowData))
+            .then(result => result.json())
+            .then(rowData => setRowData(rowData))
     }, []);
     return (
-        <div className="ag-theme-alpine" style={{ height: 400, backgroundColor:'black'}}>
+        <div className="ag-theme-alpine" style={{ height: 400, backgroundColor: 'black' }}>
             <AgGridReact
                 rowData={rowData}>
                 <AgGridColumn field="name" sortable={true} filter={true}></AgGridColumn>

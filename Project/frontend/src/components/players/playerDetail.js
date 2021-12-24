@@ -4,10 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchTeams } from "../../redux_two/actions/asyncActions/asyncAllTeams";
-import AddComment from "../general/comments/addComment";
 import CommentComponent from "../general/comments/commentComponent";
 import CommentsList from "../general/comments/commentsList";
-import TeamLogo from "../teams/teams/teamsLogo";
 import PlayerMainInfo from "./playerMainInfo";
 import PlayerPersonalInfo from "./playerPersonalInfo";
 import './../../css/players/player.css'

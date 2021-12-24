@@ -7,35 +7,35 @@ import { Link } from "react-router-dom";
 
 const SetAccount = () => {
 
-    let history = useHistory();
+  let history = useHistory();
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [token, setToken] = useState('');
-    
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [token, setToken] = useState('');
 
-    const Add = async () => {
-        let formField = new FormData()
-        formField.append('username',username)
-        formField.append('password',password)
 
-        await axios({
-          method: 'post',
-          url:'http://127.0.0.1:8000/auth/token/login/',
-          data: formField
-        }).then(response=>{
-          console.log(response.data);
-         // history.push('/')
-        })
-    }
-   
-    return (
-        <div className="container">
-            <div className="container">
-      <div className="w-75 mx-auto shadow p-5">
-        <h2 className="text-center mb-4">login</h2>
-        
-        <div className="form-group">
+  const Add = async () => {
+    let formField = new FormData()
+    formField.append('username', username)
+    formField.append('password', password)
+
+    await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/auth/token/login/',
+      data: formField
+    }).then(response => {
+      console.log(response.data);
+      // history.push('/')
+    })
+  }
+
+  return (
+    <div className="container">
+      <div className="container">
+        <div className="w-75 mx-auto shadow p-5">
+          <h2 className="text-center mb-4">login</h2>
+
+          <div className="form-group">
           </div>
           <div className="form-group">
             <input
@@ -59,11 +59,11 @@ const SetAccount = () => {
           </div>
           <button className="btn btn-primary btn-block" onClick={Add}>login</button>
           <p>don't have an account? <Link to={`/reg`}>sign up</Link> </p>
-       
+
+        </div>
       </div>
     </div>
-        </div>
-    );
+  );
 };
 
 export default SetAccount;

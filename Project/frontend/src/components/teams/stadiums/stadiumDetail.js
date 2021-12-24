@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import AddComment from "../../general/comments/addComment";
 import CommentsList from "../../general/comments/commentsList";
 import './../../../css/teams/stadium.css';
 import CommentComponent from "../../general/comments/commentComponent";
@@ -57,7 +56,7 @@ function StadiumDetail({ match }) {
                                     {mainImage.isOpen &&
                                         <div>
                                             <br />
-                                            <img src={stadium.image} className='nested-stadium-image'/><br />
+                                            <img src={stadium.image} className='nested-stadium-image' /><br />
                                             <button onClick={() => { setMainImage({ isOpen: false }) }}>close</button>
                                         </div>
                                     }

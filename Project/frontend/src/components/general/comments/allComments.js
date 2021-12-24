@@ -1,36 +1,36 @@
-import {useDispatch, useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
-const AllCommentsList=({obj, ct})=> {
+const AllCommentsList = ({ obj, ct }) => {
 
-    const dispatch = useDispatch();
     const comments = useSelector(state => state.commentsReducer.comments)
-    const particular_comments=[];
-    {comments.length ?
-        comments.map(e=>(
+    const particular_comments = [];
+    {
+        comments.length ?
+        comments.map(e => (
             <div>
-            {e.object_id==obj && e.content_type==ct ?
-            particular_comments.push(e)
-            :
-            <p></p>
-        }
-        </div>
+                {e.object_id == obj && e.content_type == ct ?
+                    particular_comments.push(e)
+                    :
+                    <p></p>
+                }
+            </div>
         )) : <p>no comments yet</p>
     }
-    return(
+    return (
         <div>
             <h1>list of comments</h1>
-            <hr/>
+            <hr />
             {particular_comments.length ?
-            <div>
-                {particular_comments.map(comment => 
-                    <div key={comment.id}>
-                    <h1><Link to={{ pathname: `/comments/${comment.id}/`, fromDashboard: false}}>{comment.name}</Link></h1>
-                    </div>
+                <div>
+                    {particular_comments.map(comment =>
+                        <div key={comment.id}>
+                            <h1><Link to={{ pathname: `/comments/${comment.id}/`, fromDashboard: false }}>{comment.name}</Link></h1>
+                        </div>
                     )}
-            </div>
-            :
-            <p>no comments</p>
+                </div>
+                :
+                <p>no comments</p>
             }
         </div>
     )

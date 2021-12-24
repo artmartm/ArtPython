@@ -1,9 +1,7 @@
 //teams
-import { GET_ALL_TEAMS, GET_PARTICULAR_TEAM } from "../types/types"; 
+import { GET_ALL_TEAMS, GET_PARTICULAR_TEAM } from "../types/types";
 //players
 import { GET_ALL_PLAYERS, GET_PARTICULAR_PLAYER } from "../types/types";
-//colors
-import { MAKE_BLUE, MAKE_RED } from "../types/types";
 //legaues
 import { GET_ALL_LEAGUES, GET_PARTICULAR_LEAGUE } from "../types/types";
 //stadiums
@@ -88,18 +86,4 @@ export const getParticularUser = (payload) => ({
 
 export const getAllUsersProfiles = (payload) => ({
     type: GET_ALL_USERS_PROFILES, payload
-})
-
-////////////////
-
-//colors
-
-
-export const makeRed = () => ({
-    type: MAKE_RED
-})
-
-
-export const makeBlue = () => ({
-    type: MAKE_BLUE
 })

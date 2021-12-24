@@ -1,49 +1,49 @@
 import axios from "axios";
-import React, {useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchUsersProfiles } from "../../redux_two/actions/asyncActions/asyncAllUsersProfiles";
 import AuthContext from "../general/base/AuthContext";
 
 function UserDetail({ match }) {
-    
+
 
     const dispatch = useDispatch();
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(fetchUsersProfiles())
     }, [])
 
     const profiles = useSelector(state => state.usersProfilesReducer.usersProfiles)
 
 
-    const[user, setUser] = useState({});
-    const[pr,setPr] = useState([])
+    const [user, setUser] = useState({});
+    const [pr, setPr] = useState([])
     const id = match.params.id;
 
-    let {authTokens, logoutUser} = useContext(AuthContext)
+    let { authTokens, logoutUser } = useContext(AuthContext)
 
     const content_type = '14';
-    useEffect(()=>{
+    useEffect(() => {
         axios({
-            method:'GET',
-            url:`http://127.0.0.1:8000/auth/users/${id}`,
-            headers:{
-                'Content-Type':'application/json',
-                'Authorization':'Bearer ' + String(authTokens.access)
+            method: 'GET',
+            url: `http://127.0.0.1:8000/auth/users/${id}`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(authTokens.access)
             }
-        }).then(response=>{
+        }).then(response => {
             setUser(response.data)
             setPr(response.data.profile)
         })
-    },[id])
-    
-    return(
+    }, [id])
+
+    return (
         <div>
             <h1>username: {user.username}</h1>
             <h1>profile: </h1>
             <h2>profile is {user.profile}</h2>
-            {profiles.map(e=>(<p>{e.ban}!</p>))}   
+            {profiles.map(e => (<p>{e.ban}!</p>))}
         </div>
 
     )

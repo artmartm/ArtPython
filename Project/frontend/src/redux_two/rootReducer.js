@@ -2,7 +2,6 @@ import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
 //reducers
 import { teamsReducer } from "./reducers/teamsReducer";
-import { colorReducer } from "./reducers/colorReducer";
 import { particularTeamReducer } from "./reducers/particularTeamReducer";
 import { playersReducer } from "./reducers/playersReducer";
 import { leaguesReducer } from "./reducers/leaguesReducer";
@@ -15,15 +14,12 @@ import { usersProfilesReducer } from "./reducers/usersProfilesReducer";
 
 const rootReducer = combineReducers({
     routing: routerReducer,
-    //reducers
     teamsReducer,
-    colorReducer,
     playersReducer,
     leaguesReducer,
     stadiumsReducer,
     newsReducer,
     commentsReducer,
-    /////////////
     usersReducer,
     particularUserReducer,
     usersProfilesReducer,

@@ -1,7 +1,6 @@
 
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../base/AuthContext";
 import DeleteComment from "./deleteComment";
@@ -10,11 +9,12 @@ import './../../../css/general/news.css';
 
 function CommentDetail({ match }) {
 
-    const [comment, setComment] = useState({});
-    const id_id = match.params.id;
-    const dispatch = useDispatch();
-
     const history = useHistory()
+
+    const id_id = match.params.id;
+
+    const [comment, setComment] = useState({});
+
 
     const [id, setId] = useState(null)
     const [name, setName] = useState(null)
@@ -22,12 +22,6 @@ function CommentDetail({ match }) {
     const [object_id, setObject_id] = useState(null)
     const [author, setAuthor] = useState(null)
 
-
-    {/*useEffect(()=> {
-        dispatch(FetchUsers())
-    }, []) 
-
-    const users = useSelector(state => state.usersReducer.users)*/}
     const [users, setUsers] = useState([]);
 
     let { authTokens, logoutUser, user } = useContext(AuthContext)
@@ -47,7 +41,6 @@ function CommentDetail({ match }) {
         })
     }, [id])
 
-    /////////////
     useEffect(() => {
         getNotes()
     }, [])
@@ -68,7 +61,7 @@ function CommentDetail({ match }) {
         } else if (response.statusText === 'Unauthorized')
             logoutUser()
     }
-    ////////////////
+
 
     const UpdateCom = async () => {
         let formField = new FormData()
@@ -116,7 +109,7 @@ function CommentDetail({ match }) {
                             <button onClick={UpdateCom} >Update</button>
                             <DeleteComment id={id} />
                         </div>
-                    </div>:<></>}
+                    </div> : <></>}
             </div>
         </div>
 
