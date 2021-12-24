@@ -20,7 +20,7 @@ const TeamTable = () => {
 
     const columnDefs = [
         {
-            headerName: "Name", field: "name",
+            headerName: "name", field: "name",
         },
         {
             headerName: "logo", field: "id", cellRendererFramework: (params) => <div>
@@ -33,14 +33,14 @@ const TeamTable = () => {
                     : <></>}
             </div>
         },
-        { headerName: "Games", field: "games" },
+        { headerName: "games", field: "games" },
         { headerName: "scored", field: "goals_scored" },
         { headerName: "missed", field: "goals_missed" },
         { headerName: "difference", field: "goals_difference", cellClass: (params) => (params.value > 0 ? "positive" : params.value < 0 ? "negative" : "no-games") },
         { headerName: 'points', field: 'points', cellClass: () => ("main-column") },
         { headerName: 'wins', field: 'wins' },
         { headerName: "wins_ot", field: "wins_ot" },
-        { headerName: "Defeats", field: "defeats" },
+        { headerName: "gefeats", field: "defeats" },
         { headerName: "defeats_ot", field: "defeats_ot" },
         {
             headerName: "wins %", field: "percentage_of_wins", cellRendererFramework: (params) => <div>

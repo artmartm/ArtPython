@@ -53,10 +53,10 @@ const PlayersTable = () => {
                     : <></>}
             </div>
         },
-        { headerName: "Score", field: "score" },
-        { headerName: "Shoots", field: "shoots" },
-        { headerName: "Position", field: "position" },
-        { headerName: "Country", field: "country" },
+        { headerName: "score", field: "score" },
+        { headerName: "shoots", field: "shoots" },
+        { headerName: "position", field: "position" },
+        { headerName: "country", field: "country" },
 
 
     ]
