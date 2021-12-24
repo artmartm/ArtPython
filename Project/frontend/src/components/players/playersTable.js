@@ -8,8 +8,9 @@ import './../teams/tournament/simple.css';
 const PlayersTable = () => {
     const [rowData, setRowData] = useState([]);
     //const teams = useSelector(state => state.teamsReducer.teams)
-    const [players, setPlayers] = useState([]);
+    // const [players, setPlayers] = useState([]);
     const teams = useSelector(state => state.teamsReducer.teams)
+    const players = useSelector(state => state.playersReducer.players)
 
     const styles = {
         mini_img: {
@@ -31,33 +32,44 @@ const PlayersTable = () => {
 
     const columnDefs = [
         {
-            headerName: "Name", field: "name", cellRendererFramework: (params) => <div>
-                {params.value && teams.length > 0 && players.length > 0 ?
-                    <Link className='link' key={params.value-1}  
-                    to={`/players/${params.value}`}>
-                    {params.value}</Link>
-                    : <></>}
-            </div>,cellClass:()=>("main-column")
+            headerName: "id", field: "id",
+            cellRendererFramework: (params) =>
+                <div>
+                    {params.value ?
+                        <div>
+                            {players.map(e =>
+                            (<div>
+                                {e.id == params.value ?
+                                    <Link className='link'
+                                        to={`/players/${params.value}`}>
+                                        {e.name}
+                                    </Link>
+                                    : <></>}
+                            </div>))}
+                        </div>
+                        : <></>}
+                </div>,cellClass: () => ("main-column")
         },
         {
-/*             headerName: "Image", field: "image", cellRendererFramework: (params) => <div>
- */             headerName: "Image", field: "id", cellRendererFramework: (params) => <div>
-                {params && teams.length > 0 && players.length>0 ?
-                    <Link key={params} /* to={`/teams/${params.value}`} */>{/* <img src={players[params.value-1].image} style={styles.mini_img} /> */}</Link>
+            headerName: "name", field: "image", cellRendererFramework: (params) => <div>
+                {params.value && teams.length > 0 > 0 ?
+                    <img src={params.value} style={{ width: 40 }} />
                     : <></>}
-            </div>,cellClass:()=>('red')
+            </div>,cellClass: () => ("more100")
+            
         },
-        { headerName: "name", field: "name" },
-        { headerName: "name", field: "image",  cellRendererFramework: (params) => <div>
-        {params.value && teams.length > 0 > 0 ?
-            <img src={params.value} style={{ width:40 }}/>
-            : <></>}
-    </div>},
-        { headerName: "id", field: "id" },
+        {
+            headerName: "logo", field: "team", cellRendererFramework: (params) => <div>
+                {params.value && teams.length > 0 ?
+                    <Link to={`/teams/${params.value}`}>
+                        <img src={teams[params.value - 1].team_logo} style={{ width: 40 }} /></Link>
+                    : <></>}
+            </div>
+        },
         { headerName: "Score", field: "score" },
         { headerName: "Shoots", field: "shoots" },
         { headerName: "Position", field: "position" },
-       
+
         { headerName: "Country", field: "country" },
 
 
