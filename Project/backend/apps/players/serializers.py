@@ -1,7 +1,6 @@
 from .models.models import Player, PlayerPersonalInfo, PlayerMainInfo, HeadToHead
 from rest_framework import serializers
 from apps.general.models import News, Comments
-from apps.teams.models.models import Team
 from apps.general.serializers import NewsSerializers, CommentsSerializers
 from django.contrib.contenttypes.models import ContentType
 
@@ -24,14 +23,10 @@ class PlayerMainInfoSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class HeadToHeadSerializers(serializers.ModelSerializer):
     class Meta:
         model = HeadToHead
         fields = '__all__'
-
-
-###DETAIL
 
 
 class PlayerDetailSerializers(PlayerSerializers):
@@ -41,6 +36,7 @@ class PlayerDetailSerializers(PlayerSerializers):
     comments = serializers.SerializerMethodField()
     free_agent = serializers.ReadOnlyField()
     id_player = ContentType.objects.values_list('id', flat=True).get(model='player')
+
     @staticmethod
     def get_news(player, id_player=id_player):
         news = NewsSerializers(News.objects.filter(content_type=id_player).
@@ -53,7 +49,6 @@ class PlayerDetailSerializers(PlayerSerializers):
                                        filter(object_id=player.id), many=True).data
         return comments
 
-
     @staticmethod
     def get_main_info(player):
         return PlayerMainInfoSerializers(PlayerMainInfo.objects.
@@ -64,6 +59,6 @@ class PlayerDetailSerializers(PlayerSerializers):
         return PlayerPersonalInfoSerializers(PlayerPersonalInfo.objects.
                                              filter(player=player), many=True).data
 
+
 class HeadToHeadDetailSerializers(HeadToHeadSerializers):
     win = serializers.ReadOnlyField()
-

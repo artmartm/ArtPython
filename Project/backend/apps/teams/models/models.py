@@ -90,9 +90,6 @@ class Stadium(StillActive, BaseModel, PLTSBaseModel):
         return self.name
 
 
-from apps.players.models.models import Player
-
-
 class Game(models.Model):
     home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team')
     away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team')

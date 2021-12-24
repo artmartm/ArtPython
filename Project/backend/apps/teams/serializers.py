@@ -37,9 +37,6 @@ class TeamStatsSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
-### DETAIALS
-
-
 class TeamDetailSerializer(TeamSerializers):
     players = serializers.SerializerMethodField()
     news = serializers.SerializerMethodField()
@@ -48,7 +45,7 @@ class TeamDetailSerializer(TeamSerializers):
     team_stats = serializers.SerializerMethodField()
     matches = serializers.SerializerMethodField()
     # read only
-    goals_difference=serializers.ReadOnlyField()
+    goals_difference = serializers.ReadOnlyField()
     points = serializers.ReadOnlyField()
     wins = serializers.ReadOnlyField()
     wins_ot = serializers.ReadOnlyField()
@@ -95,6 +92,7 @@ class TeamDetailSerializer(TeamSerializers):
         matches.extend(home_matches)
         matches.extend(away_matches)
         return matches
+
 
 class StadiumDetailSerializers(StadiumSerializers):
     news = serializers.SerializerMethodField()

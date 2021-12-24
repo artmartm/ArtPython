@@ -4,12 +4,7 @@ from rest_framework import viewsets
 from .models.models import Team, Stadium, Game, TeamStats
 from .serializers import TeamSerializers, StadiumSerializers, GameSerializers, TeamStatsSerializers, \
     TeamDetailSerializer, StadiumDetailSerializers, GameDetailSerializers
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
-
-# from rest_framework.authentication import TokenAuthentication
-# from rest_framework_simplejwt.authentication import TokenAuthentication
-# from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()

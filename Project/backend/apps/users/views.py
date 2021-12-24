@@ -17,7 +17,6 @@ class UsersListViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UsersListSerializer
 
-
     action_to_serializer = {
         "retrieve": UserListDetailSerializer
     }

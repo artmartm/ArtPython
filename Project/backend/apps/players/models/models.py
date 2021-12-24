@@ -19,7 +19,6 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
     player_number = models.PositiveIntegerField(default=10)
     captain = models.BooleanField(default=False)
 
-
     def __str__(self):
         return self.name
 

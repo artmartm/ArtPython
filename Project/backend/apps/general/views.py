@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from .models import Comments, News
 from .serializers import CommentsSerializers, NewsSerializers
-
+from apps.custom_permissions import OnlyLookOrRequestUser
 
 class CommentsViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
@@ -12,7 +12,6 @@ class CommentsViewSet(viewsets.ModelViewSet):
 class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializers
-
     #    permission_classes = [OnlyLookOrRequestUser]
 
     def perform_create(self, serializer):

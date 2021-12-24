@@ -2,15 +2,12 @@ from .models import Comments, News
 from rest_framework import serializers
 
 
-
-
-
 class CommentsSerializers(serializers.ModelSerializer):
     class Meta:
         model = Comments
         read_only_fields = (
             "created_at",
-           # "author",
+            "author",
         )
         fields = '__all__'
 
@@ -23,5 +20,3 @@ class NewsSerializers(serializers.ModelSerializer):
             "author",
         )
         fields = '__all__'
-
-

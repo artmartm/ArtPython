@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'djoser',
     'django_countries',
-    #'cities',
+    # 'cities',
     'cities_light',
     'django_tables2',
     'django_filters',
@@ -63,7 +63,7 @@ INSTALLED_APPS += [
     'rest_framework'
 
 ]
-#CITIES_INCLUDE_NUMERIC_ALTERNATIVE_NAMES = True
+# CITIES_INCLUDE_NUMERIC_ALTERNATIVE_NAMES = True
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -170,7 +170,7 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': True,
-    # 'BLACKLIST_AFTER_ROTATION': True,
+    'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': False,
 
     'ALGORITHM': 'HS256',

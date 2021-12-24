@@ -2,10 +2,10 @@ from rest_framework import viewsets
 from .models import League
 from .serializers import LeagueSerializers, LeagueDetailSerializer
 
+
 class LeagueViewSet(viewsets.ModelViewSet):
     queryset = League.objects.all()
     serializer_class = LeagueSerializers
-
 
     action_to_serializer = {
         "retrieve": LeagueDetailSerializer
