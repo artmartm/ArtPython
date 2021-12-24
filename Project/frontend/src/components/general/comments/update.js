@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { fetchParticularUser } from "../../../redux_two/actions/asyncActions/asyncParticularUser";
+import { fetchParticularUser } from "../../../redux/actions/asyncActions/asyncParticularUser";
 import AuthContext from "../base/AuthContext";
 import DeleteComment from "./deleteComment";
 

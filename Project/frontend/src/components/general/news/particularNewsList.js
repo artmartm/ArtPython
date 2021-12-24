@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './../../../css/general/news.css';
+import AddNews from './addNews';
+import AuthContext from '../base/AuthContext';
 
 function ParticularNewsList({ obj, ct, show }) {
+    let { user, authTokens } = useContext(AuthContext)
 
     const [news, setNews] = useState([]);
     const particular_news = [];
@@ -50,7 +53,14 @@ function ParticularNewsList({ obj, ct, show }) {
                                             <p className='for-inside-p'>detail</p>
                                         </Link>
                                     </div>
-
+                                    {authTokens ?
+                                        <div>
+                                            {user.admin ?
+                                                <button ><Link className='link' to={{ pathname: `/add-news/`, fromDashboard: false }}
+                                                    style={{ color: 'black' }}>add news</Link></button>
+                                                : <></>}
+                                        </div> : <></>
+                                    }
                                 </div>
                             )) :
                             <p>no news</p>

@@ -54,6 +54,7 @@ import UserProfileDetail from "./components/users/userProfileDetail";
 import Dashboard from "./components/users/dashboard/dashboard";
 import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin";
 import SignUp from "./components/users/signup/signUp";
+import AddNews from "./components/general/news/addNews";
 
 function App() {
 
@@ -84,7 +85,6 @@ function App() {
                     <Route path='/users/:id' exact component={UserDetail} />
                     <Route path='/profiles' exact component={UsersProfilesList} />
                     <Route path='/profiles/:id' exact component={UserProfileDetail} />
-                    <Route path='/leagues' exact component={LeaguesList} />
                     <Route path='/players' exact component={PlayersTable} />
                     <Route path='/add-game' exact component={AddGame} />
                     <Route path='/games-list' exact component={Games} />
@@ -101,6 +101,7 @@ function App() {
                     <Route path='/stadiums' exact component={StadiumsList} />
                     <Route path='/all-comments' exact component={AllCommentsList} />
                     <Route path='/stadiums/:id' exact component={StadiumDetail} />
+                    <Route path='/add-news' exact component={AddNews} />
                     {/*</Switch>*/}
                 </AuthProvider>
             </div>

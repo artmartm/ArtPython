@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchUsersProfiles } from "../../redux_two/actions/asyncActions/asyncAllUsersProfiles";
+import { fetchUsersProfiles } from "../../redux/actions/asyncActions/asyncAllUsersProfiles";
 import AuthContext from "../general/base/AuthContext";
 
 function UserDetail({ match }) {

@@ -27,7 +27,7 @@ const PlayersTable = () => {
             headerName: "name", field: "name",
         },
         {
-            headerName: "name", field: "id", cellRendererFramework: (params) => <div>
+            headerName: "image", field: "id", cellRendererFramework: (params) => <div>
                 {params.value ?
                     <div>
                         {players.map(e =>
@@ -45,7 +45,7 @@ const PlayersTable = () => {
 
         },
         {
-            headerName: "logo", field: "team", cellRendererFramework: (params) => <div>
+            headerName: "team", field: "team", cellRendererFramework: (params) => <div>
                 {params.value && teams.length > 0 ?
                     <Link to={`/teams/${params.value}`}>
                         <img src={teams[params.value - 1].team_logo}
@@ -56,7 +56,6 @@ const PlayersTable = () => {
         { headerName: "Score", field: "score" },
         { headerName: "Shoots", field: "shoots" },
         { headerName: "Position", field: "position" },
-
         { headerName: "Country", field: "country" },
 
 

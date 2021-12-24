@@ -7,7 +7,6 @@ class CommentsSerializers(serializers.ModelSerializer):
         model = Comments
         read_only_fields = (
             "created_at",
-            "author",
         )
         fields = '__all__'
 
@@ -17,6 +16,5 @@ class NewsSerializers(serializers.ModelSerializer):
         model = News
         read_only_fields = (
             "created_at",
-            "author",
         )
         fields = '__all__'

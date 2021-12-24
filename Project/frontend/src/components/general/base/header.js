@@ -14,7 +14,6 @@ const Header = () => {
                         <nav>
                             <ul>
                                 <li><Link to='/teams'>teams</Link></li>
-                                <li><Link to='/leagues'>leagues</Link></li>
                                 <li><Link to='/players'>players</Link></li>
                                 <li><Link to='/'>home</Link></li>
                                 <li><Link to='/games-list'>list of games</Link></li>
@@ -23,10 +22,11 @@ const Header = () => {
 
                                 {authTokens ?
                                     <>
-                                        <li><Link onClick={logoutUser}>logout</Link></li>
                                         <li><Link to='/profiles'>profiles</Link></li>
                                         <li><Link to='/users'>users</Link></li>
                                         <li><Link to='/dashboard'>dashboard</Link></li>
+                                        <li><Link onClick={logoutUser}>logout</Link></li>
+
                                     </>
                                     :
                                     <>
