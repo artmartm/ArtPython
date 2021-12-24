@@ -25,8 +25,6 @@ const Header = () => {
                                         <li><Link to='/profiles'>profiles</Link></li>
                                         <li><Link to='/users'>users</Link></li>
                                         <li><Link to='/dashboard'>dashboard</Link></li>
-                                        <li><Link onClick={logoutUser}>logout</Link></li>
-
                                     </>
                                     :
                                     <>

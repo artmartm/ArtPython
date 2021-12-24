@@ -28,7 +28,7 @@ const AddGame = () => {
       data: formField
     }).then(response => {
       console.log(response.data);
-      history.push('/games-list')
+      history.push('/tournament')
       setLoading(false)
     }, 2000)
   }
@@ -71,8 +71,8 @@ const AddGame = () => {
 
         </label>
       </div>
-      <button className="btn btn-primary btn-block"
-        onClick={Add}>add a game</button>
+      <button className="vs"
+        onClick={Add}>VS</button>
     </div>
   );
 };
