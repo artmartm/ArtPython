@@ -18,7 +18,6 @@ const Header = () => {
                                 <li><Link to='/'>home</Link></li>
                                 <li><Link to='/games-list'>list of games</Link></li>
                                 <li><Link to='/tournament'>tournament</Link></li>
-                                <li><Link to='/about'>about</Link></li>
 
                                 {authTokens ?
                                     <>
