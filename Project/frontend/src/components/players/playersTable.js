@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './../teams/tournament/simple.css';
-
+import './../../css/players/player-team-tables.css';
 
 const PlayersTable = () => {
     const [rowData, setRowData] = useState([]);

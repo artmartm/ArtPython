@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { useSelector } from 'react-redux';
-import './simple.css';
 import { Link } from 'react-router-dom';
+import './../../../css/players/player-team-tables.css';
+
 const TeamTable = () => {
     const [rowData, setRowData] = useState([]);
     const teams = useSelector(state => state.teamsReducer.teams)

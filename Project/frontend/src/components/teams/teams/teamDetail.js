@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ParticularNewsList from "../../general/news/particularNewsList";
 import './../../../css/teams/teamDetail.css'
-import './../../../css/teams/j.css'
 
 //coments
 import CommentsList from "../../general/comments/commentsList";
@@ -17,7 +16,7 @@ import ParticularTeamGame from "../games/particularTeamGame";
 
 function TeamDetail({ match }) {
 
-    let { authTokens, logoutUser } = useContext(AuthContext)
+    let { authTokens, logoutUser, user } = useContext(AuthContext)
 
     const id = match.params.id;
     const content_type = '14';
@@ -88,7 +87,7 @@ function TeamDetail({ match }) {
                                     <li>wins OT {team.wins_ot}</li>
                                     <li>defeats OT {team.defeats_ot}</li>
                                     {stadium.map(e => (
-                                        <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}><li>stadium {e.name} </li>                                    </Link>
+                                        <Link className={'link'} key={e.id} to={`/stadiums/${e.id}`}><li>stadium {e.name} </li></Link>
 
                                     ))}
                                     <Link className='link' to={`/tournament`}><li>to the table</li></Link>
