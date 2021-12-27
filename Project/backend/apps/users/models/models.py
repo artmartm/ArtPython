@@ -6,12 +6,7 @@ from django_countries.fields import CountryField
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    description = models.TextField(blank=True, null=True)
-    country = CountryField()
     favorite_team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    date_joined = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    ban = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.user.username} profile'
@@ -20,3 +15,7 @@ class UserProfile(models.Model):
 class UserSpecialFields(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="special_fields")
     is_moderator = models.BooleanField(default=False)
+    ban = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.user.username}\'s special fields'

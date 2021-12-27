@@ -9,9 +9,13 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
 
-        token['username'] = user.username
-        token['admin'] = user.is_superuser
-        token['info'] = UserProfileSerializer(UserProfile.objects.filter(user=user), many=True).data[0]
+        if len(UserProfileSerializer(UserProfile.objects.filter(user=user), many=True).data[0])>0:
+            token['username'] = user.username
+            token['admin'] = user.is_superuser
+            token['info'] = UserProfileSerializer(UserProfile.objects.filter(user=user), many=True).data[0]
+        else:
+            token['username'] = user.username
+            token['admin'] = user.is_superuser
         return token
 
 

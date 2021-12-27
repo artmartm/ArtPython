@@ -21,9 +21,15 @@ const Header = () => {
 
                                 {authTokens ?
                                     <>
+                                    {user && user.admin ?
+                                        <>
                                         <li><Link to='/profiles'>profiles</Link></li>
                                         <li><Link to='/users'>users</Link></li>
+                                        </>
+                                        :<></>
+                                    }
                                         <li><Link to='/dashboard'>dashboard</Link></li>
+                                        <li onClick={logoutUser}><Link>logout</Link></li>
                                     </>
                                     :
                                     <>

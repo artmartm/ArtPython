@@ -33,6 +33,10 @@ function AddNews({ obj, ct }) {
     await axios({
       method: 'post',
       url: 'http://127.0.0.1:8000/api/news/',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':'Bearer ' + String(authTokens.access)
+      },
       data: formField
     }).then(response => {
       setName('')
