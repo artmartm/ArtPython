@@ -8,3 +8,13 @@
 .simple-dashboard {
     margin-bottom: 75px;
 }
+
+.link-dashboard {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link-dashboard:hover {
+    color: rgba(151, 27, 27, 0.521);
+    scale: 1.1;
+}
