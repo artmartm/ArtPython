@@ -55,6 +55,7 @@ import Dashboard from "./components/users/dashboard/dashboard";
 import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin";
 import SignUp from "./components/users/signup/signUp";
 import AddNews from "./components/general/news/addNews";
+import SetUpModerator from "./components/users/setUpModerators";
 
 function App() {
 
@@ -77,10 +78,10 @@ function App() {
                     <Header />
                     {/*<Switch>
                 <Navigation />*/}
-                    <Route path='/' exact component={Home} />
+                    <Route path='/' exact component={teamsList} />
                     <Route path='/tournament' exact component={TeamTable} />
                     <PrivateRoute path='/comments/:id' exact component={CommentDetail} />
-                    <Route path='/teams' exact component={teamsList} />
+                    {/* <Route path='/teams' exact component={teamsList} /> */}
                     <Route path='/users' exact component={UserList} />
                     <Route path='/users/:id' exact component={UserDetail} />
                     <Route path='/profiles' exact component={UsersProfilesList} />
@@ -102,6 +103,7 @@ function App() {
                     <Route path='/all-comments' exact component={AllCommentsList} />
                     <Route path='/stadiums/:id' exact component={StadiumDetail} />
                     <Route path='/add-news' exact component={AddNews} />
+                    <Route path='/moderators' exact component={SetUpModerator} />
                     {/*</Switch>*/}
                 </AuthProvider>
             </div>

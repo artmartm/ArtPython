@@ -76,12 +76,8 @@ function Dashboard() {
                 <h2>this is your dashboard</h2>
                 {user.info ?
                     <div>
-                        {special.map(e => (
-                            <div>
-                                {e.user == user.user_id ? <h1>you are mod</h1> : <></>}
-                            </div>
-                        ))}
                         {user.admin ? <h2>you are admin</h2> : <></>}
+                        {user.moderator ? <h2>you are moderator</h2>:<></>}
                         {teams.length > 0 && user.info.favorite_team ?
                             <div>
                                 <div className='main-dashboard'>
@@ -124,7 +120,7 @@ function Dashboard() {
                                             <div>
                                                 <h2><Link className='link-dashboard' to={'/users'}>see all users</Link></h2>
                                                 <h2><Link className='link-dashboard' to={'/profiles'}>see all profiles</Link></h2>
-                                                <h2><Link className='link-dashboard' to={'#'}>set up moderators</Link></h2>
+                                                <h2><Link className='link-dashboard' to={'/moderators'}>set up moderators</Link></h2>
                                             </div>
                                             : <></>}
                                     </div>
