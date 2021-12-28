@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework import routers
 from apps.general.views import CommentsViewSet, NewsViewSet
 from apps.leagues.views import LeagueViewSet
-from apps.teams.views import StadiumViewSet, GameViewSet, TeamViewSet, clean
+from apps.teams.views import StadiumViewSet, GameViewSet, TeamViewSet
 from apps.players.views import PlayerViewSet, PlayerMainInfoViewSet, PlayerPersonalInfoViewSet
 from apps.users.views import UsersViewSet, UsersListViewSet
 
@@ -26,5 +26,4 @@ router.register(r'users2', UsersListViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('clean', clean),
 ]

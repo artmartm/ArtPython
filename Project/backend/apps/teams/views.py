@@ -41,7 +41,7 @@ class StadiumViewSet(viewsets.ModelViewSet):
 
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
-    serializer_class = GameSerializers
+    serializer_class = GameDetailSerializers
     action_to_serializer = {
         "retrieve": GameDetailSerializers
     }
@@ -51,12 +51,3 @@ class GameViewSet(viewsets.ModelViewSet):
             self.action,
             self.serializer_class
         )
-
-
-
-def clean(request):
-    # t = Game.objects.all().delete()
-    # data = {'t':t}
-    # return render(request,'clean.html',data)
-    return None
-

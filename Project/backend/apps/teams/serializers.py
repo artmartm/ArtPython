@@ -27,6 +27,11 @@ class GameSerializers(serializers.ModelSerializer):
             "loser",
             "home_team_goals",
             "away_team_goals",
+            "lucky",
+            "lucky_overtime",
+            "lucky_score",
+            "winner_OT",
+            "loser_OT",
         )
         fields = '__all__'
 
@@ -115,3 +120,4 @@ class StadiumDetailSerializers(StadiumSerializers):
 class GameDetailSerializers(GameSerializers):
     stadium = serializers.ReadOnlyField()
     name = serializers.ReadOnlyField()
+    win=serializers.ReadOnlyField()
