@@ -38,7 +38,7 @@ function SetUpTeam({obj}) {
 
     return (
         <div>
-            <h1>add news here</h1>
+            <h1>set up teams</h1>
             <div>
                 <div className="form-group">
                     <input
@@ -51,7 +51,7 @@ function SetUpTeam({obj}) {
                     />
                 </div>
                 <div className='for-delete-update'>
-                    <button onClick={Add}>team</button>
+                    <button onClick={Add}>set up</button>
                 </div>
             </div>
 

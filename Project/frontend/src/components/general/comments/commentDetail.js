@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import AuthContext from "../base/AuthContext";
 import DeleteComment from "./deleteComment";
 import './../../../css/general/news.css';
+import { Button } from "@mui/material";
 
 
 function CommentDetail({ match }) {
@@ -106,8 +107,11 @@ function CommentDetail({ match }) {
                             />
                         </div>
                         <div className='for-delete-update'>
-                            <button onClick={UpdateCom} >Update</button>
-                            <DeleteComment id={id} />
+                            <div className='main-dashboard'>
+                                <button onClick={UpdateCom} >Update</button>
+                                <DeleteComment id={id} />
+                                <Button>asdsad</Button>
+                            </div>
                         </div>
                     </div> : <></>}
             </div>

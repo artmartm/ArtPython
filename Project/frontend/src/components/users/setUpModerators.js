@@ -11,8 +11,8 @@ function SetUpModerator() {
     let { authTokens, logout } = useContext(AuthContext)
 
     let history = useHistory();
-    const [is_moderator, setIs_moderator] = useState(true)
-    const [user, setUser] = useState(5)
+    const [is_moderator, setIs_moderator] = useState(1)
+    const [user, setUser] = useState(1)
 
 
     const Add = async () => {
@@ -39,20 +39,20 @@ function SetUpModerator() {
     setIs_moderator(s => ({ ...s, [target.name]: !s[target.name] }));
     return (
         <div>
-            <h1>add news here</h1>
+            <h1>set up moderators</h1>
             <div>
                 <div className="form-group">
-                    <input
-                        type="checkbox"
+                <input
+                        type="text"
                         placeholder="Enter name"
                         className='for-input'
                         name="is_moderator"
                         value={is_moderator}
-                        onChange={(e) => setIs_moderator(e.target.value=true)}
+                        onChange={(e) => setIs_moderator(e.target.value)}
                     />
                 </div>
                 <div className='for-delete-update'>
-                    <button onClick={Add}>team</button>
+                    <button onClick={Add}>set up</button>
                 </div>
             </div>
 
