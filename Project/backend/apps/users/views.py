@@ -2,15 +2,20 @@ from rest_framework.generics import (ListCreateAPIView, RetrieveUpdateDestroyAPI
 from rest_framework.permissions import IsAuthenticated
 from .models import UserProfile
 # from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import UserProfileSerializer
+from .serializers import UserProfileSerializer, UserSpecialFields
 from rest_framework import viewsets
 from django.contrib.auth.models import User
-from .serializers import UsersListSerializer, UserListDetailSerializer
+from .serializers import UsersListSerializer, UserListDetailSerializer, UserSpecialFieldsSerializer
 
 
 class UsersViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+
+
+class UsersSpecialFieldsViewSet(viewsets.ModelViewSet):
+    queryset = UserSpecialFields.objects.all()
+    serializer_class = UserSpecialFieldsSerializer
 
 
 class UsersListViewSet(viewsets.ModelViewSet):

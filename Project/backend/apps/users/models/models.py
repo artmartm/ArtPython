@@ -15,7 +15,6 @@ class UserProfile(models.Model):
 class UserSpecialFields(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="special_fields")
     is_moderator = models.BooleanField(default=False)
-    ban = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.user.username}\'s special fields'

@@ -1,0 +1,10 @@
+.main-dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 50px;
+    box-sizing: border-box;
+}
+.simple-dashboard {
+    margin-bottom: 75px;
+}

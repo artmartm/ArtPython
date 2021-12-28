@@ -11,6 +11,7 @@ import { commentsReducer } from "./reducers/commentsReducer";
 import { usersReducer } from "./reducers/usersReducer"
 import { particularUserReducer } from "./reducers/particularUserReducer";
 import { usersProfilesReducer } from "./reducers/usersProfilesReducer";
+import { usersSpecialFieldsReducer } from "./reducers/usersSpecialFieldsReducer";
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -24,8 +25,7 @@ const rootReducer = combineReducers({
     particularUserReducer,
     usersProfilesReducer,
     particularTeamReducer,
-
-
+    usersSpecialFieldsReducer,
 })
 
 export default rootReducer;
