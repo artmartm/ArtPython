@@ -8,7 +8,7 @@ from apps.custom_permissions import OnlyLookOrAdminModerator
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
     serializer_class = TeamDetailSerializer
-    permission_classes = [OnlyLookOrAdminModerator]
+   # permission_classes = [OnlyLookOrAdminModerator]
     action_to_serializer = {
         "retrieve": TeamDetailSerializer
     }

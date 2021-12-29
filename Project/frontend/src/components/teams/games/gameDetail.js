@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import CommentComponent from "../../general/comments/commentComponent";
 import CommentsList from "../../general/comments/commentsList";
 import './../../../css/teams/gameDetail.css'
+import { Button } from "@mui/material";
+
 
 function GameDetail({ match }) {
 
@@ -55,7 +57,7 @@ function GameDetail({ match }) {
                                 <p className='position'>{teams[game.away_team - 1].second_name}</p>
                             </div>
                         </div>
-                        <hr style={{ width: 400 }} />
+                        <hr style={{ width: 700 }} />
                     </div>
                     <h1>winner is {game.winner}</h1>
                     <h2>game has been on <Link>{game.stadium}</Link></h2>
@@ -64,11 +66,11 @@ function GameDetail({ match }) {
             }
 
             <React.Fragment>
-                <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
+                <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
                 {showComments.isOpen &&
                     <div>
                         <CommentsList key={id} obj={id} ct={content_type} />
-                        <button onClick={() => { setShowComments({ isOpen: false }) }}>close</button>
+                        <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
                     </div>
                 }
             </React.Fragment>
