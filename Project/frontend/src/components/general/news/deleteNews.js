@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
@@ -30,8 +31,7 @@ function DeleteNews({ id }) {
   return (
     <div>
       <div className="form-group">
-        <button style={{ width: 30, height: 30, borderRadius: 15, background: 'red' }}
-          className="btn btn-primary btn-block" onClick={() => Delete()}>&times;</button>
+        <DeleteIcon onClick={() => Delete()}/>
       </div>
     </div>
   );

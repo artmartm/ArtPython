@@ -48,7 +48,7 @@ function AddNews({ obj, ct }) {
   return (
     <div>
       <h1>add news here</h1>
-      {user.admin ?
+      {user.admin || user.moderator ?
         <div>
           <div className="form-group">
             <input

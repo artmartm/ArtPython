@@ -1,21 +1,21 @@
-from rest_framework.generics import (ListCreateAPIView, RetrieveUpdateDestroyAPIView, )
-from rest_framework.permissions import IsAuthenticated
 from .models import UserProfile
-# from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import UserProfileSerializer, UserSpecialFields
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from .serializers import UsersListSerializer, UserListDetailSerializer, UserSpecialFieldsSerializer
+from apps.custom_permissions import OnlyLookOrRequestUser, OnlyLookModeratorOrAdmin
 
 
 class UsersViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+    permission_classes = [OnlyLookOrRequestUser]
 
 
 class UsersSpecialFieldsViewSet(viewsets.ModelViewSet):
     queryset = UserSpecialFields.objects.all()
     serializer_class = UserSpecialFieldsSerializer
+    permission_classes = [OnlyLookModeratorOrAdmin]
 
 
 class UsersListViewSet(viewsets.ModelViewSet):

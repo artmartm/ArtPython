@@ -94,7 +94,7 @@ function CommentDetail({ match }) {
                     : <></>}
                 <h3>created at {comment.created_at}</h3>
                 <hr />
-                {user.user_id == comment.author || user.admin ?
+                {user.user_id == comment.author || user.admin || user.moderator ?
                     <div>
                         <div className="form-group">
                             <input
@@ -108,9 +108,8 @@ function CommentDetail({ match }) {
                         </div>
                         <div className='for-delete-update'>
                             <div className='main-dashboard'>
-                                <button onClick={UpdateCom} >Update</button>
-                                <DeleteComment id={id} />
-                                <Button>asdsad</Button>
+                                <Button onClick={UpdateCom} >Update</Button>
+                                <Button><DeleteComment id={id} /></Button>
                             </div>
                         </div>
                     </div> : <></>}

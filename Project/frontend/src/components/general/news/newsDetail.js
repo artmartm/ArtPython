@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import AuthContext from "../base/AuthContext";
 import './../../../css/general/news.css';
 import DeleteNews from "./deleteNews";
+import { Button } from "@mui/material";
+import { Input } from '@mui/material';
 
 function NewsDetail({ match }) {
 
@@ -115,8 +117,10 @@ function NewsDetail({ match }) {
                                 />
                             </div>
                             <div className='for-delete-update'>
-                                <button onClick={UpdateCom}>Update</button>
-                                <DeleteNews id={id_id} />
+                                <div style={{ marginBottom:10 }} className='main-dashboard'>
+                                    <Button onClick={UpdateCom} >Update</Button>
+                                    <Button><DeleteNews id={id} /></Button>
+                                </div>
                             </div>
                         </div> : <></>}
                 </div> : <></>}

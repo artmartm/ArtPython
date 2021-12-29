@@ -2,9 +2,12 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
+import AuthContext from '../base/AuthContext';
 
 
 function DeleteComment({ id }) {
+
+  let { user, authTokens, logoutUser } = useContext(AuthContext)
 
 
   const history = useHistory()
@@ -18,7 +21,7 @@ function DeleteComment({ id }) {
       data: formField,
       headers: {
         'Content-Type': 'application/json',
-        //'Authorization':'Bearer ' + String(authTokens.access)
+        'Authorization':'Bearer ' + String(authTokens.access)
       }
     }).then(response => {
       console.log(response.data);

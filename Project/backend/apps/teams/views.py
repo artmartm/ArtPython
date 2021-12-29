@@ -1,19 +1,14 @@
-from django.shortcuts import render
-
 from rest_framework import viewsets
 from .models.models import Team, Stadium, Game, TeamStats
 from .serializers import TeamSerializers, StadiumSerializers, GameSerializers, TeamStatsSerializers, \
     TeamDetailSerializer, StadiumDetailSerializers, GameDetailSerializers
+from apps.custom_permissions import OnlyLookOrAdminModerator
 
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
     serializer_class = TeamDetailSerializer
-    # permission_classes = [IsAdminUser]
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAdminUser]
-    # def perform_authentication(self, request):
-    #     user=request.user
+    permission_classes = [OnlyLookOrAdminModerator]
     action_to_serializer = {
         "retrieve": TeamDetailSerializer
     }
