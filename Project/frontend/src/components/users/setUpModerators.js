@@ -6,7 +6,7 @@ import AuthContext from '../general/base/AuthContext';
 
 
 
-function SetUpModerator({id}) {
+function SetUpModerator({ id }) {
 
     let { authTokens, logout } = useContext(AuthContext)
 
@@ -35,19 +35,23 @@ function SetUpModerator({id}) {
             history.push('/')
         })
     }
+    const ff = [{ id: 1 }];
     return (
         <div>
             <h1>set up moderators</h1>
             <div>
                 <div className="form-group">
-                <input
-                        type="text"
-                        placeholder="Enter name"
-                        className='for-input'
-                        name="is_moderator"
-                        value={is_moderator}
-                        onChange={(e) => setIs_moderator(e.target.value)}
-                    />
+                    <label >
+
+                        <select value={is_moderator} onChange={(e) => setIs_moderator(e.target.value)}>
+                            <option>set up moderator</option>
+                            {ff.map(e => (
+                                <option value={e.id}>set up</option>
+                            )
+                            )}
+                        </select>
+
+                    </label>
                 </div>
                 <div className='for-delete-update'>
                     <button onClick={Add}>set up</button>
@@ -59,4 +63,3 @@ function SetUpModerator({id}) {
 };
 
 export default SetUpModerator;
-

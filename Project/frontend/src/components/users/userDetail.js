@@ -51,7 +51,6 @@ function UserDetail({ match }) {
     }
     return (
         <div>
-            {owner.id}
             <h1>username: {owner.username}</h1>
             {part.length > 0 ? <h1>moderator</h1> : <SetUpModerator id={id} />}
         </div>
