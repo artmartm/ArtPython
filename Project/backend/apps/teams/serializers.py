@@ -35,6 +35,14 @@ class GameSerializers(serializers.ModelSerializer):
         )
         fields = '__all__'
 
+    def validate(self, data):
+        """
+        Check that home team and away team are different.
+        """
+        if data['home_team'] == data['away_team']:
+            raise serializers.ValidationError("teams must be different")
+        return data
+
 
 class TeamStatsSerializers(serializers.ModelSerializer):
     class Meta:
@@ -120,4 +128,4 @@ class StadiumDetailSerializers(StadiumSerializers):
 class GameDetailSerializers(GameSerializers):
     stadium = serializers.ReadOnlyField()
     name = serializers.ReadOnlyField()
-    win=serializers.ReadOnlyField()
+    win = serializers.ReadOnlyField()
