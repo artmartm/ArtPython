@@ -52,6 +52,13 @@ function UserProfileDetail({ match }) {
             setProfile(data)
         }
     }
+    const part=[]
+
+    {users.map(e=>{
+        if (e.id==profile.user)
+        part.push(e)
+    })}
+
 
     return (
         <div>
@@ -59,10 +66,10 @@ function UserProfileDetail({ match }) {
                 {teams.length > 0 && profile.favorite_team && users.length>0 ?
                     <div>
                         <h1>
-
-                            <Link className='link-dashboard' to={{ pathname: `/users/${profile.user}/`, fromDashboard: false }}>
-                                {users[profile.user-1].username}'s
-                            </Link> detail profile!
+                            {part.map(e=>
+                            (<Link className='link-dashboard' to={{ pathname: `/users/${profile.user}/`, fromDashboard: false }}>
+                                {e.username}'s detail profile!
+                            </Link> ))}
                         </h1>
                         <h2>favorite_team is </h2>
                         <Link className={'link'} key={profile.favorite_team} to={`/teams/${profile.favorite_team}`}>

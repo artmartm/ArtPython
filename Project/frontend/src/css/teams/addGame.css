@@ -1,34 +1,57 @@
-.home_team_ceil
-{
-    background:bisque;
-    width:350px;
-    height:350px;
-    border-radius: 175px;
-    text-align: center;
-    font-size:55px;
-    float: left;
-    margin: 155px;
-}
-
-.away_team_ceil
-{
-    background:bisque;
-    width:350px;
-    height:350px;
-    border-radius: 175px;
-    text-align: center;
-    float: right;
-    margin: 155px;
-    font-size:55px;
-}
-
 .vs
 {
     width:150px;
     height:350px;
     border-radius: 25px;
-    text-align: center;
     position: relative;
-    margin: 155px;
     font-size:55px;
+}
+
+.for-begginig {
+    background-color: rgba(5, 5, 5, 0.9);
+}
+
+.add-game-container{
+    width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    transition: 0.5s;
+    text-align: center;
+
+}
+
+.position {
+    font-size: 22pt;
+    margin: auto;
+    position: center;
+    padding-top:20px;
+}
+.team-container {
+    margin: 0;
+
+}
+
+.add-game-1 {
+    margin: auto;
+}
+
+.image-container-2{
+    width: 250px;
+    height: 250px;
+    border-radius: 125px;
+    padding: 1px;
+}
+.add-game-buttons {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }

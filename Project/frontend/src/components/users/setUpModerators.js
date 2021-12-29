@@ -35,8 +35,6 @@ function SetUpModerator({id}) {
             history.push('/')
         })
     }
-    const handleToggle = ({ target }) =>
-    setIs_moderator(s => ({ ...s, [target.name]: !s[target.name] }));
     return (
         <div>
             <h1>set up moderators</h1>

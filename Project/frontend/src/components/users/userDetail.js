@@ -44,7 +44,7 @@ function UserDetail({ match }) {
 
 
     let getProfiles = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/users-profile/', {
+        let response = await fetch('http://127.0.0.1:8000/api/users-special-fields/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,17 +56,30 @@ function UserDetail({ match }) {
             setPr(data)
         }
     }
-    const [lol, setLol] = useState(false)
+    const part = []
+
+    {
+        profiles.map(e => {
+            if (e.user == owner.id)
+                part.push(e)
+        })
+    }
     return (
         <div>
+            {owner.id}
             <h1>username: {owner.username}</h1>
-
-            {/*  {user.moderator ? <h2>moderator</h2> :
-                <SetUpModerator id={id} />} */}
-            <SetUpModerator id={id} />
+            {part.length > 0 ? <h1>moderator</h1> : <SetUpModerator id={id} />}
         </div>
 
     )
 }
 
 export default UserDetail;
+
+/* handleClick() {
+    this.setState(prevState => {
+      return {
+        isMusicPlaying: !prevState.isMusicPlaying
+      };
+    });
+  }; */

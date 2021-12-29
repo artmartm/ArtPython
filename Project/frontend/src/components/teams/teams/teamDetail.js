@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ParticularNewsList from "../../general/news/particularNewsList";
 import './../../../css/teams/teamDetail.css'
+import { Button } from "@mui/material";
 
 //coments
 import CommentsList from "../../general/comments/commentsList";
@@ -97,12 +98,12 @@ function TeamDetail({ match }) {
                                 <div className='news-container'>
                                     <h1 className='inside-news-container'>Team's news</h1>
                                     <React.Fragment>
-                                        <button onClick={() => { setShowNews({ isOpen: true }); setLatestShowNews(false) }}>show all news</button>
+                                        <Button onClick={() => { setShowNews({ isOpen: true }); setLatestShowNews(false) }}>show all news</Button>
                                         {showLatestNews ? <ParticularNewsList key={id} obj={id} show={showLatestNews} ct={content_type} /> : <></>}
                                         {showNews.isOpen &&
                                             <div>
                                                 <ParticularNewsList key={id} obj={id} show={showLatestNews} ct={content_type} />
-                                                <button onClick={() => { setShowNews({ isOpen: false }); setLatestShowNews(true) }}>close</button>
+                                                <Button onClick={() => { setShowNews({ isOpen: false }); setLatestShowNews(true) }}>close</Button>
                                             </div>
                                         }
                                     </React.Fragment>
@@ -111,12 +112,12 @@ function TeamDetail({ match }) {
                                     <div className='games-container'>
                                         <h1 className='inside-game-container'>games</h1>
                                         <React.Fragment>
-                                            <button onClick={() => { setShowMatches({ isOpen: true }); setShow(false) }}>show all matches</button>
+                                            <Button onClick={() => { setShowMatches({ isOpen: true }); setShow(false) }}>show all matches</Button>
                                             {show ? <ParticularTeamGame show={show} team={team.id} /> : <></>}
                                             {showMatches.isOpen &&
                                                 <div>
                                                     <ParticularTeamGame show={show} team={team.id} />
-                                                    <button onClick={() => { setShowMatches({ isOpen: false }); setShow(true) }}>close</button>
+                                                    <Button onClick={() => { setShowMatches({ isOpen: false }); setShow(true) }}>close</Button>
                                                 </div>
                                             }
                                         </React.Fragment>
@@ -155,7 +156,7 @@ function TeamDetail({ match }) {
                                     {showHistory.isOpen &&
                                         <div className='inside-history'>
                                             <div>{team.history}</div>
-                                            <button onClick={() => { setShowHistory({ isOpen: false }) }}>close</button>
+                                            <Button onClick={() => { setShowHistory({ isOpen: false }) }}>close</Button>
                                         </div>
                                     }
                                 </React.Fragment>
@@ -166,7 +167,7 @@ function TeamDetail({ match }) {
                                     {showDescription.isOpen &&
                                         <div className='inside-description'>
                                             <div>{team.description}</div>
-                                            <button onClick={() => { setShowDescription({ isOpen: false }) }}>close</button>
+                                            <Button onClick={() => { setShowDescription({ isOpen: false }) }}>close</Button>
                                         </div>
                                     }
                                 </React.Fragment>
@@ -174,11 +175,11 @@ function TeamDetail({ match }) {
                         </div>
                         <hr />
                         <React.Fragment>
-                            <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
+                            <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
                             {showComments.isOpen &&
                                 <div>
                                     <CommentsList key={id} obj={id} ct={content_type} /> {/* through redux AllCommentsList */}
-                                    <button onClick={() => { setShowComments({ isOpen: false }) }}>close</button>
+                                    <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
                                 </div>
                             }
                         </React.Fragment>

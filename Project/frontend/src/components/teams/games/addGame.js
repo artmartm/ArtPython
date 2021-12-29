@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import './../../../css/teams/addGame.css';
 import Loader from '../../general/loader';
+import { Button } from "@mui/material";
 
 
 const AddGame = () => {
@@ -34,45 +35,57 @@ const AddGame = () => {
   }
 
 
+  const Refresh = async () => {
+    setHome_team('')
+    setAway_team('')
+  }
+
   return (
-    <div className="container">
-      <div>
+    <div >
+      <h2 >add a game</h2>
+      {/* <div className='add-game-container'>  */}
+      <div className='add-game-container'>
+        <div className='add-game-1'>
+          {/*  {loading && <Loader />} */}
+          <label >
+            <div >{home_team ?
+              <img className='image-container-2' src={teams[home_team - 1].team_logo} />
+              :
+              <select value={home_team} onChange={(e) => setHome_team(e.target.value)}>
+                <option>home team</option>
+                {teams.map(e => (
+                  <option value={e.id}>{e.name}</option>
+                )
+                )}
+              </select>} </div>
 
+
+          </label>
+        </div>
+        <div className='add-game-1'>
+          <label >
+            <div >{away_team ?
+              <img src={teams[away_team - 1].team_logo} className='image-container-2' />
+              :
+              <select value={away_team} onChange={(e) => setAway_team(e.target.value)}>
+                <option>away team</option>
+
+                {teams.map(e => (
+                  <option value={e.id} >{e.name}</option>
+                )
+                )}
+              </select>} </div>
+
+
+          </label>
+        </div>
       </div>
-      <h2 className="text-center mb-4">add a game</h2>
-      <div className="form-group">
-        {loading && <Loader />}
-        <label>
-          <div>{home_team ?
-            <img className='home_team_ceil' src={teams[home_team - 1].team_logo} />
-            :
-            <select className='home_team_ceil' value={home_team} onChange={(e) => setHome_team(e.target.value)}>
-              {teams.map(e => (
-                <option value={e.id}>{e.name}</option>
-              )
-              )}
-            </select>} </div>
-
-
-        </label>
+      <div className='add-game-buttons'>
+        <Button
+          onClick={Add}>VS</Button>
+        <Button
+          onClick={Refresh}>refresh</Button>
       </div>
-      <div className="form-group">
-        <label>
-          <div>{away_team ?
-            <img src={teams[away_team - 1].team_logo} className='away_team_ceil' />
-            :
-            <select className='away_team_ceil' value={away_team} onChange={(e) => setAway_team(e.target.value)}>
-              {teams.map(e => (
-                <option value={e.id}>{e.name}</option>
-              )
-              )}
-            </select>} </div>
-
-
-        </label>
-      </div>
-      <button className="vs"
-        onClick={Add}>VS</button>
     </div>
   );
 };

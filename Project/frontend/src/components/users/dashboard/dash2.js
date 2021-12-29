@@ -10,7 +10,7 @@ import { FetchUsersSpecialFields } from "../../../redux/actions/asyncActions/asy
 import SetUpTeam from "../setUpteam";
 import { Button } from "@mui/material";
 
-function Dashboard() {
+function Dashboard2() {
     let { user, authTokens, logoutUser } = useContext(AuthContext)
 
     let history = useHistory();
@@ -82,11 +82,11 @@ function Dashboard() {
             <div>
                 <h1>Hello, {user.username}</h1>
                 <h2>this is your dashboard</h2>
-                {user.user_id && user.info?
+                {user.info ?
                     <div>
                         {user.admin ? <h2>you are admin</h2> : <></>}
                         {user.moderator ? <h2>you are moderator</h2>:<></>}
-                        {teams.length > 0 && part.length>0 ?
+                        {teams.length > 0 && user.info.favorite_team ?
                             <div>
                                 <div className='main-dashboard'>
                                     <div className='news-games-container'>
@@ -141,5 +141,5 @@ function Dashboard() {
     )
 }
 
-export default Dashboard;
+export default Dashboard2;
 

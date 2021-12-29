@@ -2,13 +2,15 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../general/base/AuthContext';
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@mui/material";
 
 
 
 
-function SetUpTeam({obj}) {
+function SetUpTeam({ obj }) {
 
-    let { authTokens,logout } = useContext(AuthContext)
+    let { authTokens, logout } = useContext(AuthContext)
 
     let history = useHistory();
     const [favorite_team, setFavorite_team] = useState('')
@@ -33,31 +35,29 @@ function SetUpTeam({obj}) {
             data: formField
         }).then(response => {
             setFavorite_team('')
+            history.push('/')
         })
     }
+    const teams = useSelector(state => state.teamsReducer.teams)
 
     return (
         <div>
             <h1>set up teams</h1>
             <div>
-                <div className="form-group">
-                    <input
-                        type="text"
-                        placeholder="Enter name"
-                        className='for-input'
-                        name="favorite_team"
-                        value={favorite_team}
-                        onChange={(e) => setFavorite_team(e.target.value)}
-                    />
-                </div>
-                <div className='for-delete-update'>
-                    <button onClick={Add}>set up</button>
-                </div>
+                <label>
+                    <div>
+                        {teams.length > 0 ?
+                            <select className='' value={favorite_team} onChange={(e) => setFavorite_team(e.target.value)}>
+                                {teams.map(e => (
+                                    <option value={e.id}>{e.name}</option>
+                                )
+                                )}
+                            </select> : <></>} </div>
+                    <Button onClick={Add}>set up</Button>
+                </label>
             </div>
-
         </div>
     );
 };
 
 export default SetUpTeam;
-
