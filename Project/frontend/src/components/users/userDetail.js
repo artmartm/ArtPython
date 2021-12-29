@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchUsersProfiles } from "../../redux/actions/asyncActions/asyncAllUsersProfiles";
+import { FetchUsersSpecialFields } from "../../redux/actions/asyncActions/asyncAllUsersSpecialFields";
 import AuthContext from "../general/base/AuthContext";
 import SetUpModerator from "./setUpModerators";
 
@@ -13,10 +14,11 @@ function UserDetail({ match }) {
 
     useEffect(() => {
         dispatch(fetchUsersProfiles())
+        dispatch(FetchUsersSpecialFields())
     }, [])
 
     const profiles = useSelector(state => state.usersProfilesReducer.usersProfiles)
-
+    const special = useSelector(state => state.usersSpecialFieldsReducer.usersSpecialFields)
 
     const [owner, setOwner] = useState({});
     const [pr, setPr] = useState([])
@@ -38,28 +40,11 @@ function UserDetail({ match }) {
             setPr(response.data.profile)
         })
     }, [id])
-    useEffect(() => {
-        getProfiles()
-    }, [])
-
-
-    let getProfiles = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/users-special-fields/', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        let data = await response.json()
-
-        if (response.status === 200) {
-            setPr(data)
-        }
-    }
+    
     const part = []
 
     {
-        profiles.map(e => {
+        special.map(e => {
             if (e.user == owner.id)
                 part.push(e)
         })
@@ -76,10 +61,3 @@ function UserDetail({ match }) {
 
 export default UserDetail;
 
-/* handleClick() {
-    this.setState(prevState => {
-      return {
-        isMusicPlaying: !prevState.isMusicPlaying
-      };
-    });
-  }; */

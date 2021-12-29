@@ -65,7 +65,7 @@ function Dashboard() {
     const [show, setShow] = useState(true);
 
     /////
-   
+
 
 
     const part = []
@@ -82,11 +82,11 @@ function Dashboard() {
             <div>
                 <h1>Hello, {user.username}</h1>
                 <h2>this is your dashboard</h2>
-                {user.user_id && part.length>0?
+                {user.user_id && part.length > 0 ?
                     <div>
                         {user.admin ? <h2>you are admin</h2> : <></>}
-                        {user.moderator ? <h2>you are moderator</h2>:<></>}
-                        {teams.length > 0 && part.length>0 ?
+                        {user.moderator ? <h2>you are moderator</h2> : <></>}
+                        {teams.length > 0 && part.length > 0 ?
                             <div>
                                 <div className='main-dashboard'>
                                     <div className='news-games-container'>
@@ -94,7 +94,7 @@ function Dashboard() {
                                             <h1 className='inside-news-container'>Team's news</h1>
                                             <React.Fragment>
                                                 <Button onClick={() => { setShowNews({ isOpen: true }); setLatestShowNews(false) }}>show all news</Button>
-                                                {showLatestNews ? <ParticularNewsList key={part[0].favorite_team-1} obj={part[0].favorite_team} show={showLatestNews} ct={content_type} /> : <></>}
+                                                {showLatestNews ? <ParticularNewsList key={part[0].favorite_team - 1} obj={part[0].favorite_team} show={showLatestNews} ct={content_type} /> : <></>}
                                                 {showNews.isOpen &&
                                                     <div>
                                                         <ParticularNewsList key={part[0].favorite_team} obj={part[0].favorite_team} show={showLatestNews} ct={content_type} />
@@ -121,8 +121,8 @@ function Dashboard() {
                                     </div>
                                     <div className='simple-dashboard'>
                                         <h1>your favorite team is</h1>
-                                        <Link className={'link'} key={part[0].favorite_team-1} to={`/teams/${part[0].favorite_team}`}>
-                                            <img src={teams[part[0].favorite_team-1].team_logo} className='stadium_main_img' />
+                                        <Link className={'link'} key={part[0].favorite_team - 1} to={`/teams/${part[0].favorite_team}`}>
+                                            <img src={teams[part[0].favorite_team - 1].team_logo} className='stadium_main_img' />
                                         </Link>
                                         {user.admin ?
                                             <div>
@@ -135,7 +135,7 @@ function Dashboard() {
                             </div>
                             : <></>
                         }
-                    </div> : <SetUpTeam obj={user.user_id}/>}
+                    </div> : <SetUpTeam obj={user.user_id} />}
             </div>
         </div>
     )
