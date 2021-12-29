@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../base/AuthContext';
+import { Button } from "@mui/material";
 
 
 
@@ -69,7 +70,7 @@ function AddNews({ obj, ct }) {
             />
           </div>
           <div className='for-delete-update'>
-            <button onClick={Add}>add news</button>
+            <Button onClick={Add}>add news</Button>
           </div>
         </div> : <></>}
 

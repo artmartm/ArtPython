@@ -9,6 +9,7 @@ import CommentsList from "../general/comments/commentsList";
 import PlayerMainInfo from "./playerMainInfo";
 import PlayerPersonalInfo from "./playerPersonalInfo";
 import './../../css/players/player.css'
+import { Button } from "@mui/material";
 
 
 
@@ -97,11 +98,11 @@ function PlayerDetail({ match }) {
                             <br />
                             <hr />
                             <React.Fragment>
-                                <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
+                                <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
                                 {showComments.isOpen &&
                                     <div>
                                         <CommentsList key={id} obj={id} ct={content_type} />
-                                        <button onClick={() => { setShowComments({ isOpen: false }) }}>close</button>
+                                        <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
                                     </div>
                                 }
                             </React.Fragment>

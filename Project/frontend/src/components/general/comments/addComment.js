@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../base/AuthContext';
+import { Button } from "@mui/material";
 
 
 
@@ -60,7 +61,7 @@ function AddComment({ obj, ct }) {
               />
             </div>
 
-            <button className="btn btn-primary btn-block" onClick={Add}>add comment</button>
+            <Button className="btn btn-primary btn-block" onClick={Add}>add comment</Button>
 
           </div>
         </div>

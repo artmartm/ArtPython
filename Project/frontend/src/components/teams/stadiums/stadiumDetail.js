@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CommentsList from "../../general/comments/commentsList";
 import './../../../css/teams/stadium.css';
 import CommentComponent from "../../general/comments/commentComponent";
+import { Button } from "@mui/material";
 
 function StadiumDetail({ match }) {
     const [showComments, setShowComments] = useState([{
@@ -52,12 +53,12 @@ function StadiumDetail({ match }) {
                                     </div>
                                 </div>
                                 <React.Fragment>
-                                    <button onClick={() => { setMainImage({ isOpen: true }) }}>show main image</button>
+                                    <Button onClick={() => { setMainImage({ isOpen: true }) }}>show main image</Button>
                                     {mainImage.isOpen &&
                                         <div>
                                             <br />
                                             <img src={stadium.image} className='nested-stadium-image' /><br />
-                                            <button onClick={() => { setMainImage({ isOpen: false }) }}>close</button>
+                                            <Button onClick={() => { setMainImage({ isOpen: false }) }}>close</Button>
                                         </div>
                                     }
                                 </React.Fragment>
@@ -83,11 +84,11 @@ function StadiumDetail({ match }) {
                                     to={`/teams/${stadium.team}`}>
                                 </Link>
                                 <React.Fragment>
-                                    <button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</button>
+                                    <Button style={{marginTop:20}} onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
                                     {showComments.isOpen &&
                                         <div>
                                             <CommentsList key={id} obj={id} ct={content_type} />
-                                            <button onClick={() => { setShowComments({ isOpen: false }) }}>close</button>
+                                            <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
                                         </div>
                                     }
                                 </React.Fragment>

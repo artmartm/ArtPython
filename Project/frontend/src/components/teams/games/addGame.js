@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 import './../../../css/teams/addGame.css';
 import Loader from '../../general/loader';
 import { Button } from "@mui/material";
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 const AddGame = () => {
 
@@ -82,9 +83,9 @@ const AddGame = () => {
       </div>
       <div className='add-game-buttons'>
         <Button
-          onClick={Add}>VS</Button>
+          onClick={Add}>start</Button>
         <Button
-          onClick={Refresh}>refresh</Button>
+          onClick={Refresh}><DeleteIcon />refresh</Button>
       </div>
     </div>
   );

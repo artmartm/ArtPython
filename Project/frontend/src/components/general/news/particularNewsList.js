@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './../../../css/general/news.css';
 import AddNews from './addNews';
 import AuthContext from '../base/AuthContext';
+import { Button } from "@mui/material";
 
 function ParticularNewsList({ obj, ct, show }) {
     let { user, authTokens } = useContext(AuthContext)
@@ -56,8 +57,8 @@ function ParticularNewsList({ obj, ct, show }) {
                                     {authTokens ?
                                         <div>
                                             {user.admin ?
-                                                <button ><Link className='link' to={{ pathname: `/add-news/`, fromDashboard: false }}
-                                                    style={{ color: 'black' }}>add news</Link></button>
+                                                <Button ><Link className='link' to={{ pathname: `/add-news/`, fromDashboard: false }}
+                                                    >add news</Link></Button>
                                                 : <></>}
                                         </div> : <></>
                                     }
