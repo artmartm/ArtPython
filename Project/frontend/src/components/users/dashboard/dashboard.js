@@ -82,7 +82,7 @@ function Dashboard() {
             <div>
                 <h1>Hello, {user.username}</h1>
                 <h2>this is your dashboard</h2>
-                {user.user_id && user.info?
+                {user.user_id && part.length>0?
                     <div>
                         {user.admin ? <h2>you are admin</h2> : <></>}
                         {user.moderator ? <h2>you are moderator</h2>:<></>}
@@ -94,10 +94,10 @@ function Dashboard() {
                                             <h1 className='inside-news-container'>Team's news</h1>
                                             <React.Fragment>
                                                 <Button onClick={() => { setShowNews({ isOpen: true }); setLatestShowNews(false) }}>show all news</Button>
-                                                {showLatestNews ? <ParticularNewsList key={user.info.favorite_team} obj={user.info.favorite_team} show={showLatestNews} ct={content_type} /> : <></>}
+                                                {showLatestNews ? <ParticularNewsList key={part[0].favorite_team-1} obj={part[0].favorite_team} show={showLatestNews} ct={content_type} /> : <></>}
                                                 {showNews.isOpen &&
                                                     <div>
-                                                        <ParticularNewsList key={user.info.favorite_team} obj={user.info.favorite_team} show={showLatestNews} ct={content_type} />
+                                                        <ParticularNewsList key={part[0].favorite_team} obj={part[0].favorite_team} show={showLatestNews} ct={content_type} />
                                                         <Button onClick={() => { setShowNews({ isOpen: false }); setLatestShowNews(true) }}>close</Button>
                                                     </div>
                                                 }
@@ -108,10 +108,10 @@ function Dashboard() {
                                                 <h1 className='inside-game-container'>games</h1>
                                                 <React.Fragment>
                                                     <Button onClick={() => { setShowMatches({ isOpen: true }); setShow(false) }}>show all matches</Button>
-                                                    {show ? <ParticularTeamGame show={show} team={user.info.favorite_team} /> : <></>}
+                                                    {show ? <ParticularTeamGame show={show} team={part[0].favorite_team} /> : <></>}
                                                     {showMatches.isOpen &&
                                                         <div>
-                                                            <ParticularTeamGame show={show} team={user.info.favorite_team} />
+                                                            <ParticularTeamGame show={show} team={part[0].favorite_team} />
                                                             <Button onClick={() => { setShowMatches({ isOpen: false }); setShow(true) }}>close</Button>
                                                         </div>
                                                     }
@@ -121,8 +121,8 @@ function Dashboard() {
                                     </div>
                                     <div className='simple-dashboard'>
                                         <h1>your favorite team is</h1>
-                                        <Link className={'link'} key={user.info.favorite_team} to={`/teams/${user.info.favorite_team}`}>
-                                            <img src={teams[user.info.favorite_team - 1].team_logo} className='stadium_main_img' />
+                                        <Link className={'link'} key={part[0].favorite_team-1} to={`/teams/${part[0].favorite_team}`}>
+                                            <img src={teams[part[0].favorite_team-1].team_logo} className='stadium_main_img' />
                                         </Link>
                                         {user.admin ?
                                             <div>
