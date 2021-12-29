@@ -6,14 +6,13 @@ import AuthContext from '../general/base/AuthContext';
 
 
 
-function SetUpModerator() {
+function SetUpModerator({id}) {
 
     let { authTokens, logout } = useContext(AuthContext)
 
     let history = useHistory();
-    const [is_moderator, setIs_moderator] = useState(1)
-    const [user, setUser] = useState(1)
-
+    const [is_moderator, setIs_moderator] = useState('')
+    const [user, setUser] = useState(id)
 
     const Add = async () => {
 
@@ -33,6 +32,7 @@ function SetUpModerator() {
             data: formField
         }).then(response => {
             setIs_moderator('')
+            history.push('/')
         })
     }
     const handleToggle = ({ target }) =>

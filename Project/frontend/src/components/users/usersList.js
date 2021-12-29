@@ -7,10 +7,7 @@ import { useSelector } from 'react-redux';
 
 function UserList() {
 
-    let tok = localStorage.getItem('auth_token');
-    let l = '99276f25482a71de3baa2a6d76b6fb7680e478d5';
     const [teams, setTeams] = useState([]);
-    const teamsZ = useSelector(state => state.usersReducer.users)
 
 
     let { authTokens, logoutUser } = useContext(AuthContext)
@@ -45,7 +42,7 @@ function UserList() {
             {teams.map(item => (
                 <div>
                     <h2 key={item.id}>
-                        <Link to={{ pathname: `/users/${item.id}/`, fromDashboard: false }}>{item.username}</Link>
+                        <Link className='link-dashboard' to={{ pathname: `/users/${item.id}/`, fromDashboard: false }}>{item.username}</Link>
                     </h2>
                 </div>
             ))}

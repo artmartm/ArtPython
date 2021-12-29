@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchUsersProfiles } from "../../redux/actions/asyncActions/asyncAllUsersProfiles";
 import AuthContext from "../general/base/AuthContext";
+import SetUpModerator from "./setUpModerators";
 
 function UserDetail({ match }) {
 
@@ -17,11 +18,11 @@ function UserDetail({ match }) {
     const profiles = useSelector(state => state.usersProfilesReducer.usersProfiles)
 
 
-    const [user, setUser] = useState({});
+    const [owner, setOwner] = useState({});
     const [pr, setPr] = useState([])
     const id = match.params.id;
 
-    let { authTokens, logoutUser } = useContext(AuthContext)
+    let { authTokens, logoutUser, user } = useContext(AuthContext)
 
     const content_type = '14';
     useEffect(() => {
@@ -33,17 +34,36 @@ function UserDetail({ match }) {
                 'Authorization': 'Bearer ' + String(authTokens.access)
             }
         }).then(response => {
-            setUser(response.data)
+            setOwner(response.data)
             setPr(response.data.profile)
         })
     }, [id])
+    useEffect(() => {
+        getProfiles()
+    }, [])
 
+
+    let getProfiles = async () => {
+        let response = await fetch('http://127.0.0.1:8000/api/users-profile/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        let data = await response.json()
+
+        if (response.status === 200) {
+            setPr(data)
+        }
+    }
+    const [lol, setLol] = useState(false)
     return (
         <div>
-            <h1>username: {user.username}</h1>
-            <h1>profile: </h1>
-            <h2>profile is {user.profile}</h2>
-            {profiles.map(e => (<p>{e.ban}!</p>))}
+            <h1>username: {owner.username}</h1>
+
+            {/*  {user.moderator ? <h2>moderator</h2> :
+                <SetUpModerator id={id} />} */}
+            <SetUpModerator id={id} />
         </div>
 
     )

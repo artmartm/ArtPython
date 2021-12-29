@@ -37,7 +37,9 @@ function UsersProfilesList() {
             <hr />
             {teams.map(e => (
                 <div>
-                    <Link to={{ pathname: `/profiles/${e.id}/`, fromDashboard: false }} key={e.id}>user is {e.user} with {e.id} id</Link>
+                    <h2>
+                        <Link className='link-dashboard' to={{ pathname: `/profiles/${e.id}/`, fromDashboard: false }}>user is {e.user}</Link>
+                    </h2>
                 </div>
             ))}
         </div>

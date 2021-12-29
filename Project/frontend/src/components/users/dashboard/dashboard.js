@@ -120,7 +120,6 @@ function Dashboard() {
                                             <div>
                                                 <h2><Link className='link-dashboard' to={'/users'}>see all users</Link></h2>
                                                 <h2><Link className='link-dashboard' to={'/profiles'}>see all profiles</Link></h2>
-                                                <h2><Link className='link-dashboard' to={'/moderators'}>set up moderators</Link></h2>
                                             </div>
                                             : <></>}
                                     </div>
