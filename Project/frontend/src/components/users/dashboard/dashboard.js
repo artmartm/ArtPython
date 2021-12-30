@@ -15,18 +15,8 @@ function Dashboard() {
 
     let history = useHistory();
     const teams = useSelector(state => state.teamsReducer.teams)
+    const profiles = useSelector(state => state.usersProfilesReducer.usersProfiles)
 
-    const [profiles, setProfiles] = useState([]);
-
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [token, setToken] = useState('');
-
-    const [my, setMy] = useState({});
-
-    useEffect(() => {
-        GetProfiles()
-    }, [])
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -35,25 +25,8 @@ function Dashboard() {
 
     const special = useSelector(state => state.usersSpecialFieldsReducer.usersSpecialFields)
 
-    let GetProfiles = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/users-profile/', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                //'Authorization':'Bearer ' + String(authTokens.access)
-            }
-        })
-        let data = await response.json()
-
-        if (response.status === 200) {
-            setProfiles(data)
-        }//else if(response.statusText === 'Unauthorized'){
-        //logoutUser()
-        //}
-    }
+ 
     const content_type = '14';
-
-    const my_id = user.user_id;
 
     const [showNews, setShowNews] = useState([{
         isOpen: false
@@ -63,10 +36,6 @@ function Dashboard() {
         isOpen: false
     }])
     const [show, setShow] = useState(true);
-
-    /////
-
-
 
     const part = []
 
@@ -127,7 +96,6 @@ function Dashboard() {
                                         {user.admin ?
                                             <div>
                                                 <h2><Link className='link-dashboard' to={'/users'}>see all users</Link></h2>
-                                                <h2><Link className='link-dashboard' to={'/profiles'}>see all profiles</Link></h2>
                                             </div>
                                             : <></>}
                                     </div>

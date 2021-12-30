@@ -12,8 +12,6 @@ function UserList() {
 
     let { authTokens, logoutUser } = useContext(AuthContext)
 
-    //////////////////
-
     useEffect(() => {
         getNotes()
     }, [])

@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-//import '../Model.css';
 import { Link } from 'react-router-dom';
 import AuthContext from '../general/base/AuthContext';
 import { useSelector } from 'react-redux';
@@ -8,11 +6,10 @@ import { useSelector } from 'react-redux';
 function UsersProfilesList({ ll }) {
 
     const [profiles, setProfiles] = useState([]);
-    const [users, setUsers] = useState([]);
     const teams = useSelector(state => state.teamsReducer.teams)
 
 
-    let { authTokens, logoutUser } = useContext(AuthContext)
+    let { authTokens } = useContext(AuthContext)
 
     useEffect(() => {
         getNotes()
@@ -34,26 +31,7 @@ function UsersProfilesList({ ll }) {
         }
     }
 
-    useEffect(() => {
-        getNotes2()
-    }, [])
 
-
-    let getNotes2 = async () => {
-        let response = await fetch('http://127.0.0.1:8000/auth/users/', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + String(authTokens.access)
-            }
-        })
-        let data = await response.json()
-
-        if (response.status === 200) {
-            setUsers(data)
-        } else if (response.statusText === 'Unauthorized')
-            logoutUser()
-    }
     const part = []
     {
         profiles.map(e => {
@@ -79,13 +57,6 @@ function UsersProfilesList({ ll }) {
                             ))}
                         </div>
                         : <h1>no team selected</h1>}
-                    {/*  {teams.map(e => (
-                <div>
-                    <h2>
-                        <Link className='link-dashboard' to={{ pathname: `/profiles/${e.id}/`, fromDashboard: false }}>user is {e.user}</Link>
-                    </h2>
-                </div>
-            ))} */}
                 </div> : <></>}
         </div>
     )

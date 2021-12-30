@@ -1,4 +1,4 @@
-import axios from "axios";
+/* import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -38,6 +38,7 @@ function UserProfileDetail({ match }) {
     const id = match.params.id;
 
 
+
     let getNotes = async () => {
         let response = await fetch(`http://127.0.0.1:8000/api/users-profile/${id}`, {
             method: 'GET',
@@ -52,24 +53,26 @@ function UserProfileDetail({ match }) {
             setProfile(data)
         }
     }
-    const part=[]
+    const part = []
 
-    {users.map(e=>{
-        if (e.id==profile.user)
-        part.push(e)
-    })}
+    {
+        users.map(e => {
+            if (e.id == profile.user)
+                part.push(e)
+        })
+    }
 
 
     return (
         <div>
             <div>
-                {teams.length > 0 && profile.favorite_team && users.length>0 ?
+                {teams.length > 0 && profile.favorite_team && users.length > 0 ?
                     <div>
                         <h1>
-                            {part.map(e=>
+                            {part.map(e =>
                             (<Link className='link-dashboard' to={{ pathname: `/users/${profile.user}/`, fromDashboard: false }}>
                                 {e.username}'s detail profile!
-                            </Link> ))}
+                            </Link>))}
                         </h1>
                         <h2>favorite_team is </h2>
                         <Link className={'link'} key={profile.favorite_team} to={`/teams/${profile.favorite_team}`}>
@@ -81,4 +84,4 @@ function UserProfileDetail({ match }) {
     )
 }
 
-export default UserProfileDetail;
+export default UserProfileDetail; */
