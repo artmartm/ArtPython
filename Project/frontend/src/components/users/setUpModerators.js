@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../general/base/AuthContext';
-
-
+import { Button } from "@mui/material";
 
 
 function SetUpModerator({ id }) {
@@ -38,7 +37,7 @@ function SetUpModerator({ id }) {
     const ff = [{ id: 1 }];
     return (
         <div>
-            <h1>set up moderators</h1>
+            <h2>set up moderators</h2>
             <div>
                 <div className="form-group">
                     <label >
@@ -54,7 +53,7 @@ function SetUpModerator({ id }) {
                     </label>
                 </div>
                 <div className='for-delete-update'>
-                    <button onClick={Add}>set up</button>
+                    <Button onClick={Add}>set up</Button>
                 </div>
             </div>
 

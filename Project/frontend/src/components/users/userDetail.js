@@ -6,6 +6,8 @@ import { fetchUsersProfiles } from "../../redux/actions/asyncActions/asyncAllUse
 import { FetchUsersSpecialFields } from "../../redux/actions/asyncActions/asyncAllUsersSpecialFields";
 import AuthContext from "../general/base/AuthContext";
 import SetUpModerator from "./setUpModerators";
+import UserProfileDetail from "./userProfileDetail";
+import UsersProfilesList from "./usersProfilesList";
 
 function UserDetail({ match }) {
 
@@ -17,7 +19,6 @@ function UserDetail({ match }) {
         dispatch(FetchUsersSpecialFields())
     }, [])
 
-    const profiles = useSelector(state => state.usersProfilesReducer.usersProfiles)
     const special = useSelector(state => state.usersSpecialFieldsReducer.usersSpecialFields)
 
     const [owner, setOwner] = useState({});
@@ -40,7 +41,9 @@ function UserDetail({ match }) {
             setPr(response.data.profile)
         })
     }, [id])
-    
+
+
+
     const part = []
 
     {
@@ -49,11 +52,22 @@ function UserDetail({ match }) {
                 part.push(e)
         })
     }
+
+    /* {
+        profiles.map(e => {
+            if (e.user == user.user_id)
+                part.push(e)
+        })
+    } */
+
     return (
         <div>
             <h1>username: {owner.username}</h1>
             {part.length > 0 ? <h1>moderator</h1> : <SetUpModerator id={id} />}
-        </div>
+{/*             <UserProfileDetail id={owner.id} />
+ */}        
+        <UsersProfilesList ll={owner.id}/>
+ </div>
 
     )
 }

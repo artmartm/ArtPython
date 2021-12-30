@@ -15,7 +15,7 @@ class UsersViewSet(viewsets.ModelViewSet):
 class UsersSpecialFieldsViewSet(viewsets.ModelViewSet):
     queryset = UserSpecialFields.objects.all()
     serializer_class = UserSpecialFieldsSerializer
-    permission_classes = [OnlyLookModeratorOrAdmin]
+    #permission_classes = [OnlyLookModeratorOrAdmin]
 
 
 class UsersListViewSet(viewsets.ModelViewSet):
