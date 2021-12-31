@@ -14,6 +14,14 @@ class TeamSerializers(serializers.ModelSerializer):
 
 
 class StadiumSerializers(serializers.ModelSerializer):
+    games = serializers.SerializerMethodField()
+    percentage = serializers.ReadOnlyField()
+
+    @staticmethod
+    def get_games(team):
+        games = len(Game.objects.filter(home_team=team.team))
+        return games
+
     class Meta:
         model = Stadium
         fields = '__all__'

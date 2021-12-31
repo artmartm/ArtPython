@@ -1,4 +1,4 @@
-/* import axios from "axios";
+import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -84,4 +84,4 @@ function UserProfileDetail({ match }) {
     )
 }
 
-export default UserProfileDetail; */
+export default UserProfileDetail;

@@ -86,6 +86,10 @@ class Stadium(StillActive, BaseModel, PLTSBaseModel):
     image = models.ImageField(blank=True, null=True)
     background = models.ImageField(blank=True, null=True)
 
+    @property
+    def percentage(self):
+        return round(int(self.avg_attendence)/int(self.max_capacity),2)*100
+
     def __str__(self):
         return self.name
 
@@ -223,7 +227,7 @@ class Game(models.Model):
                 opinion = 'luck'
             elif rand == self.away_team.id and away_team_game_points < home_team_game_points:
                 away_team_game_points += luck_number
-                opinion = True
+                opinion = 'luck'
         if home_team_game_points > away_team_game_points:
             if over_time:
                 self.winner_OT = self.home_team.name

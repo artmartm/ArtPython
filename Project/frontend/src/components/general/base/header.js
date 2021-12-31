@@ -13,12 +13,11 @@ const Header = () => {
                     <div id="container">
                         <nav>
                             <ul>
-{/*                                 <li><Link to='/teams'>teams</Link></li>
- */}                                <li><Link to='/players'>players</Link></li>
                                 <li><Link to='/'>home</Link></li>
-                                <li><Link to='/games-list'>list of games</Link></li>
                                 <li><Link to='/tournament'>tournament</Link></li>
-
+                                <li><Link to='/players'>players</Link></li>
+                                <li><Link to='/stadiums'>stadiums</Link></li>
+                                <li><Link to='/games-list'>list of games</Link></li>
                                 {authTokens ?
                                     <>
                                         <li><Link to='/dashboard'>dashboard</Link></li>

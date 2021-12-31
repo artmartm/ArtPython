@@ -57,6 +57,7 @@ import SignUp from "./components/users/signup/signUp";
 import AddNews from "./components/general/news/addNews";
 import SetUpModerator from "./components/users/setUpModerators";
 import { fetchUsersProfiles } from "./redux/actions/asyncActions/asyncAllUsersProfiles";
+import StadiumTable from "./components/teams/stadiums/table";
 
 function App() {
 
@@ -101,7 +102,7 @@ function App() {
                     <Route path='/successful-login' component={SuccessfulLogIn} />
                     <Route path='/update/:id' exact component={Update} />
                     <Route path='/players/:id' exact component={PlayerDetail} />
-                    <Route path='/stadiums' exact component={StadiumsList} />
+                    <Route path='/stadiums' exact component={StadiumTable} />
                     <Route path='/all-comments' exact component={AllCommentsList} />
                     <Route path='/stadiums/:id' exact component={StadiumDetail} />
                     <Route path='/add-news' exact component={AddNews} />
