@@ -53,7 +53,7 @@ function AddComment({ obj, ct }) {
             <div className="form-group" >
               <input
                 type="text"
-                className="form-control form-control-lg"
+                className="for-comment-input"
                 placeholder="leave a comment"
                 name="name"
                 value={name}

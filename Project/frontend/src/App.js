@@ -18,12 +18,13 @@ import TeamTable from "./components/teams/tournament/teamTable";
 
 // STADIUMS
 import StadiumDetail from "./components/teams/stadiums/stadiumDetail";
-import StadiumsList from "./components/teams/stadiums/stadiumsList";
+import StadiumTable from "./components/teams/stadiums/table";
 
 //NEWS AND COMMENTS
 import CommentDetail from "./components/general/comments/commentDetail";
 import NewsDetail from "./components/general/news/newsDetail";
 import AllCommentsList from "./components/general/comments/allComments";
+import AddNews from "./components/general/news/addNews";
 
 //GENERAL and BASE
 import { AuthProvider } from "./components/general/base/AuthContext";
@@ -31,7 +32,6 @@ import PrivateRoute from "./components/general/base/privaterouter";
 import Header from "./components/general/base/header";
 import LoginPage from "./components/users/login/logIn";
 import teamsList from "./components/teams/teams/teamsList";
-import { fetchTeams } from "./redux/actions/asyncActions/asyncAllTeams";
 
 //REDUX
 import { fetchPlayers } from "./redux/actions/asyncActions/asyncAllPlayers";
@@ -39,6 +39,9 @@ import { fetchLeagues } from "./redux/actions/asyncActions/asyncAllLeagues";
 import { fetchStadiums } from "./redux/actions/asyncActions/asyncAllStadiums";
 import { fetchNews } from "./redux/actions/asyncActions/asyncAllNews";
 import { fetchComments } from "./redux/actions/asyncActions/asyncAllComments";
+import { fetchTeams } from "./redux/actions/asyncActions/asyncAllTeams";
+import { FetchUsersProfiles } from "./redux/actions/asyncActions/asyncAllUsersProfiles";
+
 
 //LEAGUES
 import LeagueDetail from "./components/leagues/leagueDetail";
@@ -51,10 +54,7 @@ import UserProfileDetail from "./components/users/userProfileDetail";
 import Dashboard from "./components/users/dashboard/dashboard";
 import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin";
 import SignUp from "./components/users/signup/signUp";
-import AddNews from "./components/general/news/addNews";
 import SetUpModerator from "./components/users/setUpModerators";
-import { FetchUsersProfiles } from "./redux/actions/asyncActions/asyncAllUsersProfiles";
-import StadiumTable from "./components/teams/stadiums/table";
 
 function App() {
 
@@ -81,7 +81,6 @@ function App() {
                     <Route path='/' exact component={teamsList} />
                     <Route path='/tournament' exact component={TeamTable} />
                     <PrivateRoute path='/comments/:id' exact component={CommentDetail} />
-                    {/* <Route path='/teams' exact component={teamsList} /> */}
                     <Route path='/users' exact component={UserList} />
                     <Route path='/users/:id' exact component={UserDetail} />
                     <Route path='/profiles' exact component={UsersProfilesList} />

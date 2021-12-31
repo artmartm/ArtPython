@@ -36,7 +36,7 @@ function AddNews({ obj, ct }) {
       url: 'http://127.0.0.1:8000/api/news/',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization':'Bearer ' + String(authTokens.access)
+        'Authorization': 'Bearer ' + String(authTokens.access)
       },
       data: formField
     }).then(response => {
@@ -46,36 +46,38 @@ function AddNews({ obj, ct }) {
   }
 
   return (
-    <div>
-      <h1>add news here</h1>
-      {user.admin || user.moderator ?
-        <div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Enter name"
-              className='for-input'
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <br />
-            <textarea
-              className='text-area'
-              type="text"
-              placeholder="Enter body"
-              name="body"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-          </div>
-          <div className='for-delete-update'>
-            <Button onClick={Add}>add news</Button>
-          </div>
-        </div> : <></>}
+    <div className='single-news-container'>
+      <div className='inside-single-news-container'>
+        <h1>add news here</h1>
+        {user.admin || user.moderator ?
+          <div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Enter name"
+                className='for-input'
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <br />
+              <textarea
+                className='text-area'
+                type="text"
+                placeholder="Enter body"
+                name="body"
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              />
+            </div>
+            <div className='for-delete-update'>
+              <Button onClick={Add}>add news</Button>
+            </div>
+          </div> : <></>}
 
-    </div>
-  );
+      </div>
+      </div>
+      );
 };
 
-export default AddNews;
+      export default AddNews;
