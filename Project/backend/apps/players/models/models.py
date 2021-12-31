@@ -7,6 +7,7 @@ from apps.general.uploads import get_upload_to_players
 
 
 class Player(StillActive, BaseModel, PLTSBaseModel):
+    """This model show all info about the player"""
     name = models.CharField(max_length=50)
     second_name = models.CharField(max_length=50, default='')
     image = models.ImageField(blank=True, null=True, upload_to=get_upload_to_players)
@@ -24,6 +25,7 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
 
     @property
     def free_agent(self):
+        """Checks if the player is free agent"""
         result = date.today() >= PlayerMainInfo.objects.values_list('contract_till', flat=True).get(player=self.id)
         return result
 
@@ -33,6 +35,7 @@ class Player(StillActive, BaseModel, PLTSBaseModel):
 
 
 class PlayerMainInfo(models.Model):
+    """This model show all main info about the player"""
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     height = models.PositiveIntegerField()
     weight = models.PositiveIntegerField()
@@ -46,6 +49,7 @@ class PlayerMainInfo(models.Model):
 
     @property
     def legionary(self):
+        """Checks if the player is legionary"""
         player_country = Player.objects.values_list('country', flat=True).get(id=self.player.id)
         team_country = Team.objects.values_list('country', flat=True).get(
             id=Player.objects.values_list('team', flat=True).get(id=self.player.id))
@@ -58,6 +62,7 @@ class PlayerMainInfo(models.Model):
 
 
 class PlayerPersonalInfo(models.Model):
+    """This model show all personal info about the player"""
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     favorite_color = models.CharField(max_length=30)
     favorite_music = models.CharField(max_length=30)

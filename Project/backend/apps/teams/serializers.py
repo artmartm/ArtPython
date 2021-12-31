@@ -1,4 +1,4 @@
-from .models.models import Team, Stadium, Game, TeamStats
+from .models.models import Team, Stadium, Game
 from rest_framework import serializers
 from apps.players.models.models import Player
 from apps.players.serializers import PlayerSerializers
@@ -52,12 +52,6 @@ class GameSerializers(serializers.ModelSerializer):
         return data
 
 
-class TeamStatsSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = TeamStats
-        fields = '__all__'
-
-
 class TeamDetailSerializer(TeamSerializers):
     players = serializers.SerializerMethodField()
     news = serializers.SerializerMethodField()
@@ -99,11 +93,6 @@ class TeamDetailSerializer(TeamSerializers):
     def get_stadium(team):
         stadium = StadiumSerializers(Stadium.objects.filter(team=team), many=True).data
         return stadium
-
-    @staticmethod
-    def get_team_stats(team):
-        team_stats = TeamStatsSerializers(TeamStats.objects.filter(team=team), many=True).data
-        return team_stats
 
     @staticmethod
     def get_matches(team):

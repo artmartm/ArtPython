@@ -7,6 +7,7 @@ def get_upload_to_leagues(instance, name):
 
 
 class League(StillActive, BaseModel, PLTSBaseModel):
+    """This model shows all info about league"""
     name = models.CharField(max_length=30)
     league_logo = models.ImageField(blank=True, null=True, upload_to=get_upload_to_leagues)
     history = models.TextField()

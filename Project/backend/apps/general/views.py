@@ -3,6 +3,7 @@ from .models import Comments, News
 from .serializers import CommentsSerializers, NewsSerializers
 from apps.custom_permissions import OnlyLookOrRequestUser, OnlyLookOrAdminModerator
 
+
 class CommentsViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializers

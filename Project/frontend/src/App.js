@@ -23,11 +23,9 @@ import StadiumsList from "./components/teams/stadiums/stadiumsList";
 //NEWS AND COMMENTS
 import CommentDetail from "./components/general/comments/commentDetail";
 import NewsDetail from "./components/general/news/newsDetail";
-import Update from "./components/general/comments/update";
 import AllCommentsList from "./components/general/comments/allComments";
 
 //GENERAL and BASE
-import Home from "./components/general/home";
 import { AuthProvider } from "./components/general/base/AuthContext";
 import PrivateRoute from "./components/general/base/privaterouter";
 import Header from "./components/general/base/header";
@@ -43,7 +41,6 @@ import { fetchNews } from "./redux/actions/asyncActions/asyncAllNews";
 import { fetchComments } from "./redux/actions/asyncActions/asyncAllComments";
 
 //LEAGUES
-import LeaguesList from "./components/leagues/leaguesList";
 import LeagueDetail from "./components/leagues/leagueDetail";
 
 //USERS
@@ -97,10 +94,9 @@ function App() {
                     <Route path='/signup' exact component={SignUp} />
                     <Route path='/dashboard' exact component={Dashboard} />
                     <PrivateRoute path='/news/:id' exact component={NewsDetail} />
-                    <Route path='/leagues/:id' exact component={LeagueDetail} /> 
+                    <Route path='/leagues/:id' exact component={LeagueDetail} />
                     <Route path='/teams/:id' exact component={TeamDetail} />
                     <Route path='/successful-login' component={SuccessfulLogIn} />
-                    <Route path='/update/:id' exact component={Update} />
                     <Route path='/players/:id' exact component={PlayerDetail} />
                     <Route path='/stadiums' exact component={StadiumTable} />
                     <Route path='/all-comments' exact component={AllCommentsList} />

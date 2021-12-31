@@ -6,4 +6,5 @@ for i in Team.objects.all():
 
 
 def get_upload_to_players(instance, name):
+    """Set upload path for players"""
     return f'teams/{teams_names[int(instance.team.id) - 1]}/{instance.name}/{name}'

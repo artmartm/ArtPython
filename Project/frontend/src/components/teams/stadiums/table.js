@@ -47,7 +47,7 @@ const StadiumTable = () => {
         <div>
             {teams.length > 0 ?
                 <div className='mm_cl'>
-                    <h1>tournament table</h1>
+                    <h1>stadiums</h1>
                     <div className="ag-theme-alpine" style={{ width: 1500, height: 400 }}>
                         <AgGridReact
                             rowData={rowData}

@@ -7,15 +7,15 @@ const AllCommentsList = ({ obj, ct }) => {
     const particular_comments = [];
     {
         comments.length ?
-        comments.map(e => (
-            <div>
-                {e.object_id == obj && e.content_type == ct ?
-                    particular_comments.push(e)
-                    :
-                    <p></p>
-                }
-            </div>
-        )) : <p>no comments yet</p>
+            comments.map(e => (
+                <div>
+                    {e.object_id == obj && e.content_type == ct ?
+                        particular_comments.push(e)
+                        :
+                        <p></p>
+                    }
+                </div>
+            )) : <p>no comments yet</p>
     }
     return (
         <div>

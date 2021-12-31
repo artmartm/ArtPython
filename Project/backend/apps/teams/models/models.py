@@ -6,10 +6,14 @@ from random import randint
 
 
 def get_upload_to_teams(instance, name):
+    """Set up upload path for teams"""
+
     return f'teams/{instance.name}/{name}'
 
 
 class Team(StillActive, BaseModel, PLTSBaseModel):
+    """This model show all info about the team"""
+
     name = models.CharField(max_length=30)
     team_logo = models.ImageField(blank=True, null=True, upload_to=get_upload_to_teams)
     team_background = models.ImageField(blank=True, null=True, upload_to=get_upload_to_teams)
@@ -26,48 +30,68 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
 
     @property
     def games(self):
+        """Counts amount of games of the team"""
+
         return len(Game.objects.filter(home_team=self) | Game.objects.filter(away_team=self))
 
     @property
     def goals_scored(self):
+        """Counts amount of scored goals of the team"""
+
         goals = sum(Game.objects.values_list('home_team_goals', flat=True).filter(home_team=self)) \
                 + sum(Game.objects.values_list('away_team_goals', flat=True).filter(away_team=self))
         return goals
 
     @property
     def goals_missed(self):
+        """Counts amount of missed goals of the team"""
+
         goals = sum(Game.objects.values_list('home_team_goals', flat=True).filter(away_team=self)) \
                 + sum(Game.objects.values_list('away_team_goals', flat=True).filter(home_team=self))
         return goals
 
     @property
     def goals_difference(self):
+        """Counts goals difference of the team"""
+
         return self.goals_scored - self.goals_missed
 
     @property
     def wins(self):
+        """Counts amount of wins of the team"""
+
         wins = len(Game.objects.filter(winner=self))
         return wins
 
     @property
     def wins_ot(self):
+        """Counts amount of overtime wins of the team"""
+
         wins = len(Game.objects.filter(winner_OT=self))
         return wins
 
     @property
     def defeats(self):
+        """Counts amount of defeats of the team"""
+
         return len(Game.objects.filter(loser=self))
 
     @property
     def defeats_ot(self):
+        """Counts amount of overtime defeats of the team"""
+
         return len(Game.objects.filter(loser_OT=self))
 
     @property
     def points(self):
+        """Counts amount of points of the team"""
+
         return int(self.wins) * 2 + int(self.defeats_ot)
 
     @property
     def percentage_of_wins(self):
+        """Counts percentage of wins of the team"""
+
         if self.games > 0:
             return round(((int(self.wins) / int(self.games)) * 100), 2)
         return 'There is no games yet'
@@ -77,6 +101,8 @@ class Team(StillActive, BaseModel, PLTSBaseModel):
 
 
 class Stadium(StillActive, BaseModel, PLTSBaseModel):
+    """This model shows main info about the stadium"""
+
     name = models.CharField(max_length=50)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     max_capacity = models.PositiveIntegerField()
@@ -88,7 +114,9 @@ class Stadium(StillActive, BaseModel, PLTSBaseModel):
 
     @property
     def percentage(self):
-        return round(int(self.avg_attendence)/int(self.max_capacity),2)*100
+        """Counts percentage of attendance of the team"""
+
+        return round(int(self.avg_attendence) / int(self.max_capacity), 2) * 100
 
     def __str__(self):
         return self.name
@@ -97,9 +125,13 @@ class Stadium(StillActive, BaseModel, PLTSBaseModel):
         verbose_name = 'Stadium'
         verbose_name_plural = 'Stadiums'
 
+
 from apps.players.models.models import Player
 
+
 class Game(models.Model):
+    """This model shows all info about the game"""
+
     home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team')
     away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team')
     winner = models.CharField(max_length=50, null=True, blank=True)
@@ -114,6 +146,8 @@ class Game(models.Model):
 
     @property
     def random_params(self):
+        """Counts random params for the game"""
+
         randi = randint(1, Team.objects.count())
         randi_ot = randint(1, 3)
         randi_sc = randint(0, 8)
@@ -130,12 +164,15 @@ class Game(models.Model):
 
     @property
     def stadium(self):
+        """Set up the stadium for the game"""
+
         return Stadium.objects.values_list('id', flat=True).get(team=self.home_team)
 
     @property
     def win(self):
-        opinion = 'good game'
+        """Set up who wins the game"""
 
+        opinion = 'good game'
         home_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.home_team)
         away_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.away_team)
         home_team_game_points = (sum(home_team_players_score) / len(home_team_players_score)) // 10
@@ -171,6 +208,8 @@ class Game(models.Model):
         over_time = False
 
         def get_the_score(winner_team, loser_team):
+            """Set up the score of the game rely on game points"""
+
             one_goal_difference = [(1, 0), (2, 1), (3, 2), (4, 3), (5, 4), (6, 5), (7, 6), (8, 7), (9, 8)]
             two_goals_difference = [(2, 0), (3, 1), (4, 2), (5, 3), (6, 4), (7, 5), (8, 6), (9, 7)]
             three_goals_difference = [(3, 0), (4, 1), (5, 2), (6, 3), (7, 4), (8, 5), (9, 6)]
@@ -271,14 +310,3 @@ class Game(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class TeamStats(models.Model):
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    goals_scored = models.PositiveIntegerField()
-    goals_missed = models.PositiveIntegerField()
-    matches = models.PositiveIntegerField()
-    points = models.PositiveIntegerField()
-
-    def __str__(self):
-        return f"{self.team}' stats" if self.team.name[-1] == 's' else f"{self.team}'s stats"

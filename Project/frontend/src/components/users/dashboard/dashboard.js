@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../../general/base/AuthContext";
-import axios from "axios";
 import ParticularNewsList from "../../general/news/particularNewsList";
 import { useDispatch, useSelector } from "react-redux";
 import ParticularTeamGame from "../../teams/games/particularTeamGame";
@@ -11,9 +10,8 @@ import SetUpTeam from "../setUpteam";
 import { Button } from "@mui/material";
 
 function Dashboard() {
-    let { user, authTokens, logoutUser } = useContext(AuthContext)
+    let { user } = useContext(AuthContext)
 
-    let history = useHistory();
     const teams = useSelector(state => state.teamsReducer.teams)
     const profiles = useSelector(state => state.usersProfilesReducer.usersProfiles)
 
@@ -25,7 +23,7 @@ function Dashboard() {
 
     const special = useSelector(state => state.usersSpecialFieldsReducer.usersSpecialFields)
 
- 
+
     const content_type = '14';
 
     const [showNews, setShowNews] = useState([{

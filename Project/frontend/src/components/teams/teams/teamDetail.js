@@ -193,30 +193,3 @@ function TeamDetail({ match }) {
 }
 
 export default TeamDetail;
-
-
-
-{/* 
-
- <React.Fragment>
-                                    <button onClick={() => { setShowMatches({ isOpen: true }) }}>show all matches</button>
-                                    {showMatches.isOpen &&
-                                        <div>
-                                            {matches.length ? matches.map(e => (
-                                                <Link key={e.id} to={`/game/${e.id}`} >
-                                                    <div>
-                                                        {teams[e.home_team - 1].name} <img className={'game_img'} src={teams[e.home_team - 1].team_logo} />
-                                                        vs
-                                                        {teams[e.away_team - 1].name} <img className={'game_img'} src={teams[e.away_team - 1].team_logo} />
-                                                    </div>
-                                                </Link>
-                                            )) : <p>no matches</p>
-                                            }
-                                            <button onClick={() => { setShowMatches({ isOpen: false }) }}>close</button>
-                                        </div>
-                                    }
-                                </React.Fragment>
-
-
-
-*/}

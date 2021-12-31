@@ -75,6 +75,10 @@ function CommentDetail({ match }) {
 
         await axios({
             method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(authTokens.access)
+            },
             url: `http://127.0.0.1:8000/api/comments/${id_id}/`,
             data: formField
         }).then(response => {

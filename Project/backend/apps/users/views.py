@@ -3,7 +3,7 @@ from .serializers import UserProfileSerializer, UserSpecialFields
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from .serializers import UsersListSerializer, UserListDetailSerializer, UserSpecialFieldsSerializer
-from apps.custom_permissions import OnlyLookOrRequestUser, OnlyLookModeratorOrAdmin
+from apps.custom_permissions import OnlyLookOrRequestUser
 
 
 class UsersViewSet(viewsets.ModelViewSet):
@@ -15,7 +15,7 @@ class UsersViewSet(viewsets.ModelViewSet):
 class UsersSpecialFieldsViewSet(viewsets.ModelViewSet):
     queryset = UserSpecialFields.objects.all()
     serializer_class = UserSpecialFieldsSerializer
-    #permission_classes = [OnlyLookModeratorOrAdmin]
+    permission_classes = [OnlyLookOrRequestUser]
 
 
 class UsersListViewSet(viewsets.ModelViewSet):

@@ -1,14 +1,14 @@
 from rest_framework import viewsets
-from .models.models import Team, Stadium, Game, TeamStats
-from .serializers import TeamSerializers, StadiumSerializers, GameSerializers, TeamStatsSerializers, \
+from .models.models import Team, Stadium, Game
+from .serializers import StadiumSerializers, \
     TeamDetailSerializer, StadiumDetailSerializers, GameDetailSerializers
-from apps.custom_permissions import OnlyLookOrAdminModerator
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
     serializer_class = TeamDetailSerializer
-   # permission_classes = [OnlyLookOrAdminModerator]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     action_to_serializer = {
         "retrieve": TeamDetailSerializer
     }
