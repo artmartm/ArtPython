@@ -7,7 +7,7 @@ import './../../../css/players/player-team-tables.css';
 const StadiumTable = () => {
     const [rowData, setRowData] = useState([]);
     const teams = useSelector(state => state.teamsReducer.teams)
-
+    const stadiums = useSelector(state=>state.stadiumsReducer.stadiums)
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/stadiums/')
             .then(result => result.json())
@@ -21,11 +21,19 @@ const StadiumTable = () => {
 
     const columnDefs = [
         {
-            headerName: "name", field: "name",
-        },
+            headerName: "name", field: "id",cellRendererFramework: (params) => <div>
+            {params && stadiums.length>0 ?
+                <Link key={params}
+                    to={`/stadiums/${stadiums[params.value-1].id}`}
+                    className='link-dashboard'>
+                    {stadiums[params.value-1].name}
+                </Link>
+                : <></>}
+        </div>,cellClass: () => ("main-column") 
+    },
         {
-            headerName: "logo", field: "id", cellRendererFramework: (params) => <div>
-                {params ?
+            headerName: "team logo", field: "team", cellRendererFramework: (params) => <div>
+            {params && stadiums.length>0 ?
                     <Link key={params}
                         to={`/teams/${params.value}`}>
                         <img src={teams[params.value - 1].team_logo}
