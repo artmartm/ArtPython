@@ -31,7 +31,7 @@ function UserProfileDetail({ match }) {
         } else if (response.statusText === 'Unauthorized')
             logoutUser()
     }
-    ///
+
     useEffect(() => {
         getNotes()
     }, [])

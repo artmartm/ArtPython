@@ -53,7 +53,7 @@ import SuccessfulLogIn from "./components/users/successfulPages/successfulLogin"
 import SignUp from "./components/users/signup/signUp";
 import AddNews from "./components/general/news/addNews";
 import SetUpModerator from "./components/users/setUpModerators";
-import { fetchUsersProfiles } from "./redux/actions/asyncActions/asyncAllUsersProfiles";
+import { FetchUsersProfiles } from "./redux/actions/asyncActions/asyncAllUsersProfiles";
 import StadiumTable from "./components/teams/stadiums/table";
 
 function App() {
@@ -67,7 +67,7 @@ function App() {
         dispatch(fetchStadiums())
         dispatch(fetchNews())
         dispatch(fetchComments())
-        dispatch(fetchUsersProfiles())
+        dispatch(FetchUsersProfiles())
     }, [])
 
 

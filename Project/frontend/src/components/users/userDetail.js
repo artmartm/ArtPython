@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchUsersProfiles } from "../../redux/actions/asyncActions/asyncAllUsersProfiles";
+import { FetchUsersProfiles } from "../../redux/actions/asyncActions/asyncAllUsersProfiles";
 import { FetchUsersSpecialFields } from "../../redux/actions/asyncActions/asyncAllUsersSpecialFields";
 import AuthContext from "../general/base/AuthContext";
 import SetUpModerator from "./setUpModerators";
@@ -15,7 +15,7 @@ function UserDetail({ match }) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchUsersProfiles())
+        dispatch(FetchUsersProfiles())
         dispatch(FetchUsersSpecialFields())
     }, [])
 
@@ -53,19 +53,12 @@ function UserDetail({ match }) {
         })
     }
 
-    /* {
-        profiles.map(e => {
-            if (e.user == user.user_id)
-                part.push(e)
-        })
-    } */
 
     return (
         <div>
             <h1>username: {owner.username}</h1>
             {part.length > 0 ? <h1>moderator</h1> : <SetUpModerator id={id} />}
-{/*             <UserProfileDetail id={owner.id} />
- */}        
+
         <UsersProfilesList ll={owner.id}/>
  </div>
 

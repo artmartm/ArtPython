@@ -35,7 +35,7 @@ function UserList() {
 
     return (
         <div>
-            <h1>Users page</h1>
+            <h1>Users list</h1>
             <hr style={{ width:700 }}/>
             {teams.map(item => (
                 <div>

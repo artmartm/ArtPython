@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 
 function SetUpModerator({ id }) {
 
-    let { authTokens, logout } = useContext(AuthContext)
+    let { authTokens } = useContext(AuthContext)
 
     let history = useHistory();
     const [is_moderator, setIs_moderator] = useState('')
@@ -19,7 +19,6 @@ function SetUpModerator({ id }) {
         formField.append('is_moderator', is_moderator)
         formField.append('user', user)
 
-        //formField.append('created_at',created_at)
 
         await axios({
             method: 'post',

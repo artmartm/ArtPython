@@ -57,7 +57,6 @@ class TeamDetailSerializer(TeamSerializers):
     news = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
     stadium = serializers.SerializerMethodField()
-    team_stats = serializers.SerializerMethodField()
     matches = serializers.SerializerMethodField()
     # read only
     goals_difference = serializers.ReadOnlyField()
