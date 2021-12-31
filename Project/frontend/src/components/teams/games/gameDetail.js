@@ -12,7 +12,7 @@ function GameDetail({ match }) {
 
 
 
-    const dispatch = useDispatch();
+    const stadiums = useSelector(state => state.stadiumsReducer.stadiums)
 
     const [showComments, setShowComments] = useState({ isOpen: false })
     const [game, setGame] = useState({});
@@ -36,7 +36,7 @@ function GameDetail({ match }) {
 
     return (
         <div>
-            {game.home_team && game.away_team
+            {game.home_team && game.away_team && teams.length > 0 && stadiums.length > 0
                 ?
                 <div>
                     <div>
@@ -60,7 +60,15 @@ function GameDetail({ match }) {
                         <hr style={{ width: 700 }} />
                     </div>
                     <h1>winner is {game.winner}</h1>
-                    <h2>game has been on <Link>{game.stadium}</Link></h2>
+                    <h2>
+                        <Link className='link-dashboard'
+                            to={{ pathname: `/stadiums/${stadiums[game.stadium - 1].id}/`, fromDashboard: false }}>
+                            stadium {stadiums[game.stadium - 1].name}
+                        </Link>
+                    </h2>
+                    {game.win[2] == 'good game' ?
+                        <h2>{game.winner} were better today</h2>
+                        : <p>it was a good game but {game.winner} were a little bit better</p>}
                 </div>
                 : <p>no game</p>
             }

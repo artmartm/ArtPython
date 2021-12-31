@@ -126,11 +126,11 @@ class Game(models.Model):
 
     @property
     def stadium(self):
-        return Stadium.objects.values_list('name', flat=True).get(team=self.home_team)
+        return Stadium.objects.values_list('id', flat=True).get(team=self.home_team)
 
     @property
     def win(self):
-        opinion = 'better team won'
+        opinion = 'good game'
 
         home_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.home_team)
         away_team_players_score = Player.objects.values_list('score', flat=True).filter(team=self.away_team)
@@ -220,10 +220,10 @@ class Game(models.Model):
         else:
             if rand == self.home_team.id and home_team_game_points < away_team_game_points:
                 home_team_game_points += luck_number
-                opinion = 'it was luck'
+                opinion = 'luck'
             elif rand == self.away_team.id and away_team_game_points < home_team_game_points:
                 away_team_game_points += luck_number
-                opinion = 'it was luck'
+                opinion = True
         if home_team_game_points > away_team_game_points:
             if over_time:
                 self.winner_OT = self.home_team.name
@@ -243,7 +243,7 @@ class Game(models.Model):
                 self.home_team_goals = home_team_game_points % 10
                 self.away_team_goals = away_team_game_points % 10
                 self.save()
-            return home_team_game_points, away_team_game_points, rand
+            return home_team_game_points, away_team_game_points, opinion, over_time
         else:
             if over_time:
                 self.winner_OT = self.away_team.name
@@ -263,7 +263,7 @@ class Game(models.Model):
                 self.home_team_goals = home_team_game_points % 10
                 self.away_team_goals = away_team_game_points % 10
                 self.save()
-            return home_team_game_points, away_team_game_points, rand, opinion
+            return home_team_game_points, away_team_game_points, rand, opinion, over_time
 
     def __str__(self):
         return self.name
