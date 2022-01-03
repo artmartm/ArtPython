@@ -58,13 +58,22 @@ function ParticularNewsList({ obj, ct, show }) {
                                         <div>
                                             {user.admin || user.moderator ?
                                                 <Button ><Link className='link' to={{ pathname: `/add-news/`, fromDashboard: false }}
-                                                    >add news</Link></Button>
+                                                >add news</Link></Button>
                                                 : <></>}
                                         </div> : <></>
                                     }
                                 </div>
                             )) :
-                            <p>no news</p>
+                            <div>
+                                {authTokens ?
+                                    <div>
+                                        {user.admin || user.moderator ?
+                                            <Button ><Link className='link' to={{ pathname: `/add-news/`, fromDashboard: false }}
+                                            >add first news</Link></Button>
+                                            : <p>no news</p>}
+                                    </div> : <p>no news yet</p>
+                                }
+                            </div>
                     }
                 </div>
                 :

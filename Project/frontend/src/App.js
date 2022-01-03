@@ -81,17 +81,17 @@ function App() {
                     <Route path='/' exact component={teamsList} />
                     <Route path='/tournament' exact component={TeamTable} />
                     <PrivateRoute path='/comments/:id' exact component={CommentDetail} />
-                    <Route path='/users' exact component={UserList} />
-                    <Route path='/users/:id' exact component={UserDetail} />
-                    <Route path='/profiles' exact component={UsersProfilesList} />
-                    <Route path='/profiles/:id' exact component={UserProfileDetail} />
+                    <PrivateRoute path='/users' exact component={UserList} />
+                    <PrivateRoute path='/users/:id' exact component={UserDetail} />
+                    <PrivateRoute path='/profiles' exact component={UsersProfilesList} />
+                    <PrivateRoute path='/profiles/:id' exact component={UserProfileDetail} />
                     <Route path='/players' exact component={PlayersTable} />
-                    <Route path='/add-game' exact component={AddGame} />
+                    <PrivateRoute path='/add-game' exact component={AddGame} />
                     <Route path='/games-list' exact component={Games} />
                     <Route path='/game/:id' exact component={GameDetail} />
                     <Route path='/login' exact component={LoginPage} />
                     <Route path='/signup' exact component={SignUp} />
-                    <Route path='/dashboard' exact component={Dashboard} />
+                    <PrivateRoute path='/dashboard' exact component={Dashboard} />
                     <PrivateRoute path='/news/:id' exact component={NewsDetail} />
                     <Route path='/leagues/:id' exact component={LeagueDetail} />
                     <Route path='/teams/:id' exact component={TeamDetail} />
@@ -100,8 +100,8 @@ function App() {
                     <Route path='/stadiums' exact component={StadiumTable} />
                     <Route path='/all-comments' exact component={AllCommentsList} />
                     <Route path='/stadiums/:id' exact component={StadiumDetail} />
-                    <Route path='/add-news' exact component={AddNews} />
-                    <Route path='/moderators' exact component={SetUpModerator} />
+                    <PrivateRoute path='/add-news' exact component={AddNews} />
+                    <PrivateRoute path='/moderators' exact component={SetUpModerator} />
                     {/*</Switch>*/}
                 </AuthProvider>
             </div>

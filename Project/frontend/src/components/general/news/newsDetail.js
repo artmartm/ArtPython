@@ -95,7 +95,7 @@ function NewsDetail({ match }) {
                         <h4>body: {news.body}</h4>
                     </div>
                     <hr style={{ width: '90vh' }} />
-                    {user.user_id == news.author || user.admin ?
+                    {user.user_id == news.author || user.admin || user.moderator ?
                         <div>
                             <div className="form-group">
                                 <input
