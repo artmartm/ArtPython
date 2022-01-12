@@ -12,13 +12,16 @@ import AllCommentsList from "../../general/comments/allComments";
 import AuthContext from "../../general/base/AuthContext";
 import CommentComponent from "../../general/comments/commentComponent";
 import ParticularTeamGame from "../games/particularTeamGame";
+import AddNews from "../../general/news/addNews";
 
 //import AuthContext from "../../general/base/AuthContext";
 
 function TeamDetail({ match }) {
 
     let { authTokens, logoutUser, user } = useContext(AuthContext)
-
+    const [addNewsWindow, setAddNewsWindow] = useState([{
+        isOpen: false
+    }])
     const id = match.params.id;
     const content_type = '14';
     //  let {authTokens, logoutUser} = useContext(AuthContext)
@@ -178,18 +181,35 @@ function TeamDetail({ match }) {
                             <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
                             {showComments.isOpen &&
                                 <div>
-                                    <CommentsList key={id} obj={id} ct={content_type} /> {/* through redux AllCommentsList */}
+                                    <CommentsList key={id} obj={id} ct={content_type} />
                                     <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
                                 </div>
                             }
                         </React.Fragment>
-                        <CommentComponent key={id} obj={id} ct={content_type} /> {/* through redux AllCommentsList */}
+                        <CommentComponent key={id} obj={id} ct={content_type} />
+                        {authTokens ?
+                            <div>
+                                {user.admin || user.moderator ?
+                                    <div>
+                                        <React.Fragment>
+                                            <Button onClick={() => { setAddNewsWindow({ isOpen: true }) }}>add news window</Button>
+                                            {addNewsWindow.isOpen &&
+                                                <div>
+                                                    <AddNews key={id} obj={id} show={showLatestNews} ct={content_type} />
+                                                    <Button onClick={() => { setAddNewsWindow({ isOpen: false }) }}>close</Button>
+                                                </div>
+                                            }
+                                        </React.Fragment>
+                                    </div> : <></>}
+                            </div>
+                            : <></>}
                         <br />
                     </div>
-                </div> : <></>}
+                </div>
+                : <></>}
         </div>
-
     )
 }
 
 export default TeamDetail;
+

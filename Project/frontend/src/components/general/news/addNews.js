@@ -46,9 +46,8 @@ function AddNews({ obj, ct }) {
   }
 
   return (
-    <div className='single-news-container'>
-      <div className='inside-single-news-container'>
-        <h1>add news here</h1>
+    <div>
+      <div>
         {user.admin || user.moderator ?
           <div>
             <div className="form-group">

@@ -9,7 +9,7 @@ from apps.custom_permissions import OnlyLookOrRequestUser
 class UsersViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-    #permission_classes = [OnlyLookOrRequestUser]
+    permission_classes = [OnlyLookOrRequestUser]
 
 
 class UsersSpecialFieldsViewSet(viewsets.ModelViewSet):
