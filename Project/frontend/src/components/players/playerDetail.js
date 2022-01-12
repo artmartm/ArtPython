@@ -39,14 +39,12 @@ function PlayerDetail({ match }) {
     }, [])
 
     const teams = useSelector(state => state.teamsReducer.teams)
-
-
     return (
         <div>
             {player.team > 0 && teams.length > 0 ?
                 <div style={{ backgroundImage: `url(${teams[player.team].team_background}})` }}
                     className='player-main-div'>
-                    <div className='player_main' style={{ backgroundImage: `url(${player.background})` }}>
+                    <div className='player_main'  style={{ backgroundImage: `url(${player.background})` }}>
                         <div className='player-main-div'>
                             <div>
                                 <img src={player.image} className='small_img' />
