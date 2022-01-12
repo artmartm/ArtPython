@@ -29,9 +29,9 @@ const LoginPage = () => {
 					</div>
 				</div>
 			</form>
-			<p>Don't have an account? <Link to={`/signup`}>Sign Up</Link> </p>
+			<p>Don't have an account? <Link className='link-dashboard' to={`/signup`}>Sign Up</Link> </p>
 
-			<p>Forgot your password? <Link to={`#`}>Reset password</Link> </p>
+			<p>Forgot your password? <Link className='link-dashboard'  to={`#`}>Reset password</Link> </p>
 
 		</div>
 	)

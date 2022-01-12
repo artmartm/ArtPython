@@ -41,20 +41,20 @@ function GameDetail({ match }) {
                 <div>
                     <div>
                         <div className='main-container'>
-                            <div className='team-container'>
+                            <div className='team-container-one'>
                                 <Link to={{ pathname: `/teams/${game.home_team}/`, fromDashboard: false }}>
                                     <img src={teams[game.home_team - 1].team_logo}
                                         className='game-image-container' />
                                 </Link>
-                                <p className='position'>{teams[game.home_team - 1].second_name}</p>
+                                <p className='position-one'>{teams[game.home_team - 1].second_name}</p>
                             </div>
-                            <p className='position'>{game.home_team_goals} : {game.away_team_goals}</p>
-                            <div className='team-container'>
+                            <p className='position-one'>{game.home_team_goals} : {game.away_team_goals}</p>
+                            <div className='team-container-one'>
                                 <Link to={{ pathname: `/teams/${game.away_team}/`, fromDashboard: false }}>
-                                    <img className='position' src={teams[game.away_team - 1].team_logo}
+                                    <img className='position-one' src={teams[game.away_team - 1].team_logo}
                                         className='game-image-container' />
                                 </Link>
-                                <p className='position'>{teams[game.away_team - 1].second_name}</p>
+                                <p className='position-one'>{teams[game.away_team - 1].second_name}</p>
                             </div>
                         </div>
                         <hr style={{ width: 700 }} />
