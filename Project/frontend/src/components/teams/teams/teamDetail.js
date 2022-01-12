@@ -212,4 +212,3 @@ function TeamDetail({ match }) {
 }
 
 export default TeamDetail;
-

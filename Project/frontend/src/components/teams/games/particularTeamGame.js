@@ -49,7 +49,9 @@ function ParticularTeamGame({ team, show }) {
                                                 <img className='position' src={teams[e.home_team - 1].team_logo} className='img-container' />
                                                 <p className='position'>{teams[e.home_team - 1].name}</p>
                                             </div>
+                                            <div className='team-container-2'>
                                             <p className='position'>{e.home_team_goals} : {e.away_team_goals}</p>
+                                            </div>
                                             <div className='team-container'>
                                                 <img className='position' src={teams[e.away_team - 1].team_logo} className='img-container' />
                                                 <p className='position'>{teams[e.away_team - 1].name}</p>

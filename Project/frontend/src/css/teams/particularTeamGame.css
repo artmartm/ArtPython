@@ -31,9 +31,17 @@
     padding-top:20px;
 }
 .team-container {
-    margin: 0;
-}
+    margin: 10px;
+    padding: 0;
+    width: 180px;
 
+}
+.team-container-2 {
+    margin: 10px;
+    padding: 0;
+    width: 70px;
+
+}
 .special-game-container{
     width: 500px;
     height: 5px;
@@ -42,6 +50,7 @@
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
+    position: center;
     opacity: 0.5;
     transition: 0.5s;
 }
