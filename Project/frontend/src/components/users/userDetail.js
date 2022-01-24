@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FetchUsersProfiles } from "../../redux/actions/asyncActions/asyncAllUsersProfiles";
 import { FetchUsersSpecialFields } from "../../redux/actions/asyncActions/asyncAllUsersSpecialFields";
 import AuthContext from "../general/base/AuthContext";
+import DeleteModerator from "./deleteModerator";
 import SetUpModerator from "./setUpModerators";
 import UserProfileDetail from "./userProfileDetail";
 import UsersProfilesList from "./usersProfilesList";
@@ -57,10 +58,15 @@ function UserDetail({ match }) {
     return (
         <div>
             <h1>username: {owner.username}</h1>
-            {part.length > 0 ? <h1>moderator</h1> : <SetUpModerator id={id} />}
-
-        <UsersProfilesList ll={owner.id}/>
- </div>
+            {part.length > 0 ?
+                <div>
+                    <h1>moderator</h1>
+                    <DeleteModerator id={part[0].id} />
+                </div>
+                :
+                <SetUpModerator id={id} />}
+            <UsersProfilesList ll={owner.id} />
+        </div>
 
     )
 }

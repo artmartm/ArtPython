@@ -15,9 +15,7 @@ import Loader from "../general/loader";
 
 function PlayerDetail({ match }) {
 
-    const [showComments, setShowComments] = useState([{
-        isOpen: false
-    }])
+
 
 
     const [player, setPlayer] = useState({});
@@ -45,7 +43,7 @@ function PlayerDetail({ match }) {
             {player.team > 0 && teams.length > 0 ?
                 <div style={{ backgroundImage: `url(${teams[player.team].team_background}})` }}
                     className='player-main-div'>
-                    <div className='player_main'  style={{ backgroundImage: `url(${player.background})` }}>
+                    <div className='player_main' style={{ backgroundImage: `url(${player.background})` }}>
                         <div className='player-main-div'>
                             <div>
                                 <img src={player.image} className='small_img' />
@@ -95,20 +93,12 @@ function PlayerDetail({ match }) {
                             </div>
                             <br />
                             <hr />
-                            <React.Fragment>
-                                <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
-                                {showComments.isOpen &&
-                                    <div>
-                                        <CommentsList key={id} obj={id} ct={content_type} />
-                                        <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
-                                    </div>
-                                }
-                            </React.Fragment>
+                            <CommentsList key={id} obj={id} ct={content_type} />
                             <CommentComponent obj={id} ct={content_type} />
                             <br />
                         </div>
                     </div>
-                </div> : <Loader/>}
+                </div> : <Loader />}
 
         </div>
     )

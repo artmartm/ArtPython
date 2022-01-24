@@ -2,11 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './../../../css/general/commentsList.css'
+import { Button } from "@mui/material";
 
 function CommentsList({ obj, ct }) {
     //let {user,authTokens, logoutUser} = useContext(AuthContext)
     const [comments, setComments] = useState([]);
     const particular_comments = [];
+
+    const [showComments, setShowComments] = useState({ isOpen: false });
 
     useEffect(() => {
         axios({
@@ -33,19 +36,29 @@ function CommentsList({ obj, ct }) {
 
     return (
         <div>
-            <h2>list of comments</h2>
-            <hr style={{ width: 300 }} />
-            {particular_comments.length ?
-                particular_comments.map(e => (
+            <React.Fragment>
+                <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
+                {showComments.isOpen &&
                     <div>
-                        <Link className='link' key={e.id} to={{ pathname: `/comments/${e.id}/`, fromDashboard: false }}>
-                            <p className='for_p'>{e.name}</p>
-                        </Link>
-                    </div>
-                )) :
-                <p>no comments</p>}
+                        <h2>list of comments</h2>
+                        <hr style={{ width: 300 }} />
+                        {particular_comments.length ?
+                            particular_comments.map(e => (
+                                <div>
+                                    <Link className='link' key={e.id} to={{ pathname: `/comments/${e.id}/`, fromDashboard: false }}>
+                                        <p className='for_p'>{e.name}</p>
+                                    </Link>
+                                </div>
+                            )) :
+                            <p>no comments</p>}
+                        <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
+
+                    </div>}
+            </React.Fragment>
         </div>
     )
 }
 
 export default CommentsList;
+
+

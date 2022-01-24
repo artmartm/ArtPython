@@ -87,3 +87,4 @@ function ParticularNewsList({ obj, ct, show }) {
 }
 
 export default ParticularNewsList;
+

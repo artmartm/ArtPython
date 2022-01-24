@@ -8,6 +8,8 @@ import './../../../css/users/login/dashboard.css';
 import { FetchUsersSpecialFields } from "../../../redux/actions/asyncActions/asyncAllUsersSpecialFields";
 import SetUpTeam from "../setUpteam";
 import { Button } from "@mui/material";
+import Loader from "../../general/loader";
+import ChangeTeam from "../changeTeam";
 
 function Dashboard() {
     let { user } = useContext(AuthContext)
@@ -91,6 +93,7 @@ function Dashboard() {
                                         <Link className={'link'} key={part[0].favorite_team - 1} to={`/teams/${part[0].favorite_team}`}>
                                             <img src={teams[part[0].favorite_team - 1].team_logo} className='stadium_main_img' />
                                         </Link>
+                                        {/*<ChangeTeam obj={user.user_id} f_t={part[0].favorite_team} id={part[0].id}/>*/}
                                         {user.admin ?
                                             <div>
                                                 <h2><Link className='link-dashboard' to={'/users'}>see all users</Link></h2>
@@ -99,7 +102,7 @@ function Dashboard() {
                                     </div>
                                 </div>
                             </div>
-                            : <></>
+                            : <Loader />
                         }
                     </div> : <SetUpTeam obj={user.user_id} />}
             </div>

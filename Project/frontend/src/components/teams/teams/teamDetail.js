@@ -6,9 +6,8 @@ import ParticularNewsList from "../../general/news/particularNewsList";
 import './../../../css/teams/teamDetail.css'
 import { Button } from "@mui/material";
 
-//coments
+//comments
 import CommentsList from "../../general/comments/commentsList";
-import AllCommentsList from "../../general/comments/allComments";
 import AuthContext from "../../general/base/AuthContext";
 import CommentComponent from "../../general/comments/commentComponent";
 import ParticularTeamGame from "../games/particularTeamGame";
@@ -33,9 +32,7 @@ function TeamDetail({ match }) {
     const [stadium, setStadium] = useState([]);
     const [matches, setMatches] = useState([]);
     //show close
-    const [showComments, setShowComments] = useState([{
-        isOpen: false
-    }])
+
     const [showNews, setShowNews] = useState([{
         isOpen: false
     }])
@@ -177,15 +174,7 @@ function TeamDetail({ match }) {
                             </div>
                         </div>
                         <hr />
-                        <React.Fragment>
-                            <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
-                            {showComments.isOpen &&
-                                <div>
-                                    <CommentsList key={id} obj={id} ct={content_type} />
-                                    <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
-                                </div>
-                            }
-                        </React.Fragment>
+                        <CommentsList key={id} obj={id} ct={content_type} />
                         <CommentComponent key={id} obj={id} ct={content_type} />
                         {authTokens ?
                             <div>

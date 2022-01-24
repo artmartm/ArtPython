@@ -3,6 +3,7 @@ import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './../../../css/players/player-team-tables.css';
+import Loader from '../../general/loader';
 
 const TeamTable = () => {
     const [rowData, setRowData] = useState([]);
@@ -56,6 +57,7 @@ const TeamTable = () => {
     return (
         <div className='mm_cl'>
             <h1>tournament table</h1>
+            {teams.length>0 ?
             <div className="ag-theme-alpine" style={{ width: 1500, height: 400 }}>
                 <AgGridReact
                     rowData={rowData}
@@ -67,6 +69,7 @@ const TeamTable = () => {
                     paginationAutoPageSize={true}>
                 </AgGridReact>
             </div >
+            :<Loader/>}
         </div>
     );
 };

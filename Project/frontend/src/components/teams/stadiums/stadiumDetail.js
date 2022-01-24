@@ -6,11 +6,10 @@ import CommentsList from "../../general/comments/commentsList";
 import './../../../css/teams/stadium.css';
 import CommentComponent from "../../general/comments/commentComponent";
 import { Button } from "@mui/material";
+import Loader from "../../general/loader";
 
 function StadiumDetail({ match }) {
-    const [showComments, setShowComments] = useState([{
-        isOpen: false
-    }])
+
     const [mainImage, setMainImage] = useState([{
         isOpen: false
     }])
@@ -83,21 +82,14 @@ function StadiumDetail({ match }) {
                                     key={stadium.team}
                                     to={`/teams/${stadium.team}`}>
                                 </Link>
-                                <React.Fragment>
-                                    <Button style={{marginTop:20}} onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
-                                    {showComments.isOpen &&
-                                        <div>
-                                            <CommentsList key={id} obj={id} ct={content_type} />
-                                            <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
-                                        </div>
-                                    }
-                                </React.Fragment>
+                                <br />
+                                <CommentsList key={id} obj={id} ct={content_type} />
                                 <CommentComponent obj={id} ct={content_type} />
                                 <br />
                             </div>
                         </div>
                     </div>
-                    : <></>}
+                    : <Loader />}
             </div>
         </div>
     )

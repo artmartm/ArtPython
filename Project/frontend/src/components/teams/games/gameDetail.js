@@ -15,7 +15,6 @@ function GameDetail({ match }) {
 
     const stadiums = useSelector(state => state.stadiumsReducer.stadiums)
 
-    const [showComments, setShowComments] = useState({ isOpen: false })
     const [game, setGame] = useState({});
     const id = match.params.id;
     const content_type = '17';
@@ -71,18 +70,10 @@ function GameDetail({ match }) {
                         <h2>{game.winner} were better today</h2>
                         : <p>it was a good game but {game.winner} were a little bit better</p>}
                 </div>
-                : <Loader/>
+                : <Loader />
             }
-            <br/>
-            <React.Fragment>
-                <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
-                {showComments.isOpen &&
-                    <div>
-                        <CommentsList key={id} obj={id} ct={content_type} />
-                        <Button onClick={() => { setShowComments({ isOpen: false }) }}>close</Button>
-                    </div>
-                }
-            </React.Fragment>
+            <br />
+            <CommentsList key={id} obj={id} ct={content_type} />
             <CommentComponent obj={id} ct={content_type} />
         </div>
     )

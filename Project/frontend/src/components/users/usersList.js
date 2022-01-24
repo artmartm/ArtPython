@@ -4,10 +4,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import AuthContext from '../general/base/AuthContext';
 import { useSelector } from 'react-redux';
+import Loader from '../general/loader';
 
 function UserList() {
 
-    const [teams, setTeams] = useState([]);
+    const [users, setUsers] = useState([]);
 
 
     let { authTokens, logoutUser } = useContext(AuthContext)
@@ -28,7 +29,7 @@ function UserList() {
         let data = await response.json()
 
         if (response.status === 200) {
-            setTeams(data)
+            setUsers(data)
         } else if (response.statusText === 'Unauthorized')
             logoutUser()
     }
@@ -36,14 +37,17 @@ function UserList() {
     return (
         <div>
             <h1>Users list</h1>
-            <hr style={{ width:700 }}/>
-            {teams.map(item => (
+            <hr style={{ width: 700 }} />
+            {users.length > 0 ?
                 <div>
-                    <h2 key={item.id}>
-                        <Link className='link-dashboard' to={{ pathname: `/users/${item.id}/`, fromDashboard: false }}>{item.username}</Link>
-                    </h2>
-                </div>
-            ))}
+                    {users.map(item => (
+                        <div>
+                            <h2 key={item.id}>
+                                <Link className='link-dashboard' to={{ pathname: `/users/${item.id}/`, fromDashboard: false }}>{item.username}</Link>
+                            </h2>
+                        </div>
+                    ))}
+                </div> : <Loader />}
         </div>)
 }
 

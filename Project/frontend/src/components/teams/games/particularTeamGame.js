@@ -17,6 +17,9 @@ function ParticularTeamGame({ team, show }) {
     const particularGames = [];
     const oneGame = []
 
+    //const [showMatches,setShowMatches]=useState({ isOpen: false });
+   // const[show,setShow]=useState({isOpen:false});
+
     useEffect(() => {
         axios({
             method: "GET",
@@ -93,3 +96,4 @@ function ParticularTeamGame({ team, show }) {
 }
 
 export default ParticularTeamGame;
+
