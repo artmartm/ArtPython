@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import AddGame from './addGame';
 import AuthContext from '../../general/base/AuthContext';
 import './../../../css/teams/gamesList.css'
+import Loader from '../../general/loader';
 
 function Games() {
 
@@ -58,7 +59,7 @@ function Games() {
                         :
                         <p>to add a game you need to be <Link to={'/login'}>logged-in</Link></p>}
                 </div>
-                : <></>}
+                : <Loader/>}
         </div>)
 }
 

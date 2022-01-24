@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './../../../css/teams/teamList.css'
+import Loader from '../../general/loader';
 const TeamsList = () => {
 
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const TeamsList = () => {
                         </div>
                     )}
                 </div>
-                : <p>no teams</p>
+                : <Loader/>
             }
         </div>
     )

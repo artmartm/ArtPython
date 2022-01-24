@@ -6,6 +6,7 @@ import CommentComponent from "../../general/comments/commentComponent";
 import CommentsList from "../../general/comments/commentsList";
 import './../../../css/teams/gameDetail.css'
 import { Button } from "@mui/material";
+import Loader from "../../general/loader";
 
 
 function GameDetail({ match }) {
@@ -70,9 +71,9 @@ function GameDetail({ match }) {
                         <h2>{game.winner} were better today</h2>
                         : <p>it was a good game but {game.winner} were a little bit better</p>}
                 </div>
-                : <p>no game</p>
+                : <Loader/>
             }
-
+            <br/>
             <React.Fragment>
                 <Button onClick={() => { setShowComments({ isOpen: true }) }}>show comments</Button>
                 {showComments.isOpen &&

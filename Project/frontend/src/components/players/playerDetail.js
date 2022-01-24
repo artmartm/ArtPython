@@ -9,6 +9,7 @@ import PlayerMainInfo from "./playerMainInfo";
 import PlayerPersonalInfo from "./playerPersonalInfo";
 import './../../css/players/player.css'
 import { Button } from "@mui/material";
+import Loader from "../general/loader";
 
 
 
@@ -107,7 +108,7 @@ function PlayerDetail({ match }) {
                             <br />
                         </div>
                     </div>
-                </div> : <>someting goes wrong</>}
+                </div> : <Loader/>}
 
         </div>
     )
