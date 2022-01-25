@@ -28,15 +28,6 @@ function Dashboard() {
 
     const content_type = '14';
 
-    const [showNews, setShowNews] = useState([{
-        isOpen: false
-    }])
-    const [showLatestNews, setLatestShowNews] = useState(true);
-    const [showMatches, setShowMatches] = useState([{
-        isOpen: false
-    }])
-    const [show, setShow] = useState(true);
-
     const part = []
 
     {
@@ -59,34 +50,8 @@ function Dashboard() {
                             <div>
                                 <div className='main-dashboard'>
                                     <div className='news-games-container'>
-                                        <div className='news-container'>
-                                            <h1 className='inside-news-container'>Team's news</h1>
-                                            <React.Fragment>
-                                                <Button onClick={() => { setShowNews({ isOpen: true }); setLatestShowNews(false) }}>show all news</Button>
-                                                {showLatestNews ? <ParticularNewsList key={part[0].favorite_team - 1} obj={part[0].favorite_team} show={showLatestNews} ct={content_type} /> : <></>}
-                                                {showNews.isOpen &&
-                                                    <div>
-                                                        <ParticularNewsList key={part[0].favorite_team} obj={part[0].favorite_team} show={showLatestNews} ct={content_type} />
-                                                        <Button onClick={() => { setShowNews({ isOpen: false }); setLatestShowNews(true) }}>close</Button>
-                                                    </div>
-                                                }
-                                            </React.Fragment>
-                                        </div>
-                                        <div>
-                                            <div className='games-container'>
-                                                <h1 className='inside-game-container'>games</h1>
-                                                <React.Fragment>
-                                                    <Button onClick={() => { setShowMatches({ isOpen: true }); setShow(false) }}>show all matches</Button>
-                                                    {show ? <ParticularTeamGame show={show} team={part[0].favorite_team} /> : <></>}
-                                                    {showMatches.isOpen &&
-                                                        <div>
-                                                            <ParticularTeamGame show={show} team={part[0].favorite_team} />
-                                                            <Button onClick={() => { setShowMatches({ isOpen: false }); setShow(true) }}>close</Button>
-                                                        </div>
-                                                    }
-                                                </React.Fragment>
-                                            </div>
-                                        </div>
+                                        <ParticularNewsList key={part[0].favorite_team} obj={part[0].favorite_team} ct={content_type} />
+                                            <ParticularTeamGame team={part[0].favorite_team} />
                                     </div>
                                     <div className='simple-dashboard'>
                                         <h1>your favorite team is</h1>
