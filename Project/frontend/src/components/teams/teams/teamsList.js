@@ -5,7 +5,6 @@ import './../../../css/teams/teamList.css'
 import Loader from '../../general/loader';
 const TeamsList = () => {
 
-    const dispatch = useDispatch();
     const teams = useSelector(state => state.teamsReducer.teams)
 
     return (

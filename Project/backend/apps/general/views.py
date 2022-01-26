@@ -13,7 +13,7 @@ class CommentsViewSet(viewsets.ModelViewSet):
 class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializers
-    #permission_classes = [OnlyLookOrAdminModerator]
+    permission_classes = [OnlyLookOrAdminModerator]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
