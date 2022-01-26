@@ -11,6 +11,8 @@ function AddNews({ obj, ct }) {
 
   let { user, authTokens } = useContext(AuthContext)
 
+  const [addNewsWindow,setAddNewsWindow] = useState({isOpen:false});
+
   let history = useHistory();
   const [name, setName] = useState('')
   const [content_type, setContent_type] = useState(ct)
@@ -47,9 +49,14 @@ function AddNews({ obj, ct }) {
 
   return (
     <div>
+      {authTokens ?
       <div>
         {user.admin || user.moderator ?
           <div>
+            <React.Fragment>
+              <Button onClick={() => { setAddNewsWindow({ isOpen: true }) }}>open news window</Button>
+                {addNewsWindow.isOpen &&
+<div>
             <div className="form-group">
               <input
                 type="text"
@@ -72,9 +79,15 @@ function AddNews({ obj, ct }) {
             <div className='for-delete-update'>
               <Button onClick={Add}>add news</Button>
             </div>
+            <Button onClick={() => { setAddNewsWindow({ isOpen: false }) }}>close</Button>
+            </div>
+            }
+            </React.Fragment>
+
           </div> : <></>}
 
       </div>
+      :<></>}
       </div>
       );
 };

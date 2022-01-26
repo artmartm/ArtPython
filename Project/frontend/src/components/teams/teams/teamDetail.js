@@ -5,22 +5,16 @@ import { useSelector } from "react-redux";
 import ParticularNewsList from "../../general/news/particularNewsList";
 import './../../../css/teams/teamDetail.css'
 import { Button } from "@mui/material";
-
-//comments
 import CommentsList from "../../general/comments/commentsList";
 import AuthContext from "../../general/base/AuthContext";
 import CommentComponent from "../../general/comments/commentComponent";
 import ParticularTeamGame from "../games/particularTeamGame";
 import AddNews from "../../general/news/addNews";
 
-//import AuthContext from "../../general/base/AuthContext";
 
 function TeamDetail({ match }) {
 
     let { authTokens, logoutUser, user } = useContext(AuthContext)
-    const [addNewsWindow, setAddNewsWindow] = useState([{
-        isOpen: false
-    }])
     const id = match.params.id;
     const content_type = '14';
     //  let {authTokens, logoutUser} = useContext(AuthContext)
@@ -33,20 +27,12 @@ function TeamDetail({ match }) {
     const [matches, setMatches] = useState([]);
     //show close
 
-    const [showNews, setShowNews] = useState([{
-        isOpen: false
-    }])
-    const [showMatches, setShowMatches] = useState([{
-        isOpen: false
-    }])
     const [showHistory, setShowHistory] = useState([{
         isOpen: false
     }])
     const [showDescription, setShowDescription] = useState([{
         isOpen: false
     }])
-    const [show, setShow] = useState(true);
-    const [showLatestNews, setLatestShowNews] = useState(true);
 
     useEffect(() => {
         axios({
@@ -95,34 +81,8 @@ function TeamDetail({ match }) {
                                 </ol>
                             </div>
                             <div className='news-games-container'>
-                                <div className='news-container'>
-                                    <h1 className='inside-news-container'>Team's news</h1>
-                                    <React.Fragment>
-                                        <Button onClick={() => { setShowNews({ isOpen: true }); setLatestShowNews(false) }}>show all news</Button>
-                                        {showLatestNews ? <ParticularNewsList key={id} obj={id} show={showLatestNews} ct={content_type} /> : <></>}
-                                        {showNews.isOpen &&
-                                            <div>
-                                                <ParticularNewsList key={id} obj={id} show={showLatestNews} ct={content_type} />
-                                                <Button onClick={() => { setShowNews({ isOpen: false }); setLatestShowNews(true) }}>close</Button>
-                                            </div>
-                                        }
-                                    </React.Fragment>
-                                </div>
-                                <div>
-                                    <div className='games-container'>
-                                        <h1 className='inside-game-container'>games</h1>
-                                        <React.Fragment>
-                                            <Button onClick={() => { setShowMatches({ isOpen: true }); setShow(false) }}>show all matches</Button>
-                                            {show ? <ParticularTeamGame show={show} team={team.id} /> : <></>}
-                                            {showMatches.isOpen &&
-                                                <div>
-                                                    <ParticularTeamGame show={show} team={team.id} />
-                                                    <Button onClick={() => { setShowMatches({ isOpen: false }); setShow(true) }}>close</Button>
-                                                </div>
-                                            }
-                                        </React.Fragment>
-                                    </div>
-                                </div>
+                                    <ParticularNewsList key={id} obj={id} ct={content_type} />
+                                    <ParticularTeamGame team={team.id} />
                             </div>
                         </div>
                         <hr />
@@ -176,22 +136,7 @@ function TeamDetail({ match }) {
                         <hr />
                         <CommentsList key={id} obj={id} ct={content_type} />
                         <CommentComponent key={id} obj={id} ct={content_type} />
-                        {authTokens ?
-                            <div>
-                                {user.admin || user.moderator ?
-                                    <div>
-                                        <React.Fragment>
-                                            <Button onClick={() => { setAddNewsWindow({ isOpen: true }) }}>add news window</Button>
-                                            {addNewsWindow.isOpen &&
-                                                <div>
-                                                    <AddNews key={id} obj={id} show={showLatestNews} ct={content_type} />
-                                                    <Button onClick={() => { setAddNewsWindow({ isOpen: false }) }}>close</Button>
-                                                </div>
-                                            }
-                                        </React.Fragment>
-                                    </div> : <></>}
-                            </div>
-                            : <></>}
+                        <AddNews key={id} obj={id} ct={content_type} />
                         <br />
                     </div>
                 </div>

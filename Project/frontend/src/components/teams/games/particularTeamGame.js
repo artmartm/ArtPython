@@ -1,24 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Button } from "@mui/material";
 import { Link } from 'react-router-dom';
 import AuthContext from '../../general/base/AuthContext';
 import './../../../css/teams/particularTeamGame.css';
+import Loader from '../../general/loader';
 
-function ParticularTeamGame({ team, show }) {
+function ParticularTeamGame({ team }) {
 
     const [games, setGames] = useState([]);
     let { authTokens } = useContext(AuthContext)
 
-    const dispatch = useDispatch();
     const teams = useSelector(state => state.teamsReducer.teams)
-
+    const [showMatches,setShowMatches]=useState({isOpen:false});
+    const [show,setShow] = useState({isOpen:true})
     const particularGames = [];
     const oneGame = []
 
-    //const [showMatches,setShowMatches]=useState({ isOpen: false });
-   // const[show,setShow]=useState({isOpen:false});
 
     useEffect(() => {
         axios({
@@ -39,8 +38,13 @@ function ParticularTeamGame({ team, show }) {
     })
 
     return (
+        <div className='games-container'>
+        <h1 className='inside-game-container'>games</h1>
+        {teams.length > 0 ?            
         <div>
             {particularGames.length > 0 && oneGame.length > 0 && teams.length > 0 ?
+            <React.Fragment>
+            <Button onClick={() => { setShow(false) }}>show all matches</Button>
                 <div>
                     {show ?
                         <div>
@@ -86,14 +90,18 @@ function ParticularTeamGame({ team, show }) {
                                 </Link>
                                 </h1>
                             ))}
+                                    <Button onClick={() => { setShow(true) }}>close</Button>
+
                         </div>
                     }
                 </div>
+                </React.Fragment>
                 :
                 <p>no games</p>
             }
+            </div>
+            : <Loader />}
         </div>)
 }
 
 export default ParticularTeamGame;
-

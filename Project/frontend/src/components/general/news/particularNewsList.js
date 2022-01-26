@@ -2,12 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './../../../css/general/news.css';
-import AddNews from './addNews';
 import AuthContext from '../base/AuthContext';
 import { Button } from "@mui/material";
 
-function ParticularNewsList({ obj, ct, show }) {
+function ParticularNewsList({ obj, ct }) {
     let { user, authTokens } = useContext(AuthContext)
+
+    const [show,setShow] = useState({isOpen:true})
 
     const [news, setNews] = useState([]);
     const particular_news = [];
@@ -38,8 +39,12 @@ function ParticularNewsList({ obj, ct, show }) {
         )) : <p>no news yet</p>
 
     return (
-        <div>
-            {show ?
+        <div className='news-container'>
+        <h1 className='inside-news-container'>Team's news</h1>
+            <React.Fragment>
+            <Button onClick={() => { setShow({ isOpen: false }) }}>show all news</Button>
+            <div>
+            {show.isOpen ?
                 <div>
                     {
                         latest_news.length ?
@@ -81,7 +86,11 @@ function ParticularNewsList({ obj, ct, show }) {
                             )) :
                             <p>no news</p>
                     }
+                            <Button onClick={() => { setShow({ isOpen: true }) }}>close</Button>
+
                 </div>}
+                </div>
+                </React.Fragment>
         </div>
     )
 }
