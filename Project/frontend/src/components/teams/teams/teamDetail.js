@@ -6,7 +6,6 @@ import ParticularNewsList from "../../general/news/particularNewsList";
 import './../../../css/teams/teamDetail.css'
 import { Button } from "@mui/material";
 import CommentsList from "../../general/comments/commentsList";
-import AuthContext from "../../general/base/AuthContext";
 import CommentComponent from "../../general/comments/commentComponent";
 import ParticularTeamGame from "../games/particularTeamGame";
 import AddNews from "../../general/news/addNews";
@@ -14,7 +13,6 @@ import AddNews from "../../general/news/addNews";
 
 function TeamDetail({ match }) {
 
-    let { authTokens, logoutUser, user } = useContext(AuthContext)
     const id = match.params.id;
     const content_type = '14';
     //  let {authTokens, logoutUser} = useContext(AuthContext)
